@@ -1,0 +1,616 @@
+{
+	"id": "242d9666-34dc-40db-4cde-b04e46d974be",
+	"name": "EN5.0_API",
+	"description": "",
+	"order": [
+		"dbb98a8f-1843-217d-2fe9-907dd092ac6b"
+	],
+	"folders": [
+		{
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "8ed5e7a509059fd5a7ff3c02ecd1552d"
+					}
+				]
+			},
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"description": "API TEST FOR GROUP",
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ea5290a9-1fea-4c2e-929b-73c72949cdc4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "977a90f2-4597-47d6-b3d6-7bcca463134c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"folders_order": [],
+			"id": "78331a73-27cb-15d5-30cf-9562c241cee7",
+			"name": "Group API TESTS",
+			"order": [
+				"80a9c94b-ec82-ba30-42d7-75ae24784659",
+				"b31e34d3-6a2b-7db4-8687-db741271e379",
+				"01971380-4129-df54-cdde-61363c00cf03",
+				"1c71cd29-1d7e-0060-9cb1-1bae3cdcd8ba"
+			],
+			"owner": "3690638"
+		},
+		{
+			"auth": null,
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"description": "",
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"id": "78ff04b9-fff6-47c5-a2ca-f37b058fbe36",
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"id": "a2569292-32c1-4425-ba4a-435ac0b57d4b",
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folders_order": [],
+			"id": "f92254d5-a604-99e6-5e56-53ae1bfa1341",
+			"name": "Page Settings API TESTS",
+			"order": [
+				"fd77aa54-e18c-4a16-0f43-9b6a9603706b",
+				"69f1a842-5777-3f7f-5305-37e93df42e2a"
+			],
+			"owner": "3690638"
+		}
+	],
+	"folders_order": [
+		"78331a73-27cb-15d5-30cf-9562c241cee7",
+		"f92254d5-a604-99e6-5e56-53ae1bfa1341"
+	],
+	"timestamp": 0,
+	"owner": "3690638",
+	"public": false,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2f0e42a8-52a0-4408-9736-82351761e23d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "df66a8c8-554d-426a-a410-06cf00a63f16",
+				"type": "text/javascript",
+				"exec": [
+					"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+					""
+				]
+			}
+		}
+	],
+	"variables": [],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "14b7c529a2dc977cc40c471f6c3e6225"
+			}
+		]
+	},
+	"requests": [
+		{
+			"id": "01971380-4129-df54-cdde-61363c00cf03",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/myapp/api/groups/free",
+			"folder": "78331a73-27cb-15d5-30cf-9562c241cee7",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8593f1a-9be0-4ac4-8f5c-db7c3f4a90ee",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "a8eb33c72c687181475722693f8449d8",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519724749457,
+			"name": "http://localhost:8080/myapp/api/group/free",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "a8eb33c72c687181475722693f8449d8"
+			}
+		},
+		{
+			"id": "1c71cd29-1d7e-0060-9cb1-1bae3cdcd8ba",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/myapp/api/groups/administrators",
+			"folder": "78331a73-27cb-15d5-30cf-9562c241cee7",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5067c719-c065-483a-bd32-11a736417645",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "a8eb33c72c687181475722693f8449d8",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519724822306,
+			"name": "http://localhost:8080/myapp/api/group/administators",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "a8eb33c72c687181475722693f8449d8"
+			},
+			"rawModeData": "{\n    \"name\": \"Administrators\"\n }"
+		},
+		{
+			"id": "69f1a842-5777-3f7f-5305-37e93df42e2a",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "cfbe953b0b65a49759662c2898ee7415",
+						"type": "string"
+					}
+				]
+			},
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"data": [],
+			"dataMode": "raw",
+			"description": "",
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"id": "d91e9875-99d5-4f84-abdb-e74d6f1fa806",
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "f92254d5-a604-99e6-5e56-53ae1bfa1341",
+			"headerData": [],
+			"headers": "",
+			"method": "PUT",
+			"name": "http://localhost:8080/myapp/api/pageSettings",
+			"pathVariableData": [],
+			"pathVariables": {},
+			"queryParams": [],
+			"responses": [],
+			"time": 1519679283253,
+			"url": "http://localhost:8080/myapp/api/pageSettings",
+			"version": 2,
+			"timestamp": null,
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "cfbe953b0b65a49759662c2898ee7415"
+			},
+			"rawModeData": "{\n    \"params\": [{\n            \"name\": \"urlStyle\",\n            \"value\": \"classic|breadcrumbs\"\n        },\n        {\n            \"name\": \"treeStyle_page\",\n            \"value\": \"classic|request\"\n        },\n        {\n            \"name\": \"startLangFromBrowser\",\n            \"value\": \"false\"\n        },\n        {\n            \"name\": \"baseUrl\",\n            \"value\": \"classic|request|static\"\n        },\n        {\n            \"name\": \"baseUrlContext\",\n            \"value\": \"true\"\n        },\n        {\n            \"name\": \"useJsessionId\",\n            \"value\": \"false\"\n        }, {\n            \"name\": \"notFoundPageCode\",\n            \"value\": \"notfound\"\n        },\n        {\n            \"name\": \"homePageCode\",\n            \"value\": \"homepage\"\n        },\n        {\n            \"name\": \"errorPageCode\",\n            \"value\": \"errorpage\"\n        },\n        {\n            \"name\": \"loginPageCode\",\n            \"value\": \"login\"\n        }\n    ]\n }"
+		},
+		{
+			"id": "80a9c94b-ec82-ba30-42d7-75ae24784659",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/myapp/api/groups",
+			"folder": "78331a73-27cb-15d5-30cf-9562c241cee7",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5d8cd4d-f6c7-44f5-a1ff-100fce35c6a0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"check free\"] = responseBody.has(\"free\");",
+							"tests[\"check administrators\"] = responseBody.has(\"administrators\");",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"correct payload\"] = jsonData.payload.code = \"administrators\";",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "a8eb33c72c687181475722693f8449d8",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519724746401,
+			"name": "http://localhost:8080/myapp/api/groups",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"check free\"] = responseBody.has(\"free\");\ntests[\"check administrators\"] = responseBody.has(\"administrators\");\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"correct payload\"] = jsonData.payload.code = \"administrators\";\n\n\n",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "a8eb33c72c687181475722693f8449d8"
+			},
+			"rawModeData": ""
+		},
+		{
+			"id": "b31e34d3-6a2b-7db4-8687-db741271e379",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/myapp/api/groups",
+			"folder": "78331a73-27cb-15d5-30cf-9562c241cee7",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"id": "feaf8e6f-9ae7-4e53-9271-cc6e5ee6ce3d",
+						"type": "text/javascript"
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "a8eb33c72c687181475722693f8449d8",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519724786133,
+			"name": "http://localhost:8080/myapp/api/groups",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "a8eb33c72c687181475722693f8449d8"
+			},
+			"rawModeData": "{\n    \"name\": \"Administrators\",\n    \"code\": \"administrators\"\n }"
+		},
+		{
+			"folder": null,
+			"id": "d4385f1a-f401-3cb1-62dd-7279940edd33",
+			"name": "http://localhost:8080/myapp/OAuth2/access_token",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"enabled": true,
+					"key": "username",
+					"type": "text",
+					"value": "admin"
+				},
+				{
+					"enabled": true,
+					"key": "password",
+					"type": "text",
+					"value": "adminadmin"
+				},
+				{
+					"enabled": true,
+					"key": "grant_type",
+					"type": "text",
+					"value": "password"
+				},
+				{
+					"enabled": true,
+					"key": "client_id",
+					"type": "text",
+					"value": "REST_API"
+				},
+				{
+					"enabled": true,
+					"key": "client_secret",
+					"type": "text",
+					"value": "REAST_API_SEC"
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "14b7c529a2dc977cc40c471f6c3e6225",
+						"type": "string"
+					}
+				]
+			},
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"id": "9f17c62b-84bb-482a-88cc-feda4f08f056",
+						"type": "text/javascript"
+					}
+				}
+			],
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "http://localhost:8080/myapp/OAuth2/access_token",
+			"queryParams": [],
+			"headerData": [
+				{
+					"enabled": true,
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded"
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "14b7c529a2dc977cc40c471f6c3e6225"
+			}
+		},
+		{
+			"id": "dbb98a8f-1843-217d-2fe9-907dd092ac6b",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/myapp/OAuth2/access_token",
+			"folder": null,
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0af9a58-3c14-4ef3-a1ba-a11650844c22",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"description": "",
+					"enabled": true,
+					"key": "username",
+					"type": "text",
+					"value": "admin"
+				},
+				{
+					"description": "",
+					"enabled": true,
+					"key": "password",
+					"type": "text",
+					"value": "adminadmin"
+				},
+				{
+					"description": "",
+					"enabled": true,
+					"key": "grant_type",
+					"type": "text",
+					"value": "password"
+				},
+				{
+					"description": "",
+					"enabled": true,
+					"key": "client_id",
+					"type": "text",
+					"value": "REST_API"
+				},
+				{
+					"description": "",
+					"enabled": true,
+					"key": "client_secret",
+					"type": "text",
+					"value": "REAST_API_SEC"
+				}
+			],
+			"dataMode": "urlencoded",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "14b7c529a2dc977cc40c471f6c3e6225",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519662875146,
+			"name": "http://localhost:8080/myapp/OAuth2/access_token",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "14b7c529a2dc977cc40c471f6c3e6225"
+			}
+		},
+		{
+			"id": "fd77aa54-e18c-4a16-0f43-9b6a9603706b",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/myapp/api//pageSettings",
+			"folder": "f92254d5-a604-99e6-5e56-53ae1bfa1341",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ba1d09e4-8354-46a3-a762-41ef3c891a09",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "a8eb33c72c687181475722693f8449d8",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519724832263,
+			"name": "http://localhost:8080/myapp/api//pageSettings",
+			"description": "",
+			"collectionId": "242d9666-34dc-40db-4cde-b04e46d974be",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n\n\n",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "a8eb33c72c687181475722693f8449d8"
+			}
+		}
+	]
+}
