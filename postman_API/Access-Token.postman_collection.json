@@ -1,0 +1,128 @@
+{
+	"id": "8b7b5430-7d14-2807-6528-3bccc6e675b6",
+	"name": "Access-Token",
+	"description": "",
+	"order": [
+		"37bd9cd6-c632-882f-1f1f-a28da1c66532"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1519741192860,
+	"owner": "3690638",
+	"public": false,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8cab39a6-d4a2-4447-b651-76c83284188d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2d880ebb-d1ed-4a41-af93-fd91103c2000",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "37bd9cd6-c632-882f-1f1f-a28da1c66532",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/myapp/OAuth2/access_token",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c058a6b-a705-40d2-bcfc-afb15f685d1d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "admin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "adminadmin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "REST_API",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "REAST_API_SEC",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "381f8d9e4ea1a23c13ee8340587a40e3",
+						"type": "string"
+					}
+				]
+			},
+			"time": 1519749564345,
+			"name": "Access Token POST",
+			"description": "Request to return the Access Token (based on Bearer Token)",
+			"collectionId": "8b7b5430-7d14-2807-6528-3bccc6e675b6",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "bearerAuth",
+			"helperAttributes": {
+				"id": "bearer",
+				"token": "381f8d9e4ea1a23c13ee8340587a40e3"
+			}
+		}
+	]
+}
