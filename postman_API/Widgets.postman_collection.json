@@ -1,0 +1,112 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Widgets",
+		"_postman_id": "bed4376b-df80-d595-1938-9d07e2aee5d6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Widgets GET List",
+			"request": {
+				"url": "http://localhost:8080/myapp/api/widgets",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Widgets GET content_viewer copy copy",
+			"request": {
+				"url": "http://localhost:8080/myapp/api/widgets/new_content_type",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Widgets GET content_viewer",
+			"request": {
+				"url": "http://localhost:8080/myapp/api/widgets/content_viewer",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Widgets GET content_viewer copy",
+			"request": {
+				"url": "http://localhost:8080/myapp/api/widgets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Widgets GET content_viewer copy copy",
+			"request": {
+				"url": "http://localhost:8080/myapp/api/widgets/content_viewer",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
