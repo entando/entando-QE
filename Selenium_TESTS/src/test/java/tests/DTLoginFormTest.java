@@ -1,5 +1,10 @@
+package tests;
 
 
+
+import utils.ReceiptDTLoginPage;
+import pages.DTLoginPage;
+import utils.FunctionalTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +14,7 @@ public class DTLoginFormTest extends FunctionalTest {
 
 	@Test
 	public void LogIn(){
-		driver.get("http://designtime.serv.run");
+	
 		
 		DTLoginPage dtLoginPage = new DTLoginPage(driver);
 

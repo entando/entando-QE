@@ -1,3 +1,5 @@
+package pages;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +11,9 @@
  * @author simone
  */
 
+
+import utils.ReceiptDTLoginPage;
+import utils.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,8 +38,12 @@ public class DTLoginPage extends PageObject {
 	}
     
     public DTLoginPage(WebDriver driver) {
+        
         super(driver);
+        driver.get("http://designtime.serv.run");
     }
+    
+   
     
     
     public ReceiptDTLoginPage submit(){

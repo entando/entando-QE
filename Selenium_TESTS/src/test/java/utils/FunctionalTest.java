@@ -1,3 +1,5 @@
+package utils;
+
 
 
 import java.util.concurrent.TimeUnit;
@@ -20,7 +22,7 @@ public class FunctionalTest {
 	@BeforeClass
 	public static void setUp(){
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 	}
 	
 	@After
@@ -31,5 +33,6 @@ public class FunctionalTest {
 	@AfterClass
 	public static void tearDown(){
 		//driver.close();
+                //driver.quit();
 	}	
 }
