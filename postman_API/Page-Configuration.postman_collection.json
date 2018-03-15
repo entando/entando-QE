@@ -1,0 +1,146 @@
+{
+	"id": "fcf8da5e-f1b4-4422-a77d-1f54b956bf13",
+	"name": "Page-Configuration",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"895c748f-4650-4b8e-9997-e054dd296295",
+		"9b1305e3-191e-4dee-bf9f-c2806615fc46",
+		"a9efde54-d398-4301-ac9a-34dc0d5f023a",
+		"8c75b728-bd9f-4755-9203-7a28f528f5e6"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "895c748f-4650-4b8e-9997-e054dd296295",
+			"name": "GET Page Configuration ",
+			"url": "{{url}}/api/pages/draftpage/configuration",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"bearer": [
+					{
+						"key": "token",
+						"value": "abe34089310ef2c637048fbf3c34e416",
+						"type": "string"
+					}
+				],
+				"type": "bearer"
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "8c75b728-bd9f-4755-9203-7a28f528f5e6",
+			"name": "GET Page Configuration with a valide page code and a default draft status",
+			"url": "{{url}}/api/pages/publishedpage/configuration?status=draft",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "status",
+					"value": "draft",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"bearer": [
+					{
+						"key": "token",
+						"value": "abe34089310ef2c637048fbf3c34e416",
+						"type": "string"
+					}
+				],
+				"type": "bearer"
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "9b1305e3-191e-4dee-bf9f-c2806615fc46",
+			"name": "GET Page Configuration with unexisting page code",
+			"url": "{{url}}/api/pages/publishedpage00/configuration?status=published",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "status",
+					"value": "published",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"bearer": [
+					{
+						"key": "token",
+						"value": "abe34089310ef2c637048fbf3c34e416",
+						"type": "string"
+					}
+				],
+				"type": "bearer"
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "a9efde54-d398-4301-ac9a-34dc0d5f023a",
+			"name": "GET Page Configuration with a valide page code and a invalide status",
+			"url": "{{url}}/api/pages/draftpage/configuration?status=published",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "status",
+					"value": "published",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"bearer": [
+					{
+						"key": "token",
+						"value": "abe34089310ef2c637048fbf3c34e416",
+						"type": "string"
+					}
+				],
+				"type": "bearer"
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
