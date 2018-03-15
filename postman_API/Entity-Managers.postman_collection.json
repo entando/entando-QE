@@ -1,0 +1,158 @@
+{
+	"id": "ef089ada-7f70-479f-8da4-ddfae4a6e91c",
+	"name": "Entity-Managers",
+	"description": "",
+	"auth": null,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a28cea00-e4cb-4b0c-8a8b-c216de55d9ed",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e0f75fee-1da6-4784-a4c3-3b5ab908a7c7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [],
+	"order": [
+		"18d168cc-940b-4cdd-9719-b058339c946f",
+		"229c0d26-2b96-4dce-bfc5-bd5f338f382c",
+		"73b36d7a-48f2-45e0-b4bd-84e2bb70c418",
+		"c3d25ce1-5e0a-49dc-a9b6-629a70f56bfc"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "18d168cc-940b-4cdd-9719-b058339c946f",
+			"name": "GET Entity Manager with a valid entity manager code",
+			"url": "{{url}}/api/entityManagers/UserProfileManager",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "9cecae22f1e134f5330ce046b80ef973",
+						"type": "string"
+					}
+				]
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "229c0d26-2b96-4dce-bfc5-bd5f338f382c",
+			"name": "GET Entity Managers List",
+			"url": "{{url}}/api/entityManagers",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "9cecae22f1e134f5330ce046b80ef973",
+						"type": "string"
+					}
+				]
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "73b36d7a-48f2-45e0-b4bd-84e2bb70c418",
+			"name": "GET Entity Managers List Copy",
+			"url": "{{url}}/api/entityManagers?page=1&pageSize=2",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "9cecae22f1e134f5330ce046b80ef973",
+						"type": "string"
+					}
+				]
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c3d25ce1-5e0a-49dc-a9b6-629a70f56bfc",
+			"name": "GET Entity Manager with an unexisting entity manager code",
+			"url": "{{url}}/api/entityManagers/UserProfileManager00",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "9cecae22f1e134f5330ce046b80ef973",
+						"type": "string"
+					}
+				]
+			},
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
