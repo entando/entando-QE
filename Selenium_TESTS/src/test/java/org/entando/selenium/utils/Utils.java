@@ -202,12 +202,45 @@ public class Utils {
 
     }
     
-    public Kebab getKebabOnTable(WebElement table, int index){
+    public Kebab getKebabOnTable(WebElement table, int index, String clickableTag){
         WebElement row = table.findElement(By.xpath(String.format("//tbody/tr[%d]", index)));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         WebElement kebab = cells.get(cells.size() - 1);
-        Kebab result = new Kebab(kebab.findElement(By.tagName("i")), kebab.findElement(By.tagName("ul")));
+        Kebab result = new Kebab(kebab.findElement(By.tagName(clickableTag)), kebab.findElement(By.tagName("ul")));
         return result;
+    }
+    
+    public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue){
+        List<WebElement> headers = table.findElements(By.xpath("//thead/tr[1]/th"));
+        int columnIndex = -1;
+        for(int i = 0; i < headers.size(); i++){
+            WebElement th = headers.get(i);
+            if(th.getAttribute(innerText).equalsIgnoreCase(columnName)){
+                columnIndex = i;
+                break;
+            }
+        }
+        if(columnIndex >= 0){
+            List<WebElement> rows = table.findElements(By.xpath("//tbody/tr"));
+            int rowIndex = -1;
+            for(int j = 0; j < rows.size(); j++){
+                WebElement cell = rows.get(j).findElement(By.xpath(String.format("//td[%d]", columnIndex + 1)));
+                if(cell.getAttribute(innerText).equalsIgnoreCase(columnValue)){
+                    rowIndex = j;
+                    break;
+                }
+            }
+            if(rowIndex >= 0){
+                return getKebabOnTable(table, rowIndex + 1, "button");
+            }
+            else{
+                assert false : "The column value " + columnValue + " has not been found on any row for the column " + columnName;
+            }
+        }
+        else{
+            assert false : "The column " + columnName + " has not been found in the table.";
+        }
+        return null;
     }
     
     public void clickKebabActionOnList(WebElement ul, String action){
