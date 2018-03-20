@@ -26,6 +26,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utils {
 
@@ -198,6 +200,103 @@ public class Utils {
         System.out.println("number of columns: " + columns_count);
         return columns_count;
 
+    }
+    
+    public Kebab getKebabOnTable(WebElement table, int index){
+        WebElement row = table.findElement(By.xpath(String.format("//tbody/tr[%d]", index)));
+        List<WebElement> cells = row.findElements(By.tagName("td"));
+        WebElement kebab = cells.get(cells.size() - 1);
+        Kebab result = new Kebab(kebab.findElement(By.tagName("i")), kebab.findElement(By.tagName("ul")));
+        return result;
+    }
+    
+    public void clickKebabActionOnList(WebElement ul, String action){
+        List<WebElement> list = ul.findElements(By.tagName("li"));
+        for(WebElement li: list){
+            WebElement a = li.findElement(By.tagName("a"));
+            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
+                a.click();
+                break;
+            }
+        }
+    }
+    
+    public List<WebElement> expandAllRowsOnTable(WebDriver driver, WebElement table) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        List<WebElement> rows = table.findElements(By.xpath("//tbody/tr"));
+        boolean allExpanded = false;
+        int size;
+        while(!allExpanded){
+            size = rows.size();
+            for(WebElement row: rows){
+                WebElement cell = row.findElement(By.tagName("td"));
+                WebElement icon = cell.findElement(By.className("PageExpandedIcon"));
+                if(!hasClass(cell, "PageTreeSelector__column-td--empty") && hasClass(icon, "fa-angle-right")){
+                    WebElement button = cell.findElement(By.className("PageTreeSelector__expand-area"));
+                    button.click();
+                    waitUntilSizeChange(wait, button, "//tbody/tr", size);
+                }
+            }
+            rows = table.findElements(By.xpath("//tbody/tr"));
+            allExpanded = rows.size() == size;
+        }
+        return rows;
+    }
+    
+    public boolean hasClass(WebElement element, String klass) {
+        String classes = element.getAttribute("class");
+        for (String c : classes.split(" ")) {
+            if (c.equals(klass)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    private void waitUntilSizeChange(WebDriverWait wait, WebElement element, String childrenSelector, int currentSize){
+        wait.until(new ExpectedCondition<Boolean>(){
+            @Override
+            public Boolean apply(WebDriver d) {
+                int size = element.findElements(By.xpath(childrenSelector)).size();
+                return currentSize != size;
+            }
+        });
+    }
+    
+    private static String innerText = "innerText"; 
+    
+    public static class Kebab {
+        
+        public Kebab(){
+            
+        }
+        
+        public Kebab(WebElement clickable, WebElement actionList){
+            this.clickable = clickable;
+            this.actionList = actionList;
+        }
+
+        private WebElement clickable;
+
+        public WebElement getClickable() {
+            return clickable;
+        }
+
+        public void setClickable(WebElement clickable) {
+            this.clickable = clickable;
+        }
+
+        public WebElement getActionList() {
+            return actionList;
+        }
+
+        public void setActionList(WebElement actionList) {
+            this.actionList = actionList;
+        }
+        private WebElement actionList;
+        
+        
     }
 
 }//class close
