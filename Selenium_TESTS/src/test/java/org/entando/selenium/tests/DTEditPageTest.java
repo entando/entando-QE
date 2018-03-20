@@ -39,7 +39,7 @@ public class DTEditPageTest extends FunctionalTest {
         Utils util = new Utils();
         
         WebElement table = driver.findElement(By.className("PageTree"));
-        Kebab kebab = util.getKebabOnTable(table, 1);
+        Kebab kebab = util.getKebabOnTable(table, 1, "i");
         kebab.getClickable().click();
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
         
@@ -60,6 +60,6 @@ public class DTEditPageTest extends FunctionalTest {
         
         dtPageEditPage.choosePagePlacement("Log In", rows);
         
-        Assert.assertEquals(true, dtPageEditPage.getSaveButton().isEnabled());
+        Assert.assertTrue(dtPageEditPage.getSaveButton().isEnabled());
     }
 }
