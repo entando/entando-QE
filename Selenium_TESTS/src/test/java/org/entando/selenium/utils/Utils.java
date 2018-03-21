@@ -27,6 +27,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utils {
@@ -298,6 +299,11 @@ public class Utils {
     }
     
     private static String innerText = "innerText"; 
+
+    public void waitUntilVisible(WebDriver driver, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
     
     public static class Kebab {
         
