@@ -41,6 +41,9 @@ public class DTEditPageTest extends FunctionalTest {
         WebElement table = driver.findElement(By.className("PageTree"));
         Kebab kebab = util.getKebabOnTable(table, 1, "i");
         kebab.getClickable().click();
+        
+        util.waitUntilVisible(driver, kebab.getActionList());
+        
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
         
          String pageTitle = "Edit";

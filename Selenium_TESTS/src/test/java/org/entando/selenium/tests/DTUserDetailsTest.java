@@ -37,6 +37,9 @@ public class DTUserDetailsTest extends FunctionalTest {
         String user = "admin";
         Utils.Kebab kebab = util.getKebabOnTable(table, "Username", user);
         kebab.getClickable().click();
+        
+        util.waitUntilVisible(driver, kebab.getActionList());
+        
         util.clickKebabActionOnList(kebab.getActionList(), "View profile of: " + user);
         
         
