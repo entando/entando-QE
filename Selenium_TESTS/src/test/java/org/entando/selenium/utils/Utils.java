@@ -211,7 +211,7 @@ public class Utils {
         return result;
     }
     
-    public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue){
+    public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue, String clickableTag){
         List<WebElement> headers = table.findElements(By.xpath("//thead/tr[1]/th"));
         int columnIndex = -1;
         for(int i = 0; i < headers.size(); i++){
@@ -232,7 +232,7 @@ public class Utils {
                 }
             }
             if(rowIndex >= 0){
-                return getKebabOnTable(table, rowIndex + 1, "button");
+                return getKebabOnTable(table, rowIndex + 1, clickableTag);
             }
             else{
                 assert false : "The column value " + columnValue + " has not been found on any row for the column " + columnName;

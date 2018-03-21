@@ -35,7 +35,7 @@ public class DTUserDetailsTest extends FunctionalTest {
         Utils util = new Utils();
         WebElement table = driver.findElement(By.className("UserListTable__table"));
         String user = "admin";
-        Utils.Kebab kebab = util.getKebabOnTable(table, "Username", user);
+        Utils.Kebab kebab = util.getKebabOnTable(table, "Username", user, "button");
         kebab.getClickable().click();
         
         util.waitUntilVisible(driver, kebab.getActionList());
