@@ -5,8 +5,10 @@
  */
 package org.entando.selenium.tests;
 
+import junit.framework.Assert;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTLoginPage;
+import org.entando.selenium.pages.DTUserManageAuthorityPage;
 import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
@@ -41,5 +43,17 @@ public class DTUserManageAuthorizationTest extends FunctionalTest {
         util.waitUntilVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Manage autorization for: " + user);
+        
+        DTUserManageAuthorityPage dtUserManageAuthorizatyPage = new DTUserManageAuthorityPage(driver);
+        
+        String authorityTitle = "Authorizations for admin";
+        
+        Assert.assertEquals(authorityTitle, dtUserManageAuthorizatyPage.getPageTitle().getText());
+        assertTrue(dtUserManageAuthorizatyPage.getGroupLabel().isDisplayed());
+        assertTrue(dtUserManageAuthorizatyPage.getRoleLabel().isDisplayed());
+        Assert.assertEquals(2, dtUserManageAuthorizatyPage.getAuthorizationControls().size());
+        assertTrue(dtUserManageAuthorizatyPage.getAddButton().isDisplayed());
+        assertTrue(dtUserManageAuthorizatyPage.getSaveButton().isDisplayed());
+        
     }
 }
