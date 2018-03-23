@@ -55,5 +55,11 @@ public class DTUserManageAuthorizationTest extends FunctionalTest {
         assertTrue(dtUserManageAuthorizatyPage.getAddButton().isDisplayed());
         assertTrue(dtUserManageAuthorizatyPage.getSaveButton().isDisplayed());
         
+        int authorizations = dtUserManageAuthorizatyPage.getAuthorizations();
+        
+        dtUserManageAuthorizatyPage.setGroupAndRole(1, 1);
+        dtUserManageAuthorizatyPage.getAddButton().click();
+        
+        Assert.assertEquals(authorizations + 1, dtUserManageAuthorizatyPage.getAuthorizations());
     }
 }

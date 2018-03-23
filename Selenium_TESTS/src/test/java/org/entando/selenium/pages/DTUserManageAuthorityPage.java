@@ -7,9 +7,11 @@ package org.entando.selenium.pages;
 
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  *
@@ -37,6 +39,8 @@ public class DTUserManageAuthorityPage extends PageObject {
     
     @FindBy(xpath = "//*[@class='UserAuthorityTable']//select[@class='form-control']")
     private List<WebElement> authorizationControls;
+    Select userGroup = new Select(authorizationControls.get(0));
+    Select userRole = new Select(authorizationControls.get(1));
 
     public List<WebElement> getAuthorizationControls() {
         return authorizationControls;
@@ -60,8 +64,28 @@ public class DTUserManageAuthorityPage extends PageObject {
         return pageTitle;
     }
     
+    private int authorizations;
+
+    public int getAuthorizations() {
+        try{
+            return getAuthorizationRows().size();
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
+    
+    public void setGroupAndRole(int numGroup, int numRole){
+        userGroup.getOptions().get(numGroup).click();        
+        userRole.getOptions().get(numRole).click();
+    }
+    
     public DTUserManageAuthorityPage(WebDriver driver) {
         super(driver);
+    }
+
+    private List<WebElement> getAuthorizationRows() {
+        return driver.findElements(By.xpath("//*[@class='UserAuthorityTable']//table/tbody/tr"));
     }
     
 }
