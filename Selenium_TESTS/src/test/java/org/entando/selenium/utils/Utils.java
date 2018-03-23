@@ -245,14 +245,16 @@ public class Utils {
     }
     
     public void clickKebabActionOnList(WebElement ul, String action){
-        List<WebElement> list = ul.findElements(By.tagName("li"));
-        for(WebElement li: list){
-            WebElement a = li.findElement(By.tagName("a"));
-            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
-                a.click();
-                break;
-            }
-        }
+//        List<WebElement> list = ul.findElements(By.tagName("li"));
+        WebElement link = ul.findElement(By.linkText(action));
+        link.click();
+//        for(WebElement li: list){
+//            WebElement a = li.findElement(By.tagName("a"));
+//            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
+//                a.click();
+//                break;
+//            }
+//        }
     }
     
     public List<WebElement> expandAllRowsOnTable(WebDriver driver, WebElement table) {
