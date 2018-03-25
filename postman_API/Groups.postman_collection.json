@@ -1,29 +1,61 @@
 {
-	"id": "af8f15ac-2037-2e68-04d6-c7a0dc5e11d4",
-	"name": "Groups",
-	"description": "",
-	"order": [
-		"b2b52674-e2fc-dc60-a5db-ae97fbcf0516",
-		"16c89561-ae43-e425-6691-10ac7a88f365",
-		"677a5a87-919c-7b77-ecd0-3cb66df06348",
-		"229b046b-475c-9a7c-2f59-48dad564afbe"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 1519744163319,
-	"owner": "3690638",
-	"public": false,
-	"events": [],
-	"variables": [],
-	"auth": null,
-	"requests": [
+	"info": {
+		"_postman_id": "6c08f41c-14bd-4a67-aaa7-f5bafabfd782",
+		"name": "Groups",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "16c89561-ae43-e425-6691-10ac7a88f365",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/myapp/api/groups",
-			"queryParams": [],
-			"events": [
+			"name": "http://tests.serv.run/entando-sample/api/groups/free",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3e70ff22-53e0-481a-870f-aca681d017e2",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";",
+							"tests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "539b757d007bc470f0af48678b2ba934",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/groups/free",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"groups",
+						"free"
+					]
+				},
+				"description": "Request to Read the Group. The User should be authorized "
+			},
+			"response": []
+		},
+		{
+			"name": "http://tests.serv.run/entando-sample/api/groups",
+			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
@@ -47,48 +79,96 @@
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "539b757d007bc470f0af48678b2ba934",
-						"type": "string"
-					}
-				]
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "539b757d007bc470f0af48678b2ba934",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/groups",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"groups"
+					]
+				},
+				"description": "Request to read the Groups"
 			},
-			"time": 1519819539653,
-			"name": "http://localhost:8080/myapp/api/groups",
-			"description": "Request to read the Groups",
-			"collectionId": "af8f15ac-2037-2e68-04d6-c7a0dc5e11d4",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\n",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "539b757d007bc470f0af48678b2ba934"
-			}
+			"response": []
 		},
 		{
-			"id": "229b046b-475c-9a7c-2f59-48dad564afbe",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"name": "http://tests.serv.run/entando-sample/api/groups/free",
+			"event": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"listen": "test",
+					"script": {
+						"id": "468f7f80-2ecf-4736-8fed-2d60ed3d4a1f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";",
+							"tests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";",
+							"",
+							"",
+							""
+						]
+					}
 				}
 			],
-			"url": "http://localhost:8080/myapp/api/groups",
-			"queryParams": [],
-			"events": [
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "539b757d007bc470f0af48678b2ba934",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Free Access\",\n    \"code\": \"free\"\n }"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/groups/free",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"groups",
+						"free"
+					]
+				},
+				"description": "Request to edit groups. The User should be authorized.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://tests.serv.run/entando-sample/api/groups",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -110,150 +190,40 @@
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": {
-				"bearer": [
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "539b757d007bc470f0af48678b2ba934",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
 					{
-						"key": "token",
-						"value": "539b757d007bc470f0af48678b2ba934",
-						"type": "string"
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"type": "bearer"
-			},
-			"time": 1519819577330,
-			"name": "http://localhost:8080/myapp/api/groups",
-			"description": "",
-			"collectionId": "af8f15ac-2037-2e68-04d6-c7a0dc5e11d4",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\n\n\n\n\n",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "539b757d007bc470f0af48678b2ba934"
-			},
-			"rawModeData": "{\n    \"name\": \"Test12\",\n    \"code\": \"test12\"\n }"
-		},
-		{
-			"id": "677a5a87-919c-7b77-ecd0-3cb66df06348",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test12\",\n    \"code\": \"test12\"\n }"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/groups",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"groups"
+					]
 				}
-			],
-			"url": "http://localhost:8080/myapp/api/groups/free",
-			"queryParams": [],
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "468f7f80-2ecf-4736-8fed-2d60ed3d4a1f",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";",
-							"tests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";",
-							"",
-							"",
-							""
-						]
-					}
-				}
-			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "539b757d007bc470f0af48678b2ba934",
-						"type": "string"
-					}
-				]
 			},
-			"time": 1519819537484,
-			"name": "http://localhost:8080/myapp/api/groups/free",
-			"description": "Request to edit groups. The User should be authorized.\n\n",
-			"collectionId": "af8f15ac-2037-2e68-04d6-c7a0dc5e11d4",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";\ntests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";\n\n\n",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "539b757d007bc470f0af48678b2ba934"
-			},
-			"rawModeData": "{\n    \"name\": \"Free Access\",\n    \"code\": \"free\"\n }"
-		},
-		{
-			"id": "b2b52674-e2fc-dc60-a5db-ae97fbcf0516",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/myapp/api/groups/free",
-			"queryParams": [],
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "3e70ff22-53e0-481a-870f-aca681d017e2",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";",
-							"tests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";",
-							""
-						]
-					}
-				}
-			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "539b757d007bc470f0af48678b2ba934",
-						"type": "string"
-					}
-				]
-			},
-			"time": 1519819541625,
-			"name": "http://localhost:8080/myapp/api/groups/free",
-			"description": "Request to Read the Group. The User should be authorized ",
-			"collectionId": "af8f15ac-2037-2e68-04d6-c7a0dc5e11d4",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"correct code in the payload\"] = jsonData.payload.code === \"free\";\ntests[\"correct name in the payload\"] = jsonData.payload.name === \"Free Access\";\n",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "539b757d007bc470f0af48678b2ba934"
-			}
+			"response": []
 		}
 	]
 }

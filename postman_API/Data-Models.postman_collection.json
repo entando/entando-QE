@@ -1,444 +1,485 @@
 {
-	"id": "5991e584-4fae-457c-a6a6-7293ef7da2e8",
-	"name": "Data-Models",
-	"description": "",
-	"auth": null,
-	"events": null,
-	"variables": [],
-	"order": [
-		"cb3c6efe-6fc5-4783-b87f-8becd146da39",
-		"354a6211-6458-4e7c-92f2-de084e5347f9",
-		"06782bb2-d87b-42a5-9a4c-59a3ae8181f1",
-		"a51d1069-0297-48ad-af3f-119bb0d3b28e",
-		"00804b83-95e0-44fd-a44a-4192f42c108a",
-		"1ce32f84-99a3-4d90-9450-158aec4dd178",
-		"b35ded27-f8e1-4916-8e5f-5f0901545566",
-		"8014bf5a-b7c2-403c-b8b3-b2c2e55ea423",
-		"539f8440-8c87-4d37-b657-175924fe8a5a",
-		"a436373f-8417-4019-984f-df75cb75b434",
-		"481637bd-a6cd-4c74-acc4-811317798840",
-		"d3f690bf-6d99-4e03-a1ca-97c25681fd26",
-		"1c1adf41-1c21-458c-a144-68d31c91d74e"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
+	"info": {
+		"_postman_id": "1c9ab2d4-b75c-4f2b-9135-927817e724ca",
+		"name": "Data-Models",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "00804b83-95e0-44fd-a44a-4192f42c108a",
-			"name": "PUT Data Models",
-			"url": "{{url}}/api/dataModels/105",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "06782bb2-d87b-42a5-9a4c-59a3ae8181f1",
-			"name": "GET the data models",
-			"url": "{{url}}/api/dataModels",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "1c1adf41-1c21-458c-a144-68d31c91d74e",
-			"name": "DELETE the data model with the invalid data model id",
-			"url": "{{url}}/api/dataModels/aaaaa",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "1ce32f84-99a3-4d90-9450-158aec4dd178",
-			"name": "PUT Data Models with unexisting page model id in the URI",
-			"url": "{{url}}/api/dataModels/11111",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "354a6211-6458-4e7c-92f2-de084e5347f9",
-			"name": "GET the data model with the invalid data model id",
-			"url": "{{url}}/api/dataModels/2222",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "481637bd-a6cd-4c74-acc4-811317798840",
-			"name": "GET the data models  with the unexisting Type Code",
-			"url": "{{url}}/api/dataModels",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"107\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "539f8440-8c87-4d37-b657-175924fe8a5a",
-			"name": "Create the data models with a valid data model id",
-			"url": "{{url}}/api/dataModels",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"109\",\n    \"descr\": \"MyModel\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "8014bf5a-b7c2-403c-b8b3-b2c2e55ea423",
-			"name": "PUT Data Models with the unexisting type code",
-			"url": "{{url}}/api/dataModels/102",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"102\",\n    \"descr\": \"My Model\",\n    \"type\": \"88888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "a436373f-8417-4019-984f-df75cb75b434",
-			"name": "Create the data model  with the unexisting page model code",
-			"url": "{{url}}/api/dataModels",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "a51d1069-0297-48ad-af3f-119bb0d3b28e",
-			"name": "GET the data models List with filter",
-			"url": "{{url}}/api//dataModels?sort=code&direction=ASC&filters[0][attribute]=code&filters[0][operator]=eq&&filters[0][value]=%D%&page=2&pageSize=5",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "sort",
-					"value": "code",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "direction",
-					"value": "ASC",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filters[0][attribute]",
-					"value": "code",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filters[0][operator]",
-					"value": "eq",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filters[0][value]",
-					"value": "%D%",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "page",
-					"value": "2",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "pageSize",
-					"value": "5",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "b35ded27-f8e1-4916-8e5f-5f0901545566",
-			"name": "PUT Data Models with unexisting page model id in the URI and in payload",
-			"url": "{{url}}/api/dataModels/11111111",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"modelId\": \"11111111\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "cb3c6efe-6fc5-4783-b87f-8becd146da39",
 			"name": "GET the data model with a valid data model id",
-			"url": "{{url}}/api/dataModels/222",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
-					}
-				],
-				"type": "bearer"
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/222",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"222"
+					]
+				}
 			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
+			"response": []
 		},
 		{
-			"id": "d3f690bf-6d99-4e03-a1ca-97c25681fd26",
-			"name": "DELETE the data model with the valid data model id",
-			"url": "{{url}}/api/dataModels/444 ",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
+			"name": "GET the data model with the invalid data model id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/2222",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"2222"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET the data models",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET the data models List with filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//dataModels?sort=code&direction=ASC&filters[0][attribute]=code&filters[0][operator]=eq&filters[0][value]=%D%&page=2&pageSize=5",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"",
+						"dataModels"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "filters[0][attribute]",
+							"value": "code"
+						},
+						{
+							"key": "filters[0][operator]",
+							"value": "eq"
+						},
+						{
+							"key": "filters[0][value]",
+							"value": "%D%"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Data Models",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
 					{
-						"key": "token",
-						"value": "a46c552eae8a699067013b24896f6c80"
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"type": "bearer"
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/105",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"105"
+					]
+				}
 			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
+			"response": []
+		},
+		{
+			"name": "PUT Data Models with unexisting page model id in the URI",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/11111",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"11111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Data Models with unexisting page model id in the URI and in payload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"11111111\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/11111111",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"11111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Data Models with the unexisting type code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"102\",\n    \"descr\": \"My Model\",\n    \"type\": \"88888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/102",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the data models with a valid data model id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"109\",\n    \"descr\": \"MyModel\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create the data model  with the unexisting page model code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET the data models  with the unexisting Type Code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"modelId\": \"107\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE the data model with the valid data model id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/444",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"444"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE the data model with the invalid data model id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a46c552eae8a699067013b24896f6c80",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/dataModels/aaaaa",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"aaaaa"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

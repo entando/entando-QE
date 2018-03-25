@@ -1,9 +1,140 @@
 {
-	"id": "ef089ada-7f70-479f-8da4-ddfae4a6e91c",
-	"name": "Entity-Managers",
-	"description": "",
-	"auth": null,
-	"events": [
+	"info": {
+		"_postman_id": "db063ef4-048a-45cc-83e8-47bda32e5fcb",
+		"name": "Entity-Managers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Entity Manager with a valid entity manager code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "9cecae22f1e134f5330ce046b80ef973",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/entityManagers/UserProfileManager",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"entityManagers",
+						"UserProfileManager"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entity Managers List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "9cecae22f1e134f5330ce046b80ef973",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/entityManagers",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"entityManagers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entity Managers List Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "9cecae22f1e134f5330ce046b80ef973",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/entityManagers?page=1&pageSize=2",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"entityManagers"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entity Manager with an unexisting entity manager code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "9cecae22f1e134f5330ce046b80ef973",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/entityManagers/UserProfileManager00",
+					"host": [
+						"http://tests.serv.run/entando-sample"
+					],
+					"path": [
+						"api",
+						"entityManagers",
+						"UserProfileManager00"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
@@ -23,136 +154,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variables": [],
-	"order": [
-		"18d168cc-940b-4cdd-9719-b058339c946f",
-		"229c0d26-2b96-4dce-bfc5-bd5f338f382c",
-		"73b36d7a-48f2-45e0-b4bd-84e2bb70c418",
-		"c3d25ce1-5e0a-49dc-a9b6-629a70f56bfc"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
-		{
-			"id": "18d168cc-940b-4cdd-9719-b058339c946f",
-			"name": "GET Entity Manager with a valid entity manager code",
-			"url": "{{url}}/api/entityManagers/UserProfileManager",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "9cecae22f1e134f5330ce046b80ef973",
-						"type": "string"
-					}
-				]
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "229c0d26-2b96-4dce-bfc5-bd5f338f382c",
-			"name": "GET Entity Managers List",
-			"url": "{{url}}/api/entityManagers",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "9cecae22f1e134f5330ce046b80ef973",
-						"type": "string"
-					}
-				]
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "73b36d7a-48f2-45e0-b4bd-84e2bb70c418",
-			"name": "GET Entity Managers List Copy",
-			"url": "{{url}}/api/entityManagers?page=1&pageSize=2",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "page",
-					"value": "1",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "pageSize",
-					"value": "2",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "9cecae22f1e134f5330ce046b80ef973",
-						"type": "string"
-					}
-				]
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "c3d25ce1-5e0a-49dc-a9b6-629a70f56bfc",
-			"name": "GET Entity Manager with an unexisting entity manager code",
-			"url": "{{url}}/api/entityManagers/UserProfileManager00",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "9cecae22f1e134f5330ce046b80ef973",
-						"type": "string"
-					}
-				]
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
 		}
 	]
 }
