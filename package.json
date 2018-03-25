@@ -1,0 +1,21 @@
+{
+  "name": "entando-qe",
+  "version": "1.0.0",
+  "description": "Project for testing Entando's API with postman on Jenkins",
+  "scripts": {
+    "postman-api-test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entando/entando-QE.git"
+  },
+  "author": "Pietrangelo Masala <p.masala@entando.com>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/entando/entando-QE/issues"
+  },
+  "homepage": "https://github.com/entando/entando-QE#readme",
+  "dependencies": {
+    "newman": "^3.9.3",
+  }
+}
