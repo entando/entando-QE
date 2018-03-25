@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project for testing Entando's API with postman on Jenkins",
   "scripts": {
-    "postman-api-test": "echo \"Error: no test specified\" && exit 1"
+    "postman-api-test": "newman run postman_API/* --reporters cli,junit --reporter-junit-export newman.xml"
   },
   "repository": {
     "type": "git",
