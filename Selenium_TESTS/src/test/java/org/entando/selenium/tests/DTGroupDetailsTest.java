@@ -6,15 +6,15 @@
 package org.entando.selenium.tests;
 
 import org.entando.selenium.pages.DTDashboardPage;
+import org.entando.selenium.pages.DTGroupsPage;
 import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -33,9 +33,13 @@ public class DTGroupDetailsTest extends FunctionalTest {
         DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
         dtDashboardPage.SelectSecondOrderLink("Configurtaion", "Groups");
         
+        DTGroupsPage dtGroupsPage = new DTGroupsPage(driver);
+        
+        String pageTitle = "Groups";
+        Assert.assertEquals(pageTitle, dtGroupsPage.getPageTitle().getText());
+        
         Utils util = new Utils();
-        WebElement table = driver.findElement(By.className("GroupListTable__table"));
-        Kebab kebab = util.getKebabOnTable(table, 0, "button");
+        Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), 0, "button");
         kebab.getClickable().click();
         
         util.waitUntilVisible(driver, kebab.getActionList());

@@ -5,17 +5,16 @@
  */
 package org.entando.selenium.tests;
 
-import junit.framework.Assert;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
+import org.entando.selenium.pages.DTUsersPage;
 import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -34,10 +33,11 @@ public class DTUserManageAuthorizationTest extends FunctionalTest {
         DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
         dtDashboardPage.SelectSecondOrderLink("User Settings", "Users");
         
+        DTUsersPage dtUsersPage = new DTUsersPage(driver);
         Utils util = new Utils();
-        WebElement table = driver.findElement(By.className("UserListTable__table"));
+        
         String user = "admin";
-        Utils.Kebab kebab = util.getKebabOnTable(table, "Username", user, "button");
+        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), "Username", user, "button");
         kebab.getClickable().click();
         
         util.waitUntilVisible(driver, kebab.getActionList());
