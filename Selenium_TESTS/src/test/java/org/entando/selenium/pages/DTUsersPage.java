@@ -24,7 +24,7 @@ public class DTUsersPage extends PageObject {
     @FindBy(css = "h1 > span:nth-child(1)")
     private WebElement pageTitle;
     
-    @FindBy(xpath ="//table[@class=UserListTable__table]")
+    @FindBy(xpath ="//table[contains(@class, 'UserListTable__table')]")
     private WebElement usersTable;
 
     @FindBy(css = "table > thead")

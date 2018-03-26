@@ -7,10 +7,12 @@ package org.entando.selenium.tests;
 
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTLoginPage;
+import org.entando.selenium.pages.DTUserDetailsPage;
 import org.entando.selenium.pages.DTUsersPage;
 import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -43,8 +45,13 @@ public class DTUserDetailsTest extends FunctionalTest {
         
         util.clickKebabActionOnList(kebab.getActionList(), "View profile of: " + user);
         
+        DTUserDetailsPage dtUserDetailsPage = new DTUserDetailsPage(driver);
         
+        String pageTitle = "Details";
+        String[] headers = new String[]{"Username", "Full Name", "Email"}; 
         
-        
+        Assert.assertEquals(pageTitle, dtUserDetailsPage.getPageTitle().getText());
+        Assert.assertArrayEquals(headers, dtUserDetailsPage.getDetailsTableHeaders());
+        Assert.assertTrue(dtUserDetailsPage.getBackButton().isDisplayed());
     }
 }
