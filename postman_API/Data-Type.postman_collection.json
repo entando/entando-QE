@@ -1,0 +1,285 @@
+{
+	"id": "fe997017-093d-4e97-9d53-bda614f4c166",
+	"name": "Data-Type",
+	"description": "",
+	"auth": null,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "11734d22-9872-4e7b-8657-d1465edc4419",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d5aa4740-208a-4d6c-997d-045e8361bff0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [
+		{
+			"key": "Authorization",
+			"value": "Bearer {{accessToken}}",
+			"description": "",
+			"type": "text",
+			"disabled": false
+		}
+	],
+	"order": [
+		"8b1734c8-1733-4dfd-a987-a9eb101e0335",
+		"7a60c0c4-ea9e-45be-acc6-3b23de932f27",
+		"04df7e40-3127-4779-ada8-7484e55ab53b",
+		"bb20dd98-5bee-4af4-8d32-5cad4e80de01",
+		"25664eea-39d3-4294-9067-21f441cefbc1",
+		"43d197f9-d3ce-4084-9c14-dbcb11ccba60",
+		"99779486-4dd4-4501-8e77-c6e861fe431f",
+		"fae91c6d-373b-4126-9bf9-1668193aaaa8"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "04df7e40-3127-4779-ada8-7484e55ab53b",
+			"name": "Update Data Type with code",
+			"url": "{{url}}/api/dataTypes/BBB",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n        \"name\": \"MyDataType\",\n        \"code\": \"BBB\",\n        \"attributes\": [{\n            \"type\": \"Date\",\n            \"code\": \"DDD\",\n            \"name\": \"MyDate\",\n            \"roles\": [],\n            \"mandatory\": true,\n            \"listFilter\": true,\n            \"indexable\": true,\n            \"enumeratorStaticItems\": null,\n            \"enumeratorStaticItemsSeparator\": null,\n            \"enumeratorExtractorBean\": null,\n            \"validationRules\": {\n                    \"ognlValidation\": {\n                        \"ognlExpression\": \"expression\",\n                        \"applyOnlyToFilledAttr\": false,\n                        \"helpMessage\": \"Help message\",\n                        \"keyForHelpMessage\": null,\n                        \"errorMessage\": \"Error Message\",\n                        \"keyForErrorMessage\": null\n                    },\n                    \"minLength\": null,\n                    \"maxLength\": null,\n                    \"regex\": null,\n                    \"rangeStartString\": null,\n                    \"rangeEndString\": null,\n                    \"rangeStartStringAttribute\": null,\n                    \"rangeEndStringAttribute\": null,\n                    \"equalString\": null,\n                    \"equalStringAttribute\": null,\n                    \"rangeStartDate\": null,\n                    \"rangeEndDate\": null,\n                    \"rangeStartDateAttribute\": null,\n                    \"rangeEndDateAttribute\": null,\n                    \"equalDate\": null,\n                    \"equalDateAttribute\": null,\n                    \"rangeStartNumber\" : null,\n                     \"rangeStartNumberAttribute\" : null,\n                    \"rangeEndNumber\" : null,\n                    \"rangeEndNumberAttribute\" : null,\n                    \"equalNumber\" : null,\n                    \"equalNumberAttribute\" : null\n            },\n            \"nestedAttribute\": null,\n            \"compositeAttributes\": null\n        }],\n        \"viewPage\": null,\n        \"listModel\": null,\n        \"defaultModel\": null\n    }",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "25664eea-39d3-4294-9067-21f441cefbc1",
+			"name": "Update Data Type with a mismatching between URI and payload",
+			"url": "{{url}}/api/dataTypes/AAA",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n        \"name\": \"MyDataType\",\n        \"code\": \"TTT\",\n        \"attributes\": [{\n            \"type\": \"Date\",\n            \"code\": \"DDD\",\n            \"name\": \"MyDate\",\n            \"roles\": [],\n            \"mandatory\": true,\n            \"listFilter\": true,\n            \"indexable\": true,\n            \"enumeratorStaticItems\": null,\n            \"enumeratorStaticItemsSeparator\": null,\n            \"enumeratorExtractorBean\": null,\n            \"validationRules\": {\n                    \"ognlValidation\": {\n                        \"ognlExpression\": \"expression\",\n                        \"applyOnlyToFilledAttr\": false,\n                        \"helpMessage\": \"Help message\",\n                        \"keyForHelpMessage\": null,\n                        \"errorMessage\": \"Error Message\",\n                        \"keyForErrorMessage\": null\n                    },\n                    \"minLength\": null,\n                    \"maxLength\": null,\n                    \"regex\": null,\n                    \"rangeStartString\": null,\n                    \"rangeEndString\": null,\n                    \"rangeStartStringAttribute\": null,\n                    \"rangeEndStringAttribute\": null,\n                    \"equalString\": null,\n                    \"equalStringAttribute\": null,\n                    \"rangeStartDate\": null,\n                    \"rangeEndDate\": null,\n                    \"rangeStartDateAttribute\": null,\n                    \"rangeEndDateAttribute\": null,\n                    \"equalDate\": null,\n                    \"equalDateAttribute\": null,\n                    \"rangeStartNumber\" : null,\n                     \"rangeStartNumberAttribute\" : null,\n                    \"rangeEndNumber\" : null,\n                    \"rangeEndNumberAttribute\" : null,\n                    \"equalNumber\" : null,\n                    \"equalNumberAttribute\" : null\n            },\n            \"nestedAttribute\": null,\n            \"compositeAttributes\": null\n        }],\n        \"viewPage\": null,\n        \"listModel\": null,\n        \"defaultModel\": null\n    }",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "43d197f9-d3ce-4084-9c14-dbcb11ccba60",
+			"name": "Update Data Type with mismatching between URI and payload",
+			"url": "{{url}}/api/dataTypes/ZZZ",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n        \"name\": \"MyDataType\",\n        \"code\": \"TTT\",\n        \"attributes\": [{\n            \"type\": \"Date\",\n            \"code\": \"DDD\",\n            \"name\": \"MyDate\",\n            \"roles\": [],\n            \"mandatory\": true,\n            \"listFilter\": true,\n            \"indexable\": true,\n            \"enumeratorStaticItems\": null,\n            \"enumeratorStaticItemsSeparator\": null,\n            \"enumeratorExtractorBean\": null,\n            \"validationRules\": {\n                    \"ognlValidation\": {\n                        \"ognlExpression\": \"expression\",\n                        \"applyOnlyToFilledAttr\": false,\n                        \"helpMessage\": \"Help message\",\n                        \"keyForHelpMessage\": null,\n                        \"errorMessage\": \"Error Message\",\n                        \"keyForErrorMessage\": null\n                    },\n                    \"minLength\": null,\n                    \"maxLength\": null,\n                    \"regex\": null,\n                    \"rangeStartString\": null,\n                    \"rangeEndString\": null,\n                    \"rangeStartStringAttribute\": null,\n                    \"rangeEndStringAttribute\": null,\n                    \"equalString\": null,\n                    \"equalStringAttribute\": null,\n                    \"rangeStartDate\": null,\n                    \"rangeEndDate\": null,\n                    \"rangeStartDateAttribute\": null,\n                    \"rangeEndDateAttribute\": null,\n                    \"equalDate\": null,\n                    \"equalDateAttribute\": null,\n                    \"rangeStartNumber\" : null,\n                     \"rangeStartNumberAttribute\" : null,\n                    \"rangeEndNumber\" : null,\n                    \"rangeEndNumberAttribute\" : null,\n                    \"equalNumber\" : null,\n                    \"equalNumberAttribute\" : null\n            },\n            \"nestedAttribute\": null,\n            \"compositeAttributes\": null\n        }],\n        \"viewPage\": null,\n        \"listModel\": null,\n        \"defaultModel\": null\n    }",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "7a60c0c4-ea9e-45be-acc6-3b23de932f27",
+			"name": "Read Data Type with unexisting code",
+			"url": "{{url}}/api/dataTypes/unexistingcode",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "8b1734c8-1733-4dfd-a987-a9eb101e0335",
+			"name": "Read Data Type with code",
+			"url": "{{url}}/api/dataTypes/AAA",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer  {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6b755aa-2aff-41da-b9a2-0242c0236f15",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer  {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "99779486-4dd4-4501-8e77-c6e861fe431f",
+			"name": "Delete the Data Type with code",
+			"url": "{{url}}/api/dataTypes/UUU",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "bb20dd98-5bee-4af4-8d32-5cad4e80de01",
+			"name": "Update Data Type with unexisting code",
+			"url": "{{url}}/api/dataTypes/XXX",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n        \"name\": \"MyDataType\",\n        \"code\": \"XXX\",\n        \"attributes\": [{\n            \"type\": \"Date\",\n            \"code\": \"DDD\",\n            \"name\": \"MyDate\",\n            \"roles\": [],\n            \"mandatory\": true,\n            \"listFilter\": true,\n            \"indexable\": true,\n            \"enumeratorStaticItems\": null,\n            \"enumeratorStaticItemsSeparator\": null,\n            \"enumeratorExtractorBean\": null,\n            \"validationRules\": {\n                    \"ognlValidation\": {\n                        \"ognlExpression\": \"expression\",\n                        \"applyOnlyToFilledAttr\": false,\n                        \"helpMessage\": \"Help message\",\n                        \"keyForHelpMessage\": null,\n                        \"errorMessage\": \"Error Message\",\n                        \"keyForErrorMessage\": null\n                    },\n                    \"minLength\": null,\n                    \"maxLength\": null,\n                    \"regex\": null,\n                    \"rangeStartString\": null,\n                    \"rangeEndString\": null,\n                    \"rangeStartStringAttribute\": null,\n                    \"rangeEndStringAttribute\": null,\n                    \"equalString\": null,\n                    \"equalStringAttribute\": null,\n                    \"rangeStartDate\": null,\n                    \"rangeEndDate\": null,\n                    \"rangeStartDateAttribute\": null,\n                    \"rangeEndDateAttribute\": null,\n                    \"equalDate\": null,\n                    \"equalDateAttribute\": null,\n                    \"rangeStartNumber\" : null,\n                     \"rangeStartNumberAttribute\" : null,\n                    \"rangeEndNumber\" : null,\n                    \"rangeEndNumberAttribute\" : null,\n                    \"equalNumber\" : null,\n                    \"equalNumberAttribute\" : null\n            },\n            \"nestedAttribute\": null,\n            \"compositeAttributes\": null\n        }],\n        \"viewPage\": null,\n        \"listModel\": null,\n        \"defaultModel\": null\n    }",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "fae91c6d-373b-4126-9bf9-1668193aaaa8",
+			"name": "Delete the Data Type with unexisting code",
+			"url": "{{url}}/api/dataTypes/ZZZ",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
