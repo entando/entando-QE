@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "173ea971-137a-4fec-acc4-68bf786c1641",
+		"_postman_id": "e822cd75-67fc-46aa-93d0-cd073c43c343",
 		"name": "Fragments",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,13 +20,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/default_pagerInfo_is",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -51,13 +58,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/fragments/?sort=code&direction=ASC&filters[0][attribue]=code&filters[0][operator]=eq&filters[0][value]=%D%&page=2&pageSize=5",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"fragments",
 						""
@@ -126,10 +140,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"fragments",
 						"fragmentupdate"
@@ -164,10 +182,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate100",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"fragments",
 						"fragmentupdate100"
@@ -202,10 +224,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"fragments",
 						"fragmentupdate"
@@ -240,10 +266,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"fragments",
 						"fragmentupdate"
@@ -278,10 +308,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/deletefragment",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -317,10 +351,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/deletefragment1",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -356,10 +394,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/jacms_content_viewer",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -395,10 +437,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/internal_servlet_generic_error",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -423,13 +469,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments/default_pagerInfo_",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments",
@@ -465,10 +518,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments"
@@ -503,10 +560,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments"
@@ -541,10 +602,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"",
 						"fragments"

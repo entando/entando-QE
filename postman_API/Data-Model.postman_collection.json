@@ -1,137 +1,13 @@
 {
-	"id": "5991e584-4fae-457c-a6a6-7293ef7da2e8",
-	"name": "Data-Model",
-	"description": "",
-	"auth": null,
-	"events": [
+	"info": {
+		"_postman_id": "5d4bee6e-df89-43e6-9a2f-7e00deae0a74",
+		"name": "Data-Model",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"listen": "prerequest",
-			"script": {
-				"id": "da974405-9334-4752-abc5-8320345a69b2",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "f530de10-be3e-4907-986e-48843ba4bb50",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variables": [],
-	"order": [
-		"cb3c6efe-6fc5-4783-b87f-8becd146da39",
-		"354a6211-6458-4e7c-92f2-de084e5347f9",
-		"d3f690bf-6d99-4e03-a1ca-97c25681fd26",
-		"1c1adf41-1c21-458c-a144-68d31c91d74e"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
-		{
-			"id": "1c1adf41-1c21-458c-a144-68d31c91d74e",
-			"name": "DELETE the data model with the unexisting id",
-			"url": "{{url}}/api/dataModels/0000",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{access_token}}",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "735a21e3-4835-41fb-9eb9-01e552218d9c",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
-						]
-					}
-				}
-			],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "354a6211-6458-4e7c-92f2-de084e5347f9",
-			"name": "GET the data model with the unexisting id",
-			"url": "{{url}}/api/dataModels/0000",
-			"description": "",
-			"data": [],
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{access_token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6688e445-042d-4a67-ae2a-a2344fc3a0bd",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 404\"] = responseCode.code === 404;",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
-						]
-					}
-				}
-			],
-			"folder": null,
-			"headers": "Authorization: Bearer {{access_token}}\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "cb3c6efe-6fc5-4783-b87f-8becd146da39",
 			"name": "GET the data model with a valid data model id",
-			"url": "{{url}}/api/dataModels/1000",
-			"description": null,
-			"data": [],
-			"dataMode": "params",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{access_token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -163,34 +39,70 @@
 					}
 				}
 			],
-			"folder": null,
-			"headers": "Authorization: Bearer {{access_token}}\n",
-			"pathVariables": {}
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/dataModels/1000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"1000"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "d3f690bf-6d99-4e03-a1ca-97c25681fd26",
-			"name": "DELETE the data model with the valid data model id",
-			"url": "{{url}}/api/dataModels/1005",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
+			"name": "GET the data model with the unexisting id",
+			"event": [
 				{
-					"key": "Authorization",
-					"value": "Bearer {{access_token}}",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json"
+					"listen": "test",
+					"script": {
+						"id": "6688e445-042d-4a67-ae2a-a2344fc3a0bd",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
 				}
 			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/dataModels/0000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"0000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE the data model with the valid data model id",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -205,10 +117,102 @@
 					}
 				}
 			],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
-			"pathVariables": {}
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/dataModels/1005",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"1005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE the data model with the unexisting id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "735a21e3-4835-41fb-9eb9-01e552218d9c",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/dataModels/0000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dataModels",
+						"0000"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "da974405-9334-4752-abc5-8320345a69b2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f530de10-be3e-4907-986e-48843ba4bb50",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f11df934-f25e-4df5-bc07-8c0ce91fb1d0",
+		"_postman_id": "d9867383-82e1-4946-b088-dac599b18b3d",
 		"name": "Page-Settings",
 		"description": "Collection of the API test related to the Pages",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -33,13 +33,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/pageSettings",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"pageSettings"
 					]
@@ -90,10 +97,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/pageSettings",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"pageSettings"
 					]

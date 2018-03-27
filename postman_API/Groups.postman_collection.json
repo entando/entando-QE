@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6c08f41c-14bd-4a67-aaa7-f5bafabfd782",
+		"_postman_id": "ba8f59f3-3d95-4e24-90b3-dbb7976a3853",
 		"name": "Groups",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -37,13 +37,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/groups/free",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"groups",
 						"free"
@@ -92,13 +99,20 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/groups",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"groups"
 					]
@@ -153,10 +167,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/groups/free",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"groups",
 						"free"
@@ -214,10 +232,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/groups",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"groups"
 					]

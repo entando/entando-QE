@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c5e494af-9795-4098-a59f-5a5bc712bc71",
+		"_postman_id": "4e3c2f49-4aa2-4681-b7cc-cb62b0e30cd5",
 		"name": "Widgets",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -47,13 +47,20 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/widgets",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"widgets"
 					]
@@ -101,13 +108,20 @@
 						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/widgets/new_content_type",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"widgets",
 						"new_content_type"
@@ -154,13 +168,20 @@
 						"value": "Bearer c17326fd0146fd6a2113a01fce8992c1"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/widgets/new_content_type",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"widgets",
 						"new_content_type"
@@ -242,10 +263,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/widgets",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"widgets"
 					]
@@ -302,10 +327,14 @@
 				},
 				"url": {
 					"raw": "http://tests.serv.run/entando-sample/api/widgets/content_viewer",
+					"protocol": "http",
 					"host": [
-						"http://tests.serv.run/entando-sample"
+						"tests",
+						"serv",
+						"run"
 					],
 					"path": [
+						"entando-sample",
 						"api",
 						"widgets",
 						"content_viewer"

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project for testing Entando's API with postman on Jenkins",
   "scripts": {
-    "postman-api-test": "newman run root.collection.json --reporters cli,junit --reporter-junit-export newman.xml"
+    "postman-api-test": "newman run root.collection.json -e postman_API/environment/Entando5.postman_environment.json --reporters cli,junit --reporter-junit-export newman.xml"
   },
   "repository": {
     "type": "git",
