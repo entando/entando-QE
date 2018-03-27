@@ -1,0 +1,166 @@
+{
+	"id": "a94fd6d7-804e-4897-bc9f-0a0cd8436bf5",
+	"name": "Data-Types",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"761e57b1-4018-4548-b040-e50ba18a76d2",
+		"5231e147-bced-439f-9361-dd9370608a19",
+		"119ba1d3-6148-4f5e-8390-42306022b144",
+		"373ebceb-4376-4541-99a0-4f975a8b5119"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "119ba1d3-6148-4f5e-8390-42306022b144",
+			"name": "POST the Data Type with the existing code",
+			"url": "{{url}}/api/dataTypes",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"name\": \"MyDataType11\",\n    \"code\": \"AAA\",\n    \"attributes\": [{\n        \"type\": \"Date\",\n        \"code\": \"CCC\",\n        \"name\": \"MyDate2\",\n        \"status\": \"0\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\": true,\n        \"listFilter\": true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"Help message\",\n                \"keyForHelpMessage\": null,\n                \"errorMessage\": \"Error Message\",\n                \"keyForErrorMessage\": null\n            },\n            \"minLength\": null,\n            \"maxLength\": null,\n            \"regex\": null,\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n                \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n    }],\n      \"viewPage\": null,\n      \"listModel\": null,\n      \"defaultModel\": null\n}",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "373ebceb-4376-4541-99a0-4f975a8b5119",
+			"name": "POST the new Data Type",
+			"url": "{{url}}/api/dataTypes",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"name\": \"MyDataType5\",\n    \"code\": \"JJJ\",\n    \"attributes\": [{\n        \"type\": \"Date\",\n        \"code\": \"FFF\",\n        \"name\": \"MyDate3\",\n        \"status\": \"0\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\": true,\n        \"listFilter\": true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"Help message\",\n                \"keyForHelpMessage\": null,\n                \"errorMessage\": \"Error Message\",\n                \"keyForErrorMessage\": null\n            },\n            \"minLength\": null,\n            \"maxLength\": null,\n            \"regex\": null,\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n                \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n    }],\n      \"viewPage\": null,\n      \"listModel\": null,\n      \"defaultModel\": null\n}",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "5231e147-bced-439f-9361-dd9370608a19",
+			"name": "Get the Data Types list with not valid filter",
+			"url": "{{url}}/api/dataTypes?page=0&pageSize=1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "761e57b1-4018-4548-b040-e50ba18a76d2",
+			"name": "Get the Data Types",
+			"url": "{{url}}/api/dataTypes?page=1&pageSize=5",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "5",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40144c89-ac07-4eb8-b05b-5907fb1fc5bd",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		}
+	]
+}

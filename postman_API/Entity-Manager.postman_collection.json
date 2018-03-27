@@ -1,0 +1,89 @@
+{
+	"id": "dd76b7e4-7dd9-4c76-b914-a523bc0e3bff",
+	"name": "Entity-Manager",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"c33c3484-5074-4f49-9cdd-efcb8431bb0f",
+		"27d8b197-5917-4599-9ddd-c892cdcfeeca"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "27d8b197-5917-4599-9ddd-c892cdcfeeca",
+			"name": "Read Entity Manager with an unexisting entity manager code",
+			"url": "{{url}}/api/entityManagers/UserProfileManager00",
+			"description": null,
+			"data": [],
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63823445-5400-4034-b618-afbc07ad86b0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "c33c3484-5074-4f49-9cdd-efcb8431bb0f",
+			"name": "Read Entity Manager with a valid entity manager code",
+			"url": "{{url}}/api/entityManagers/UserProfileManager",
+			"description": null,
+			"data": [],
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2e44966-b2c2-4927-82c8-108466eb9afd",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		}
+	]
+}

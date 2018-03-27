@@ -1,485 +1,532 @@
 {
-	"info": {
-		"_postman_id": "1c9ab2d4-b75c-4f2b-9135-927817e724ca",
-		"name": "Data-Models",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"id": "ba9ca31b-82c9-4f47-ab8a-3a730a271c03",
+	"name": "Data-Models",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"2fe912eb-aa8b-4f22-bced-400062cddceb",
+		"e7215fc5-fd4c-444f-a4bf-2c642cc3d644",
+		"5a24125b-3a32-4400-885d-62922339180e",
+		"ca1c5fdd-c3fe-4cbd-b6d2-b6b17199d8c3",
+		"a4560586-843b-4ed8-8937-3bc06b35d51a",
+		"77e88866-ffae-40ce-b1e9-7c2ac04c9781",
+		"9fabd9fb-4b59-4564-a2bd-8def8716737d",
+		"695b2b57-b61d-409f-b43f-241f73d7bb50",
+		"61f02e5a-2bc7-4b28-abac-4f992b4cfb2a",
+		"c787b5cd-42ee-4718-91ed-ec0a6b07682c"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
 		{
-			"name": "GET the data model with a valid data model id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/222",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"222"
-					]
+			"id": "2fe912eb-aa8b-4f22-bced-400062cddceb",
+			"name": "Read the data models",
+			"url": "{{url}}/api/dataModels",
+			"description": null,
+			"data": [],
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET the data model with the invalid data model id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/2222",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"2222"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET the data models",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET the data models List with filter",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api//dataModels?sort=code&direction=ASC&filters[0][attribute]=code&filters[0][operator]=eq&filters[0][value]=%D%&page=2&pageSize=5",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"",
-						"dataModels"
-					],
-					"query": [
-						{
-							"key": "sort",
-							"value": "code"
-						},
-						{
-							"key": "direction",
-							"value": "ASC"
-						},
-						{
-							"key": "filters[0][attribute]",
-							"value": "code"
-						},
-						{
-							"key": "filters[0][operator]",
-							"value": "eq"
-						},
-						{
-							"key": "filters[0][value]",
-							"value": "%D%"
-						},
-						{
-							"key": "page",
-							"value": "2"
-						},
-						{
-							"key": "pageSize",
-							"value": "5"
-						},
-						{
-							"key": null,
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT Data Models",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d364961b-45c7-4363-a033-9cc3681db14e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+							"",
+							"",
+							""
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/105",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"105"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "PUT Data Models with unexisting page model id in the URI",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "5a24125b-3a32-4400-885d-62922339180e",
+			"name": "Read the data models List with filter1",
+			"url": "{{url}}/api//dataModels?sort=code&direction=DESC&filters[0][attribute]=code&filters[0][operator]=eq&&filters[0][value]=%D%&page=1&pageSize=2",
+			"description": null,
+			"data": [],
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "sort",
+					"value": "code",
+					"equals": true,
+					"description": "",
+					"enabled": true
 				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "direction",
+					"value": "DESC",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][attribute]",
+					"value": "code",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][operator]",
+					"value": "eq",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][value]",
+					"value": "%D%",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fad5ba14-1266-4893-bf12-609de14970c4",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"105\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/11111",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"11111"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "PUT Data Models with unexisting page model id in the URI and in payload",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "61f02e5a-2bc7-4b28-abac-4f992b4cfb2a",
+			"name": "Update Data Models with unexisting page model id in the URI and in payload",
+			"url": "{{url}}/api/dataModels/0000",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
 				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0a4ed4cc-87eb-4d4e-ad0a-dae3e5c7a4cd",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"11111111\",\n    \"descr\": \"My Model\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/11111111",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"11111111"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"0000\",\n    \"descr\": \"My Model\",\n    \"type\": \"AAA\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "PUT Data Models with the unexisting type code",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "695b2b57-b61d-409f-b43f-241f73d7bb50",
+			"name": "Update Data Models with unexisting page model id in the URI",
+			"url": "{{url}}/api/dataModels/0000",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
 				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9f575c6-c44a-4b2c-9ab7-99aa40c06af2",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"102\",\n    \"descr\": \"My Model\",\n    \"type\": \"88888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/102",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"102"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"1004\",\n    \"descr\": \"My Model\",\n    \"type\": \"AAA\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "Create the data models with a valid data model id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "77e88866-ffae-40ce-b1e9-7c2ac04c9781",
+			"name": "Create the data models  with the unexisting Type Code",
+			"url": "{{url}}/api/dataModels",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1ac3fd8-72a6-4611-b298-5abe653210e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"109\",\n    \"descr\": \"MyModel\",\n    \"type\": \"888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"1110\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
+			"id": "9fabd9fb-4b59-4564-a2bd-8def8716737d",
+			"name": "Update Data Models",
+			"url": "{{url}}/api/dataModels/1005",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33dc48f4-12a0-4469-9090-f91d44c70e64",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"1004\",\n    \"descr\": \"My Model1\",\n    \"type\": \"AAA\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a4560586-843b-4ed8-8937-3bc06b35d51a",
 			"name": "Create the data model  with the unexisting page model code",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"url": "{{url}}/api/dataModels",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5a59928-c2f6-4c13-8e23-50a2bdf6fa89",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "GET the data models  with the unexisting Type Code",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "c787b5cd-42ee-4718-91ed-ec0a6b07682c",
+			"name": "Update Data Models with the unexisting type code",
+			"url": "{{url}}/api/dataModels/1004",
+			"description": null,
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61cd1ca1-2fd9-434c-868a-ba628a4fb47c",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"modelId\": \"107\",\n    \"descr\": \"MyModel\",\n    \"type\": \"8888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}"
-				},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels"
-					]
 				}
-			},
-			"response": []
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"1004\",\n    \"descr\": \"My Model\",\n    \"type\": \"88888\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "DELETE the data model with the valid data model id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
+			"id": "ca1c5fdd-c3fe-4cbd-b6d2-b6b17199d8c3",
+			"name": "Create the data models",
+			"url": "{{url}}/api/dataModels",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
 				},
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/444",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"444"
-					]
+				{
+					"key": "Content-Type",
+					"value": "application/json"
 				}
-			},
-			"response": []
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb69bf41-ee24-4d14-9005-70025b6ffa0a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"folder": null,
+			"rawModeData": "{\n    \"modelId\": \"1008\",\n    \"descr\": \"MyModel\",\n    \"type\": \"AAA\",\n    \"model\": \"data model sample\",\n    \"stylesheet\": \"\"\n}",
+			"headers": "Authorization: Bearer {{access_token}}\nContent-Type: application/json\n",
+			"pathVariables": {}
 		},
 		{
-			"name": "DELETE the data model with the invalid data model id",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "a46c552eae8a699067013b24896f6c80",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://tests.serv.run/entando-sample/api/dataModels/aaaaa",
-					"host": [
-						"http://tests.serv.run/entando-sample"
-					],
-					"path": [
-						"api",
-						"dataModels",
-						"aaaaa"
-					]
+			"id": "e7215fc5-fd4c-444f-a4bf-2c642cc3d644",
+			"name": "Read the data models List with filter",
+			"url": "{{url}}/api//dataModels?sort=code&direction=ASC&filters[0][attribute]=code&filters[0][operator]=eq&&filters[0][value]=%D%&page=1&pageSize=5",
+			"description": null,
+			"data": [],
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
 				}
-			},
-			"response": []
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "sort",
+					"value": "code",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "direction",
+					"value": "ASC",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][attribute]",
+					"value": "code",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][operator]",
+					"value": "eq",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filters[0][value]",
+					"value": "%D%",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pageSize",
+					"value": "5",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d9979c7-ba2d-4941-a1c0-f70a60f47c1e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "Authorization: Bearer {{access_token}}\n",
+			"pathVariables": {}
 		}
 	]
 }
