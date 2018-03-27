@@ -1,86 +1,13 @@
 {
-	"id": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-	"name": "Widgets",
-	"description": "",
-	"order": [
-		"799d3284-42b9-34a8-e54c-8b86524e2711",
-		"bd68d79c-f3b1-8be9-dbe8-c88f18da776d",
-		"723b049c-bd45-ecc3-2f1d-fe0450127c0c",
-		"e8520e8c-836e-48ac-54b2-0ce2a68f1d87",
-		"c0999ec5-04eb-db50-cba8-25065b526015"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 0,
-	"owner": "3690638",
-	"public": false,
-	"events": [],
-	"variables": [],
-	"auth": null,
-	"requests": [
+	"info": {
+		"_postman_id": "4e3c2f49-4aa2-4681-b7cc-cb62b0e30cd5",
+		"name": "Widgets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "723b049c-bd45-ecc3-2f1d-fe0450127c0c",
-			"headers": "Authorization: Bearer c17326fd0146fd6a2113a01fce8992c1\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer c17326fd0146fd6a2113a01fce8992c1",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/myapp/api/widgets/new_content_type",
-			"queryParams": [],
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "451cad4a-8347-4d35-bdf2-c8a30862c8f9",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
-							"",
-							"tests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";",
-							"",
-							"var response = JSON.parse(responseBody);",
-							"tests[\"response is not empty\"] = response.message !== \"\";",
-							"",
-							"var response = JSON.parse(responseBody);",
-							"tests[\"Checking payload parameter from response\"] = response.payload === \"new_content_type\";",
-							"",
-							"var response = JSON.parse(responseBody);",
-							"tests[\"Checking metadata parameter from response\"] = response.metadata === null",
-							"",
-							"var response = JSON.parse(responseBody);",
-							"tests[\"Checking errors parameter from response\"] = response.errors.length === 0;"
-						]
-					}
-				}
-			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "params",
-			"auth": null,
-			"time": 1519922499223,
-			"name": "Widgets GET content_viewer",
-			"collectionId": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response is not empty\"] = response.message !== \"\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking payload parameter from response\"] = response.payload === \"new_content_type\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking metadata parameter from response\"] = response.metadata === null\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking errors parameter from response\"] = response.errors.length === 0;",
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "799d3284-42b9-34a8-e54c-8b86524e2711",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/myapp/api/widgets",
-			"queryParams": [],
-			"events": [
+			"name": "Widgets GET List",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -117,35 +44,33 @@
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"auth": null,
-			"time": 1519923389795,
-			"name": "Widgets GET List",
-			"collectionId": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response is not empty\"] = response.message !== \"\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response body matches code\"] = response.message = \"content_viewer\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response body matches titles\"] = response.message = \"My Title\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response body matches plugin\"] = response.message = \"jacms\";\n\n\n\n\n\n\n\n\n",
-			"currentHelper": null,
-			"helperAttributes": null
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/widgets",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"widgets"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "bd68d79c-f3b1-8be9-dbe8-c88f18da776d",
-			"headers": "Authorization: Bearer 046f6284de20d5a4dc8a0b8b459d8194\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/myapp/api/widgets/new_content_type",
-			"queryParams": [],
-			"events": [
+			"name": "Widgets GET content_viewer",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -175,45 +100,43 @@
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"auth": null,
-			"time": 1519922496990,
-			"name": "Widgets GET content_viewer",
-			"collectionId": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response is not empty\"] = response.message !== \"\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking payload parameter from response is null\"] = response.payload === null\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking metadata parameter from response is null\"] = response.metadata === null\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking errors array is empty\"] = response.errors.length === 0;\n\n",
-			"currentHelper": null,
-			"helperAttributes": null
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/widgets/new_content_type",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"widgets",
+						"new_content_type"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "c0999ec5-04eb-db50-cba8-25065b526015",
-			"headers": "Authorization: Bearer 046f6284de20d5a4dc8a0b8b459d8194\nContent-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/myapp/api/widgets/content_viewer",
-			"queryParams": [],
-			"events": [
+			"name": "Widgets GET content_viewer",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "4884484f-d14c-48e2-80bc-5ae2d2701255",
+						"id": "451cad4a-8347-4d35-bdf2-c8a30862c8f9",
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
@@ -226,54 +149,50 @@
 							"tests[\"response is not empty\"] = response.message !== \"\";",
 							"",
 							"var response = JSON.parse(responseBody);",
-							"tests[\"response body matches code\"] = response.message = \"content_viewer\";",
+							"tests[\"Checking payload parameter from response\"] = response.payload === \"new_content_type\";",
 							"",
 							"var response = JSON.parse(responseBody);",
-							"tests[\"response body matches name\"] = response.name = \"null\";",
+							"tests[\"Checking metadata parameter from response\"] = response.metadata === null",
 							"",
 							"var response = JSON.parse(responseBody);",
-							"tests[\"Checking used parameter from response\"] = response.payload.used === true;",
-							""
+							"tests[\"Checking errors parameter from response\"] = response.errors.length === 0;"
 						]
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1519922503210,
-			"name": "Widgets GET content_viewer",
-			"collectionId": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response is not empty\"] = response.message !== \"\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response body matches code\"] = response.message = \"content_viewer\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response body matches name\"] = response.name = \"null\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking used parameter from response\"] = response.payload.used === true;\n",
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer c17326fd0146fd6a2113a01fce8992c1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/widgets/new_content_type",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"widgets",
+						"new_content_type"
+					]
+				}
+			},
+			"response": []
 		},
 		{
-			"id": "e8520e8c-836e-48ac-54b2-0ce2a68f1d87",
-			"headers": "Authorization: Bearer 046f6284de20d5a4dc8a0b8b459d8194\nContent-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/myapp/api/widgets",
-			"queryParams": [],
-			"events": [
+			"name": "Widgets GET content_viewer copy",
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -326,21 +245,103 @@
 					}
 				}
 			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1519922501174,
-			"name": "Widgets GET content_viewer copy",
-			"collectionId": "82fb9b66-d928-6e57-b050-eb5fb87ecdc7",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Response time is less than 200ms\"] = responseTime < 200;\n\ntests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";\n\nvar response = JSON.parse(responseBody);\ntests[\"response is not empty\"] = response.message !== \"\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking code parameter from response\"] = response.payload.code === \"content_viewer\";\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking name parameter from response\"] = response.payload.name === null;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking used parameter from response\"] = response.payload.used === true;\n\nvar response = JSON.parse(responseBody);\ntests[\"titles is not empty\"] = response.payload.titles.lenght !== 0;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking guiFragments parameter from response\"] = response.payload.guiFragments.length === 0;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking pluginCode parameter from response\"] = response.payload.pluginCode === null;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking group parameter from response\"] = response.payload.group === null;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking createdAt parameter from response\"] = response.payload.createdAt === null;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking updatedAt parameter from response\"] = response.payload.updatedAt === null;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking errors parameter from response\"] = response.errors.length === 0;\n\nvar response = JSON.parse(responseBody);\ntests[\"Checking metadata parameter from response\"] = response.metadata === null;\n",
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/widgets",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"widgets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Widgets GET content_viewer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4884484f-d14c-48e2-80bc-5ae2d2701255",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+							"",
+							"tests[\"The Content-Type is JSON\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json;charset=UTF-8\";",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"tests[\"response is not empty\"] = response.message !== \"\";",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"tests[\"response body matches code\"] = response.message = \"content_viewer\";",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"tests[\"response body matches name\"] = response.name = \"null\";",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"tests[\"Checking used parameter from response\"] = response.payload.used === true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 046f6284de20d5a4dc8a0b8b459d8194"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"content_viewer\",\n    \"used\": true,\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/widgets/content_viewer",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"widgets",
+						"content_viewer"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

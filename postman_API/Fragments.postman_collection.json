@@ -1,508 +1,622 @@
 {
-	"id": "fe884c63-1295-48fb-9224-ce7121f575e2",
-	"name": "Fragments",
-	"description": "",
-	"auth": null,
-	"events": null,
-	"variables": [],
-	"order": [
-		"1b25b68a-194e-4d7a-9020-57027f941803",
-		"9a0b142c-827f-4dc0-bf35-fc4e66bd0031",
-		"e611472c-2992-4589-a629-ad206e26306d",
-		"b086c95b-f42d-4cbd-a525-d3fcf81b1b72",
-		"92f1c64b-6498-4c6e-95ce-6571a8fd7e5c",
-		"9aef582f-d7ec-4569-b748-ff39a8eb8876",
-		"64228f1e-1e43-4aad-827e-b60da9905b97",
-		"3e5be11d-bb5b-4f65-8cd3-d5690e618585",
-		"545404b8-0aa6-4a6f-a743-523d12ecd44c",
-		"6c708320-ced2-4fb1-af0c-3038fcc2a144",
-		"82247d81-e4cb-414e-a4bf-ca1fc41cc9fd",
-		"11d09497-5f3f-4d21-9bad-ade52933dd89",
-		"432e2abb-65fd-45ea-8802-9240b1ac55b0",
-		"8e176386-2ac3-4652-a820-eb0e630e4dae"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
+	"info": {
+		"_postman_id": "e822cd75-67fc-46aa-93d0-cd073c43c343",
+		"name": "Fragments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "11d09497-5f3f-4d21-9bad-ade52933dd89",
-			"name": "Create a Fragment with a valid code",
-			"url": "{{url}}/api//fragments",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n  \"code\": \"myfragment1\",\n  \"guiCode\": \"<div>testFragment1</div>\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "1b25b68a-194e-4d7a-9020-57027f941803",
 			"name": "GET Fragment Details",
-			"url": "{{url}}/api//fragments/default_pagerInfo_is ",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "3e5be11d-bb5b-4f65-8cd3-d5690e618585",
-			"name": "Delete a Fragment with a unvalide code",
-			"url": "{{url}}/api//fragments/deletefragment1",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/default_pagerInfo_is",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"default_pagerInfo_is"
+					]
 				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
 			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
+			"response": []
 		},
 		{
-			"id": "432e2abb-65fd-45ea-8802-9240b1ac55b0",
-			"name": "Create a Fragment with an invalid code",
-			"url": "{{url}}/api//fragments",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n  \"code\": \"mycodemycodemycodemycodemycodemycodemycodemycodemycodemycodemycode\",\n  \"guiCode\": \"<div>provaFragment</div>\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "545404b8-0aa6-4a6f-a743-523d12ecd44c",
-			"name": "Delete a Fragment with the referenced fragments",
-			"url": "{{url}}/api//fragments/jacms_content_viewer  ",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "64228f1e-1e43-4aad-827e-b60da9905b97",
-			"name": "Delete a Fragment with a valide code",
-			"url": "{{url}}/api//fragments/deletefragment",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "6c708320-ced2-4fb1-af0c-3038fcc2a144",
-			"name": "Delete a Fragment that is locked",
-			"url": "{{url}}/api//fragments/internal_servlet_generic_error\n\n\n\n",
-			"description": "",
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "DELETE",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "82247d81-e4cb-414e-a4bf-ca1fc41cc9fd",
-			"name": "GET Fragment Details with uncorrect code",
-			"url": "{{url}}/api//fragments/default_pagerInfo_",
-			"description": "",
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
-		},
-		{
-			"id": "8e176386-2ac3-4652-a820-eb0e630e4dae",
-			"name": "Create a Fragment with an invalid guiCode",
-			"url": "{{url}}/api//fragments",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n  \"code\": \"invalideguiCode\",\n  \"guiCode\": \"null1\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "92f1c64b-6498-4c6e-95ce-6571a8fd7e5c",
-			"name": "Update Fragment with a valide code",
-			"url": "{{url}}/api/fragments/fragmentupdate",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"code\": \"fragmentupdate\",\n    \"guiCode\": \"<div>Sabrina</div>\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "9a0b142c-827f-4dc0-bf35-fc4e66bd0031",
 			"name": "GET Fragments LIST",
-			"url": "{{url}}/api/fragments/?sort=code&direction=ASC&filters[0][attribue]=code&filters[0][operator]=eq&&filters[0][value]=%D%&page=2&pageSize=5",
-			"description": null,
-			"data": null,
-			"dataMode": "params",
-			"headerData": [],
-			"method": "GET",
-			"pathVariableData": [],
-			"queryParams": [
-				{
-					"key": "sort",
-					"value": "code",
-					"equals": true,
-					"description": "",
-					"enabled": true
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
 				},
-				{
-					"key": "direction",
-					"value": "ASC",
-					"equals": true,
-					"description": "",
-					"enabled": true
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
-				{
-					"key": "filters[0][attribue]",
-					"value": "code",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filters[0][operator]",
-					"value": "eq",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filters[0][value]",
-					"value": "%D%",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "page",
-					"value": "2",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "pageSize",
-					"value": "5",
-					"equals": true,
-					"description": "",
-					"enabled": true
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/fragments/?sort=code&direction=ASC&filters[0][attribue]=code&filters[0][operator]=eq&filters[0][value]=%D%&page=2&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"fragments",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "filters[0][attribue]",
+							"value": "code"
+						},
+						{
+							"key": "filters[0][operator]",
+							"value": "eq"
+						},
+						{
+							"key": "filters[0][value]",
+							"value": "%D%"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
 				}
-			],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
 			},
-			"events": [],
-			"folder": null,
-			"headers": "",
-			"pathVariables": {}
+			"response": []
 		},
 		{
-			"id": "9aef582f-d7ec-4569-b748-ff39a8eb8876",
-			"name": "Update Fragment with a invalide guiCode",
-			"url": "{{url}}/api/fragments/fragmentupdate",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": null,
-			"folder": null,
-			"rawModeData": "{\n    \"code\": \"fragmentupdate\",\n    \"guiCode\": null\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "b086c95b-f42d-4cbd-a525-d3fcf81b1b72",
-			"name": "Update a Fragment with an invalid fragment code in the URI",
-			"url": "{{url}}/api/fragments/fragmentupdate100",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
-					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
-					}
-				],
-				"type": "bearer"
-			},
-			"events": null,
-			"folder": null,
-			"rawModeData": "{\n    \"code\": \"fragmentupdate100\",\n    \"guiCode\": \"<div>Sabrina</div>\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
-		},
-		{
-			"id": "e611472c-2992-4589-a629-ad206e26306d",
 			"name": "Update a Fragment with an invalid code in the payload",
-			"url": "{{url}}/api/fragments/fragmentupdate",
-			"description": null,
-			"data": [],
-			"dataMode": "raw",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"method": "PUT",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": {
-				"bearer": [
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
 					{
-						"key": "token",
-						"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
-						"type": "string"
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"type": "bearer"
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"fragmentupdate1\",\n    \"guiCode\": \"<div>Sabrina1</div>\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"fragments",
+						"fragmentupdate"
+					]
+				}
 			},
-			"events": [],
-			"folder": null,
-			"rawModeData": "{\n    \"code\": \"fragmentupdate1\",\n    \"guiCode\": \"<div>Sabrina1</div>\"\n}",
-			"headers": "Content-Type: application/json\n",
-			"pathVariables": {}
+			"response": []
+		},
+		{
+			"name": "Update a Fragment with an invalid fragment code in the URI",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"fragmentupdate100\",\n    \"guiCode\": \"<div>Sabrina</div>\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate100",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"fragments",
+						"fragmentupdate100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fragment with a valide code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"fragmentupdate\",\n    \"guiCode\": \"<div>Sabrina</div>\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"fragments",
+						"fragmentupdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fragment with a invalide guiCode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"fragmentupdate\",\n    \"guiCode\": null\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/fragments/fragmentupdate",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"fragments",
+						"fragmentupdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Fragment with a valide code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/deletefragment",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"deletefragment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Fragment with a unvalide code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/deletefragment1",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"deletefragment1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Fragment with the referenced fragments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/jacms_content_viewer",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"jacms_content_viewer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Fragment that is locked",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/internal_servlet_generic_error",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"internal_servlet_generic_error"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Fragment Details with uncorrect code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments/default_pagerInfo_",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments",
+						"default_pagerInfo_"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Fragment with a valid code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"myfragment1\",\n  \"guiCode\": \"<div>testFragment1</div>\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Fragment with an invalid code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"mycodemycodemycodemycodemycodemycodemycodemycodemycodemycodemycode\",\n  \"guiCode\": \"<div>provaFragment</div>\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Fragment with an invalid guiCode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7ddbe99c6baa134627b8cb0dfb6110a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"invalideguiCode\",\n  \"guiCode\": \"null1\"\n}"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api//fragments",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"",
+						"fragments"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

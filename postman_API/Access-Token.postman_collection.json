@@ -1,92 +1,13 @@
 {
-	"id": "6b7436d7-1212-1558-adb7-921555881007",
-	"name": "Access-Token",
-	"description": "",
-	"auth": null,
-	"events": [
+	"info": {
+		"_postman_id": "897bcd45-88d6-41c3-bfc3-6bc08b379dc1",
+		"name": "Access-Token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"listen": "prerequest",
-			"script": {
-				"id": "8cab39a6-d4a2-4447-b651-76c83284188d",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "2d880ebb-d1ed-4a41-af93-fd91103c2000",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variables": [],
-	"order": [
-		"6fb00b2f-508a-d1fb-90c4-63b01da18a6c"
-	],
-	"folders_order": [],
-	"folders": [],
-	"requests": [
-		{
-			"id": "6fb00b2f-508a-d1fb-90c4-63b01da18a6c",
 			"name": "Access Token POST",
-			"url": "{{url}}/OAuth2/access_token",
-			"description": "Request to return the Access Token (based on Bearer Token)",
-			"data": [
-				{
-					"key": "username",
-					"value": "admin",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "adminadmin",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "grant_type",
-					"value": "password",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "client_id",
-					"value": "REST_API",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "client_secret",
-					"value": "REAST_API_SEC",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": ""
-				}
-			],
-			"method": "POST",
-			"pathVariableData": [],
-			"queryParams": [],
-			"auth": null,
-			"events": [
+			"event": [
 				{
 					"listen": "test",
 					"script": {
@@ -121,9 +42,84 @@
 					}
 				}
 			],
-			"folder": null,
-			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"pathVariables": {}
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "adminadmin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "REST_API",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "REAST_API_SEC",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/OAuth2/access_token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"OAuth2",
+						"access_token"
+					]
+				},
+				"description": "Request to return the Access Token (based on Bearer Token)"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8cab39a6-d4a2-4447-b651-76c83284188d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2d880ebb-d1ed-4a41-af93-fd91103c2000",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

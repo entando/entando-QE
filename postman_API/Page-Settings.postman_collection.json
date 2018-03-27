@@ -1,17 +1,120 @@
 {
-	"id": "1165fbe7-544f-3b68-2201-694d1dac722b",
-	"name": "Page-Settings",
-	"description": "Collection of the API test related to the Pages",
-	"order": [
-		"a4e3f7f5-b331-7208-515c-fec44e49a06e",
-		"2c23424a-3200-9142-75d1-1cd7298ea1a1"
+	"info": {
+		"_postman_id": "d9867383-82e1-4946-b088-dac599b18b3d",
+		"name": "Page-Settings",
+		"description": "Collection of the API test related to the Pages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Page Settings GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a84107de-7c30-4524-a38c-0387b9cb886f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c27d53e8631363c9ad66e85ae589cbc4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/pageSettings",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"pageSettings"
+					]
+				},
+				"description": "Request to read global page settings. The User should be authorized."
+			},
+			"response": []
+		},
+		{
+			"name": "Page Settings PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d760aa4-3d7c-4116-9fa3-5cc87ff42085",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"value is classic|breadcrumbs\"] = jsonData.payload.params.value = \"classic|breadcrumbs\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c27d53e8631363c9ad66e85ae589cbc4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"params\": [{\n            \"name\": \"urlStyle\",\n            \"value\": \"classic|breadcrumbs\"\n        },\n        {\n            \"name\": \"treeStyle_page\",\n            \"value\": \"classic|request\"\n        },\n        {\n            \"name\": \"startLangFromBrowser\",\n            \"value\": \"false\"\n        },\n        {\n            \"name\": \"baseUrl\",\n            \"value\": \"classic|request|static\"\n        },\n        {\n            \"name\": \"baseUrlContext\",\n            \"value\": \"true\"\n        },\n        {\n            \"name\": \"useJsessionId\",\n            \"value\": \"false\"\n        }, {\n            \"name\": \"notFoundPageCode\",\n            \"value\": \"notfound\"\n        },\n        {\n            \"name\": \"homePageCode\",\n            \"value\": \"homepage\"\n        },\n        {\n            \"name\": \"errorPageCode\",\n            \"value\": \"errorpage\"\n        },\n        {\n            \"name\": \"loginPageCode\",\n            \"value\": \"login\"\n        }\n    ]\n }"
+				},
+				"url": {
+					"raw": "http://tests.serv.run/entando-sample/api/pageSettings",
+					"protocol": "http",
+					"host": [
+						"tests",
+						"serv",
+						"run"
+					],
+					"path": [
+						"entando-sample",
+						"api",
+						"pageSettings"
+					]
+				},
+				"description": "Request to write global page settings. The user \nshould be authorized."
+			},
+			"response": []
+		}
 	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 1519741139590,
-	"owner": "3690638",
-	"public": false,
-	"events": [
+	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
@@ -30,115 +133,6 @@
 				"exec": [
 					""
 				]
-			}
-		}
-	],
-	"variables": [],
-	"auth": null,
-	"requests": [
-		{
-			"id": "2c23424a-3200-9142-75d1-1cd7298ea1a1",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:8080/myapp/api/pageSettings",
-			"queryParams": [],
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7d760aa4-3d7c-4116-9fa3-5cc87ff42085",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");",
-							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"value is classic|breadcrumbs\"] = jsonData.payload.params.value = \"classic|breadcrumbs\";"
-						]
-					}
-				}
-			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "c27d53e8631363c9ad66e85ae589cbc4",
-						"type": "string"
-					}
-				]
-			},
-			"time": 1519749530588,
-			"name": "Page Settings PUT",
-			"description": "Request to write global page settings. The user \nshould be authorized.",
-			"collectionId": "1165fbe7-544f-3b68-2201-694d1dac722b",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Content-Type is present\"] = responseHeaders.hasOwnProperty(\"Content-Type\");\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"value is classic|breadcrumbs\"] = jsonData.payload.params.value = \"classic|breadcrumbs\";",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "c27d53e8631363c9ad66e85ae589cbc4"
-			},
-			"rawModeData": "{\n    \"params\": [{\n            \"name\": \"urlStyle\",\n            \"value\": \"classic|breadcrumbs\"\n        },\n        {\n            \"name\": \"treeStyle_page\",\n            \"value\": \"classic|request\"\n        },\n        {\n            \"name\": \"startLangFromBrowser\",\n            \"value\": \"false\"\n        },\n        {\n            \"name\": \"baseUrl\",\n            \"value\": \"classic|request|static\"\n        },\n        {\n            \"name\": \"baseUrlContext\",\n            \"value\": \"true\"\n        },\n        {\n            \"name\": \"useJsessionId\",\n            \"value\": \"false\"\n        }, {\n            \"name\": \"notFoundPageCode\",\n            \"value\": \"notfound\"\n        },\n        {\n            \"name\": \"homePageCode\",\n            \"value\": \"homepage\"\n        },\n        {\n            \"name\": \"errorPageCode\",\n            \"value\": \"errorpage\"\n        },\n        {\n            \"name\": \"loginPageCode\",\n            \"value\": \"login\"\n        }\n    ]\n }"
-		},
-		{
-			"id": "a4e3f7f5-b331-7208-515c-fec44e49a06e",
-			"headers": "",
-			"headerData": [],
-			"url": "http://localhost:8080/myapp/api/pageSettings",
-			"queryParams": [],
-			"events": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a84107de-7c30-4524-a38c-0387b9cb886f",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "c27d53e8631363c9ad66e85ae589cbc4",
-						"type": "string"
-					}
-				]
-			},
-			"time": 1519749348876,
-			"name": "Page Settings GET",
-			"description": "Request to read global page settings. The User should be authorized.",
-			"collectionId": "1165fbe7-544f-3b68-2201-694d1dac722b",
-			"responses": [],
-			"preRequestScript": null,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "bearerAuth",
-			"helperAttributes": {
-				"id": "bearer",
-				"token": "c27d53e8631363c9ad66e85ae589cbc4"
 			}
 		}
 	]
