@@ -1,6 +1,6 @@
 # entando-selenium
 
-## How to run automated pastman API tests
+## How to run automated postman API tests
 
 __Prerequisites__
 
