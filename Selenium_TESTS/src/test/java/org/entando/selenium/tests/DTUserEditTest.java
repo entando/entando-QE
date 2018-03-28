@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement;
  *
  * @author leobel
  */
-public class DTUserDetailsTest extends FunctionalTest {
+public class DTUserEditTest extends FunctionalTest {
     
     @Test
     public void runTest(){
@@ -35,16 +35,12 @@ public class DTUserDetailsTest extends FunctionalTest {
         
         DTUsersPage dtUsersPage = new DTUsersPage(driver);
         Utils util = new Utils();
-        String user = "admin";
-        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), "Username", user, "button");
+        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), 0, "button");
         kebab.getClickable().click();
         
         util.waitUntilVisible(driver, kebab.getActionList());
         
-        util.clickKebabActionOnList(kebab.getActionList(), "View profile of: " + user);
-        
-        
-        
-        
+        util.clickKebabActionOnList(kebab.getActionList(), "Edit");
     }
+    
 }

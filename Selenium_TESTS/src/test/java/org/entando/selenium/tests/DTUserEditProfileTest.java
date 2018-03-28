@@ -20,10 +20,10 @@ import org.openqa.selenium.WebElement;
  *
  * @author leobel
  */
-public class DTUserDetailsTest extends FunctionalTest {
+public class DTUserEditProfileTest extends FunctionalTest {
     
     @Test
-    public void runTest(){
+    public void runtTest(){
         DTLoginPage dtLoginPage = new DTLoginPage(driver);
         dtLoginPage.logIn("admin", "adminadmin");
 
@@ -41,10 +41,6 @@ public class DTUserDetailsTest extends FunctionalTest {
         
         util.waitUntilVisible(driver, kebab.getActionList());
         
-        util.clickKebabActionOnList(kebab.getActionList(), "View profile of: " + user);
-        
-        
-        
-        
+        util.clickKebabActionOnList(kebab.getActionList(), "Edit profile of: " + user);
     }
 }

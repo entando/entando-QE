@@ -27,6 +27,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utils {
@@ -210,7 +211,7 @@ public class Utils {
         return result;
     }
     
-    public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue){
+    public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue, String clickableTag){
         List<WebElement> headers = table.findElements(By.xpath("//thead/tr[1]/th"));
         int columnIndex = -1;
         for(int i = 0; i < headers.size(); i++){
@@ -231,7 +232,7 @@ public class Utils {
                 }
             }
             if(rowIndex >= 0){
-                return getKebabOnTable(table, rowIndex + 1, "button");
+                return getKebabOnTable(table, rowIndex + 1, clickableTag);
             }
             else{
                 assert false : "The column value " + columnValue + " has not been found on any row for the column " + columnName;
@@ -244,14 +245,16 @@ public class Utils {
     }
     
     public void clickKebabActionOnList(WebElement ul, String action){
-        List<WebElement> list = ul.findElements(By.tagName("li"));
-        for(WebElement li: list){
-            WebElement a = li.findElement(By.tagName("a"));
-            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
-                a.click();
-                break;
-            }
-        }
+//        List<WebElement> list = ul.findElements(By.tagName("li"));
+        WebElement link = ul.findElement(By.linkText(action));
+        link.click();
+//        for(WebElement li: list){
+//            WebElement a = li.findElement(By.tagName("a"));
+//            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
+//                a.click();
+//                break;
+//            }
+//        }
     }
     
     public List<WebElement> expandAllRowsOnTable(WebDriver driver, WebElement table) {
@@ -298,6 +301,11 @@ public class Utils {
     }
     
     private static String innerText = "innerText"; 
+
+    public void waitUntilVisible(WebDriver driver, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
     
     public static class Kebab {
         

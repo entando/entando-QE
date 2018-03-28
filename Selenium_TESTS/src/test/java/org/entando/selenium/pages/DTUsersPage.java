@@ -23,6 +23,9 @@ public class DTUsersPage extends PageObject {
 
     @FindBy(css = "h1 > span:nth-child(1)")
     private WebElement pageTitle;
+    
+    @FindBy(xpath ="//table[@class=UserListTable__table]")
+    private WebElement usersTable;
 
     @FindBy(css = "table > thead")
     private WebElement tableHeader;
@@ -32,6 +35,10 @@ public class DTUsersPage extends PageObject {
 
     @FindBy(xpath = "//button[contains(.,'Add')]")
     private WebElement newButton;
+    
+    public WebElement getUsersTable() {
+        return usersTable;
+    }
 
     public WebElement getPageTitle() {
         return this.pageTitle;
