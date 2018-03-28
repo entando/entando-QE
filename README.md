@@ -1,6 +1,6 @@
 # entando-postman/selenium
 
-__Postman version__
+### Postman version
 
 Postman v.6.0.10 +
 
