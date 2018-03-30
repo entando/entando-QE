@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e58737d3-d71b-412b-a23e-68df0f714126",
+		"_postman_id": "da59aeec-fcca-3d69-e95c-d5f33c63a602",
 		"name": "Data-Type",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,11 +11,22 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c6b755aa-2aff-41da-b9a2-0242c0236f15",
+						"id": "3464dae6-0aaf-467d-9ecc-3ea7ee133113",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var body = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Data Type code is AAA\"] = body.code === \"AAA\";",
+							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
+							"tests[\"Response meta data is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);",
+							""
 						]
 					}
 				}
@@ -45,6 +56,30 @@
 		},
 		{
 			"name": "Read Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "48799bfa-d267-46c2-99cd-b21bf8f33e8c",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_not_found)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
+							"tests[\"Response errors is not empty\"] = errors.length > 0;",
+							"tests[\"Response error status code = 1\"] = errors[0].code === \"1\";",
+							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -70,6 +105,29 @@
 		},
 		{
 			"name": "Update Data Type with code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "218982e3-c8dc-491e-ada2-088026e3050d",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var body = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Data Type name is 'MyDataType'\"] = body.name === \"MyDataType\";",
+							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
+							"tests[\"Response meta data is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -102,6 +160,30 @@
 		},
 		{
 			"name": "Update Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fcdf59d2-abfc-46bd-8c74-dcbb0866ca7d",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_not_found)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
+							"tests[\"Response errors is not empty\"] = errors.length > 0;",
+							"tests[\"Response error status code = 1\"] = errors[0].code === \"1\";",
+							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -134,6 +216,30 @@
 		},
 		{
 			"name": "Update Data Type with a mismatching between URI and payload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49459376-d381-42b2-ba58-9c04b47ec1f0",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_bad_request)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
+							"tests[\"Response errors is not empty\"] = errors.length > 0;",
+							"tests[\"Response error status code = 6\"] = errors[0].code === \"6\";",
+							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -166,6 +272,30 @@
 		},
 		{
 			"name": "Update Data Type with mismatching between URI and payload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7291ec1c-caf2-4a37-8a5d-8b328a0ba1c8",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_bad_request)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
+							"tests[\"Response errors is not empty\"] = errors.length > 0;",
+							"tests[\"Response error status code = 6\"] = errors[0].code === \"6\";",
+							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -198,6 +328,28 @@
 		},
 		{
 			"name": "Delete the Data Type with code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "264aa584-9d13-4e65-a44e-5423fa906afe",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
+							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -230,6 +382,29 @@
 		},
 		{
 			"name": "Delete the Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b906e6f-5ace-4cc2-b517-b3bd6c88f79a",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
+							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -259,37 +434,6 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "11734d22-9872-4e7b-8657-d1465edc4419",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "d5aa4740-208a-4d6c-997d-045e8361bff0",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"id": "99ef18a1-12ca-4ac5-88c0-efbbad22a9c4",
-			"key": "Authorization",
-			"value": "Bearer {{accessToken}}",
-			"type": "string",
-			"description": ""
 		}
 	]
 }
