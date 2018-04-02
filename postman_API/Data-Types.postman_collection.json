@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0a385e78-bf2c-4cc0-af7a-06892f8f7cf1",
+						"id": "d47be7c3-75cb-4937-9c19-c435f3275667",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -23,9 +23,20 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is an Array (payload = [])\"] = Array.isArray(payload);",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response metaData attributes match contract structure\"] = metaData.page === 1 && metaData.pageSize === 5 && metaData.sort === \"code\" && metaData.direction === \"ASC\" && metaData.filters.length === 0;"
+							"",
+							"pm.test(\"Response payload is not empty Array (payload != [])\", function(){",
+							"    pm.expect(payload.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"   pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response metaData attributes match contract structure\", function(){",
+							"    pm.expect(metaData.page).to.eql(1);",
+							"    pm.expect(metaData.pageSize).to.eql(5);",
+							"    pm.expect(metaData.sort).to.eql(\"code\");",
+							"    pm.expect(metaData.direction).to.eql(\"ASC\");",
+							"    pm.expect(metaData.filters.length).to.eql(0);",
+							"});"
 						]
 					}
 				}
@@ -71,7 +82,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4e5b7dee-b1f3-46dd-a120-df2df42438e5",
+						"id": "efaeedca-b6c5-4d74-8f7c-d7b5a678e2bc",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_bad_request)();",
@@ -83,10 +94,19 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response error code is ok (code = 110)\"] = errors[0].code === \"110\";",
-							"tests[\"Response error message is ok (message = 'page must be equal or greater than 1')\"] = errors[0].message === \"page must be equal or greater than 1\";",
-							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response error code is ok (code = 110)\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"110\");",
+							"});",
+							"pm.test(\"Response error message is ok (message = 'page must be equal or greater than 1')\", function(){",
+							"    pm.expect(errors[0].message).to.include(\"equal or greater than 1\");",
+							"});",
+							"pm.test(\"Response metaData is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});",
+							""
 						]
 					}
 				}
@@ -132,7 +152,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f5885f1f-24b6-4b17-95c2-a6646b36b5f3",
+						"id": "f26e0ffd-4c93-48b5-99d0-4c940a3d6cbf",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_conflict)();",
@@ -144,10 +164,18 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response error code is ok (code = 1)\"] = errors[0].code === \"1\";",
-							"tests[\"Response error message is ok (message = 'The Type AAA already exists')\"] = errors[0].message === \"The Type AAA already exists\";",
-							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response error code is ok (code = 1)\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"1\");",
+							"});",
+							"pm.test(\"Response error message is ok (message = 'The Type AAA already exists')\", function(){",
+							"    pm.expect(errors[0].message).to.include(\"already exists\");",
+							"});",
+							"pm.test(\"Response metaData is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
 						]
 					}
 				}
@@ -187,7 +215,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c5b1d5ae-cea8-4427-b873-d1fdfc76b70d",
+						"id": "f9367a5f-76bd-493e-b05c-711d6284a299",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -199,9 +227,15 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Data Type code is JJJ\"] = payload.code === \"JJJ\";",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response meta data is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Data Type code is JJJ\", function(){",
+							"    pm.expect(payload.code).to.eql(\"JJJ\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"   pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response metaData is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
 						]
 					}
 				}
