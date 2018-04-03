@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3464dae6-0aaf-467d-9ecc-3ea7ee133113",
+						"id": "b28ff94c-255c-46e1-9cbf-b40ad688fe93",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -23,9 +23,16 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Data Type code is AAA\"] = body.code === \"AAA\";",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response meta data is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);",
+							"pm.test(\"Data Type code is AAA\", function(){",
+							"    pm.expect(body.code).to.eql(\"AAA\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response metaData is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});",
+							"",
 							""
 						]
 					}
@@ -60,7 +67,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "48799bfa-d267-46c2-99cd-b21bf8f33e8c",
+						"id": "2445ef32-25f7-49ee-8a86-cb50b0944d09",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_not_found)();",
@@ -72,10 +79,19 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response errors is not empty\"] = errors.length > 0;",
-							"tests[\"Response error status code = 1\"] = errors[0].code === \"1\";",
-							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.not.be.eql(0);",
+							"});",
+							"pm.test(\"Response error status code = 1\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"1\");",
+							"});",
+							"pm.test(\"Response error message is not empty (message != '')\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
 						]
 					}
 				}
@@ -109,7 +125,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "218982e3-c8dc-491e-ada2-088026e3050d",
+						"id": "8822e5f5-7434-42cd-9ccf-2f2dd028fb1e",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -121,9 +137,15 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Data Type name is 'MyDataType'\"] = body.name === \"MyDataType\";",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response meta data is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Data Type name is 'MyDataType'\", function(){",
+							"    pm.expect(body.name).to.eql(\"MyDataType\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
 						]
 					}
 				}
@@ -164,7 +186,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fcdf59d2-abfc-46bd-8c74-dcbb0866ca7d",
+						"id": "d7608f64-49b4-4ea6-8e82-2828026e2311",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_not_found)();",
@@ -176,10 +198,19 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response errors is not empty\"] = errors.length > 0;",
-							"tests[\"Response error status code = 1\"] = errors[0].code === \"1\";",
-							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 1\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"1\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
 						]
 					}
 				}
@@ -220,7 +251,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "49459376-d381-42b2-ba58-9c04b47ec1f0",
+						"id": "fde7f049-ad82-4c7a-a4e6-903003c2ac90",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_bad_request)();",
@@ -232,10 +263,19 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response errors is not empty\"] = errors.length > 0;",
-							"tests[\"Response error status code = 6\"] = errors[0].code === \"6\";",
-							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 6\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"6\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
 						]
 					}
 				}
@@ -276,7 +316,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7291ec1c-caf2-4a37-8a5d-8b328a0ba1c8",
+						"id": "1791b27e-a349-4b00-9337-3eb196bb087b",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_bad_request)();",
@@ -288,10 +328,19 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response payload is empty (payload = [])\"] = Array.isArray(payload) && payload.length === 0;",
-							"tests[\"Response errors is not empty\"] = errors.length > 0;",
-							"tests[\"Response error status code = 6\"] = errors[0].code === \"6\";",
-							"tests[\"Response error message is not empty\"] = errors[0].message !== \"\";"
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 6\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"6\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
 						]
 					}
 				}
@@ -332,7 +381,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "264aa584-9d13-4e65-a44e-5423fa906afe",
+						"id": "0846dfba-6014-420d-8a12-f68e12d36101",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -344,8 +393,15 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Response payload code match request (code = 'UUU')\", function(){",
+							"    pm.expect(payload.code).to.eql(\"UUU\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
 						]
 					}
 				}
@@ -386,7 +442,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9b906e6f-5ace-4cc2-b517-b3bd6c88f79a",
+						"id": "7bac8aad-ab73-4be1-8d3b-6beaa3a69330",
 						"type": "text/javascript",
 						"exec": [
 							"eval(globals.status_code_ok)();",
@@ -399,8 +455,15 @@
 							"var metaData = data.metaData;",
 							"",
 							"eval(globals.validate_response)(data);",
-							"tests[\"Response errors is empty (errors = [])\"] = errors.length === 0;",
-							"tests[\"Response metaData is empty (metaData = {})\"] = eval(globals.is_empty)(metaData);"
+							"pm.test(\"Response payload code match request (code = 'ZZZ')\", function(){",
+							"    pm.expect(payload.code).to.eql(\"ZZZ\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
 						]
 					}
 				}
