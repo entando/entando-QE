@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e58737d3-d71b-412b-a23e-68df0f714126",
+		"_postman_id": "da59aeec-fcca-3d69-e95c-d5f33c63a602",
 		"name": "Data-Type",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,11 +11,29 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c6b755aa-2aff-41da-b9a2-0242c0236f15",
+						"id": "b28ff94c-255c-46e1-9cbf-b40ad688fe93",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;"
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var body = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Data Type code is AAA\", function(){",
+							"    pm.expect(body.code).to.eql(\"AAA\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response metaData is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -45,6 +63,39 @@
 		},
 		{
 			"name": "Read Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2445ef32-25f7-49ee-8a86-cb50b0944d09",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_not_found)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.not.be.eql(0);",
+							"});",
+							"pm.test(\"Response error status code = 1\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"1\");",
+							"});",
+							"pm.test(\"Response error message is not empty (message != '')\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -70,6 +121,35 @@
 		},
 		{
 			"name": "Update Data Type with code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8822e5f5-7434-42cd-9ccf-2f2dd028fb1e",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var body = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Data Type name is 'MyDataType'\", function(){",
+							"    pm.expect(body.name).to.eql(\"MyDataType\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -102,6 +182,39 @@
 		},
 		{
 			"name": "Update Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7608f64-49b4-4ea6-8e82-2828026e2311",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_not_found)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 1\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"1\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -134,6 +247,39 @@
 		},
 		{
 			"name": "Update Data Type with a mismatching between URI and payload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fde7f049-ad82-4c7a-a4e6-903003c2ac90",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_bad_request)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 6\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"6\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -166,6 +312,39 @@
 		},
 		{
 			"name": "Update Data Type with mismatching between URI and payload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1791b27e-a349-4b00-9337-3eb196bb087b",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_bad_request)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload is empty (payload = [])\", function(){",
+							"    pm.expect(Array.isArray(payload)).to.be.true;",
+							"    pm.expect(payload.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response errors is not empty\", function(){",
+							"    pm.expect(errors.length).to.be.above(0);",
+							"});",
+							"pm.test(\"Response error status code = 6\", function(){",
+							"    pm.expect(errors[0].code).to.eql(\"6\");",
+							"});",
+							"pm.test(\"Response error message is not empty\", function(){",
+							"    pm.expect(errors[0].message).to.not.be.eql(\"\");",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -198,6 +377,35 @@
 		},
 		{
 			"name": "Delete the Data Type with code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0846dfba-6014-420d-8a12-f68e12d36101",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload code match request (code = 'UUU')\", function(){",
+							"    pm.expect(payload.code).to.eql(\"UUU\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -230,6 +438,36 @@
 		},
 		{
 			"name": "Delete the Data Type with unexisting code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bac8aad-ab73-4be1-8d3b-6beaa3a69330",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.status_code_ok)();",
+							"eval(globals.response_time_limit)();",
+							"",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"var payload = data.payload;",
+							"var errors = data.errors;",
+							"var metaData = data.metaData;",
+							"",
+							"eval(globals.validate_response)(data);",
+							"pm.test(\"Response payload code match request (code = 'ZZZ')\", function(){",
+							"    pm.expect(payload.code).to.eql(\"ZZZ\");",
+							"});",
+							"pm.test(\"Response errors is empty (errors = [])\", function(){",
+							"    pm.expect(errors.length).to.eql(0);",
+							"});",
+							"pm.test(\"Response meta data is empty (metaData = {})\", function(){",
+							"    pm.expect(eval(globals.is_empty)(metaData)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -259,37 +497,6 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "11734d22-9872-4e7b-8657-d1465edc4419",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "d5aa4740-208a-4d6c-997d-045e8361bff0",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"id": "99ef18a1-12ca-4ac5-88c0-efbbad22a9c4",
-			"key": "Authorization",
-			"value": "Bearer {{accessToken}}",
-			"type": "string",
-			"description": ""
 		}
 	]
 }
