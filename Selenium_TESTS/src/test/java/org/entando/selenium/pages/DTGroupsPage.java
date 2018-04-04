@@ -20,6 +20,9 @@ public class DTGroupsPage extends PageObject {
     @FindBy(css = "h1.PageTitle__title > span:nth-child(1)")
     private WebElement pageTitle;
     
+    @FindBy(xpath = "//button[contains(., 'Add')]")
+    private WebElement addButton;
+    
     @FindBy(xpath = "//table[contains(@class, 'GroupListTable__table')]")
     private WebElement groupTable;
     
@@ -29,6 +32,10 @@ public class DTGroupsPage extends PageObject {
 
     public WebElement getPageTitle() {
         return pageTitle;
+    }
+    
+    public WebElement getAddButton(){
+        return addButton;
     }
 
     public WebElement getGroupsTable() {
