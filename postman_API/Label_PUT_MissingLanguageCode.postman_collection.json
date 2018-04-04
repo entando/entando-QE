@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "0cdb1d47-a955-49f5-8ecc-6acb72403ea7",
+		"name": "Label_PUT_MissingLanguageCode",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Labels_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36b5b7c2-e129-4a8c-b799-29d3b15f2be3",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var status_code = 200",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"My Title\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"Mio Titolo\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Label_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b13f81e6-01c3-415f-b166-9882365936d9",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tDefaultLangMissing\t400\t2\t\t\t\t\tDone",
+							"",
+							"var status_code = 400;",
+							"var error_code = '2';",
+							"var error_message = \"default lang is required\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_missing_default_language}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14556b81-d5bc-4250-93ca-1dd85ceb0a02",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.key).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c1526288-4c2a-4caf-abc7-a79287788c3c",
+			"key": "api_url",
+			"value": "api/labels",
+			"type": "string"
+		},
+		{
+			"id": "7775e2a1-96fd-4d20-b103-147521aab709",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "dcfeb012-8319-48c0-811f-80f6a8401029",
+			"key": "payload",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "0a29e756-bcb3-4302-94cd-cb6ac95b28a0",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "34223378-1e3b-44b1-b75a-5f16a01641cc",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "6d46ef43-801f-4be7-8738-07f0205ddeb4",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "e3ba8266-586e-4900-ac18-96fa9867210e",
+		"name": "Label_GET_NotExistent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75d75bff-2ca4-49e3-ba92-9b1730c6d3ae",
+						"type": "text/javascript",
+						"exec": [
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Label_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe61bde9-41d2-49df-a278-9e8fc226b1f8",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tGET\t\tNotExistent\t404\t1\tno label found with code <labelcode> Done",
+							"",
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ff332f16-068a-4a89-8a24-c4b7a581b891",
+			"key": "api_url",
+			"value": "api/labels",
+			"type": "string"
+		},
+		{
+			"id": "b507b772-9427-4e3b-a565-cd31c9370634",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "6b86684c-dd79-49ec-9ab2-a0191c2e1d5c",
+			"key": "payload",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "e8d0ca19-9862-4308-8699-372f37b81dec",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "d156dfa7-4980-4e97-83af-dc84b8414f63",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "5e2876fc-257d-4f7b-9a02-34976941dd0a",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"type": "string"
+		}
+	]
+}
