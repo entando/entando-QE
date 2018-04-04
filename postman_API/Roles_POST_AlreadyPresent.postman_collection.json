@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "09ee2eda-9be1-426f-93ec-c78cebba5fc8",
+		"name": "Roles_POST_AlreadyPresent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "729b778e-b01b-4a5e-a206-a3f7fbb419c5",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b76610ad-56e0-4075-914b-bb8f05fdc37d",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Roles_POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bfc88c8-218e-49a6-bde8-433cdf366470",
+						"type": "text/javascript",
+						"exec": [
+							"//Labels\tPOST\t\tCodeAlreadyPresent\t409\t1\t\t\t\t\tDone",
+							"//Labels\tPOST\t\tCodeAlreadyPresent\t409\t1\t\t\t\t\tDone",
+							"",
+							"var status_code = 409;",
+							"var error_code = '1';",
+							"var error_message = \"already exists\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8c1f98f2-d655-405e-a164-4180355adc53",
+			"key": "api_url",
+			"value": "api/roles",
+			"type": "string"
+		},
+		{
+			"id": "925578ec-cd0b-455d-8537-643802fd1e93",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "a7dff552-c449-4198-92e7-fd7dd2b8be9b",
+			"key": "payload",
+			"value": "{\n\"name\": \"AAA\",\n\"code\": \"AAA\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
+			"type": "string"
+		},
+		{
+			"id": "473536dd-4406-4d76-970c-dc803671f47e",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "71109c52-540a-46b0-ab56-b46355a82548",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "017c2e32-47aa-4f5a-ad56-a207b2f2aa58",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"type": "string"
+		}
+	]
+}

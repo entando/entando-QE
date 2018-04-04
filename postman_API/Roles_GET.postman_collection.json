@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "ecef6289-3eef-46bf-9f87-87404516fdbf",
+		"name": "Roles_GET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Roles_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf02eddc-50c9-40b2-b3e1-4e5c44e686ce",
+						"type": "text/javascript",
+						"exec": [
+							"//Labels\tGET\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var GET_status_code = 200;",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f5028997-be6f-41fe-af30-dbb62c2deaec",
+			"key": "api_url",
+			"value": "api/roles",
+			"type": "string"
+		},
+		{
+			"id": "f6b96f3f-d15b-4883-8d79-39c82be7c4cf",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "aa78d36a-a15d-4fc6-8382-458a512b3c4a",
+			"key": "payload",
+			"value": "{\n    \"name\": \"AAA-Name\",\n    \"code\": \"AAA\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUserProfile\": true\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "ec7cd5d5-3763-4d4e-b989-af41a9325df2",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "6d8bb1bd-b011-4153-96f4-6a96058f5323",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "993d0b79-b02d-480d-9e39-fad7529b696e",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"type": "string"
+		}
+	]
+}
