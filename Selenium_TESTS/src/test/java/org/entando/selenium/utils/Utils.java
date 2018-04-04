@@ -290,6 +290,18 @@ public class Utils {
         return false;
     }
     
+    public String getText(WebElement item){
+        return item.getAttribute(innerText);
+    }
+    
+    public String[] getText(List<WebElement> items) {
+        String[] result = new String[items.size()];
+        for(int i = 0; i < items.size(); i++){
+            result[i] = items.get(i).getAttribute(innerText);
+        }
+        return result;
+    }
+    
     private void waitUntilSizeChange(WebDriverWait wait, WebElement element, String childrenSelector, int currentSize){
         wait.until(new ExpectedCondition<Boolean>(){
             @Override
