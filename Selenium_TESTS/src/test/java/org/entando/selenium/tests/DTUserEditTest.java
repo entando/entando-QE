@@ -37,7 +37,7 @@ public class DTUserEditTest extends FunctionalTest {
         Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), 0, "button");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
     }

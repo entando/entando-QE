@@ -50,7 +50,7 @@ public class DTGroupDeleteTest extends FunctionalTest{
         Utils.Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), 1, "button");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         util.clickKebabActionOnList(kebab.getActionList(), "Delete");
         
         String title = "Delete";

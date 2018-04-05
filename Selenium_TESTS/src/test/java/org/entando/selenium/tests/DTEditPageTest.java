@@ -43,7 +43,7 @@ public class DTEditPageTest extends FunctionalTest {
         Kebab kebab = util.getKebabOnTable(table, 1, "i");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
         

@@ -41,7 +41,7 @@ public class DTUserManageAuthorizationTest extends FunctionalTest {
         Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), "Username", user, "button");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Manage autorization for: " + user);
         
