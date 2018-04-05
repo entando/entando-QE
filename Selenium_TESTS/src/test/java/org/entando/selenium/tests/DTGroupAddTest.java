@@ -5,16 +5,17 @@
  */
 package org.entando.selenium.tests;
 
+import com.google.inject.Inject;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTGroupAddPage;
 import org.entando.selenium.pages.DTGroupsPage;
 import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
-import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *
@@ -22,9 +23,11 @@ import org.junit.Test;
  */
 public class DTGroupAddTest extends FunctionalTest {
     
+    @Inject
+    DTLoginPage dtLoginPage;
+    
     @Test
     public void test(){
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
         dtLoginPage.logIn("admin", "adminadmin");
 
         ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();

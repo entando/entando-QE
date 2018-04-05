@@ -5,15 +5,14 @@
  */
 package org.entando.selenium.pages;
 
+import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -43,6 +42,7 @@ public class DTPageEditPage extends PageObject {
     @FindBy(css = "button[type='submit'].PageForm__save-btn")
     private WebElement saveButton;
     
+    @Inject
     public DTPageEditPage(WebDriver driver) {
         super(driver);
     }

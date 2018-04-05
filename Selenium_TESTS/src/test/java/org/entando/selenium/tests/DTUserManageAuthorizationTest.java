@@ -14,12 +14,13 @@ import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author leobel
  */
+
 public class DTUserManageAuthorizationTest extends FunctionalTest {
     
     @Test

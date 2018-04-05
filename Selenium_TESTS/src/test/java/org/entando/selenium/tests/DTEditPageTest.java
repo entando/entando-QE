@@ -15,7 +15,7 @@ import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -23,6 +23,7 @@ import org.openqa.selenium.WebElement;
  *
  * @author leobel
  */
+
 public class DTEditPageTest extends FunctionalTest {
     
     @Test

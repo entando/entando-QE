@@ -5,8 +5,6 @@
  */
 package org.entando.selenium.tests;
 
-import java.util.Arrays;
-import java.util.List;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTGroupDetailsPage;
 import org.entando.selenium.pages.DTGroupsPage;
@@ -17,12 +15,13 @@ import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author leobel
  */
+
 public class DTGroupDetailsTest extends FunctionalTest {
     
     @Test

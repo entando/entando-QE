@@ -14,18 +14,17 @@ package org.entando.selenium.tests;
 
 import org.entando.selenium.utils.*;
 
-import org.entando.selenium.pages.DTDataTypesPage;
 import org.entando.selenium.pages.DTLoginPage;
 
 import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
 import org.entando.selenium.pages.DTUsersPage;
+import org.junit.jupiter.api.Test;
+
 
 public class DTUsersListTest extends FunctionalTest {
 

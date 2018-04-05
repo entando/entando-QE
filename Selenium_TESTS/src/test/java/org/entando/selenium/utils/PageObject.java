@@ -12,6 +12,7 @@ details.
  */
 package org.entando.selenium.utils;
 
+import com.google.inject.Inject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -19,6 +20,7 @@ public class PageObject {
 
     protected WebDriver driver;
 
+    @Inject
     public PageObject(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

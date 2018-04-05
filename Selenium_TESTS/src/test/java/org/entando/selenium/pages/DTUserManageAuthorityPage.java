@@ -5,6 +5,7 @@
  */
 package org.entando.selenium.pages;
 
+import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.By;
@@ -80,6 +81,7 @@ public class DTUserManageAuthorityPage extends PageObject {
         userRole.getOptions().get(numRole).click();
     }
     
+    @Inject
     public DTUserManageAuthorityPage(WebDriver driver) {
         super(driver);
     }

@@ -20,14 +20,10 @@ import org.entando.selenium.pages.DTWidgetEditPage;
 import org.entando.selenium.pages.DTLoginPage;
 
 import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.entando.selenium.pages.DTWidgetPage;
+import org.junit.jupiter.api.Test;
 
 public class DTWidgetAddTest extends FunctionalTest {
 

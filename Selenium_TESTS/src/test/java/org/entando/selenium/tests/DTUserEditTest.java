@@ -12,14 +12,13 @@ import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author leobel
  */
+
 public class DTUserEditTest extends FunctionalTest {
     
     @Test

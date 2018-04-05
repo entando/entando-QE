@@ -5,6 +5,7 @@
  */
 package org.entando.selenium.pages;
 
+import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.WebDriver;
@@ -59,6 +60,7 @@ public class DTGroupDetailsPage extends PageObject {
     @FindBy(xpath = "//*[contains(@class, 'GroupDetailTabResources')]//thead//th")
     private List<WebElement> resourcesHeaders;
 
+    @Inject
     public DTGroupDetailsPage(WebDriver driver) {
         super(driver);
     }

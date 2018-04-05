@@ -19,10 +19,9 @@ import org.entando.selenium.pages.DTWidgetEditPage;
 import org.entando.selenium.pages.DTLoginPage;
 
 import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
