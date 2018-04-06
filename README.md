@@ -33,4 +33,4 @@ __execute single collection's tests__
 __execute all collections's tests__
 
 Group all collections by executing: `postman-combine-collections --filePath=postman_API/*.json`
-then execute `newman run root.collection.json -e postman_API/environment/Entando5.postman_environment.json`
+then execute `newman run root.collection.json -e postman_API/environment/Entando5API.postman_environment.json`
