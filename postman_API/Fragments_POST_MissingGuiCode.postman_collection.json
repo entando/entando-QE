@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "41a18baa-353a-4a63-b0a6-abb8044729a8",
+		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
 		"name": "Fragments_POST_MissingGuiCode",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -210,27 +210,27 @@
 	],
 	"variable": [
 		{
-			"id": "abc73775-3ff1-4ba0-a742-d5400ab0cea3",
+			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
 			"key": "api_url",
 			"value": "api/fragments",
 			"type": "string"
 		},
 		{
-			"id": "1e054f69-cbe9-4a0e-acad-56f4d2ca1261",
+			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3c629d2f-8ec1-4954-b71b-7c737787210d",
+			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
 			"key": "payload",
 			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "199af4ea-d007-4056-8977-1283d3f49718",
+			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
 			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"myCode\"\n}",
+			"value": "{\n  \"code\": \"AAA\"\n}",
 			"type": "string"
 		}
 	]
