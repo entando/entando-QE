@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "195a9c97-513c-466d-aec2-3e4421c8f6cb",
+		"name": "Widget_DELETE_Referenced",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Widget_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8ee9fa3-85d2-4083-bd4b-6c5d0953ae1d",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is used into pages",
+							"var status_code = 400;",
+							"var error_code = '2';",
+							"var error_message = \"used into pages\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_widget}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_widget}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_DELETED",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04184fa3-5945-478c-8ecb-70d612640720",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 200;",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_widget}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_widget}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8be4ec6d-e0b1-455c-aca7-d4a4dfc42246",
+			"key": "api_url",
+			"value": "api/widgets",
+			"type": "string"
+		},
+		{
+			"id": "6a07c7b9-bc6f-4ee6-99cc-3881020b3f03",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "a0f3ded6-29e8-44c0-8080-33be002f8bde",
+			"key": "payload",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "9c0f4cef-2e95-4ccd-a9d7-22f331eac101",
+			"key": "referenced_widget",
+			"value": "content_viewer",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
