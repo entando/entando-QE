@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.tests;
 
-import com.google.inject.Inject;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTGroupAddPage;
 import org.entando.selenium.pages.DTGroupsPage;
@@ -15,6 +14,7 @@ import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
@@ -23,8 +23,17 @@ import org.junit.jupiter.api.Test;
  */
 public class DTGroupAddTest extends FunctionalTest {
     
-    @Inject
+    @Autowired
     DTLoginPage dtLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTGroupsPage dTGroupsPage;
+    
+    @Autowired
+    public DTGroupAddPage dTGroupAddPage;
     
     @Test
     public void test(){
@@ -33,35 +42,30 @@ public class DTGroupAddTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
 
-        //Utils util = new Utils();
-        DTGroupsPage dtGroupsPage = new DTGroupsPage(driver);
-        dtGroupsPage.getAddButton().click();
+        dTGroupsPage.getAddButton().click();
         
         String pageTitle = "Add";
         String nameLabel = "Name";
         String codeLabel = "Code";
         
-        DTGroupAddPage dtGroupAddPage = new DTGroupAddPage(driver);
+        Assert.assertEquals(pageTitle, dTGroupAddPage.getPageTitle().getText());
+        Assert.assertEquals(nameLabel, dTGroupAddPage.getNameLabel().getText());
+        Assert.assertEquals(codeLabel, dTGroupAddPage.getCodeLabel().getText());
+        Assert.assertTrue(dTGroupAddPage.getNameRequired().isDisplayed());
+        Assert.assertTrue(dTGroupAddPage.getCodeRequired().isDisplayed());
         
-        Assert.assertEquals(pageTitle, dtGroupAddPage.getPageTitle().getText());
-        Assert.assertEquals(nameLabel, dtGroupAddPage.getNameLabel().getText());
-        Assert.assertEquals(codeLabel, dtGroupAddPage.getCodeLabel().getText());
-        Assert.assertTrue(dtGroupAddPage.getNameRequired().isDisplayed());
-        Assert.assertTrue(dtGroupAddPage.getCodeRequired().isDisplayed());
+        dTGroupAddPage.getInfoName().click();
+        Assert.assertTrue(dTGroupAddPage.getTooltip().isDisplayed());
         
-        dtGroupAddPage.getInfoName().click();
-        Assert.assertTrue(dtGroupAddPage.getTooltip().isDisplayed());
+        dTGroupAddPage.getInfoCode().click();
+        Assert.assertTrue(dTGroupAddPage.getTooltip().isDisplayed());
         
-        dtGroupAddPage.getInfoCode().click();
-        Assert.assertTrue(dtGroupAddPage.getTooltip().isDisplayed());
+        dTGroupAddPage.setName("name");
+        dTGroupAddPage.setCode("code");
         
-        dtGroupAddPage.setName("name");
-        dtGroupAddPage.setCode("code");
-        
-        Assert.assertTrue(dtGroupAddPage.getSubmit().isEnabled());
+        Assert.assertTrue(dTGroupAddPage.getSubmit().isEnabled());
         
     }
     

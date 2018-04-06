@@ -25,47 +25,55 @@ import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTFragmentEditPage;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTFragmentsEditTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTFragmentPage dTFragmentPage;
+    
+    @Autowired
+    public DTFragmentEditPage dTFragmentEditPage;
+    
+    @Autowired
+    public Utils util;
 
     @Test
     public void runTest() {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
+        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
 
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Widget Type", "Plugin", "Actions");
 
-        DTFragmentPage dtfragmentPage = new DTFragmentPage(driver);
-
-        Utils util = new Utils();
-
-        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dtfragmentPage.getTableHeader());
+        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTFragmentPage.getTableHeader());
 
         //Asserts that table column names are the expected ones.
         Assert.assertEquals(expectedHeaderTitles, fetchedHeaderTitles);
 
         String pageTitle = "Fragments";
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtfragmentPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTFragmentPage.getPageTitle().getText());
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
-        util.selectKebabActionOnTable(dtfragmentPage.getTableHeader(), dtfragmentPage.getTableBody(), "Name", "myCode", "Edit");
+        util.selectKebabActionOnTable(dTFragmentPage.getTableHeader(), dTFragmentPage.getTableBody(), "Name", "myCode", "Edit");
 
-        DTFragmentEditPage dtfragmentEditPage = new DTFragmentEditPage(driver);
-        dtfragmentEditPage.setGUICode("Code inserted by Selenium");
-        dtfragmentEditPage.getCode().click();
+        dTFragmentEditPage.setGUICode("Code inserted by Selenium");
+        dTFragmentEditPage.getCode().click();
 
-        Assert.assertFalse(dtfragmentEditPage.getCode().isEnabled());
+        Assert.assertFalse(dTFragmentEditPage.getCode().isEnabled());
 
-        dtfragmentEditPage.save();
+        dTFragmentEditPage.save();
 
     }
 }

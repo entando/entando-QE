@@ -12,10 +12,6 @@ details.
  */
 package org.entando.selenium.utils;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Inject;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
@@ -25,6 +21,11 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 /**
  * <strong>FunctionalTest</strong> handles setup and teardown of WebDriver.
@@ -33,11 +34,13 @@ import org.openqa.selenium.WebDriver;
  */
 
 @TestInstance(Lifecycle.PER_CLASS)
-@ExtendWith(GuiceExtension.class)
-@GuiceExtension.GuiceModules({FunctionalTest.AppTestModule.class})
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = AppConfig.class)
+@TestExecutionListeners({ SeleniumTestExecutionListener.class,
+    DependencyInjectionTestExecutionListener.class })
 public class FunctionalTest {
 
-    @Inject
+    @Autowired
     protected WebDriver driver;
     
     @BeforeAll
@@ -54,20 +57,5 @@ public class FunctionalTest {
     public void tearDown() {
         driver.close();
         driver.quit();
-    }
-    
-    public static class AppTestModule extends AbstractModule{
-
-        @Override
-        protected void configure() {
-            bind(DriverManager.class)
-                    .to(ChromeDriverManager.class);
-        }
-        
-        @Provides @Singleton
-        public WebDriver getDriver(DriverManager driverManager){
-            return driverManager.getDriver();
-        }
-        
     }
 }

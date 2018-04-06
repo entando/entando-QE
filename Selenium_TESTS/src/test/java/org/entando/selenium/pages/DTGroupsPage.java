@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,7 +26,6 @@ public class DTGroupsPage extends PageObject {
     @FindBy(xpath = "//table[contains(@class, 'GroupListTable__table')]")
     private WebElement groupTable;
     
-    @Inject
     public DTGroupsPage(WebDriver driver) {
         super(driver);
     }

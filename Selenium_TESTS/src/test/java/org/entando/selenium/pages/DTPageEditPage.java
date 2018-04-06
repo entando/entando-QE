@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.By;
@@ -37,12 +36,11 @@ public class DTPageEditPage extends PageObject {
 
     @FindBy(xpath = "//select[@name='pageModel']")
     private WebElement selectPageModel;
-    Select pageModel = new Select(selectPageModel);
+    private Select pageModel;
 
     @FindBy(css = "button[type='submit'].PageForm__save-btn")
     private WebElement saveButton;
     
-    @Inject
     public DTPageEditPage(WebDriver driver) {
         super(driver);
     }
@@ -82,7 +80,7 @@ public class DTPageEditPage extends PageObject {
     }
     
     public void setPageModel(int numOrder) {
-        this.pageModel.getOptions().get(numOrder).click();
+        getSelectPageModel().getOptions().get(numOrder).click();
     }
 
     public WebElement getSaveButton() {
@@ -104,6 +102,11 @@ public class DTPageEditPage extends PageObject {
         }
     }
 
-    
+    private Select getSelectPageModel(){
+        if(pageModel == null){
+            pageModel = new Select(selectPageModel);
+        }
+        return pageModel;
+    }
 
 }

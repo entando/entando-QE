@@ -15,6 +15,7 @@ import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -22,34 +23,44 @@ import org.junit.jupiter.api.Test;
  */
 public class DTUserDetailsTest extends FunctionalTest {
     
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTUsersPage dTUsersPage;
+    
+    @Autowired
+    public DTUserDetailsPage dTUserDetailsPage;
+    
+    @Autowired
+    public Utils util;
+    
     @Test
     public void runTest(){
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
         
-        DTUsersPage dtUsersPage = new DTUsersPage(driver);
-        Utils util = new Utils();
         String user = "admin";
-        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), "Username", user, "button");
+        Utils.Kebab kebab = util.getKebabOnTable(dTUsersPage.getUsersTable(), "Username", user, "button");
         kebab.getClickable().click();
         
         util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "View profile of: " + user);
         
-        DTUserDetailsPage dtUserDetailsPage = new DTUserDetailsPage(driver);
         
         String pageTitle = "Details";
         String[] headers = new String[]{"Username", "Full Name", "Email"}; 
         
-        Assert.assertEquals(pageTitle, dtUserDetailsPage.getPageTitle().getText());
-        Assert.assertArrayEquals(headers, dtUserDetailsPage.getDetailsTableHeaders());
-        Assert.assertTrue(dtUserDetailsPage.getBackButton().isDisplayed());
+        Assert.assertEquals(pageTitle, dTUserDetailsPage.getPageTitle().getText());
+        Assert.assertArrayEquals(headers, dTUserDetailsPage.getDetailsTableHeaders());
+        Assert.assertTrue(dTUserDetailsPage.getBackButton().isDisplayed());
     }
 }

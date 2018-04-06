@@ -12,7 +12,6 @@ details.
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -58,7 +57,6 @@ public class DTFragmentEditPage extends PageObject {
         this.saveButton.click();
     }
 
-    @Inject
     public DTFragmentEditPage(WebDriver driver) {
         super(driver);
     }

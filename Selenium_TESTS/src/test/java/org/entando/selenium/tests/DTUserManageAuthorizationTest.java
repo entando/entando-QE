@@ -15,6 +15,7 @@ import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -23,44 +24,52 @@ import org.junit.jupiter.api.Test;
 
 public class DTUserManageAuthorizationTest extends FunctionalTest {
     
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTUsersPage dTUsersPage;
+    
+    @Autowired
+    public DTUserManageAuthorityPage dTUserManageAuthorityPage;
+    
+    @Autowired
+    public Utils util;
+    
     @Test
     public void runTest(){
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("User Settings", "Users");
-        
-        DTUsersPage dtUsersPage = new DTUsersPage(driver);
-        Utils util = new Utils();
+        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
         
         String user = "admin";
-        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), "Username", user, "button");
+        Utils.Kebab kebab = util.getKebabOnTable(dTUsersPage.getUsersTable(), "Username", user, "button");
         kebab.getClickable().click();
         
         util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Manage autorization for: " + user);
         
-        DTUserManageAuthorityPage dtUserManageAuthorizatyPage = new DTUserManageAuthorityPage(driver);
-        
         String authorityTitle = "Authorizations for admin";
         
-        Assert.assertEquals(authorityTitle, dtUserManageAuthorizatyPage.getPageTitle().getText());
-        assertTrue(dtUserManageAuthorizatyPage.getGroupLabel().isDisplayed());
-        assertTrue(dtUserManageAuthorizatyPage.getRoleLabel().isDisplayed());
-        Assert.assertEquals(2, dtUserManageAuthorizatyPage.getAuthorizationControls().size());
-        assertTrue(dtUserManageAuthorizatyPage.getAddButton().isDisplayed());
-        assertTrue(dtUserManageAuthorizatyPage.getSaveButton().isDisplayed());
+        Assert.assertEquals(authorityTitle, dTUserManageAuthorityPage.getPageTitle().getText());
+        assertTrue(dTUserManageAuthorityPage.getGroupLabel().isDisplayed());
+        assertTrue(dTUserManageAuthorityPage.getRoleLabel().isDisplayed());
+        Assert.assertEquals(2, dTUserManageAuthorityPage.getAuthorizationControls().size());
+        assertTrue(dTUserManageAuthorityPage.getAddButton().isDisplayed());
+        assertTrue(dTUserManageAuthorityPage.getSaveButton().isDisplayed());
         
-        int authorizations = dtUserManageAuthorizatyPage.getAuthorizations();
+        int authorizations = dTUserManageAuthorityPage.getAuthorizations();
         
-        dtUserManageAuthorizatyPage.setGroupAndRole(1, 1);
-        dtUserManageAuthorizatyPage.getAddButton().click();
+        dTUserManageAuthorityPage.setGroupAndRole(1, 1);
+        dTUserManageAuthorityPage.getAddButton().click();
         
-        Assert.assertEquals(authorizations + 1, dtUserManageAuthorizatyPage.getAuthorizations());
+        Assert.assertEquals(authorizations + 1, dTUserManageAuthorityPage.getAuthorizations());
     }
 }

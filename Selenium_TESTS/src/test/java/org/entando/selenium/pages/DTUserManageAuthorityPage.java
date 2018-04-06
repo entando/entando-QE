@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.By;
@@ -40,8 +39,8 @@ public class DTUserManageAuthorityPage extends PageObject {
     
     @FindBy(xpath = "//*[@class='UserAuthorityTable']//select[@class='form-control']")
     private List<WebElement> authorizationControls;
-    Select userGroup = new Select(authorizationControls.get(0));
-    Select userRole = new Select(authorizationControls.get(1));
+    Select userGroup;
+    Select userRole;
 
     public List<WebElement> getAuthorizationControls() {
         return authorizationControls;
@@ -65,8 +64,6 @@ public class DTUserManageAuthorityPage extends PageObject {
         return pageTitle;
     }
     
-    private int authorizations;
-
     public int getAuthorizations() {
         try{
             return getAuthorizationRows().size();
@@ -77,13 +74,26 @@ public class DTUserManageAuthorityPage extends PageObject {
     }
     
     public void setGroupAndRole(int numGroup, int numRole){
-        userGroup.getOptions().get(numGroup).click();        
-        userRole.getOptions().get(numRole).click();
+        getUserGroup().getOptions().get(numGroup).click();        
+        getUserRole().getOptions().get(numRole).click();
     }
     
-    @Inject
     public DTUserManageAuthorityPage(WebDriver driver) {
         super(driver);
+    }
+    
+    private Select getUserGroup(){
+        if(userGroup == null){
+            userGroup = new Select(authorizationControls.get(0));
+        }
+        return userGroup;
+    }
+    
+    private Select getUserRole(){
+        if(userRole == null){
+            userRole = new Select(authorizationControls.get(1));
+        }
+        return userRole;
     }
 
     private List<WebElement> getAuthorizationRows() {

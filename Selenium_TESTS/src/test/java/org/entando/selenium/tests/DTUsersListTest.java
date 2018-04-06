@@ -24,38 +24,44 @@ import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTUsersPage;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class DTUsersListTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTUsersPage dTUsersPage;
+    
+    @Autowired
+    public Utils util;
 
     @Test
     public void runTest() {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
         List<String> expectedHeaderTitles = Arrays.asList("Username", "Full name", "Email", "Status", "Actions");
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
         // dtDashboardPage.selectTab("User Settings");
 
-        DTUsersPage dtusersPage = new DTUsersPage(driver);
+        dTUsersPage.getPageTitle().getText();
 
-        dtusersPage.getPageTitle().getText();
-
-        Utils util = new Utils();
-
-        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dtusersPage.getTableHeader());
+        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTUsersPage.getTableHeader());
 
         //Asserts that table column names are the expected ones.
         Assert.assertEquals(expectedHeaderTitles, fetchedHeaderTitles);
 
         String pageTitle = "Users";
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtusersPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTUsersPage.getPageTitle().getText());
 
         //Asserts the presence of the button with displayed name as argument
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "Add"));

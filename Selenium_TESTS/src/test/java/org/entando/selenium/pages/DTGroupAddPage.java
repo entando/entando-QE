@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +49,6 @@ public class DTGroupAddPage extends PageObject {
     @FindBy (xpath = "//*[contains(@type, 'submit')]")
     private WebElement submit;
     
-    @Inject
     public DTGroupAddPage(WebDriver driver) {
         super(driver);
     }

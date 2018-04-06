@@ -12,7 +12,6 @@ details.
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +24,7 @@ public class DTLoginPage extends PageObject {
     @FindBy(id = "password")
     private WebElement passWord;
 
-    @FindBy(className = "LoginForm__loginButton")
+    @FindBy(className = "LoginForm__login-button")
     private WebElement submitButton;
 
     public void logIn(String userName, String passWord) {
@@ -36,7 +35,6 @@ public class DTLoginPage extends PageObject {
         this.passWord.sendKeys(passWord);
     }
 
-    @Inject
     public DTLoginPage(WebDriver driver) {
         super(driver);
         driver.get("http://appbuilder.serv.run/");

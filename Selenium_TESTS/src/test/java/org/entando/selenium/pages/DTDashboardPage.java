@@ -12,7 +12,6 @@ details.
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -88,7 +87,6 @@ public class DTDashboardPage extends PageObject {
 
     }
 
-    @Inject
     public DTDashboardPage(WebDriver driver) {
         super(driver);
     }

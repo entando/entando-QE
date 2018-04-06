@@ -5,9 +5,7 @@
  */
 package org.entando.selenium.tests;
 
-import com.google.inject.Inject;
 import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.pages.DTGroupAddPage;
 import org.entando.selenium.pages.DTGroupEditPage;
 import org.entando.selenium.pages.DTGroupsPage;
 import org.entando.selenium.pages.DTLoginPage;
@@ -18,6 +16,7 @@ import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -25,19 +24,19 @@ import org.junit.jupiter.api.Test;
  */
 public class DTGroupEditTest extends FunctionalTest {
     
-    @Inject
+    @Autowired
     DTLoginPage dTLoginPage;
     
-    @Inject
+    @Autowired
     DTDashboardPage dTDashboardPage;
     
-    @Inject
+    @Autowired
     DTGroupsPage dtGroupsPage;
     
-    @Inject
+    @Autowired
     DTGroupEditPage dtGroupEditPage;
     
-    @Inject
+    @Autowired
     Utils util;
     
     @Test

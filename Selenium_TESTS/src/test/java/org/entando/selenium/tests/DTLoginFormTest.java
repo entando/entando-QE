@@ -18,17 +18,18 @@ import org.entando.selenium.pages.DTLoginPage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTLoginFormTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
 
     @Test
     public void LogIn() {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
         assertEquals(" Admin ", receiptDtPage.confirmationHeader());

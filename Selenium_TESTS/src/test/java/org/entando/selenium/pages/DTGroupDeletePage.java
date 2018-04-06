@@ -5,13 +5,10 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -31,7 +28,6 @@ public class DTGroupDeletePage extends PageObject{
     @FindBy(xpath = "//button[contains(., 'Delete')]")
     private WebElement delete;
     
-    @Inject
     public DTGroupDeletePage(WebDriver driver) {
         super(driver);
     }

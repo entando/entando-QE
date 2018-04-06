@@ -16,11 +16,14 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.entando.selenium.pages.DTWidgetEditPage;
-import org.entando.selenium.utils.*;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestingExtensionofPageList extends DTWidgetsListTest {
 
+    @Autowired
+    public DTWidgetEditPage dTWidgetEditPage;
+    
     @Test
     public void runTest() {
 
@@ -34,20 +37,16 @@ public class TestingExtensionofPageList extends DTWidgetsListTest {
 
         String pageTitle = "Edit Widget";
 
-        DTWidgetEditPage dtWidgetEditPage = new DTWidgetEditPage(driver);
-
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtWidgetEditPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTWidgetEditPage.getPageTitle().getText());
 
-        dtWidgetEditPage.setEnTitle("English Title changed by Selenium");
-        dtWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
-        dtWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
+        dTWidgetEditPage.setEnTitle("English Title changed by Selenium");
+        dTWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
+        dTWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
 
-        Utils util = new Utils();
+        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Customers");
 
-        util.selectSetByValue(dtWidgetEditPage.getGroup(), "Customers");
-
-        dtWidgetEditPage.save();
+        dTWidgetEditPage.save();
 
     }
 

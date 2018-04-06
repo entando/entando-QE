@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import java.util.List;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.By;
@@ -40,7 +39,6 @@ public class DTUserDetailsPage extends PageObject {
         return pageTitle;
     }
     
-    @Inject
     public DTUserDetailsPage(WebDriver driver) {
         super(driver);
     }

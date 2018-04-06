@@ -5,7 +5,6 @@
  */
 package org.entando.selenium.pages;
 
-import com.google.inject.Inject;
 import org.entando.selenium.utils.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -94,7 +93,6 @@ public class DTGroupEditPage extends PageObject {
         return submit;
     }
     
-    @Inject
     public DTGroupEditPage(WebDriver driver) {
         super(driver);
     }
