@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b8ee9fa3-85d2-4083-bd4b-6c5d0953ae1d",
+						"id": "1186a6f9-b135-4e6d-8510-140bb0845a92",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is used into pages",
@@ -26,12 +26,12 @@
 							"",
 							"pm.test(\"Error code is \" + error_code, function () {",
 							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"  pm.expect(jsonData.errors[1].code).to.eql(error_code);",
 							"});",
 							"",
 							"pm.test(\"Error message is correct \", function () {",
 							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"  pm.expect(jsonData.errors[1].message).to.include(error_message);",
 							"});",
 							"",
 							"",
