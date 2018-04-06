@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "c0a41af3-eca6-4ebc-a6c6-6de962a166be",
+		"name": "ProfileTypes_POST_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileTypes_POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2db5aff1-ab9f-4194-b67b-6d0da45be3fa",
+						"type": "text/javascript",
+						"exec": [
+							"//ProfileTypes\tPOST\t\tSuccess\t200\t\tN/A\t\t\t\tDone",
+							"",
+							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32cd02fc-8546-4f38-9ec6-35570dec1b79",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "02704744-bcc6-44a4-b229-7861283f32bb",
+			"key": "api_url",
+			"value": "api/profileTypes",
+			"type": "string"
+		},
+		{
+			"id": "97244ce4-34c1-40d6-9df7-e95a48f5cbd1",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "50f86e78-f655-4097-b132-35a9f0eb95ee",
+			"key": "payload",
+			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string"
+		},
+		{
+			"id": "da368eae-8961-4302-847d-0bfa5398479d",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "f944336e-292b-46f8-b6d1-376ad8b95c03",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "d8a30af7-f19f-4b2c-85be-5cec767f306c",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"type": "string"
+		}
+	]
+}

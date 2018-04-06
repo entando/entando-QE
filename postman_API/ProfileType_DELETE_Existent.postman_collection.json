@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "954d9af2-1a33-4b16-8616-9fcb5f2bd599",
+		"name": "ProfileType_DELETE_Existent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1169c8a7-77bf-447b-ada1-65c8dff11002",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileType_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fafcd17c-a1fc-4028-9ec2-c4a5e71d6a1d",
+						"type": "text/javascript",
+						"exec": [
+							"//ProfileType\tDELETE\t\tExistent\t200\tN/A\tN/A\t\t\t\tDone",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e3550ac-7540-4537-8e35-9f285e745438",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "570d0c88-b061-47d2-98a4-30eb79dd4415",
+			"key": "api_url",
+			"value": "api/profileTypes",
+			"type": "string"
+		},
+		{
+			"id": "5c77856b-47ef-42cd-a76d-3a3f595872eb",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "f71a067c-de85-4de5-9ddd-f0f8857770b7",
+			"key": "payload",
+			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

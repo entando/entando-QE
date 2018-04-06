@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "8fc48e46-5b89-42a6-a448-bd97ca0c0f3b",
+		"name": "ProfileType_PUT_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileType_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a4c9502-d3e8-46f5-902e-e69ce57ada4e",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var status_code = 200",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileType_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88494afd-7b68-4779-8e90-4236b6680bc6",
+						"type": "text/javascript",
+						"exec": [
+							"//ProfileType\tPUT\t\tExistent\t200\t\tN/A\t\t\t\tDone",
+							"var status_code = 200;",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Profile type code is correct\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Profile Name is set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"Profile Type Modified\");",
+							"    ",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccbbddb5-9675-4d3a-bf75-55ce2d0e9b73",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Profile Name is set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"Profile Type Modified\");",
+							"    ",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2e86d1f9-9d69-483d-864f-96f4808636c1",
+			"key": "api_url",
+			"value": "api/profileTypes",
+			"type": "string"
+		},
+		{
+			"id": "d0e2ac2a-c99a-43ce-8951-6f8ced95539d",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "092bd946-8d28-4bd2-8b56-b5637fb47c58",
+			"key": "payload",
+			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string"
+		},
+		{
+			"id": "28f80a98-540f-441e-a9f0-b04779ee5e1d",
+			"key": "payload_modified",
+			"value": "{\n  \"name\":\"Profile Type Modified\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
