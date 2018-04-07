@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "27dbd185-77ff-4d11-87a2-a1e500b590e5",
+		"name": "Widget_PUT_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Widget_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "365b4050-52d1-4137-8078-f4c8584fff0a",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var status_code = 200",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"My Widget\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"Mio Widget\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Label_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1138cab4-a722-489b-85a7-4fca754b522b",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: Status code: 200, error code: \"-\", error message: \"-\"",
+							"var status_code = 200;",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Widget code is correct\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"My Widget changed\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"Mio Widget modificato\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fd800eb-7957-40e4-a84a-21cea3e16048",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1d19dc91-f2df-479c-9af3-e3e58a3ec795",
+			"key": "api_url",
+			"value": "api/widgets",
+			"type": "string"
+		},
+		{
+			"id": "8e16a78e-99fa-4813-a6c9-45ffa4d7fd49",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "506f43b9-511b-4097-8c1c-33cb0ecfdd46",
+			"key": "payload",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "ac6c3b4c-3623-447f-98af-c3ca204defc7",
+			"key": "payload_modified",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget modificato\",\n \"en\": \"My Widget changed\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao changed</div>\"\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

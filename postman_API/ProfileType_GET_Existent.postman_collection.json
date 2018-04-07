@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "9db289db-a38f-49f5-86bd-44c72174c683",
+		"name": "ProfileType_GET_Existent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f397b3c-1b12-4d7f-ad38-e49edf857cd9",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code ===  codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileType_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a372887-2a6e-4f82-ab69-c663341f99ee",
+						"type": "text/javascript",
+						"exec": [
+							"//ProfileType\tGET\t\tExistent\t200\tN/A\tN/A\t\t\t\tDone",
+							"",
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "51598bd4-8e20-490c-89ad-c36dc1d45772",
+			"key": "api_url",
+			"value": "api/profileTypes",
+			"type": "string"
+		},
+		{
+			"id": "4b95e830-1b57-4783-b3b3-c2dc5b422f29",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "f5ab5ac2-7413-4209-9df5-3a854dc1fd26",
+			"key": "payload",
+			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string"
+		}
+	]
+}

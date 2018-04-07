@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
-		"name": "Fragments_POST_MissingGuiCode",
+		"_postman_id": "31e912dc-a561-478d-89f1-dffece4b68c7",
+		"name": "Widgets_POST_WrongGroup",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -66,20 +66,19 @@
 			"response": []
 		},
 		{
-			"name": "Labels_POST",
+			"name": "Widgets_POST",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "56c9d7c9-f69f-418f-bfef-a19d7c78a56f",
+						"id": "c0d739d3-24b5-4004-9475-92cc16d5acff",
 						"type": "text/javascript",
 						"exec": [
-							"//Fragments\tPOST\t\tDefaultCodeMissing\t400\t2\t\t\t\t\tDone",
-							"",
+							"//Contract 400, 2, The Group '<group>' does not exist",
 							"",
 							"var status_code = 400;",
 							"var error_code = '2';",
-							"var error_message = \"code is required\";",
+							"var error_message = \"The Group 'not-existent-group' does not exist\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -114,7 +113,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{payload_missing_gui}}"
+					"raw": "{{payload_wrong_group}}"
 				},
 				"url": {
 					"raw": "{{url}}/{{api_url}}",
@@ -210,27 +209,33 @@
 	],
 	"variable": [
 		{
-			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
+			"id": "f53f5d91-9537-427d-a851-0d9bb8d9f1ab",
 			"key": "api_url",
-			"value": "api/fragments",
+			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
+			"id": "3d373e65-aaf0-4d71-b121-7df300d2a648",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
+			"id": "24a25d3e-37ec-4892-a35a-16ca6e6802f7",
 			"key": "payload",
-			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
-			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"AAA\"\n}",
+			"id": "bf6a5a70-8d2e-4a65-9b05-0d9430f15ffc",
+			"key": "payload_wrong_group",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "8d2a50e9-11dd-4f77-a9bf-8db280ddde04",
+			"key": "payload_mismatch_uri",
+			"value": "{\n \"code\": \"BBB\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

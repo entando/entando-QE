@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
-		"name": "Fragments_POST_MissingGuiCode",
+		"_postman_id": "f4eb55c6-a630-4a96-9697-7efe3c494e6c",
+		"name": "ProfileType_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -66,20 +66,19 @@
 			"response": []
 		},
 		{
-			"name": "Labels_POST",
+			"name": "ProfileType_PUT",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "56c9d7c9-f69f-418f-bfef-a19d7c78a56f",
+						"id": "9c523b39-532a-46a9-83dd-25fa222d26a4",
 						"type": "text/javascript",
 						"exec": [
-							"//Fragments\tPOST\t\tDefaultCodeMissing\t400\t2\t\t\t\t\tDone",
+							"//ProfileType\tPUT\t\tNotExistent\t404\t1\tno profileType with the code //<profileTypeCode> could be found.\t\t\t\tDone",
 							"",
-							"",
-							"var status_code = 400;",
-							"var error_code = '2';",
-							"var error_message = \"code is required\";",
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"could not be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -101,7 +100,7 @@
 				}
 			],
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
@@ -114,15 +113,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{payload_missing_gui}}"
+					"raw": "{{payload}}"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}",
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"{{api_url}}"
+						"{{api_url}}",
+						"{{item_name}}"
 					]
 				}
 			},
@@ -210,27 +210,39 @@
 	],
 	"variable": [
 		{
-			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
+			"id": "4f8f67b5-2d0b-4bb6-8e46-1e19878c9df1",
 			"key": "api_url",
-			"value": "api/fragments",
+			"value": "api/profileTypes",
 			"type": "string"
 		},
 		{
-			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
+			"id": "713e5666-9038-46ee-8e0c-7b2446ea3a17",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
+			"id": "c0bd0469-f884-4e58-a790-3078dcf7c854",
 			"key": "payload",
-			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
+			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
-			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"AAA\"\n}",
+			"id": "4764ac41-20c9-49ff-a40a-c99034d16c10",
+			"key": "payload_missing_default_language",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "17d0d16c-2a9d-4dd8-ab6c-5b90cd3e956c",
+			"key": "payload_language_not_active",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
+			"type": "string"
+		},
+		{
+			"id": "066e4e5f-9e74-46a7-bb0e-ec4870cf78b1",
+			"key": "payload_language_not_valid",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
 			"type": "string"
 		}
 	]

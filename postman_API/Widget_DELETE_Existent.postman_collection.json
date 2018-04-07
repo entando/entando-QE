@@ -1,22 +1,88 @@
 {
 	"info": {
-		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
-		"name": "Fragments_POST_MissingGuiCode",
+		"_postman_id": "3668ae3a-5d13-4034-9619-6aaa085de8b2",
+		"name": "Widget_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "DELETE_HELPER",
+			"name": "POST_HELPER",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"id": "d3e5a631-da69-481b-8ca1-f387ab553ae1",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 400;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === 400){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Widget_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1b9bd02-da20-432b-a345-d30de6fe2286",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
-							"var labelName= \"AAA1\";",
 							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -60,69 +126,6 @@
 					"path": [
 						"{{api_url}}",
 						"{{item_name}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Labels_POST",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "56c9d7c9-f69f-418f-bfef-a19d7c78a56f",
-						"type": "text/javascript",
-						"exec": [
-							"//Fragments\tPOST\t\tDefaultCodeMissing\t400\t2\t\t\t\t\tDone",
-							"",
-							"",
-							"var status_code = 400;",
-							"var error_code = '2';",
-							"var error_message = \"code is required\";",
-							"",
-							"",
-							"pm.test(\"Status code is \" + status_code, function () {",
-							"    pm.response.to.have.status(status_code);",
-							"});",
-							"",
-							"pm.test(\"Error code is \" + error_code, function () {",
-							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
-							"});",
-							"",
-							"pm.test(\"Error message is correct \", function () {",
-							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
-							"});",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{{payload_missing_gui}}"
-				},
-				"url": {
-					"raw": "{{url}}/{{api_url}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"{{api_url}}"
 					]
 				}
 			},
@@ -210,27 +213,21 @@
 	],
 	"variable": [
 		{
-			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
+			"id": "12059a0c-e225-4aac-bf6a-100b94d15517",
 			"key": "api_url",
-			"value": "api/fragments",
+			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
+			"id": "5a4638d9-c80f-49e9-9b8d-cbfe77b6274e",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
+			"id": "81e262bf-df57-4d5b-a60f-2ecd7e00499f",
 			"key": "payload",
-			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
-			"type": "string"
-		},
-		{
-			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
-			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"AAA\"\n}",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

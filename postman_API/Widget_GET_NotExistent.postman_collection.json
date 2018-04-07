@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
-		"name": "Fragments_POST_MissingGuiCode",
+		"_postman_id": "89a475b0-b354-430a-b042-4468987386f7",
+		"name": "Widget_GET_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,10 +11,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"id": "75d75bff-2ca4-49e3-ba92-9b1730c6d3ae",
 						"type": "text/javascript",
 						"exec": [
-							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
 							"var labelName= \"AAA1\";",
 							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
@@ -66,77 +65,16 @@
 			"response": []
 		},
 		{
-			"name": "Labels_POST",
+			"name": "Widget_GET",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "56c9d7c9-f69f-418f-bfef-a19d7c78a56f",
+						"id": "cf47a7f3-7dd1-4096-8d64-7963a712c404",
 						"type": "text/javascript",
 						"exec": [
-							"//Fragments\tPOST\t\tDefaultCodeMissing\t400\t2\t\t\t\t\tDone",
+							"//Contract for GET Not Existent: Status Code: \"404\", Error Code: \"1\", Error Message: \"not found\"",
 							"",
-							"",
-							"var status_code = 400;",
-							"var error_code = '2';",
-							"var error_message = \"code is required\";",
-							"",
-							"",
-							"pm.test(\"Status code is \" + status_code, function () {",
-							"    pm.response.to.have.status(status_code);",
-							"});",
-							"",
-							"pm.test(\"Error code is \" + error_code, function () {",
-							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
-							"});",
-							"",
-							"pm.test(\"Error message is correct \", function () {",
-							"   var jsonData = pm.response.json();",
-							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
-							"});",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{{payload_missing_gui}}"
-				},
-				"url": {
-					"raw": "{{url}}/{{api_url}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"{{api_url}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET_HELPER_NOT_FOUND",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7e3550ac-7540-4537-8e35-9f285e745438",
-						"type": "text/javascript",
-						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
 							"var error_message = \"code could not be found\";",
@@ -210,27 +148,21 @@
 	],
 	"variable": [
 		{
-			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
+			"id": "b3b3453b-3195-4947-bff4-33dca0af7c0b",
 			"key": "api_url",
-			"value": "api/fragments",
+			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
+			"id": "14a9e9ff-3982-4531-b65b-2a44b9c9d4fa",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
+			"id": "57202b1d-7b69-4b34-abc7-cc2d4551d3e1",
 			"key": "payload",
-			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
-			"type": "string"
-		},
-		{
-			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
-			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"AAA\"\n}",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

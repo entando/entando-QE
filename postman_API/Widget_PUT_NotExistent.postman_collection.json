@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "099339c5-50cd-4a31-bc78-89902a080315",
-		"name": "Fragments_POST_MissingGuiCode",
+		"_postman_id": "3a3155af-808f-4014-a7bf-afe5df71440f",
+		"name": "Widget_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -66,20 +66,19 @@
 			"response": []
 		},
 		{
-			"name": "Labels_POST",
+			"name": "Widget_PUT",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "56c9d7c9-f69f-418f-bfef-a19d7c78a56f",
+						"id": "9fd736dc-3af9-47d5-81e9-c167a107230d",
 						"type": "text/javascript",
 						"exec": [
-							"//Fragments\tPOST\t\tDefaultCodeMissing\t400\t2\t\t\t\t\tDone",
+							"//Contract 404, 1, no label found with code <labelCode>",
 							"",
-							"",
-							"var status_code = 400;",
-							"var error_code = '2';",
-							"var error_message = \"code is required\";",
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"could not be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -101,7 +100,7 @@
 				}
 			],
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
@@ -114,15 +113,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{payload_missing_gui}}"
+					"raw": "{{payload}}"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}",
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"{{api_url}}"
+						"{{api_url}}",
+						"{{item_name}}"
 					]
 				}
 			},
@@ -210,27 +210,21 @@
 	],
 	"variable": [
 		{
-			"id": "f0b82eed-1405-45c6-8538-9e5c3aea8d80",
+			"id": "fcb98ae9-9f81-46a2-bcfb-67b81090f01d",
 			"key": "api_url",
-			"value": "api/fragments",
+			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "c45bcbc7-bbaa-4aa0-bdc5-28497471241c",
+			"id": "2e95a826-84b0-4f98-b310-9759edded69d",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "3ff2d98b-d0f3-4951-982b-9da8bda6ea0e",
+			"id": "ea34494d-5e8a-4e2f-8e72-467ec02e2dd9",
 			"key": "payload",
-			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
-			"type": "string"
-		},
-		{
-			"id": "3f70156f-c462-4d6b-bfe4-c5fb8ccf723d",
-			"key": "payload_missing_gui",
-			"value": "{\n  \"code\": \"AAA\"\n}",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]
