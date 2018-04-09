@@ -222,10 +222,10 @@ public class Utils {
             }
         }
         if(columnIndex >= 0){
-            List<WebElement> rows = table.findElements(By.xpath("//tbody/tr"));
+            List<WebElement> rows = table.findElements(By.xpath("./tbody/tr"));
             int rowIndex = -1;
             for(int j = 0; j < rows.size(); j++){
-                WebElement cell = rows.get(j).findElement(By.xpath(String.format("//td[%d]", columnIndex + 1)));
+                WebElement cell = rows.get(j).findElement(By.xpath(String.format("./td[%d]", columnIndex + 1)));
                 if(cell.getAttribute(innerText).equalsIgnoreCase(columnValue)){
                     rowIndex = j;
                     break;
