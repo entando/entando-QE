@@ -62,11 +62,6 @@ public class DTGroupDetailsTest extends FunctionalTest {
         String detailsGroup = "Group";
         String detailsName = "Name";
         String[] tabs = new String[]{"Pages", "Users", "Widget Types", "Contents", "Resources"};
-        String[] pagesHeaders = new String[]{"Pages", "Actions"};
-        String[] usersHeaders = new String[]{"Username", "Last login", "Status", "Actions"};
-        String[] widgetTypesHeaders = new String[]{"Title", "Code"};
-        String[] contentsHeaders = new String[]{"Title", "Code", "Type", "Last edit"};
-        String[] resourcesHeaders = new String[]{"Name", "Type"};
 
         String[] pageTabs = util.getText(dTGroupDetailsPage.getDetailsTabs());
 
@@ -77,29 +72,24 @@ public class DTGroupDetailsTest extends FunctionalTest {
         
         dTGroupDetailsPage.getDetailsTabs().get(1).click();
         util.waitUntilIsVisible(driver, dTGroupDetailsPage.getUsersContent());
-        String[] pageUsersHeaders = util.getText(dTGroupDetailsPage.getUsersHeaders());
-        Assert.assertArrayEquals(usersHeaders, pageUsersHeaders);
+        Assert.assertTrue(dTGroupDetailsPage.getUsersContent().isDisplayed());
         
         dTGroupDetailsPage.getDetailsTabs().get(2).click();
         util.waitUntilIsVisible(driver, dTGroupDetailsPage.getWidgetTypesContent());
-        String[] pageWidgetTypesHeaders = util.getText(dTGroupDetailsPage.getWidgetTypesHeaders());        
-        Assert.assertArrayEquals(widgetTypesHeaders, pageWidgetTypesHeaders);
+        Assert.assertTrue(dTGroupDetailsPage.getWidgetTypesContent().isDisplayed());
+
         
         dTGroupDetailsPage.getDetailsTabs().get(3).click();
         util.waitUntilIsVisible(driver, dTGroupDetailsPage.getContentsContent());
-        String[] pageContentsHeaders = util.getText(dTGroupDetailsPage.getContentsHeaders());        
-        Assert.assertArrayEquals(contentsHeaders, pageContentsHeaders);
+        Assert.assertTrue(dTGroupDetailsPage.getContentsContent().isDisplayed());
         
         dTGroupDetailsPage.getDetailsTabs().get(4).click();
         util.waitUntilIsVisible(driver, dTGroupDetailsPage.getResourcesContent());
-        String[] pageResourcesHeaders = util.getText(dTGroupDetailsPage.getResourcesHeaders());        
-        Assert.assertArrayEquals(resourcesHeaders, pageResourcesHeaders);
+        Assert.assertTrue(dTGroupDetailsPage.getResourcesContent().isDisplayed());
         
         dTGroupDetailsPage.getDetailsTabs().get(0).click();
         util.waitUntilIsVisible(driver, dTGroupDetailsPage.getPagesContent());
-        String[] pagePagesHeaders = util.getText(dTGroupDetailsPage.getPagesHeaders());        
-        Assert.assertArrayEquals(pagesHeaders, pagePagesHeaders);
-        
+        Assert.assertTrue(dTGroupDetailsPage.getPagesContent().isDisplayed());       
     }
     
 }
