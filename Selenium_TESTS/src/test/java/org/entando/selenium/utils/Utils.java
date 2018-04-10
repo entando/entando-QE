@@ -222,10 +222,10 @@ public class Utils {
             }
         }
         if(columnIndex >= 0){
-            List<WebElement> rows = table.findElements(By.xpath("//tbody/tr"));
+            List<WebElement> rows = table.findElements(By.xpath("./tbody/tr"));
             int rowIndex = -1;
             for(int j = 0; j < rows.size(); j++){
-                WebElement cell = rows.get(j).findElement(By.xpath(String.format("//td[%d]", columnIndex + 1)));
+                WebElement cell = rows.get(j).findElement(By.xpath(String.format("./td[%d]", columnIndex + 1)));
                 if(cell.getAttribute(innerText).equalsIgnoreCase(columnValue)){
                     rowIndex = j;
                     break;
@@ -245,16 +245,8 @@ public class Utils {
     }
     
     public void clickKebabActionOnList(WebElement ul, String action){
-//        List<WebElement> list = ul.findElements(By.tagName("li"));
         WebElement link = ul.findElement(By.linkText(action));
         link.click();
-//        for(WebElement li: list){
-//            WebElement a = li.findElement(By.tagName("a"));
-//            if(a.getAttribute(innerText).trim().equalsIgnoreCase(action)){
-//                a.click();
-//                break;
-//            }
-//        }
     }
     
     public List<WebElement> expandAllRowsOnTable(WebDriver driver, WebElement table) {
@@ -290,22 +282,42 @@ public class Utils {
         return false;
     }
     
-    private void waitUntilSizeChange(WebDriverWait wait, WebElement element, String childrenSelector, int currentSize){
-        wait.until(new ExpectedCondition<Boolean>(){
-            @Override
-            public Boolean apply(WebDriver d) {
-                int size = element.findElements(By.xpath(childrenSelector)).size();
-                return currentSize != size;
-            }
-        });
+    public String getText(WebElement item){
+        return item.getAttribute(innerText);
     }
     
-    private static String innerText = "innerText"; 
-
-    public void waitUntilVisible(WebDriver driver, WebElement element) {
+    public String[] getText(List<WebElement> items) {
+        String[] result = new String[items.size()];
+        for(int i = 0; i < items.size(); i++){
+            result[i] = items.get(i).getAttribute(innerText);
+        }
+        return result;
+    }
+    
+    public String getValue(WebDriver driver, WebElement element){
+        waitUntilHasValue(driver, element);
+        return element.getAttribute(value);
+    }
+    
+    public void waitUntilIsVisible(WebDriver driver, WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+    
+    private void waitUntilSizeChange(WebDriverWait wait, WebElement element, String childrenSelector, int currentSize){
+        wait.until((ExpectedCondition<Boolean>) (WebDriver d) -> {
+            int size = element.findElements(By.xpath(childrenSelector)).size();
+            return currentSize != size;
+        });
+    }
+    
+    private void waitUntilHasValue(WebDriver driver, WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until((ExpectedCondition<Boolean>) (WebDriver f) -> !"".equals(element.getAttribute(value)));
+    }
+    
+    private static String innerText = "innerText"; 
+    private static String value = "value"; 
     
     public static class Kebab {
         

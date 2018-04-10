@@ -21,40 +21,46 @@ import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import org.junit.Test;
 
 public class DTDataTypesListTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTDataTypesPage dTDataTypesPage;
 
+    @Autowired
+    public Utils util;
+    
     @Test
     public void runTest() {
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Code", "Status", "Actions");
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("Data", "Data Types");
+        dTDashboardPage.SelectSecondOrderLink("Data", "Data Types");
 
-        DTDataTypesPage dtDatatTypesPage = new DTDataTypesPage(driver);
+        dTDataTypesPage.getPageTitle().getText();
 
-        dtDatatTypesPage.getPageTitle().getText();
-
-        Utils util = new Utils();
-
-        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dtDatatTypesPage.getTableHeader());
+        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTDataTypesPage.getTableHeader());
 
         //Asserts that table column names are the expected ones.
         Assert.assertEquals(expectedHeaderTitles, fetchedHeaderTitles);
 
         String pageTitle = "Data Type";
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtDatatTypesPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTDataTypesPage.getPageTitle().getText());
 
         //Asserts the presence of the button with displayed name as argument
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "Add"));

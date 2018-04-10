@@ -13,10 +13,6 @@ details.
 package org.entando.selenium.pages;
 
 import org.entando.selenium.utils.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

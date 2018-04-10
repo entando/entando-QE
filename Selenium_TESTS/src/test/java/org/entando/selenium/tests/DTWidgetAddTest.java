@@ -20,49 +20,53 @@ import org.entando.selenium.pages.DTWidgetEditPage;
 import org.entando.selenium.pages.DTLoginPage;
 
 import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.entando.selenium.pages.DTWidgetPage;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTWidgetAddTest extends FunctionalTest {
 
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTWidgetPage dTWidgetPage;
+    
+    @Autowired
+    public DTWidgetEditPage dTWidgetEditPage;
+    
+    @Autowired
+    public Utils util;
+    
     @Test
     public void EditWidget() throws InterruptedException {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
+        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
 
-        DTWidgetPage dtWidget = new DTWidgetPage(driver);
-
-        Utils util = new Utils();
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
         driver.manage().window().maximize();
 
-        dtWidget.getNewWidgetButton().click();
+        dTWidgetPage.getNewWidgetButton().click();
 
         sleep(300);
-        DTWidgetEditPage dtWidgetEdit = new DTWidgetEditPage(driver);
+        dTWidgetEditPage.getCode().sendKeys("code_set_by_Selenium");
+        dTWidgetEditPage.setEnTitle("English Title set by Selenium");
+        dTWidgetEditPage.setItTitle("Titolo Italiano da Selenium");
+        dTWidgetEditPage.setCustomUI("<p>Custom UI set by Selenium</p>");
 
-        dtWidgetEdit.getCode().sendKeys("code_set_by_Selenium");
-        dtWidgetEdit.setEnTitle("English Title set by Selenium");
-        dtWidgetEdit.setItTitle("Titolo Italiano da Selenium");
-        dtWidgetEdit.setCustomUI("<p>Custom UI set by Selenium</p>");
+        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Customers");
 
-        util.selectSetByValue(dtWidgetEdit.getGroup(), "Customers");
-
-        dtWidgetEdit.save();
+        dTWidgetEditPage.save();
 
     }
 }

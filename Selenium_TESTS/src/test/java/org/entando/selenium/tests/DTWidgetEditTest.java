@@ -19,28 +19,35 @@ import org.entando.selenium.pages.DTWidgetEditPage;
 import org.entando.selenium.pages.DTLoginPage;
 
 import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTWidgetEditTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTWidgetEditPage dTWidgetEditPage;
+    
+    @Autowired
+    public Utils util;
 
     @Test
     public void EditWidget() {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
-
-        Utils util = new Utils();
+        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
@@ -53,18 +60,16 @@ public class DTWidgetEditTest extends FunctionalTest {
 
         String pageTitle = "Edit Widget";
 
-        DTWidgetEditPage dtWidgetEditPage = new DTWidgetEditPage(driver);
-
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtWidgetEditPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTWidgetEditPage.getPageTitle().getText());
 
-        dtWidgetEditPage.setEnTitle("English Title changed by Selenium");
-        dtWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
-        dtWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
+        dTWidgetEditPage.setEnTitle("English Title changed by Selenium");
+        dTWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
+        dTWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
 
-        util.selectSetByValue(dtWidgetEditPage.getGroup(), "Customers");
+        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Customers");
 
-        dtWidgetEditPage.save();
+        dTWidgetEditPage.save();
 
     }
 }

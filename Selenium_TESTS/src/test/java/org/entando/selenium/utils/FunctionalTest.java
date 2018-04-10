@@ -14,36 +14,48 @@ package org.entando.selenium.utils;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 /**
  * <strong>FunctionalTest</strong> handles setup and teardown of WebDriver.
  *
  * @author Kim Schiller
  */
+
+@TestInstance(Lifecycle.PER_CLASS)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = AppConfig.class)
+@TestExecutionListeners({ SeleniumTestExecutionListener.class,
+    DependencyInjectionTestExecutionListener.class })
 public class FunctionalTest {
 
-    protected static WebDriver driver;
-
-    @BeforeClass
-    public static void setUp() {
-        driver = new ChromeDriver();
+    @Autowired
+    protected WebDriver driver;
+    
+    @BeforeAll
+    public void setUp() {
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 
-    @After
+    @AfterEach
     public void cleanUp() {
         driver.manage().deleteAllCookies();
     }
 
-    @AfterClass
-    public static void tearDown() {
-        //driver.close();
-        //driver.quit();
+    @AfterAll
+    public void tearDown() {
+        driver.close();
+        driver.quit();
     }
 }
