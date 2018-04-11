@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "fff1e3d6-5909-476f-9227-e2e09fb6f53b",
+		"name": "Language_PUT_DisableDefaultLanguage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Languages_PUT _HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "352270d0-3d22-4d34-9940-385745965efd",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"English\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(true);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Language_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f805fd28-b2d7-4f58-b40e-63730cb203f2",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tDefaultLangMissing\t400\t2\t\t\t\t\tDone",
+							"",
+							"var status_code = 409;",
+							"var error_code = '1';",
+							"var error_message = \"default language cannot be disabled\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8385227f-d422-487f-9760-30b68dde454f",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"English\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(true);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8f18296a-11a2-40a8-a49c-50aa2a4e7c62",
+			"key": "api_url",
+			"value": "api/languages",
+			"type": "string"
+		},
+		{
+			"id": "543eb568-1f08-4eba-a5ff-eaae185e7d25",
+			"key": "item_name",
+			"value": "en",
+			"type": "string"
+		},
+		{
+			"id": "67265a70-e867-467d-9856-174f83ddd872",
+			"key": "payload",
+			"value": "{\n    \"isActive\": true\n }",
+			"type": "string"
+		},
+		{
+			"id": "70958bf3-7ae6-4d65-970e-1146c0b8dd43",
+			"key": "payload_modified",
+			"value": "{\n    \"isActive\": false\n }",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "72dbb48b-70f2-4cf0-8371-38c4580ff35c",
+		"name": "Language_PUT_LanguageCodeNotFound",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Language_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a329a33-c40f-4698-9d10-05e36d7659f3",
+						"type": "text/javascript",
+						"exec": [
+							"//Language Put\t\tLanguage code not found \t404\t2\t\t\t\t\tDone",
+							"",
+							"var status_code = 404;",
+							"var error_code = '2';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "beb3c4c5-202a-4242-a369-827d77faa734",
+						"type": "text/javascript",
+						"exec": [
+							"//Language Put\t\tLanguage code not found \t404\t2\t\t\t\t\tDone",
+							"",
+							"var status_code = 404;",
+							"var error_code = '2';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "90e79306-a885-46bc-bd85-28bc9463a637",
+			"key": "api_url",
+			"value": "api/languages",
+			"type": "string"
+		},
+		{
+			"id": "43d891e6-1dd2-4fc6-84a2-025051b21466",
+			"key": "item_name",
+			"value": "zz",
+			"type": "string"
+		},
+		{
+			"id": "e9139b4c-65c2-4cae-9a9c-6cd644484d02",
+			"key": "payload",
+			"value": "{\n    \"isActive\": true\n }",
+			"type": "string"
+		},
+		{
+			"id": "c9d905b8-2357-4a3c-aef2-693030361e17",
+			"key": "payload_modified",
+			"value": "{\n    \"isActive\": false\n }",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
