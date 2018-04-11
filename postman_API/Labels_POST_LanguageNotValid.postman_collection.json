@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "11a3a84d-1f4e-4609-b58f-c69a579e0166",
+		"_postman_id": "2ab9903f-e7c2-470a-bf05-222af372e5c9",
 		"name": "Labels_POST_LanguageNotValid",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a594667b-3a67-436a-bebd-11fe5a68449e",
+						"id": "cb82aecd-203c-48f8-a5fd-beaa8a148895",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tLangCodeNotValid\t400\t4\t\t\t\t\tDone",
 							"",
-							"var status_code = 400;",
+							"var status_code = 409;",
 							"var error_code = '4';",
 							"var error_message = \"not valid\";",
 							"",
@@ -209,44 +209,44 @@
 	],
 	"variable": [
 		{
-			"id": "5c03e6f9-9d93-4e8c-8dcc-c787594758bd",
+			"id": "6b565739-d781-429f-b1d1-a1410743ca5b",
 			"key": "api_url",
 			"value": "api/labels",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "343553b5-3694-4d03-a1a1-f2c1e5fb144c",
+			"id": "8a1a5cc0-0e84-422a-a169-d4218b38dc7f",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "98e0f94c-f20d-4d29-a535-22e882ab56d2",
+			"id": "5262a2fd-505d-4233-950a-5e7effe63140",
 			"key": "payload",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n }",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "ff9ff792-78e1-47ca-9efe-b413297b9fd9",
+			"id": "10eb4f40-d8af-4c5a-8e92-b46ef1f4f516",
 			"key": "payload_missing_default_language",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "2bbf83b4-c108-4ca9-832f-f461b3d07dfa",
+			"id": "1de313dd-d5ff-4223-9594-0f0ba3f01560",
 			"key": "payload_language_not_active",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "36ae2df0-fa06-4c87-8526-83a3e2606473",
+			"id": "477220ea-3d09-4d87-a1b1-b62ae3514d68",
 			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
 			"type": "string",
 			"description": ""
 		}

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3cc3504-a193-4b69-afdc-440c0345d7d9",
+		"_postman_id": "249853ca-799e-47d9-85ba-4999a6169ef2",
 		"name": "Labels_POST_LanguageNotActive",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,13 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "82ea6dc3-ad26-4405-9adf-2a58466de4db",
+						"id": "c694017c-5c8c-4bd0-ba6a-755450c6c5ae",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tLangCodeNotActive\t400\t3\t\t\t\t\tDone",
 							"",
 							"",
-							"var status_code = 400;",
+							"var status_code = 409;",
 							"var error_code = '3';",
 							"var error_message = \"not active\";",
 							"",

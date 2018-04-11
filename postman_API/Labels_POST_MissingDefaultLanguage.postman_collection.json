@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5a2d2ae1-a3a0-423d-bc06-a20a03769504",
+		"_postman_id": "c7e25d90-d95b-4e3d-aa21-4275b748262d",
 		"name": "Labels_POST_MissingDefaultLanguage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,13 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5076ce57-69b7-4227-b699-ef29a42bc326",
+						"id": "24dafc13-8223-45e3-a527-15cc874df71b",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tDefaultLangMissing\t400\t2\t\t\t\t\tDone",
 							"",
 							"",
-							"var status_code = 400;",
+							"var status_code = 409;",
 							"var error_code = '2';",
 							"var error_message = \"default lang is required\";",
 							"",
