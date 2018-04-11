@@ -19,7 +19,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class ReceiptDTLoginPage extends PageObject {
 
-    @FindBy(css = "#root > div > div.BrandMenu > div > div.collapse.navbar-collapse.navbar-collapse-11 > ul > li.UserDropdown")
+//    @FindBy(css = "#root > div > div.BrandMenu > div > div.collapse.navbar-collapse.navbar-collapse-11 > ul > li.UserDropdown")
+    @FindBy(xpath = "//li[contains(@class, 'UserDropdown')]")
     private WebElement header;
 
     public ReceiptDTLoginPage(WebDriver driver) {

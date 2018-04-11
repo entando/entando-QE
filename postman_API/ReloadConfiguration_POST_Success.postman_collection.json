@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "fc3c3784-3032-4224-9833-8512eda44cfa",
+		"name": "ReloadConfiguration_POST_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ReloadConfiguration_POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10e09c01-af9f-42d7-9526-c0885820d32a",
+						"type": "text/javascript",
+						"exec": [
+							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var status_code = 200",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"success\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "93efa10b-eebe-434b-a2fb-e9b217956bdf",
+			"key": "api_url",
+			"value": "api/reloadConfiguration",
+			"type": "string"
+		},
+		{
+			"id": "040427a7-1406-48d9-8daa-9d52cf6af72c",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "d52e0934-7288-41aa-9f11-7d50ac371cd5",
+			"key": "payload",
+			"value": "{\n }",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "689b3200-f13a-40c5-a6cb-29d555dee966",
+		"name": "Group_DELETE_Undeletable",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Group_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "923b4497-5aa4-4b5c-8394-afa07ca692a0",
+						"type": "text/javascript",
+						"exec": [
+							"//Groups\tPOST\t\tGroup not deletable\t409\t4\t\t\t\t\tDone",
+							"",
+							"var status_code = 409;",
+							"var error_code = '3';",
+							"var error_message = \"can not be deleted\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{undeletable_group}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{undeletable_group}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_DELETED",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "618defb9-6fad-4f03-8da5-b4d3832c50b1",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 200;",
+							"",
+							"var undeletable_group = pm.variables.get(\"undeletable_group\");",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"The group has not been deleted\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(undeletable_group);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{undeletable_group}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{undeletable_group}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e780c5e8-5d23-4283-b8ae-4219940339b3",
+			"key": "api_url",
+			"value": "api/groups",
+			"type": "string"
+		},
+		{
+			"id": "21f74764-2891-4d9c-9ac4-9bf7fbaa5fe0",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "c81d3387-4b20-4c6f-bffa-aa403eedbcd6",
+			"key": "payload",
+			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
+			"type": "string"
+		},
+		{
+			"id": "29815029-63b2-4b77-a55b-fa44f8586172",
+			"key": "undeletable_group",
+			"value": "administrators",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

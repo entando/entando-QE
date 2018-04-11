@@ -15,54 +15,62 @@ import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author leobel
  */
+
 public class DTEditPageTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTPageEditPage dTPageEditPage;
+    
+    @Autowired
+    public Utils util;
     
     @Test
     public void editPage(){
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
+        dTDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
 
-        Utils util = new Utils();
-        
         WebElement table = driver.findElement(By.className("PageTree"));
         Kebab kebab = util.getKebabOnTable(table, 1, "i");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
         
          String pageTitle = "Edit";
         
-        DTPageEditPage dtPageEditPage = new DTPageEditPage(driver);
-        
          //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtPageEditPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTPageEditPage.getPageTitle().getText());
         
-        dtPageEditPage.setEnTitle("English Title changed by Selenium");
-        dtPageEditPage.setItTitle("Titolo Italiano modificato da Selenium");
+        dTPageEditPage.setEnTitle("English Title changed by Selenium");
+        dTPageEditPage.setItTitle("Titolo Italiano modificato da Selenium");
 
-        util.selectSetByValue(dtPageEditPage.getPageModel(), "Home Page");
+        util.selectSetByValue(dTPageEditPage.getPageModel(), "Home Page");
         
         List<WebElement> rows = util.expandAllRowsOnTable(driver, 
-                dtPageEditPage.getPagePlacementSelector());
+                dTPageEditPage.getPagePlacementSelector());
         
-        dtPageEditPage.choosePagePlacement("Log In", rows);
+        dTPageEditPage.choosePagePlacement("Log In", rows);
         
-        Assert.assertTrue(dtPageEditPage.getSaveButton().isEnabled());
+        Assert.assertTrue(dTPageEditPage.getSaveButton().isEnabled());
     }
 }

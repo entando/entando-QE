@@ -13,18 +13,16 @@ details.
 package org.entando.selenium.pages;
 
 import org.entando.selenium.utils.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class DTUsersPage extends PageObject {
 
     @FindBy(css = "h1 > span:nth-child(1)")
     private WebElement pageTitle;
     
-    @FindBy(xpath ="//table[@class=UserListTable__table]")
+    @FindBy(xpath ="//table[contains(@class, 'UserListTable__table')]")
     private WebElement usersTable;
 
     @FindBy(css = "table > thead")

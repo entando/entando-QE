@@ -17,6 +17,6 @@
   "homepage": "https://github.com/entando/entando-QE#readme",
   "dependencies": {
     "newman": "^3.9.3",
-    "postman-combine-collections": "^1.0.2"
+    "postman-combine-collections": "^1.1.0"
   }
 }

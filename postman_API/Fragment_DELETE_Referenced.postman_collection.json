@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "7abfdba8-f9ba-4ced-82fa-c9d47f31f428",
+		"name": "Fragment_DELETE_Referenced",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fragment_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "357b78df-4422-4002-82ed-e14935a26616",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: 400, 2, The fragment <fragmentCode> cannot be deleted because it is referenced",
+							"var status_code = 400;",
+							"var error_code = '1';",
+							"var error_message = \"referenced by\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_fragment}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_fragment}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_DELETED",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04184fa3-5945-478c-8ecb-70d612640720",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 200;",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_fragment}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_fragment}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "14c78256-cc8d-46e7-b6a4-309af9d1faf8",
+			"key": "api_url",
+			"value": "api/fragments",
+			"type": "string"
+		},
+		{
+			"id": "59c03b98-535e-4bcc-9785-8b735e7ab94f",
+			"key": "item_name",
+			"value": "AAA1",
+			"type": "string"
+		},
+		{
+			"id": "8628566f-2410-45cb-b275-6dbd7397544c",
+			"key": "payload",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "f507fe19-5325-4764-8ccb-6e72a742d31b",
+			"key": "referenced_fragment",
+			"value": "login_form",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "f9fb7c37-732a-4c29-bbab-be7f639def8a",
+		"name": "Language_GET_Existent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Language_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "714ee14e-da80-44ea-945f-e300936c1a86",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tGET\t\tExistent\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language code is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(pm.variables.get(\"existent_language_code\"));",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{existent_language_code}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{existent_language_code}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1fc161e2-de3a-4800-8328-678b630ef0e0",
+			"key": "api_url",
+			"value": "api/languages",
+			"type": "string"
+		},
+		{
+			"id": "c5bb2bff-0044-42b6-8062-446e3d053a22",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "815ad175-5da0-4ede-8980-ee24fcac4a27",
+			"key": "existent_language_code",
+			"value": "it",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "b7887caf-4185-48b6-8d1e-bacb2e85dd0c",
+			"key": "not_existent_language_code",
+			"value": "zz",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

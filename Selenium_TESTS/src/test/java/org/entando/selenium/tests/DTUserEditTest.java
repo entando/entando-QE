@@ -12,33 +12,41 @@ import org.entando.selenium.utils.FunctionalTest;
 import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author leobel
  */
+
 public class DTUserEditTest extends FunctionalTest {
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTUsersPage dTUsersPage;
+    
+    @Autowired
+    public Utils util;
     
     @Test
     public void runTest(){
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
         
-        DTUsersPage dtUsersPage = new DTUsersPage(driver);
-        Utils util = new Utils();
-        Utils.Kebab kebab = util.getKebabOnTable(dtUsersPage.getUsersTable(), 0, "button");
+        Utils.Kebab kebab = util.getKebabOnTable(dTUsersPage.getUsersTable(), 0, "button");
         kebab.getClickable().click();
         
-        util.waitUntilVisible(driver, kebab.getActionList());
+        util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
     }

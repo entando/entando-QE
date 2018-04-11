@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "72e21d3d-666c-4d6a-ab78-85e6949dee57",
+		"name": "Widget_DELETE_Locked",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Widget_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2840e62-a4df-40f0-a221-21b03ade1e76",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is locked",
+							"var status_code = 400;",
+							"var error_code = '1';",
+							"var error_message = \"it is locked\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_widget}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_widget}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_DELETED",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04184fa3-5945-478c-8ecb-70d612640720",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 200;",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{referenced_widget}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{referenced_widget}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c78f0bee-78a3-4931-9793-fdce01423579",
+			"key": "api_url",
+			"value": "api/widgets",
+			"type": "string"
+		},
+		{
+			"id": "e68cc08a-8119-428f-8057-1f2f3eef2111",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "97aa569b-0571-456e-af80-b5444a172f8f",
+			"key": "payload",
+			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "4ec3f071-be90-4fa7-b91e-c909f9f3d7db",
+			"key": "referenced_widget",
+			"value": "content_viewer",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "866afaec-76c7-4b15-b1ed-d84002311deb",
+			"key": "locked_widget",
+			"value": "content_viewer",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

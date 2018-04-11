@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "a8873cf0-5313-4917-831b-15056cad910d",
+		"name": "Language_PUT_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Languages_PUT _HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2db549e-2ca7-487f-b728-11b6b5d7eb21",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"Italian\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(true);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Languages_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13840247-ee8c-44f7-ad56-f03f5f511ca3",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"Italian\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(false);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "975ec688-529d-4544-9018-fff4f9db5c5c",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"Italian\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(false);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f904659b-af73-4a17-ba52-addadefa2b2f",
+			"key": "api_url",
+			"value": "api/languages",
+			"type": "string"
+		},
+		{
+			"id": "df295ef2-620f-4ff2-b90c-b9140efd3c70",
+			"key": "item_name",
+			"value": "it",
+			"type": "string"
+		},
+		{
+			"id": "0e46cc8c-a39b-45fc-9d49-18e6330bf012",
+			"key": "payload",
+			"value": "{\n    \"isActive\": true\n }",
+			"type": "string"
+		},
+		{
+			"id": "7f54391a-d9d4-49ad-8545-2ddc40faee27",
+			"key": "payload_modified",
+			"value": "{\n    \"isActive\": false\n }",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

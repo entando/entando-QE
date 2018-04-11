@@ -20,39 +20,43 @@ import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTFragmentsListTest extends FunctionalTest {
-
+    
+    @Autowired
+    public DTLoginPage dTLoginPage;
+    
+    @Autowired
+    public DTDashboardPage dTDashboardPage;
+    
+    @Autowired
+    public DTFragmentPage dTFragmentPage;
+    
+    @Autowired
+    public Utils util;
+    
     @Test
     public void runTest() {
+        dTLoginPage.logIn("admin", "adminadmin");
 
-        DTLoginPage dtLoginPage = new DTLoginPage(driver);
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        DTDashboardPage dtDashboardPage = new DTDashboardPage(driver);
-        dtDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
+        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
 
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Widget Type", "Plugin", "Actions");
 
-        DTFragmentPage dtfragmentPage = new DTFragmentPage(driver);
-
-        Utils util = new Utils();
-
-        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dtfragmentPage.getTableHeader());
+        List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTFragmentPage.getTableHeader());
 
         //Asserts that table column names are the expected ones.
         Assert.assertEquals(expectedHeaderTitles, fetchedHeaderTitles);
 
         String pageTitle = "Fragments";
         //Asserts that the page title is the expected one
-        Assert.assertEquals(pageTitle, dtfragmentPage.getPageTitle().getText());
+        Assert.assertEquals(pageTitle, dTFragmentPage.getPageTitle().getText());
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 

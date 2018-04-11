@@ -11,9 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -38,7 +36,7 @@ public class DTPageEditPage extends PageObject {
 
     @FindBy(xpath = "//select[@name='pageModel']")
     private WebElement selectPageModel;
-    Select pageModel = new Select(selectPageModel);
+    private Select pageModel;
 
     @FindBy(css = "button[type='submit'].PageForm__save-btn")
     private WebElement saveButton;
@@ -82,7 +80,7 @@ public class DTPageEditPage extends PageObject {
     }
     
     public void setPageModel(int numOrder) {
-        this.pageModel.getOptions().get(numOrder).click();
+        getSelectPageModel().getOptions().get(numOrder).click();
     }
 
     public WebElement getSaveButton() {
@@ -104,6 +102,11 @@ public class DTPageEditPage extends PageObject {
         }
     }
 
-    
+    private Select getSelectPageModel(){
+        if(pageModel == null){
+            pageModel = new Select(selectPageModel);
+        }
+        return pageModel;
+    }
 
 }

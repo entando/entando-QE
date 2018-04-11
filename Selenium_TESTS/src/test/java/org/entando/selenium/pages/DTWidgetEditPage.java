@@ -13,7 +13,6 @@ details.
 package org.entando.selenium.pages;
 
 import org.entando.selenium.utils.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +34,7 @@ public class DTWidgetEditPage extends PageObject {
 
     @FindBy(xpath = "//select")
     private WebElement selectGroup;
-    Select group = new Select(selectGroup);
+    Select group;
 
     @FindBy(css = "#basic-tabs-pane-1 > textarea")
     private WebElement customUI;
@@ -84,7 +83,7 @@ public class DTWidgetEditPage extends PageObject {
     }
 
     public void setGroup(int numOrder) {
-        this.group.getOptions().get(numOrder).click();
+        getSelectGroup().getOptions().get(numOrder).click();
     }
 
     public void setCustomUI(String customUIContent) {
@@ -99,6 +98,13 @@ public class DTWidgetEditPage extends PageObject {
 
     public DTWidgetEditPage(WebDriver driver) {
         super(driver);
+    }
+    
+    private Select getSelectGroup(){
+        if(group == null){
+            group = new Select(selectGroup);
+        }
+        return group;
     }
 
 }

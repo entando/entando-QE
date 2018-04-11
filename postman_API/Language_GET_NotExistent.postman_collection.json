@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "703fefc2-22e9-45ad-93dc-6a7058520cf3",
+		"name": "Language_GET_NotExistent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Language_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d4b8ad7-14a1-46db-a788-7690c8b88249",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tGET\t\tNotExistent\t404\t1\tno label found with code <labelcode> Done",
+							"",
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var not_existent_lang_code = pm.variables.get(\"not-existent_language_code\");",
+							"var error_message = \"a language with \" + not_existent_lang_code + \" code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{not-existent_language_code}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{not-existent_language_code}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "101a4883-d38a-4b76-a0d8-bf042a6574e2",
+			"key": "api_url",
+			"value": "api/languages",
+			"type": "string"
+		},
+		{
+			"id": "5adbc2d3-0a84-48bf-ae5c-4ef2ca7ce32f",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "b877639b-c4bb-462e-bdc9-123ba0a55d7f",
+			"key": "existent_language_code",
+			"value": "it",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "94c701fc-af86-4a1b-a778-689232d7be9a",
+			"key": "not-existent_language_code",
+			"value": "zz",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

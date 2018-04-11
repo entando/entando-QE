@@ -28,9 +28,19 @@ generated json document.
 
 __execute single collection's tests__
 
-`newman run postman_API/Access-Token.postman.collection.json -e postman_API/environment/Entando5.postman_environment.json`
+```bash
+newman run postman_API/Access-Token.postman.collection.json -e postman_API/environment/Entando5.postman_environment.json
+```
 
 __execute all collections's tests__
 
-Group all collections by executing: `postman-combine-collections --filePath=postman_API/*.json`
-then execute `newman run root.collection.json -e postman_API/environment/Entando5.postman_environment.json`
+Group all collections by executing: 
+
+```bash
+postman-combine-collections --filePath=postman_API/*.json
+
+then execute 
+
+newman run root.collection.json -e postman_API/environment/Entando5API.postman_environment.json
+```
+
