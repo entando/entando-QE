@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "430ca7c2-04b4-473b-aa68-46d0bce1098b",
+		"_postman_id": "b76be8f7-11f2-414d-a7e7-bfb7f7b0afac",
 		"name": "Page_DELETE_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -131,12 +131,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3d086f82-1ac9-4ffe-90e5-ee6ec2fa6c5a",
+						"id": "2a89e05a-7371-4366-acb1-e5f4b661ecee",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'AAA' and status 'draft' could be found\";",
+							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -207,15 +207,15 @@
 	],
 	"variable": [
 		{
-			"id": "932b9c28-534b-4334-901f-82898e308930",
+			"id": "2b236397-2362-4fc2-b159-506fc459bda5",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "ca7ffbb5-4aac-40be-bc44-6e0c5239f5bf",
+			"id": "a8e0c70f-1fa0-41d7-b404-a29c9698b9b4",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "BBB",
 			"type": "string"
 		}
 	]

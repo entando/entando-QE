@@ -1,12 +1,127 @@
 {
 	"info": {
-		"_postman_id": "309d3550-baa6-40d0-8aa4-f8ffa3f03446",
+		"_postman_id": "22a3c42b-065d-409d-ab26-01c85fecb050",
 		"name": "Page_DELETE_HasChildren",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "POST_HELPER",
+			"name": "DELETE_Child_Page_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1945255b-4749-4b45-a767-352ec76e8292",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is locked",
+							"var status_code = 200;",
+							"var error_message = \"Pages with children pages can not be deleted\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_child_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_child_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_Mother_Page_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b24dc6a4-6eb7-47a1-986b-f2422e683d37",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is locked",
+							"var status_code = 200;",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_Mother_Page_HELPER",
 			"event": [
 				{
 					"listen": "test",
@@ -73,7 +188,7 @@
 			"response": []
 		},
 		{
-			"name": "POST_HELPER_Child_Page",
+			"name": "POST_Child_Page_HELPER",
 			"event": [
 				{
 					"listen": "test",

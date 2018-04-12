@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6ab6c398-f43c-47a8-8608-ef2e115487e6",
+		"_postman_id": "63dfa15d-febd-4661-a445-941ded4287bd",
 		"name": "Page_POST_Authorization_Error",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -195,7 +195,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5379b616-9986-4350-8004-20c30195a85f",
+						"id": "47bfcb9a-9354-400c-a419-cd9c32999e5f",
 						"type": "text/javascript",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
@@ -204,7 +204,6 @@
 							"postman.setEnvironmentVariable(\"user_token\", data.access_token);",
 							"",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
 							"tests['Access Token is not blank'] = data.access_token !== \"\";",
 							"tests['Refresh Token is not blank'] = data.refresh_token !== \"\";",
 							"",

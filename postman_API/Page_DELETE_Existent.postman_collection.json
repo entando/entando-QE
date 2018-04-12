@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "14d1f6ee-aa01-4ab7-90d7-5919a946f567",
+		"_postman_id": "bb90f781-1491-47c1-b7b3-a6484e25ff31",
 		"name": "Page_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -137,12 +137,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e1a5661f-89eb-4cc6-82ac-fd4c9729791c",
+						"id": "eb99b764-4ecc-4070-b4bc-03ef60ffc9ac",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'AAA' and status 'draft' could be found.\";",
+							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found.\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -213,19 +213,19 @@
 	],
 	"variable": [
 		{
-			"id": "33cd7f39-e016-442e-bea2-7aa43aebd61a",
+			"id": "055c34c0-35e3-4ef6-9006-1868f615a218",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "b20ab638-a049-4b08-9b26-42ce893dc2f5",
+			"id": "9bbe73f3-d902-4e7a-86e0-f3da23f5779b",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "BBB",
 			"type": "string"
 		},
 		{
-			"id": "86317aaf-5a5a-451f-9c1d-d8e787956322",
+			"id": "c9a582bd-8e8f-4500-97f3-49bdc5aa0968",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"Mio Titolo\",\n                \"en\":\"My title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
 			"type": "string"

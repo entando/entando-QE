@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "70134320-5d3c-4688-a8cc-f14a524a59d0",
+		"_postman_id": "cda9f7c6-91a2-468c-a7ee-18b74c637c11",
 		"name": "Page_GET_Existent_Wrong_Status",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -78,10 +78,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5d412284-169e-4961-8a73-fe0b3b8ab5a2",
+						"id": "b97c7cd7-1f57-4b7d-b6c6-907c03d55435",
 						"type": "text/javascript",
 						"exec": [
-							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is locked",
 							"var status_code = 404;",
 							"var error_code = '2';",
 							"var error_message = \"The page 'AAA' as available only in draft mode\";",

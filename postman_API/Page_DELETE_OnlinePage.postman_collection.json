@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "20d5d532-82cd-45dd-aca4-c89022be9411",
+		"_postman_id": "464f6121-703f-4623-b224-e8b5a5fe66f5",
 		"name": "Page_DELETE_OnlinePage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -79,7 +79,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "04184fa3-5945-478c-8ecb-70d612640720",
+						"id": "f239be10-0dcc-468e-9751-fbc793e692f1",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 200;",
@@ -89,6 +89,7 @@
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
 							"});",
+							"",
 							""
 						]
 					}
