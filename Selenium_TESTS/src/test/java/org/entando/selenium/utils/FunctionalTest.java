@@ -13,6 +13,9 @@ details.
 package org.entando.selenium.utils;
 
 import java.util.concurrent.TimeUnit;
+import org.entando.selenium.pages.DTDashboardPage;
+import org.entando.selenium.pages.DTLoginPage;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -39,6 +42,12 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 @TestExecutionListeners({ SeleniumTestExecutionListener.class,
     DependencyInjectionTestExecutionListener.class })
 public class FunctionalTest {
+    
+    @Autowired
+    protected DTLoginPage dTLoginPage;
+    
+    @Autowired
+    protected DTDashboardPage dTDashboardPage;
 
     @Autowired
     protected WebDriver driver;
@@ -58,4 +67,15 @@ public class FunctionalTest {
         driver.close();
         driver.quit();
     }
+    
+    protected void login(){
+        dTLoginPage.logIn("admin", "adminadmin");
+        
+        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
+        assertTrue(receiptDtPage.isInitialized());
+    }
+    
+    protected void goTo(String menu, String submenu){
+        dTDashboardPage.SelectSecondOrderLink(menu, submenu);
+    }    
 }
