@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "d7ae5ae9-fa9f-4061-ab40-2edeac6507f2",
+		"name": "PageModel_PUT_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PageModels_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73827cc6-fe42-4c63-84ef-b4644a649f52",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"    pm.expect(pm.response.json().payload.descr).to.be.eql(item_name);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PageModel_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b4d53c0-0b72-4a0f-a408-ef855675e00a",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Page Model code is correct\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.descr).to.be.eql(\"Modified\");",
+							"    pm.expect(pm.response.json().payload.template).to.be.eql(\"<html>Modified</html>\");",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "245dfdac-9c62-40e8-9b27-368b10c0fe26",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"});",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.descr).to.be.eql(\"Modified\");",
+							"    pm.expect(pm.response.json().payload.template).to.be.eql(\"<html>Modified</html>\");",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e0df53cd-2f14-4e7b-b2d7-32dff60dbec4",
+			"key": "api_url",
+			"value": "api/pageModels",
+			"type": "string"
+		},
+		{
+			"id": "5b03af6a-fdf6-4984-95bc-c50d797d28b6",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "86d4b337-a9b5-4147-b3ec-9b9d83ab846e",
+			"key": "payload",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
+			"type": "string"
+		},
+		{
+			"id": "ad02c745-df3b-4b57-af09-61877f9d5790",
+			"key": "payload_modified",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"Modified\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html>Modified</html>\"\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
