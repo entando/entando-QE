@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "9f41ac34-163d-4921-86e3-4e9970cb4fe3",
+		"name": "DataModels_GET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DataModels_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf02eddc-50c9-40b2-b3e1-4e5c44e686ce",
+						"type": "text/javascript",
+						"exec": [
+							"//Labels\tGET\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var GET_status_code = 200;",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b9970ba8-a675-495f-ac7c-215b4884e3f1",
+			"key": "api_url",
+			"value": "api/dataModels",
+			"type": "string"
+		},
+		{
+			"id": "8054e4b5-3a6a-4e88-adee-7588ae5810cd",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "201d02fd-2e22-40b6-91c6-9c91f030ee4c",
+			"key": "payload",
+			"value": "{\n    \"modelId\": \"{{item_name}}\",\n    \"descr\": \"data model sample\",\n    \"type\": \"AAA\",\n    \"model\": \"model\",\n    \"stylesheet\": \"\"\n}",
+			"type": "string"
+		}
+	]
+}
