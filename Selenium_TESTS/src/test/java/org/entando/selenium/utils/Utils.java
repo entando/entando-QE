@@ -204,7 +204,7 @@ public class Utils {
     }
     
     public Kebab getKebabOnTable(WebElement table, int index, String clickableTag){
-        WebElement row = table.findElement(By.xpath(String.format("//tbody/tr[%d]", index)));
+        WebElement row = table.findElement(By.xpath(String.format("./tbody/tr[%d]", index)));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         WebElement kebab = cells.get(cells.size() - 1);
         Kebab result = new Kebab(kebab.findElement(By.tagName(clickableTag)), kebab.findElement(By.tagName("ul")));
@@ -212,7 +212,7 @@ public class Utils {
     }
     
     public Kebab getKebabOnTable(WebElement table, String columnName, String columnValue, String clickableTag){
-        List<WebElement> headers = table.findElements(By.xpath("//thead/tr[1]/th"));
+        List<WebElement> headers = table.findElements(By.xpath("./thead/tr[1]/th"));
         int columnIndex = -1;
         for(int i = 0; i < headers.size(); i++){
             WebElement th = headers.get(i);

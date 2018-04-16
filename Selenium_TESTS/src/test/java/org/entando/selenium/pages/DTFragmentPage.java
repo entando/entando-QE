@@ -21,12 +21,19 @@ public class DTFragmentPage extends PageObject {
 
     @FindBy(css = "h1 > span:nth-child(1)")
     private WebElement pageTitle;
+    
+    @FindBy(xpath = "//table[contains(@class, 'FragmentListTable__table')]")
+    private WebElement pageTable;
 
     @FindBy(css = "table > thead")
     private WebElement tableHeader;
 
     @FindBy(css = "table > tbody")
     private WebElement tableBody;
+    
+    public WebElement getPageTable() {
+        return pageTable;
+    }
 
     public WebElement getPageTitle() {
         return this.pageTitle;

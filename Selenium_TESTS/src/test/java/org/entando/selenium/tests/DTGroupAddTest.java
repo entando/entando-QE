@@ -24,12 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTGroupAddTest extends FunctionalTest {
     
     @Autowired
-    DTLoginPage dtLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTGroupsPage dTGroupsPage;
     
     @Autowired
@@ -37,12 +31,8 @@ public class DTGroupAddTest extends FunctionalTest {
     
     @Test
     public void test(){
-        dtLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        login();
+        goTo("Configuration", "Groups");
 
         dTGroupsPage.getAddButton().click();
         

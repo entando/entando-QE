@@ -14,13 +14,9 @@ package org.entando.selenium.tests;
 
 import org.entando.selenium.utils.*;
 
-import org.entando.selenium.pages.DTLoginPage;
-
-import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTUsersPage;
 import org.junit.jupiter.api.Test;
@@ -30,12 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTUsersListTest extends FunctionalTest {
     
     @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTUsersPage dTUsersPage;
     
     @Autowired
@@ -43,16 +33,10 @@ public class DTUsersListTest extends FunctionalTest {
 
     @Test
     public void runTest() {
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
+        login();
+        goTo("User Settings", "Users");
 
         List<String> expectedHeaderTitles = Arrays.asList("Username", "Full name", "Email", "Status", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
-        // dtDashboardPage.selectTab("User Settings");
-
-        dTUsersPage.getPageTitle().getText();
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTUsersPage.getTableHeader());
 

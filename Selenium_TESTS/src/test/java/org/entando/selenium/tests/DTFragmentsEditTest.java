@@ -14,26 +14,18 @@ package org.entando.selenium.tests;
 
 import org.entando.selenium.utils.*;
 
-import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.pages.DTFragmentPage;
 
-import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTFragmentEditPage;
+import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTFragmentsEditTest extends FunctionalTest {
-    
-    @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
     
     @Autowired
     public DTFragmentPage dTFragmentPage;
@@ -46,12 +38,8 @@ public class DTFragmentsEditTest extends FunctionalTest {
 
     @Test
     public void runTest() {
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
+        login();
+        goTo("UX Pattern", "Fragments");
 
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Widget Type", "Plugin", "Actions");
 
@@ -61,12 +49,16 @@ public class DTFragmentsEditTest extends FunctionalTest {
         Assert.assertEquals(expectedHeaderTitles, fetchedHeaderTitles);
 
         String pageTitle = "Fragments";
+        String fragmentCode = "eee";
         //Asserts that the page title is the expected one
         Assert.assertEquals(pageTitle, dTFragmentPage.getPageTitle().getText());
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
-        util.selectKebabActionOnTable(dTFragmentPage.getTableHeader(), dTFragmentPage.getTableBody(), "Name", "myCode", "Edit");
+        util.waitUntilIsVisible(driver, dTFragmentPage.getPageTable());
+        Kebab kebab = util.getKebabOnTable(dTFragmentPage.getPageTable(), "Name", fragmentCode, "button");
+        kebab.getClickable().click();
+        util.clickKebabActionOnList(kebab.getActionList(), "Edit " + fragmentCode);
 
         dTFragmentEditPage.setGUICode("Code inserted by Selenium");
         dTFragmentEditPage.getCode().click();

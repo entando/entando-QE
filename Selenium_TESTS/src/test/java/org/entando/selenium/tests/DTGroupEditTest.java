@@ -25,12 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTGroupEditTest extends FunctionalTest {
     
     @Autowired
-    DTLoginPage dTLoginPage;
-    
-    @Autowired
-    DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     DTGroupsPage dtGroupsPage;
     
     @Autowired
@@ -41,12 +35,8 @@ public class DTGroupEditTest extends FunctionalTest {
     
     @Test
     public void test(){
-        dTLoginPage.logIn("admin", "adminadmin");
-        
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        login();
+        goTo("Configuration", "Groups");
         
         Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), "Code", "administrators", "button");
         kebab.getClickable().click();

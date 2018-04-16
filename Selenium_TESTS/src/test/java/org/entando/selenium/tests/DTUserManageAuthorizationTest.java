@@ -5,12 +5,9 @@
  */
 package org.entando.selenium.tests;
 
-import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
 import org.entando.selenium.pages.DTUsersPage;
 import org.entando.selenium.utils.FunctionalTest;
-import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
@@ -25,12 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTUserManageAuthorizationTest extends FunctionalTest {
     
     @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTUsersPage dTUsersPage;
     
     @Autowired
@@ -41,12 +32,8 @@ public class DTUserManageAuthorizationTest extends FunctionalTest {
     
     @Test
     public void runTest(){
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        login();
+        goTo("User Settings", "Users");
         
         String user = "admin";
         Utils.Kebab kebab = util.getKebabOnTable(dTUsersPage.getUsersTable(), "Username", user, "button");

@@ -15,24 +15,14 @@ package org.entando.selenium.tests;
 import org.entando.selenium.utils.*;
 
 import org.entando.selenium.pages.DTDataTypesPage;
-import org.entando.selenium.pages.DTLoginPage;
-
-import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class DTDataTypesListTest extends FunctionalTest {
-    
-    @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
     
     @Autowired
     public DTDataTypesPage dTDataTypesPage;
@@ -42,15 +32,10 @@ public class DTDataTypesListTest extends FunctionalTest {
     
     @Test
     public void runTest() {
-
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-
+        login();
+        goTo("Data", "Data Types");
+            
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Code", "Status", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("Data", "Data Types");
-
         dTDataTypesPage.getPageTitle().getText();
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTDataTypesPage.getTableHeader());

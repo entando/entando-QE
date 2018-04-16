@@ -30,10 +30,7 @@ public class TestingExtensionofPageList extends DTWidgetsListTest {
         super.runTest();
         driver.manage().window().maximize(); //added to resolve issue on non adaptivity of the application
 
-        String xPathLinks = "//a[contains(@href,'/widget/edit')]";
-        WebElement link = driver.findElement(By.xpath(xPathLinks));
-
-        link.click();
+       dTWidgetEditPage.getWidgetLink().click();
 
         String pageTitle = "Edit Widget";
 

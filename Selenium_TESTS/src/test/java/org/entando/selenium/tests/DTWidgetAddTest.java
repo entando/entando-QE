@@ -17,10 +17,6 @@ import org.junit.Assert;
 import org.entando.selenium.utils.*;
 
 import org.entando.selenium.pages.DTWidgetEditPage;
-import org.entando.selenium.pages.DTLoginPage;
-
-import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTWidgetPage;
 import org.junit.jupiter.api.Test;
@@ -28,12 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTWidgetAddTest extends FunctionalTest {
 
-    @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
     @Autowired
     public DTWidgetPage dTWidgetPage;
     
@@ -45,12 +35,8 @@ public class DTWidgetAddTest extends FunctionalTest {
     
     @Test
     public void EditWidget() throws InterruptedException {
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
+        login();
+        goTo("UX Pattern", "Widgets");
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 

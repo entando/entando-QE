@@ -14,13 +14,9 @@ package org.entando.selenium.tests;
 
 import org.entando.selenium.utils.*;
 
-import org.entando.selenium.pages.DTLoginPage;
-
-import org.entando.selenium.pages.DTDashboardPage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 
 import org.entando.selenium.pages.DTPageTreePage;
 import org.junit.jupiter.api.Test;
@@ -30,12 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTPageTreeListTest extends FunctionalTest {
     
     @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTPageTreePage dTPageTreePage;
     
     @Autowired
@@ -43,13 +33,10 @@ public class DTPageTreeListTest extends FunctionalTest {
 
     @Test
     public void runTest() throws InterruptedException {
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
+        login();
+        goTo("Page Creator", "Page Tree");
 
         List<String> expectedHeaderTitles = Arrays.asList("Page tree", "Status", "Displayed in menu", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTPageTreePage.getTableHeader());
 

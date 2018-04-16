@@ -6,15 +6,11 @@
 package org.entando.selenium.tests;
 
 import java.util.List;
-import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.pages.DTPageEditPage;
 import org.entando.selenium.utils.FunctionalTest;
-import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -28,12 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTEditPageTest extends FunctionalTest {
     
     @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTPageEditPage dTPageEditPage;
     
     @Autowired
@@ -41,12 +31,8 @@ public class DTEditPageTest extends FunctionalTest {
     
     @Test
     public void editPage(){
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
+        login();
+        goTo("Page Creator", "Page Tree");
 
         WebElement table = driver.findElement(By.className("PageTree"));
         Kebab kebab = util.getKebabOnTable(table, 1, "i");

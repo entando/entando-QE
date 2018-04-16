@@ -5,16 +5,12 @@
  */
 package org.entando.selenium.tests;
 
-import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTGroupDetailsPage;
 import org.entando.selenium.pages.DTGroupsPage;
-import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.utils.FunctionalTest;
-import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.Utils.Kebab;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,12 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 public class DTGroupDetailsTest extends FunctionalTest {
-    
-    @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
     
     @Autowired
     public DTGroupsPage dTGroupsPage;
@@ -42,12 +32,8 @@ public class DTGroupDetailsTest extends FunctionalTest {
     
     @Test
     public void runTest(){
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        login();
+        goTo("Configuration", "Groups");
         
         String pageTitle = "Groups";
         Assert.assertEquals(pageTitle, dTGroupsPage.getPageTitle().getText());

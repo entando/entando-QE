@@ -5,15 +5,11 @@
  */
 package org.entando.selenium.tests;
 
-import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTGroupDeletePage;
 import org.entando.selenium.pages.DTGroupsPage;
-import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.utils.FunctionalTest;
-import org.entando.selenium.utils.ReceiptDTLoginPage;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,12 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author leobel
  */
 public class DTGroupDeleteTest extends FunctionalTest{
-    
-    @Autowired
-    DTLoginPage dtLoginPage;
-    
-    @Autowired
-    DTDashboardPage dTDashboardPage;
     
     @Autowired
     DTGroupsPage dtGroupsPage;
@@ -40,12 +30,8 @@ public class DTGroupDeleteTest extends FunctionalTest{
      
     @Test
     public void test(){
-        dtLoginPage.logIn("admin", "adminadmin");
-        
-        ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-        
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        login();
+        goTo("Configuration", "Groups");
         
         Utils.Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), 1, "button");
         kebab.getClickable().click();

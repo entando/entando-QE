@@ -16,10 +16,6 @@ import org.junit.Assert;
 import org.entando.selenium.utils.*;
 
 import org.entando.selenium.pages.DTWidgetEditPage;
-import org.entando.selenium.pages.DTLoginPage;
-
-import org.entando.selenium.pages.DTDashboardPage;
-import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import org.openqa.selenium.By;
@@ -29,12 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DTWidgetEditTest extends FunctionalTest {
     
     @Autowired
-    public DTLoginPage dTLoginPage;
-    
-    @Autowired
-    public DTDashboardPage dTDashboardPage;
-    
-    @Autowired
     public DTWidgetEditPage dTWidgetEditPage;
     
     @Autowired
@@ -42,21 +32,14 @@ public class DTWidgetEditTest extends FunctionalTest {
 
     @Test
     public void EditWidget() {
-        dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
+        login();
+        goTo("UX Pattern", "Widgets");
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
         driver.manage().window().maximize(); //added to resolve issue on non adaptivity of the application
 
-        String xPathLinks = "//a[contains(@href,'/widget/edit')]";
-        WebElement link = driver.findElement(By.xpath(xPathLinks));
-
-        link.click();
+        dTWidgetEditPage.getWidgetLink().click();
 
         String pageTitle = "Edit Widget";
 

@@ -22,6 +22,9 @@ public class DTWidgetEditPage extends PageObject {
 
     @FindBy(css = "h1 > span:nth-child(1)")
     private WebElement pageTitle;
+    
+    @FindBy(xpath = "//a[contains(@href,'/widget/edit')]")
+    private WebElement widgetLink;
 
     @FindBy(name = "code")
     private WebElement widgetCode;
@@ -41,6 +44,10 @@ public class DTWidgetEditPage extends PageObject {
 
     @FindBy(xpath = "//button[contains(.,'Save')]")
     private WebElement saveButton;
+    
+    public WebElement getWidgetLink() {
+        return widgetLink;
+    }
 
     public WebElement getPageTitle() {
         return this.pageTitle;
