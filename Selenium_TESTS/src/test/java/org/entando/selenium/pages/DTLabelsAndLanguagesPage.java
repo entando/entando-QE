@@ -28,7 +28,10 @@ public class DTLabelsAndLanguagesPage extends PageObject {
     private WebElement selectLanguage;
     
     @FindBy(xpath = "//button[@type='submit']/span[text()='Add']/parent::button")
-    private WebElement addBUtton;
+    private WebElement addLanguageButton;
+    
+    @FindBy(xpath = "//button[@type='button']/span[text()='Add']/parent::button")
+    private WebElement addLabelButton;
     
     @FindBy(xpath = "//table[contains(@class, 'ActiveLangTable__table')]")
     private WebElement languageTable;
@@ -79,9 +82,17 @@ public class DTLabelsAndLanguagesPage extends PageObject {
     public WebElement getSelectLanguage() {
         return selectLanguage;
     }
+    
+    public WebElement getAddLanguageButton() {
+        return addLanguageButton;
+    }
+
+    public WebElement getAddLabelButton() {
+        return addLabelButton;
+    }
 
     public WebElement getAddBUtton() {
-        return addBUtton;
+        return addLanguageButton;
     }
 
     public WebElement getLanguageTable() {
