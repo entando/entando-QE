@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e3b5c968-0907-4171-9c22-3f1f2cfd271c",
+		"_postman_id": "fb1d7b45-1f91-4c92-a77c-91b3b983c18d",
 		"name": "ProfileTypes_GET",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -90,15 +90,15 @@
 	],
 	"variable": [
 		{
-			"id": "92d571f7-f091-4cb6-8731-1d1a265d3e17",
+			"id": "25a7fc9c-0a1e-43e6-ba02-03be23968dce",
 			"key": "api_url",
 			"value": "api/profileTypes",
 			"type": "string"
 		},
 		{
-			"id": "05ee6d12-8edc-44e7-adef-9c7252b03c82",
+			"id": "71389383-5b2e-4234-b941-08bb2421a49e",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "XYZ",
 			"type": "string"
 		}
 	]

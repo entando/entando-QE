@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "66d670de-883b-4d94-9265-1384c01bbade",
+		"_postman_id": "e3f64dc9-9e71-4632-b29d-c445f221c993",
 		"name": "Widget_PUT_NotMatchingURI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -212,34 +212,41 @@
 	],
 	"variable": [
 		{
-			"id": "cb442c6d-9472-46ca-bab3-7335a19c9423",
+			"id": "271221ec-f3fc-4a48-9a83-16ded4ff221e",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "d79edf21-f189-4a3b-9321-4aaa6bc155db",
+			"id": "a5705d0b-e9d7-4c44-b474-fda05a9588ea",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "544404c1-bcc6-4047-9fa9-5cac3aaddf6a",
+			"id": "acc25030-94c3-470b-ac7a-31e1c6656e5c",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "e2f730c4-8c74-4249-8754-87eb4d0d3fd6",
+			"id": "8ada7838-1b74-404b-9269-a337dea735bc",
 			"key": "payload_wrong_group",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "ba6a6c17-74b2-4fbe-a1fe-122d6e6241e4",
+			"id": "cc248933-6c24-493f-adf9-bd60db6bb3dc",
 			"key": "payload_mismatch_uri",
-			"value": "{\n \"code\": \"BBB\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{mismatched_code}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "366da36a-c431-45ee-b6a8-4f6d87cdabda",
+			"key": "mismatched_code",
+			"value": "PleaseDoNotUseReally",
 			"type": "string",
 			"description": ""
 		}

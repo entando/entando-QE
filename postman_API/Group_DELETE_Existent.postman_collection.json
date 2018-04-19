@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "afe3fcfa-44c7-4ee5-b132-1d09818a5606",
+		"_postman_id": "a55dae51-cba2-43ae-a517-8003ddd956f9",
 		"name": "Group_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -78,7 +78,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "30baed72-c589-41d3-bd8b-998db59d6d1a",
+						"id": "410a6704-989f-4213-abca-9c53fecaf610",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tDELETE\t\tExistent\t200\tN/A\t\t\t\t\tDone",
@@ -213,39 +213,21 @@
 	],
 	"variable": [
 		{
-			"id": "6ce85bae-bb4e-46d3-9681-5524a741e701",
+			"id": "be7c760f-7c48-4281-ab47-c416c5222d39",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "f3a263ec-554e-4237-90eb-85a238c04ca8",
+			"id": "92c68cd6-df78-427c-abba-331d81116cc6",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "4a263c8b-cc88-4527-bc32-5d2c5cc13adf",
+			"id": "55e066a1-9be7-4802-ac37-32d075298473",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
-			"type": "string"
-		},
-		{
-			"id": "d08046a0-3bdf-4aac-b318-d37211ca709d",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "ff977baf-adfe-4f06-9129-8665bca80965",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "fd8a9a56-f84b-432b-a7ff-7827e6800759",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		}
 	]

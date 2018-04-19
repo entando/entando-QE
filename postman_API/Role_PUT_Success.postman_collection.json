@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "90c7595e-e710-48a9-b08d-5f223fbb1187",
+		"_postman_id": "8a80a8c9-714e-451b-8be4-f05203c5f481",
 		"name": "Role_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -133,11 +133,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f437a363-c5be-4a43-87ab-19df67c25527",
+						"id": "9218026d-a7fe-4a53-adbb-56bf16958eb2",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"var status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"var item_name_changed = pm.variables.get(\"item_name_changed\");",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -145,7 +147,7 @@
 							"});",
 							"",
 							"pm.test(\"Role code is correct\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
 							"});",
 							"",
 							"",
@@ -156,8 +158,10 @@
 							"",
 							"",
 							"pm.test(\"Name is set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA-Modified\");",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name_changed);",
 							"});",
+							"",
+							"",
 							""
 						]
 					}
@@ -198,11 +202,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "72d193cd-9bba-460d-bc28-2f2582c3a998",
+						"id": "322d26be-80e9-4638-8c76-2a0da1889913",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
 							"var item_name = pm.variables.get(\"item_name\");",
+							"var item_name_changed = pm.variables.get(\"item_name_changed\");",
+							"",
 							"",
 							"//check status code",
 							"pm.test(\"Status code is \" + GET_status_code, function () {",
@@ -226,7 +232,7 @@
 							"});",
 							"",
 							"pm.test(\"Name is set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA-Modified\");",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name_changed);",
 							"});",
 							"",
 							"",
@@ -286,27 +292,34 @@
 	],
 	"variable": [
 		{
-			"id": "bb648846-a362-4a60-92ea-c852e49026c6",
+			"id": "91a1787f-3348-449c-885e-7e1ee29c66e9",
 			"key": "api_url",
 			"value": "api/roles",
 			"type": "string"
 		},
 		{
-			"id": "3a285a43-97be-4cdb-b5c1-d697d2a57e77",
+			"id": "36291d9b-ae6d-482d-9617-63ffac7659f0",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "c7061ea6-c912-4ae8-a1a6-f84d041c5f8b",
+			"id": "ad0a6831-4a5e-48e5-a248-1a8181819fa5",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"AAA\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": true\n    }\n }",
+			"value": "{\n    \"name\": \"{{item_name}}\",\n    \"code\": \"{{item_name}}\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": true\n    }\n }",
 			"type": "string"
 		},
 		{
-			"id": "9b68c46a-c0ea-4159-a695-405e095dfcf7",
+			"id": "45ab5519-82fb-4ab4-8109-256f242974b7",
 			"key": "payload_modified",
-			"value": "{\n    \"name\": \"AAA-Modified\",\n    \"code\": \"AAA\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": false\n    }\n }",
+			"value": "{\n    \"name\": \"{{item_name_changed}}\",\n    \"code\": \"{{item_name}}\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": false\n    }\n }",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "5d75e6d1-760a-4213-b4a8-fd5f59c12e60",
+			"key": "item_name_changed",
+			"value": "PleaseDoNotUseModified",
 			"type": "string",
 			"description": ""
 		}

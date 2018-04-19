@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8f2732d3-b083-4882-9378-16d2567ec438",
+		"_postman_id": "2c4d11a0-db49-42a9-ad0d-06025c893e9c",
 		"name": "Page_PUT_Authorization_Error",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,7 +71,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d135177f-f8ba-4fa7-9680-4a23f34d64c9",
+						"id": "d1c70bd5-8eda-445c-b80e-b446359854f5",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
@@ -89,7 +89,7 @@
 							"",
 							"",
 							"pm.test(\"Username and user status set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"PleaseDoNotUse\");",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"active\");",
 							"});"
 						]
@@ -130,11 +130,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4dc138fc-87d8-4975-8ad4-f3cfaa0774a3",
+						"id": "878403f0-06e6-4ee7-a77c-8e3fcccbd0ff",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
 							"var item_name = pm.variables.get(\"item_name\");",
+							"var user_name = item_name;",
 							"",
 							"//check status code",
 							"pm.test(\"Status code is \" + GET_status_code, function () {",
@@ -153,7 +154,7 @@
 							"",
 							"",
 							"pm.test(\"Username and user status set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(user_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"active\");",
 							"});",
 							"",
@@ -362,14 +363,17 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "25092278-2c54-4e74-8b1d-f14471ca345a",
+						"id": "13dcc695-b0cb-4576-a868-e01aad1af330",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tPUT\t\tNotExistent\t404\t1\t\t\t\t\tDone",
 							"",
 							"var status_code = 403;",
 							"var error_code = '120';",
-							"var error_message = \"AAA is not allowed to\";",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"var user_name = item_name;",
+							"",
+							"var error_message = user_name + \" is not allowed to\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -385,6 +389,8 @@
 							"   var jsonData = pm.response.json();",
 							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
 							"});",
+							"",
+							"",
 							""
 						]
 					}
@@ -524,41 +530,41 @@
 	],
 	"variable": [
 		{
-			"id": "2b3f4cde-f1e9-4616-a391-234ad368cd0b",
+			"id": "e4de1196-4325-4558-be51-8ed25667d805",
 			"key": "users_api_url",
 			"value": "api/users",
 			"type": "string"
 		},
 		{
-			"id": "e21f6f12-34aa-4cce-8686-3cb82501a966",
+			"id": "5c30f69a-c365-417d-825e-799f0eeb16d1",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "56ef7ed3-e870-416d-bfae-4a94ba6dbcfe",
+			"id": "7e8fcd9f-90d6-439b-a463-3358aca6e80a",
 			"key": "user_payload",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "0b28644e-bb08-460f-97ec-cfcf32ca9413",
+			"id": "c47f1ef8-1680-4cef-b4be-cdf9e390031d",
 			"key": "page_payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUse Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "ee7e8b85-0d1f-4a45-954b-5f8aa75d485d",
+			"id": "00d51d7e-8818-4d80-810d-95573d4e961d",
 			"key": "pages_api_url",
 			"value": "api/pages",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "66a1bd1c-bb5b-425c-920a-4823197864c4",
+			"id": "40a46393-534a-42eb-9c7c-b16601464209",
 			"key": "payload_modified",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo Modificato\",\n                \"en\":\"AAA Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo Modificato\",\n                \"en\":\"PleaseDoNotUse Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		}

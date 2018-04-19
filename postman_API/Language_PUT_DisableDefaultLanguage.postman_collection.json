@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fff1e3d6-5909-476f-9227-e2e09fb6f53b",
+		"_postman_id": "a0b6d408-4c70-41a8-a72d-d5aab994bfae",
 		"name": "Language_PUT_DisableDefaultLanguage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -221,25 +221,25 @@
 	],
 	"variable": [
 		{
-			"id": "8f18296a-11a2-40a8-a49c-50aa2a4e7c62",
+			"id": "e94961e3-c5b5-47bd-9a15-d2e6d80782ec",
 			"key": "api_url",
 			"value": "api/languages",
 			"type": "string"
 		},
 		{
-			"id": "543eb568-1f08-4eba-a5ff-eaae185e7d25",
+			"id": "f0124cba-bdc3-477b-a870-10c12a021d5e",
 			"key": "item_name",
 			"value": "en",
 			"type": "string"
 		},
 		{
-			"id": "67265a70-e867-467d-9856-174f83ddd872",
+			"id": "f1c901eb-34ed-41c7-a1a0-c5e44fcf245c",
 			"key": "payload",
 			"value": "{\n    \"isActive\": true\n }",
 			"type": "string"
 		},
 		{
-			"id": "70958bf3-7ae6-4d65-970e-1146c0b8dd43",
+			"id": "84a9c00c-4461-4171-84f7-d66171f99061",
 			"key": "payload_modified",
 			"value": "{\n    \"isActive\": false\n }",
 			"type": "string",

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f2c8a21f-b039-4283-a522-88a7b258e480",
+		"_postman_id": "e399c76d-474b-4232-8df0-899509765d53",
 		"name": "Users_GET",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -53,13 +53,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/",
+					"raw": "{{url}}/{{api_url}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"{{api_url}}",
-						""
+						"{{api_url}}"
 					]
 				}
 			},
@@ -90,19 +89,19 @@
 	],
 	"variable": [
 		{
-			"id": "62c5df1f-c0c9-4dea-bae5-58b64a90e012",
+			"id": "63fb65d7-1830-4411-95e7-ade6674d7f6c",
 			"key": "api_url",
 			"value": "api/users",
 			"type": "string"
 		},
 		{
-			"id": "2efc60da-6dcb-46f9-b752-ca55681e8a01",
+			"id": "b5f95c17-b3db-4165-9560-9af96aa81262",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "dab31096-d186-46c5-92c3-1799c7675d00",
+			"id": "42f36004-080c-4274-aac8-da06dbcfdf45",
 			"key": "payload",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
 			"type": "string"

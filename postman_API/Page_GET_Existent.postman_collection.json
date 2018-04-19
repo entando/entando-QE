@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ad31f9fb-7468-4fc9-97b4-c85fb1f7283a",
+		"_postman_id": "03003a63-bb12-4d95-b56b-a3781d4fbae4",
 		"name": "Page_GET_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -170,21 +170,21 @@
 	],
 	"variable": [
 		{
-			"id": "37d57834-55fa-4f03-b401-9ba2dca38e9b",
+			"id": "ff0dff51-961c-461a-84b5-dcd4bfec3c6e",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "e2a1d1e9-4ad2-4b22-b284-a546a65b0c2b",
+			"id": "8596c915-2f8e-480c-9a65-2925cc385335",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "b1d3e791-d215-4ed6-a3b5-006c958a0639",
+			"id": "c82b5ea0-7de8-4f93-ae49-9f151b0e3d58",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUse Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
 			"type": "string"
 		}
 	]

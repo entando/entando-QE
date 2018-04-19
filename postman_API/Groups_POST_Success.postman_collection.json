@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "193071d4-e42a-4ccf-8c80-c7a44b4d9b2e",
+		"_postman_id": "bb5e8679-66b2-4a85-88fc-ee3ee1e36514",
 		"name": "Groups_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "755915ea-c62b-4595-8618-18fe70ede1d8",
+						"id": "a74f060a-b21e-47e7-ba05-892dd25061b0",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,9 +90,11 @@
 							"",
 							"",
 							"pm.test(\"Group set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA\");",
-							"});"
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name);",
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -215,39 +218,21 @@
 	],
 	"variable": [
 		{
-			"id": "1696f848-85bb-4b27-a8ed-f4b9aa6e83bc",
+			"id": "34cd293b-bf4c-4fa4-96b5-26be07cf83e4",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "a3d5c367-e0ec-4128-a2ac-40f7e43c5f2b",
+			"id": "5eccc32a-cb02-4fdd-9837-eae49aa0ef30",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "5375263d-14c4-408e-9351-cf77a8253f90",
+			"id": "041f8bed-f5a5-42c7-a6d8-65d9582f080d",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
-			"type": "string"
-		},
-		{
-			"id": "b3e78b64-efa5-4477-a0fc-38fecca7595f",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "9a6a7896-d82c-49ee-8e34-3e43ede5ed10",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "d53b373f-10c6-4c30-a6e4-1ead1bcc4e16",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		}
 	]

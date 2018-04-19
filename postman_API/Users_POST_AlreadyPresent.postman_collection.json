@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "427944d9-054f-43c9-a35c-201d27873017",
+		"_postman_id": "db3f0445-baf5-4f9f-84c9-7e4c21cc20cf",
 		"name": "Users_POST_AlreadyPresent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -78,7 +78,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "27e98789-130a-4316-906f-291177643ce3",
+						"id": "a64a5e74-18fd-40e3-9775-f4c7e54a9dba",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -103,11 +103,6 @@
 							"pm.test(\"Item name is correct\", function (){",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.payload.username).to.eql(item_name);",
-							"});",
-							"",
-							"pm.test(\"User is active\", function (){",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.payload.status).to.eql(\"active\");",
 							"});",
 							"",
 							"",
@@ -230,39 +225,21 @@
 	],
 	"variable": [
 		{
-			"id": "459aa3cc-4c57-442f-9302-385c77f64506",
+			"id": "c3ea3c09-cb1a-40b0-9840-dce8be79afae",
 			"key": "api_url",
 			"value": "api/users",
 			"type": "string"
 		},
 		{
-			"id": "cf302aba-6c78-4d35-bdb4-d7f4218c2c26",
+			"id": "a7e775b0-26fd-4a5c-9a06-fec54ade0b56",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "51446674-b524-4c4a-9f7f-1fce88ad2d05",
+			"id": "cdbababd-bc0d-4c93-83d6-91cdddc2a41f",
 			"key": "payload",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
-			"type": "string"
-		},
-		{
-			"id": "846ffa2b-795e-45fe-b074-44e6f7cfd06a",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "7f2698d2-fd95-4a86-91da-5025dd4bf5b9",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "5bf8005f-df4e-4baf-b01e-a63714480870",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
 			"type": "string"
 		}
 	]

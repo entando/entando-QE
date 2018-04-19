@@ -1,10 +1,76 @@
 {
 	"info": {
-		"_postman_id": "1c8e1447-1698-4115-8ef4-102566886dbc",
+		"_postman_id": "7e42a999-1520-4f42-9e05-d852ef642fc1",
 		"name": "Label_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "PUT_Language_HELPER Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f09a9b07-5921-4a88-8355-a3ecbaa330a8",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var language_code = pm.variables.get(\"lang_to_activate\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Language parameters are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(language_code);",
+							"    pm.expect(pm.response.json().payload.description).to.be.eql(\"Italian\");",
+							"    pm.expect(pm.response.json().payload.isActive).to.be.eql(true);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_lang_activation}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{lang_api_url}}/{{lang_to_activate}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{lang_api_url}}",
+						"{{lang_to_activate}}"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "DELETE_HELPER",
 			"event": [
@@ -285,45 +351,66 @@
 	],
 	"variable": [
 		{
-			"id": "a9ab5aee-0341-4bc3-a182-a61ec24d6704",
+			"id": "b90d30fc-602f-4329-a6a9-2e56a0024349",
 			"key": "api_url",
 			"value": "api/labels",
 			"type": "string"
 		},
 		{
-			"id": "dbd99244-5f0f-48e3-9c1e-244e3a220fc0",
+			"id": "07f2140e-1b19-4ad1-ab2a-ebcd01904a06",
 			"key": "item_name",
 			"value": "AAA",
 			"type": "string"
 		},
 		{
-			"id": "5a401161-b1da-4dbb-ad45-cd8faeeef685",
+			"id": "3eea3e3a-f34d-4cbe-ae25-580108f8969e",
 			"key": "payload",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n        \"en\": \"My Title\"\n    }\n }",
 			"type": "string"
 		},
 		{
-			"id": "7c7f5d1f-8acb-427a-b036-7f9f0c53f5dc",
+			"id": "178cfd77-a6bf-4768-ae2f-797dbe664c57",
 			"key": "payload_missing_default_language",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
 			"type": "string"
 		},
 		{
-			"id": "3f1a054d-2e9c-42cd-8d5c-952f2795cbc1",
+			"id": "061bc99e-fe5b-4da1-8c3c-ed4d6561b9f7",
 			"key": "payload_language_not_active",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
 			"type": "string"
 		},
 		{
-			"id": "4874cc16-6f8e-4069-969b-1f0f56e50db5",
+			"id": "8496c2b0-738e-4a0a-b74e-97a7854dd461",
 			"key": "payload_language_not_valid",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
 			"type": "string"
 		},
 		{
-			"id": "7eb376c4-5b7f-4bc5-b004-2ec369e8e9a4",
+			"id": "ded635fb-cf8e-42b5-92ea-0e61200e1193",
 			"key": "payload_modified",
 			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo modificato\",\n        \"en\": \"My Title changed\"\n    }\n }",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "2276276e-f630-48c9-82d3-7a05ef97e6c1",
+			"key": "lang_api_url",
+			"value": "api/languages",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "cfa6ae2f-67da-4097-9b90-e29146aa4398",
+			"key": "lang_to_activate",
+			"value": "it",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "afebfb68-1120-47f2-b1b5-c521846ebe51",
+			"key": "payload_lang_activation",
+			"value": "{\n    \"isActive\": true\n }",
 			"type": "string",
 			"description": ""
 		}

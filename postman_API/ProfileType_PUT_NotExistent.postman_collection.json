@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f4eb55c6-a630-4a96-9697-7efe3c494e6c",
+		"_postman_id": "05eaa4da-3763-4f08-8696-0e2055563202",
 		"name": "ProfileType_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -53,13 +53,13 @@
 					"raw": "{\n }"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -116,13 +116,13 @@
 					"raw": "{{payload}}"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -210,40 +210,29 @@
 	],
 	"variable": [
 		{
-			"id": "4f8f67b5-2d0b-4bb6-8e46-1e19878c9df1",
+			"id": "9ebffd26-c2ff-494f-a060-8dd3a0802fa4",
 			"key": "api_url",
 			"value": "api/profileTypes",
 			"type": "string"
 		},
 		{
-			"id": "713e5666-9038-46ee-8e0c-7b2446ea3a17",
+			"id": "fd37e8a3-3676-4e70-a3ea-8bfee62be06a",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "c0bd0469-f884-4e58-a790-3078dcf7c854",
+			"id": "14ea0360-3235-4c99-b4ab-25a111c42051",
 			"key": "payload",
-			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"value": "{\n  \"name\":\"{{item_name}}\",\n  \"code\":\"{{code}}\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "4764ac41-20c9-49ff-a40a-c99034d16c10",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "17d0d16c-2a9d-4dd8-ab6c-5b90cd3e956c",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "066e4e5f-9e74-46a7-bb0e-ec4870cf78b1",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
+			"id": "82d4dea4-e5fb-4d9b-8bcd-3d5ba2e02a8b",
+			"key": "code",
+			"value": "XYZ",
+			"type": "string",
+			"description": ""
 		}
 	]
 }

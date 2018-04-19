@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c0a41af3-eca6-4ebc-a6c6-6de962a166be",
+		"_postman_id": "4ff58666-33f2-4da2-b6a4-ac5f4930f85d",
 		"name": "ProfileTypes_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -53,13 +53,13 @@
 					"raw": "{\n }"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -71,13 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2db5aff1-ab9f-4194-b67b-6d0da45be3fa",
+						"id": "76901849-5338-4f85-8ea6-b80677219d9f",
 						"type": "text/javascript",
 						"exec": [
 							"//ProfileTypes\tPOST\t\tSuccess\t200\t\tN/A\t\t\t\tDone",
 							"",
 							"var status_code = 200",
-							"var item_name = pm.variables.get(\"item_name\");",
+							"var code = pm.variables.get(\"code\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -91,7 +91,7 @@
 							"",
 							"pm.test(\"Item name is correct\", function (){",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"    pm.expect(jsonData.payload.code).to.eql(code);",
 							"});",
 							""
 						]
@@ -132,11 +132,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "32cd02fc-8546-4f38-9ec6-35570dec1b79",
+						"id": "ac6a9196-ac95-4a0c-ac72-99a008b33bc3",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
-							"var item_name = pm.variables.get(\"item_name\");",
+							"var code = pm.variables.get(\"code\");",
 							"",
 							"//check status code",
 							"pm.test(\"Status code is \" + GET_status_code, function () {",
@@ -156,7 +156,7 @@
 							"",
 							"pm.test(\"Item name is correct\", function (){",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"    pm.expect(jsonData.payload.code).to.eql(code);",
 							"});",
 							"",
 							"",
@@ -179,13 +179,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -216,40 +216,29 @@
 	],
 	"variable": [
 		{
-			"id": "02704744-bcc6-44a4-b229-7861283f32bb",
+			"id": "a697f4ec-389d-483b-b402-421ecf1d9787",
 			"key": "api_url",
 			"value": "api/profileTypes",
 			"type": "string"
 		},
 		{
-			"id": "97244ce4-34c1-40d6-9df7-e95a48f5cbd1",
+			"id": "bfa6ca65-d04c-44d2-ac3a-28b07cf68269",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "50f86e78-f655-4097-b132-35a9f0eb95ee",
+			"id": "ba265a25-7118-4ef6-a4e8-9930276bd16f",
 			"key": "payload",
-			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"value": "{\n  \"name\":\"{{item_name}}\",\n  \"code\":\"{{code}}\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "da368eae-8961-4302-847d-0bfa5398479d",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "f944336e-292b-46f8-b6d1-376ad8b95c03",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "d8a30af7-f19f-4b2c-85be-5cec767f306c",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
+			"id": "76c20134-c3ce-4bc8-a68b-68d48933eceb",
+			"key": "code",
+			"value": "XYZ",
+			"type": "string",
+			"description": ""
 		}
 	]
 }

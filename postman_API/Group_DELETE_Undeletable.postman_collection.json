@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "689b3200-f13a-40c5-a6cb-29d555dee966",
+		"_postman_id": "48ba727a-a1ca-4d54-8246-ed2a027757ab",
 		"name": "Group_DELETE_Undeletable",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -146,25 +146,25 @@
 	],
 	"variable": [
 		{
-			"id": "e780c5e8-5d23-4283-b8ae-4219940339b3",
+			"id": "b71673be-1daa-4a98-bf5d-504e06f75613",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "21f74764-2891-4d9c-9ac4-9bf7fbaa5fe0",
+			"id": "936e230c-72c5-4352-8200-ff2ff935f9e2",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "c81d3387-4b20-4c6f-bffa-aa403eedbcd6",
+			"id": "45fa4460-ba34-4eba-8976-2cc0dec71630",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		},
 		{
-			"id": "29815029-63b2-4b77-a55b-fa44f8586172",
+			"id": "a6efd59f-b5f2-464c-bb5e-b39b5180a341",
 			"key": "undeletable_group",
 			"value": "administrators",
 			"type": "string",

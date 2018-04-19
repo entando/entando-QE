@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8dbf9a4d-ea07-4d16-9e39-348cc773e21f",
+		"_postman_id": "4e741a1c-a089-417b-b563-29b211d52e13",
 		"name": "Page_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8df78894-fab7-472f-ac5c-1d8672a81915",
+						"id": "2c6248bf-4f52-4798-848d-7d3bc20e5e46",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,9 +90,11 @@
 							"",
 							"",
 							"pm.test(\"Titles are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"BBB Title\");",
-							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"BBB Titolo\");",
-							"});"
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(item_name + \" Title\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(item_name + \" Titolo\");",
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -130,11 +133,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "33e0eb07-5640-4e22-b9cc-7ec1ada7f7a4",
+						"id": "fdc38694-7b78-4653-a932-0c5492ea7801",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"var status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -142,7 +146,7 @@
 							"});",
 							"",
 							"pm.test(\"Page code is correct\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"BBB\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
 							"});",
 							"",
 							"",
@@ -153,9 +157,11 @@
 							"",
 							"",
 							"pm.test(\"Titles are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"BBB Title Modified\");",
-							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"BBB Titolo Modificato\");",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql( item_name + \" Title Modified\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql( item_name + \" Titolo Modificato\");",
 							"});",
+							"",
+							"",
 							""
 						]
 					}
@@ -196,7 +202,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "17bc45cf-81be-4611-8b1a-1c076dbc91aa",
+						"id": "a96f11b7-6644-4e3c-b371-7cc8d944f071",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -224,8 +230,8 @@
 							"});",
 							"",
 							"pm.test(\"Titles are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"BBB Title Modified\");",
-							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"BBB Titolo Modificato\");",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"PleaseDoNotUseReally Title Modified\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"PleaseDoNotUseReally Titolo Modificato\");",
 							"});",
 							"",
 							"",
@@ -285,45 +291,27 @@
 	],
 	"variable": [
 		{
-			"id": "66528d7f-09be-4d2c-9b6c-4dc365bdaf7d",
+			"id": "a8ec0b20-1317-4261-83c0-1abeedcb2c2c",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "5c776f36-5dd4-42a0-a10f-102531b5f42d",
+			"id": "1b76f37a-d249-40fe-8564-6a79251807ae",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "e71b686f-c451-4078-afd0-ab3f4b3b06c6",
+			"id": "eb257c05-8f4e-45d1-879c-ac1615f30edc",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo\",\n                \"en\":\"BBB Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "da5a14bc-981e-4998-9afe-57bab776a933",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "4196bf9f-6a76-48f9-807b-cd5a56a9114b",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "b85ed057-625c-4535-add8-2c209bac4d02",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "f37f125b-a04e-4e57-8524-08937c55733d",
+			"id": "aae58445-604b-4ce8-9b78-cce1ba7f01d0",
 			"key": "payload_modified",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo Modificato\",\n                \"en\":\"BBB Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo Modificato\",\n                \"en\":\"PleaseDoNotUseReally Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		}

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "146bc938-b3dd-49e7-b32d-25f1ec86518e",
+		"_postman_id": "fab71672-861b-415d-96e2-7944875abb80",
 		"name": "Role_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -210,39 +210,21 @@
 	],
 	"variable": [
 		{
-			"id": "15a35c51-8fa0-41ba-a0f8-51c50b2a3fc5",
+			"id": "0d16a8d8-bcc6-4247-8efd-d5eea099f855",
 			"key": "api_url",
 			"value": "api/roles",
 			"type": "string"
 		},
 		{
-			"id": "d8d7759e-ef08-4a56-b506-96651ef55bf4",
+			"id": "1586294f-283a-44d3-9ec2-5102f59b5987",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "55db4690-ff9a-4383-a7f7-f68c5ba55da3",
+			"id": "3e2ecf97-7f2e-47bf-afab-07b2add63ab7",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"AAA\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": true\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "dcd9a0db-ed84-46be-8938-976e33baa7f5",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "02dcdabe-3485-48d3-bda2-18fa122dc468",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "8befa882-053c-4e53-95ed-d07d748b8574",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n    \"name\": \"{{item_name}*\",\n    \"code\": \"{{item_name}}\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUsers\": true\n    }\n }",
 			"type": "string"
 		}
 	]

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "322fc1c1-b83c-48c9-ada3-18d76d836f03",
+		"_postman_id": "37355f0f-1512-4e3a-8bfd-952e9879b331",
 		"name": "Fragment_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -169,6 +169,10 @@
 					{
 						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
 				"body": {

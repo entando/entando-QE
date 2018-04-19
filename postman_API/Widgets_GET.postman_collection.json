@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "1b1e9c01-f675-422d-aa54-2965c8b00aca",
+		"_postman_id": "0bde8878-7b1b-4d09-afde-4aa523b14a4a",
 		"name": "Widgets_GET",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Label_GET",
+			"name": "Widget_GET",
 			"event": [
 				{
 					"listen": "test",

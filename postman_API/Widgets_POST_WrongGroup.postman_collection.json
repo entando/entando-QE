@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "31e912dc-a561-478d-89f1-dffece4b68c7",
+		"_postman_id": "f1c70d84-99b2-4bcc-a89f-bcef78fc54bf",
 		"name": "Widgets_POST_WrongGroup",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -209,33 +209,33 @@
 	],
 	"variable": [
 		{
-			"id": "f53f5d91-9537-427d-a851-0d9bb8d9f1ab",
+			"id": "53c37023-a30d-4f9b-a427-23508cb7ce9a",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "3d373e65-aaf0-4d71-b121-7df300d2a648",
+			"id": "2f51b72a-5d53-461f-a7b4-7c6045314c4a",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "24a25d3e-37ec-4892-a35a-16ca6e6802f7",
+			"id": "85aca46a-2748-4fd8-abc9-956b2413bf2e",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "bf6a5a70-8d2e-4a65-9b05-0d9430f15ffc",
+			"id": "d5d2a1c2-0e97-45d5-a9cd-f5178803ac9c",
 			"key": "payload_wrong_group",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "8d2a50e9-11dd-4f77-a9bf-8db280ddde04",
+			"id": "c42c5d78-e328-456f-94e9-8ca482676dd4",
 			"key": "payload_mismatch_uri",
-			"value": "{\n \"code\": \"BBB\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

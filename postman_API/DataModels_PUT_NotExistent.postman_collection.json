@@ -1,10 +1,77 @@
 {
 	"info": {
-		"_postman_id": "3e4c8718-cf47-4d93-98c7-04ae8ad40934",
+		"_postman_id": "bf63a0bd-aa73-4c20-88dd-a4b56f07dbd5",
 		"name": "DataModels_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "POST_HELPER_DataType",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa84764d-b5fe-4539-8289-4008bf8b6019",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_data_type}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url_data_type}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url_data_type}}"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "DELETE_HELPER",
 			"event": [
@@ -210,22 +277,36 @@
 	],
 	"variable": [
 		{
-			"id": "c71859f3-def7-4955-a22c-fb48d7d40903",
+			"id": "f2474471-d35f-4a26-a093-178b6c6cc4d4",
 			"key": "api_url",
 			"value": "api/dataModels",
 			"type": "string"
 		},
 		{
-			"id": "455d2f62-b36c-4a6d-8677-add6d8b4b135",
+			"id": "0d5e2042-9629-48dd-9c8d-7edfa773ff8c",
 			"key": "item_name",
 			"value": "666",
 			"type": "string"
 		},
 		{
-			"id": "14b3d32d-d534-4257-a399-6e5893d714f5",
+			"id": "11f0ce1f-828e-48c9-9fdf-98291fcdc379",
 			"key": "payload",
 			"value": "{\n    \"modelId\": \"{{item_name}}\",\n    \"descr\": \"data model sample\",\n    \"type\": \"AAA\",\n    \"model\": \"model\",\n    \"stylesheet\": \"\"\n}\n",
 			"type": "string"
+		},
+		{
+			"id": "58fb5216-14f1-4acf-ba79-9fb07dc034a7",
+			"key": "api_url_data_type",
+			"value": "api/dataTypes",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "ea209aef-51c5-45ab-84d7-22125b99bae3",
+			"key": "payload_data_type",
+			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"AAA\",\n    \"attributes\": [{\n        \"type\": \"Boolean\",\n        \"code\": \"attrCode\",\n        \"name\": \"attr name\",\n        \"status\": \"0\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\": true,\n        \"listFilter\": true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"Help message\",\n                \"keyForHelpMessage\": null,\n                \"errorMessage\": \"Error Message\",\n                \"keyForErrorMessage\": null\n            },\n            \"minLength\": null,\n            \"maxLength\": null,\n            \"regex\": null,\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n                \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n    }],\n      \"viewPage\": null,\n      \"listModel\": null,\n      \"defaultModel\": null\n}\n",
+			"type": "string",
+			"description": ""
 		}
 	]
 }

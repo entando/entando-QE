@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c97207f0-61b1-4586-b6ad-475fdc3a80ac",
+		"_postman_id": "9c6b649f-78c2-4aa5-a94f-61fc2ebbceb3",
 		"name": "PageModels_POST_InvalidFrameConfiguration",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -210,25 +210,25 @@
 	],
 	"variable": [
 		{
-			"id": "4189d65e-a808-4710-b592-6faeea27444c",
+			"id": "022cdb11-a5c1-49f7-bc32-8a349b8b05a6",
 			"key": "api_url",
 			"value": "api/pageModels",
 			"type": "string"
 		},
 		{
-			"id": "c44f5345-50d2-45d7-bbef-5b83c54a91d9",
+			"id": "be102665-8341-4635-ac7b-60d211f55bd4",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "9eb15aaa-8f73-4e7c-a785-6d25399bf258",
+			"id": "d0435dd4-459c-4554-8bdc-f824ca2990d0",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "31a49a43-fd7a-4058-bbae-42b7f3b456b6",
+			"id": "d320e893-2592-41d5-a171-7a1925a11b53",
 			"key": "payload_invalid_frame_configuration",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"0\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string",

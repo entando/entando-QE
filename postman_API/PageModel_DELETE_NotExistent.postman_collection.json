@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "053a0af5-7e80-426b-9edb-99802bd18d83",
+		"_postman_id": "fa5c9ec2-a52c-4b95-8a2b-53250d8e6ae8",
 		"name": "PageModel_DELETE_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -207,19 +207,19 @@
 	],
 	"variable": [
 		{
-			"id": "058fa31f-93c8-4ad5-8b02-58620bb1e9d4",
+			"id": "15d884fa-e0ee-4f54-af3d-4dd8189e00ba",
 			"key": "api_url",
 			"value": "api/pageModels",
 			"type": "string"
 		},
 		{
-			"id": "1b1f3021-2b2b-46e3-a060-4d3d5dc47899",
+			"id": "81b41f71-eea9-4785-a6fe-35e68ed3aab3",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "4e4b4c05-1a84-4cba-91f8-652fb7d5843b",
+			"id": "349b2079-78a4-4aa5-a762-1c63f0f07781",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string"

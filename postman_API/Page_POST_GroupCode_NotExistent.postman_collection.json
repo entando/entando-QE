@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "619750d1-268d-412a-b06d-f7fd4bc5d6a2",
+		"_postman_id": "312e2355-6061-4795-9e88-9bcc2dd3fc79",
 		"name": "Page_POST_GroupCode_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -134,12 +134,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "21e3ecde-87af-4899-9378-58d7a4030ff4",
+						"id": "64f4b283-8317-4058-84ca-8a332765b36b",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found\";",
+							"var error_message = \" and status 'draft' could be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -210,25 +210,25 @@
 	],
 	"variable": [
 		{
-			"id": "72d74ad7-0393-43a1-8fa6-a39ddc476f3e",
+			"id": "f48aacbb-49fd-43c9-b1f2-770c1564e8ff",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "11a9487e-22f9-4073-9e91-3f133c46b813",
+			"id": "3ba97dd9-c423-4bf9-ac7b-19f7e1e5a442",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "62f2333f-c641-441f-bc38-5ad3637cf598",
+			"id": "7fbaea58-d4d6-4add-bd92-6a70dadf9e1d",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo\",\n                \"en\":\"BBB Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "18d5be28-3fc2-4d03-80c7-c5d8e6f3f12f",
+			"id": "fdd70c9d-fef0-425d-93cb-0b2e3a5b96b0",
 			"key": "payload_modified",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo Modificato\",\n                \"en\":\"BBB Title Modified\"\n            },\n    \"ownerGroup\": \"nogroup\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",

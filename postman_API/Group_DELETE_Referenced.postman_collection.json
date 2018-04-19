@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0e9f13ef-dd72-4645-8cff-0ee554ba3256",
+		"_postman_id": "fb2a5a9b-3548-40ca-ad97-307fb3d1c412",
 		"name": "Group_DELETE_Referenced",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -131,12 +131,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "755915ea-c62b-4595-8618-18fe70ede1d8",
+						"id": "c537679c-65e5-4cc1-8ead-382dad48fc50",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -149,9 +150,11 @@
 							"",
 							"",
 							"pm.test(\"Group set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA\");",
-							"});"
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name);",
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -399,14 +402,14 @@
 					"raw": "[{\n        \"group\": \"{{item_name}}\",\n        \"role\": \"{{role_name}}\"\n    }\n]"
 				},
 				"url": {
-					"raw": "{{url}}/api/users/AAA/authorities",
+					"raw": "{{url}}/api/users/{{user_name}}/authorities",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"users",
-						"AAA",
+						"{{user_name}}",
 						"authorities"
 					]
 				}
@@ -527,6 +530,66 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "DELETE_User_HELPER Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30baed72-c589-41d3-bd8b-998db59d6d1a",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tDELETE\t\tExistent\t200\tN/A\t\t\t\t\tDone",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/api/users/{{user_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{user_name}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -553,55 +616,55 @@
 	],
 	"variable": [
 		{
-			"id": "89dd59b7-8634-4c03-9581-f34a96fe47cb",
+			"id": "7efabe13-bc60-4616-9b8e-a72c6c7946e4",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "be853c0c-5377-4e30-b0c0-8aecf55f66bb",
+			"id": "f05b5b23-7423-4440-ae3c-a67615b21939",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "06726cb6-1389-4fbb-8f6b-3c8b80ec4d08",
+			"id": "f8a7711f-6cd9-43b3-9db8-cc556f86321c",
 			"key": "group_payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		},
 		{
-			"id": "b1850206-91da-456b-ac20-2654252a0b4d",
+			"id": "de764fe8-e9f6-4e1f-82b8-8d04ddcc7bfe",
 			"key": "referenced_group",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "d5d0bee8-289e-49c4-ab5d-1a4d9032699e",
+			"id": "94c7d5de-ec7c-47d2-b6f6-ec15bc195014",
 			"key": "user_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "5575067e-0954-4b50-9295-de6af01a504a",
+			"id": "7fba2644-38c6-4533-9281-6177ca035a2b",
 			"key": "user_payload",
 			"value": "{\n    \"username\": \"{{user_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "6ce9086e-6399-475c-9ff5-2a3a7b9f768d",
+			"id": "66b79620-7ea9-4f55-b528-24ac36332e9d",
 			"key": "role_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "ad5a4725-e2ab-4082-ab99-e50cba8e47c3",
+			"id": "f1fb77d7-a410-4e95-bc09-e8c208f1a2d3",
 			"key": "role_payload",
-			"value": "{\n\"name\": \"AAA\",\n\"code\": \"AAA\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
+			"value": "{\n\"name\": \"PleaseDoNotUseThis\",\n\"code\": \"PleaseDoNotUseThis\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
 			"type": "string",
 			"description": ""
 		}

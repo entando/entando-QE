@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fc3c3784-3032-4224-9833-8512eda44cfa",
+		"_postman_id": "97512948-4265-48d9-9361-a79203ea063f",
 		"name": "ReloadConfiguration_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -88,21 +88,9 @@
 	],
 	"variable": [
 		{
-			"id": "93efa10b-eebe-434b-a2fb-e9b217956bdf",
+			"id": "26d23855-e294-40a5-8b33-74160eca20f2",
 			"key": "api_url",
 			"value": "api/reloadConfiguration",
-			"type": "string"
-		},
-		{
-			"id": "040427a7-1406-48d9-8daa-9d52cf6af72c",
-			"key": "item_name",
-			"value": "AAA",
-			"type": "string"
-		},
-		{
-			"id": "d52e0934-7288-41aa-9f11-7d50ac371cd5",
-			"key": "payload",
-			"value": "{\n }",
 			"type": "string"
 		}
 	]

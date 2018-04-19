@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "762fab46-0e00-48a9-bfd7-ce6301a704c7",
+		"_postman_id": "144deec4-2183-4286-b4c5-73b7a0579416",
 		"name": "Page_POST_NotExistent_PageModel",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,10 +71,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c0fa03ff-fb4c-4446-b103-4531d1236d63",
+						"id": "81ae8339-f1af-4d8f-85e0-688c58156dd1",
 						"type": "text/javascript",
 						"exec": [
-							"//Label\tPUT\t\tNotExistent\t404\t1\t\t\t\t\tDone",
 							"",
 							"var status_code = 404;",
 							"var error_code = '1';",
@@ -113,7 +112,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{payload_modified}}"
+					"raw": "{{payload}}"
 				},
 				"url": {
 					"raw": "{{url}}/{{api_url}}/",
@@ -210,29 +209,22 @@
 	],
 	"variable": [
 		{
-			"id": "282da0e0-2243-44e3-a806-5efab66a4939",
+			"id": "49dc6d2f-458d-4753-9c47-1dffa6eeafb3",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "960d9b1a-f183-4a4c-a806-4cac881e5a57",
+			"id": "4e07c242-937c-4f8f-949b-94ee57972cca",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "3efb7f57-52e1-458d-b424-c433ece2045b",
+			"id": "4eb8c121-d6e3-4d2c-b84b-e48a68bb8ee5",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"nopagemodel\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUseTitle\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
-		},
-		{
-			"id": "18af29cf-95f4-49f1-87fc-4e998a373890",
-			"key": "payload_modified",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"nopagemodel\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
-			"type": "string",
-			"description": ""
 		}
 	]
 }

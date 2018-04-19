@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "db135cf5-5e2f-4092-a2b4-e08d6e596717",
+		"_postman_id": "86a92243-1165-45c7-b3db-cca8830033a9",
 		"name": "Page_GET_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -129,12 +129,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d2681a5e-8a89-4254-a423-8b45ea3fe8bf",
+						"id": "eadc7630-6d14-41f4-bc08-a67928c7866b",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'AAA' and status 'draft' could be found\";",
+							"var error_message = \" and status 'draft' could be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -186,14 +186,14 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0543826d-e6cb-4f6f-995c-a16d5ee42f01",
+						"id": "30fa4665-1428-4713-9f4e-f5c2166f7f4d",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tGET\t\tNotExistent\t404\t1\tno label found with code <labelcode> Done",
 							"",
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'AAA' and status 'draft' could be found\";",
+							"var error_message = \" and status 'draft' could be found\";",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -250,14 +250,14 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5bda629f-cc5e-4c55-98d8-cb24602ff20a",
+						"id": "f9caf122-19a3-4e53-961d-e916534231f9",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tGET\t\tNotExistent\t404\t1\tno label found with code <labelcode> Done",
 							"",
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'AAA' and status 'published' could be found\";",
+							"var error_message = \" and status 'published' could be found\";",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -333,21 +333,21 @@
 	],
 	"variable": [
 		{
-			"id": "08356f2a-3202-4f61-9b16-af73bfaa53b7",
+			"id": "1c04eb2d-3a74-4420-9006-e1697cc41789",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "f9f54829-f43d-499e-a9c2-7fbcb3e0bbf2",
+			"id": "383f5a02-8e6d-497b-8112-8fd3c0b8bd83",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "c40a4ace-9dd0-4790-8b2f-ff200c22ea56",
+			"id": "86b912a2-3836-4280-8eb2-a8bcd21f9b82",
 			"key": "item_child_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string",
 			"description": ""
 		}

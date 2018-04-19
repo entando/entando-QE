@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cda9f7c6-91a2-468c-a7ee-18b74c637c11",
+		"_postman_id": "6f889b18-259a-432a-ba6a-adf5f121457f",
 		"name": "Page_GET_Existent_Wrong_Status",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -78,12 +78,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b97c7cd7-1f57-4b7d-b6c6-907c03d55435",
+						"id": "2aa98e6f-f56d-4d29-a934-cbdcea253e19",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '2';",
-							"var error_message = \"The page 'AAA' as available only in draft mode\";",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"var error_message = \" available only in draft mode\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -99,6 +100,8 @@
 							"   var jsonData = pm.response.json();",
 							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
 							"});",
+							"",
+							"",
 							"",
 							"",
 							"",
@@ -166,21 +169,21 @@
 	],
 	"variable": [
 		{
-			"id": "37d57834-55fa-4f03-b401-9ba2dca38e9b",
+			"id": "dfd31662-6ca1-4abb-a733-f071d5fe2e44",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "e2a1d1e9-4ad2-4b22-b284-a546a65b0c2b",
+			"id": "7c536062-5458-4046-bdff-8a79da7a3484",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "b1d3e791-d215-4ed6-a3b5-006c958a0639",
+			"id": "df7f7d62-06c5-484c-b092-ea4cce9b0e41",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUse Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
 			"type": "string"
 		}
 	]

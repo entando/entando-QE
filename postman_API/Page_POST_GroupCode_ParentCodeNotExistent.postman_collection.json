@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "808e8f91-7d44-44fd-aefa-3f0e6e3d5e52",
+		"_postman_id": "f8205942-9079-4fce-b42f-5e713dfe657a",
 		"name": "Page_POST_GroupCode_ParentCodeNotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -134,12 +134,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6bfc6490-2457-40db-9f54-3e86ff845490",
+						"id": "15073bee-72f8-40a3-a0b7-0796ef2337f5",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found\";",
+							"var error_message = \" and status 'draft' could be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -210,45 +210,27 @@
 	],
 	"variable": [
 		{
-			"id": "0dd352f2-4f2b-44c3-afcc-0bc93aa72c19",
+			"id": "3df8084c-423e-4d96-ac4a-9e5e71c11452",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "25e80f96-7801-4d58-801c-6bb2e0ed75b7",
+			"id": "9302c887-8305-4fd1-8257-1d3ee8c5a8ba",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "4ad261b2-a233-4bfe-964e-a2cc49bac5ce",
+			"id": "2bc1d673-6bd2-4eb2-903e-7eee383632a7",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo\",\n                \"en\":\"BBB Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "8ca5c5f6-0743-4fcf-82fa-4f154cb56283",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "0424ea7e-1f67-4e3a-bb10-85815cf37a1d",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "a24a4362-6dec-4435-b70b-1ecd4f3f2d53",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "6552ce50-b8e7-4f9e-9ad2-3686065feb01",
+			"id": "4190a112-c722-48d7-8d64-38755e4f9a14",
 			"key": "payload_modified",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"noparent\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo Modificato\",\n                \"en\":\"BBB Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"noparent\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo Modificato\",\n                \"en\":\"PleaseDoNotUseReally Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		}

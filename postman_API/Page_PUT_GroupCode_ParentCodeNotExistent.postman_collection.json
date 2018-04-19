@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ecdf95ed-e629-48a2-9105-ca510d392def",
+		"_postman_id": "3e8c6939-161d-49ac-ad2c-0a8c22cd7f8a",
 		"name": "Page_PUT_GroupCode_ParentCodeNotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,7 +71,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8df78894-fab7-472f-ac5c-1d8672a81915",
+						"id": "8e3a5eb8-f271-4af1-8a06-c180e5677f70",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
@@ -89,8 +89,8 @@
 							"",
 							"",
 							"pm.test(\"Titles are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"BBB Title\");",
-							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"BBB Titolo\");",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"PleaseDoNotUseReally Title\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"PleaseDoNotUseReally Titolo\");",
 							"});"
 						]
 					}
@@ -193,7 +193,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a75a86ef-2884-4406-9672-53638f0b9394",
+						"id": "672c1730-6d64-47a2-8045-b62a203c09d7",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -221,8 +221,8 @@
 							"});",
 							"",
 							"pm.test(\"Titles are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"BBB Title\");",
-							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"BBB Titolo\");",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(\"PleaseDoNotUseReally Title\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql(\"PleaseDoNotUseReally Titolo\");",
 							"});",
 							"",
 							"",
@@ -282,45 +282,27 @@
 	],
 	"variable": [
 		{
-			"id": "0dd352f2-4f2b-44c3-afcc-0bc93aa72c19",
+			"id": "9f53c7d9-1801-49cb-8a9a-83897d5d1254",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "25e80f96-7801-4d58-801c-6bb2e0ed75b7",
+			"id": "50aeac9d-0be8-41a6-b019-422fbd723d39",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "4ad261b2-a233-4bfe-964e-a2cc49bac5ce",
+			"id": "29e0340e-ee89-4c0c-8f01-7427f582feb7",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo\",\n                \"en\":\"BBB Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "8ca5c5f6-0743-4fcf-82fa-4f154cb56283",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "0424ea7e-1f67-4e3a-bb10-85815cf37a1d",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "a24a4362-6dec-4435-b70b-1ecd4f3f2d53",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "6552ce50-b8e7-4f9e-9ad2-3686065feb01",
+			"id": "9a0b8fbf-d2f6-476d-8657-e0386cc4b092",
 			"key": "payload_modified",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"noparent\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo Modificato\",\n                \"en\":\"BBB Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"noparent\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo Modificato\",\n                \"en\":\"PleaseDoNotUseReally Title Modified\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		}

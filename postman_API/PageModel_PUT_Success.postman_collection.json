@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7ae5ae9-fa9f-4061-ab40-2edeac6507f2",
+		"_postman_id": "115fccd8-22a0-46d0-984b-759e69476fbd",
 		"name": "PageModel_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,7 +71,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "73827cc6-fe42-4c63-84ef-b4644a649f52",
+						"id": "d7fd9930-0e93-430e-8cf3-af23f5f87825",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
@@ -89,7 +89,7 @@
 							"});",
 							"",
 							"",
-							"pm.test(\"Titles are set correctly\", function(){",
+							"pm.test(\"Page Model params set correctly\", function(){",
 							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
 							"    pm.expect(pm.response.json().payload.descr).to.be.eql(item_name);",
 							"});",
@@ -291,25 +291,25 @@
 	],
 	"variable": [
 		{
-			"id": "e0df53cd-2f14-4e7b-b2d7-32dff60dbec4",
+			"id": "80d4e871-d0c2-45b3-8357-3f2b6b0dfa5e",
 			"key": "api_url",
 			"value": "api/pageModels",
 			"type": "string"
 		},
 		{
-			"id": "5b03af6a-fdf6-4984-95bc-c50d797d28b6",
+			"id": "62283958-e189-4f44-9168-c9e290f38f4b",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "86d4b337-a9b5-4147-b3ec-9b9d83ab846e",
+			"id": "9ccdaf66-cf86-4757-b23f-378d71cd49c8",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "ad02c745-df3b-4b57-af09-61877f9d5790",
+			"id": "1424c5d1-ce11-4b77-88c2-69b8af4e4d73",
 			"key": "payload_modified",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"Modified\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html>Modified</html>\"\n}",
 			"type": "string",

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f7b45af5-cc0d-4433-ada3-7c619bbce4a0",
+		"_postman_id": "7782ca89-2fd7-46f0-8656-f6f9577aeefa",
 		"name": "Widgets_POST_AlreadyPresent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -224,34 +224,41 @@
 	],
 	"variable": [
 		{
-			"id": "eb5f6811-541a-4e53-9769-923f43a6e6c4",
+			"id": "623955b3-9433-4778-8f93-3905313b2e35",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "8b8d4bf7-5404-4eb3-b5e2-908945b0b609",
+			"id": "9189854f-ab34-4487-8699-c21d029c569a",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "53eaf735-2b60-4e07-bdc7-6246622c3c54",
+			"id": "4aa1328c-65bf-4dce-b931-70e546308b34",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "7422dadc-f651-4d9e-b5a0-57fbb0cccce6",
+			"id": "be4720fb-21d9-403e-9269-6088907d49ba",
 			"key": "payload_wrong_group",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"not-existent-group\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "8e4188cd-de5d-44af-8374-3617be9b58e1",
+			"id": "896b6e74-d4ad-4a11-8a4e-e79270242209",
 			"key": "payload_mismatch_uri",
-			"value": "{\n \"code\": \"BBB\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{changed_item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
+		},
+		{
+			"id": "4d81728b-0c0b-4f83-bc1f-891fe6cbfbd7",
+			"key": "changed_item_name",
+			"value": "PleaseDoNotUseReally",
+			"type": "string",
+			"description": ""
 		}
 	]
 }

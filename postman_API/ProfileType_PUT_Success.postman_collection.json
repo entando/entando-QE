@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8fc48e46-5b89-42a6-a448-bd97ca0c0f3b",
+		"_postman_id": "4050dc2a-7dab-4783-8be5-6abb6073e1b8",
 		"name": "ProfileType_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -53,13 +53,13 @@
 					"raw": "{\n }"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -125,11 +125,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "88494afd-7b68-4779-8e90-4236b6680bc6",
+						"id": "26c3f563-383b-4fb7-8c5a-9d105efc503f",
 						"type": "text/javascript",
 						"exec": [
 							"//ProfileType\tPUT\t\tExistent\t200\t\tN/A\t\t\t\tDone",
 							"var status_code = 200;",
+							"var code = pm.variables.get(\"code\");",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -137,7 +138,7 @@
 							"});",
 							"",
 							"pm.test(\"Profile type code is correct\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(code);",
 							"});",
 							"",
 							"",
@@ -151,6 +152,8 @@
 							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"Profile Type Modified\");",
 							"    ",
 							"});",
+							"",
+							"",
 							""
 						]
 					}
@@ -173,13 +176,13 @@
 					"raw": "{{payload_modified}}"
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -191,11 +194,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ccbbddb5-9675-4d3a-bf75-55ce2d0e9b73",
+						"id": "4d5d8d6a-90a9-4552-b611-282f10d24cc4",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
-							"var item_name = pm.variables.get(\"item_name\");",
+							"var code = pm.variables.get(\"code\");",
 							"",
 							"//check status code",
 							"pm.test(\"Status code is \" + GET_status_code, function () {",
@@ -215,7 +218,7 @@
 							"",
 							"pm.test(\"Item name is correct\", function (){",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.payload.code).to.eql(item_name);",
+							"    pm.expect(jsonData.payload.code).to.eql(code);",
 							"});",
 							"",
 							"",
@@ -243,13 +246,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"raw": "{{url}}/{{api_url}}/{{code}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{code}}"
 					]
 				}
 			},
@@ -280,27 +283,34 @@
 	],
 	"variable": [
 		{
-			"id": "2e86d1f9-9d69-483d-864f-96f4808636c1",
+			"id": "fdc8bc7c-115d-4b82-aaf4-e042ebdc9df4",
 			"key": "api_url",
 			"value": "api/profileTypes",
 			"type": "string"
 		},
 		{
-			"id": "d0e2ac2a-c99a-43ce-8951-6f8ced95539d",
+			"id": "013c5508-4b1d-4f93-bb8a-1d5b43b755e4",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "092bd946-8d28-4bd2-8b56-b5637fb47c58",
+			"id": "fba7c96c-e2bd-4ab9-835d-334c07582424",
 			"key": "payload",
-			"value": "{\n  \"name\":\"Profile Type\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"value": "{\n  \"name\":\"{{item_name}}\",\n  \"code\":\"{{code}}\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
 			"type": "string"
 		},
 		{
-			"id": "28f80a98-540f-441e-a9f0-b04779ee5e1d",
+			"id": "831d30c2-c716-491a-b67c-04268cd411ed",
 			"key": "payload_modified",
-			"value": "{\n  \"name\":\"Profile Type Modified\",\n  \"code\":\"AAA\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"value": "{\n  \"name\":\"Profile Type Modified\",\n  \"code\":\"{{code}}\",\n  \"status\":\"\",\n  \"attributes\"  :    [\n     {\n        \"type\":\"Text\",\n        \"code\":\"attrCode\",\n        \"name\":\"attr name\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\":true,\n        \"listFilter\":true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"help\",\n                \"keyForHelpMessage\": \"helpKey\",\n                \"errorMessage\": \"errorMsg\",\n                \"keyForErrorMessage\": \"keyForError\"\n            },\n            \"minLength\": 10,\n            \"maxLength\": 100,\n            \"regex\": \"regex*\",\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n            \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n     }\n  ]\n}",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "c5c87269-1f9e-4c82-b6ab-a6050954d253",
+			"key": "code",
+			"value": "XYZ",
 			"type": "string",
 			"description": ""
 		}

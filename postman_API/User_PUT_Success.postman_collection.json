@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e547b48e-461f-4ed6-905b-2a4d2e356235",
+		"_postman_id": "35086972-2cf7-4e9c-9794-319f69f31cd7",
 		"name": "User_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cf365ee1-86d8-48ee-b65a-525773c5a99e",
+						"id": "01cf2668-35a1-42cf-b41d-7f77b53bbff4",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,9 +90,11 @@
 							"",
 							"",
 							"pm.test(\"User has been created correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(item_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"active\");",
-							"});"
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -130,19 +133,16 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9c3524b8-88c4-499d-90d1-966025f3bd32",
+						"id": "f4459012-5b2f-488c-b735-42e0a7479d09",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"var status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
-							"});",
-							"",
-							"pm.test(\"Username is correct\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
 							"});",
 							"",
 							"",
@@ -153,7 +153,7 @@
 							"",
 							"",
 							"pm.test(\"User has been updated correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(item_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"inactive\");",
 							"});",
 							""
@@ -196,7 +196,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3b7a3331-57e2-4194-a708-935009c1b0b8",
+						"id": "223f7774-149e-4271-b4da-10104af86006",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -219,7 +219,7 @@
 							"",
 							"",
 							"pm.test(\"User has been updated correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(item_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"inactive\");",
 							"});",
 							"",
@@ -280,25 +280,25 @@
 	],
 	"variable": [
 		{
-			"id": "d997eb28-285e-4742-b108-f0488c70aceb",
+			"id": "d8474f6a-7176-4125-989a-77c76d0412f0",
 			"key": "api_url",
 			"value": "api/users",
 			"type": "string"
 		},
 		{
-			"id": "8e8cf143-9eec-4d0e-8f9b-38230f561919",
+			"id": "120ab94a-c329-4259-947b-d31ba160d555",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "41a5c109-b76c-42c8-8ef5-f78cd6d7ca9b",
+			"id": "d7473d16-12b2-46b8-9df2-0da974ae58b3",
 			"key": "payload",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "d24659dc-7dfc-4847-8b5e-d2bd0207128e",
+			"id": "1e807e1b-b47c-46f7-af23-f7932683afa5",
 			"key": "payload_modified",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"inactive\",\n    \"password\": \"password\"\n}",
 			"type": "string",

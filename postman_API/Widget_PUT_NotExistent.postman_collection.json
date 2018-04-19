@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3a3155af-808f-4014-a7bf-afe5df71440f",
+		"_postman_id": "b4be93cc-9310-450c-a624-117b3608c8ed",
 		"name": "Widget_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -210,21 +210,21 @@
 	],
 	"variable": [
 		{
-			"id": "fcb98ae9-9f81-46a2-bcfb-67b81090f01d",
+			"id": "10fe6b1c-9ca5-40fd-bee7-3e99b8b28949",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "2e95a826-84b0-4f98-b310-9759edded69d",
+			"id": "4f0bf1f6-ea26-42c9-a273-c4bafdd0361c",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "ea34494d-5e8a-4e2f-8e72-467ec02e2dd9",
+			"id": "8b08f512-8478-4a5e-a946-04b5d54152c4",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

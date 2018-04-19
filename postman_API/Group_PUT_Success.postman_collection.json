@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ebba1580-9c34-4015-963e-905a8541b2b0",
+		"_postman_id": "5f09f8e9-3392-410b-884d-acdc263dd53c",
 		"name": "Group_PUT_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cbe96e31-af52-498b-98bc-6ab3ebb54045",
+						"id": "c34e0d88-a1fe-44d1-990a-233dc40bbfa4",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,10 +90,12 @@
 							"",
 							"",
 							"pm.test(\"Group set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name);",
 							"    ",
-							"});"
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -131,19 +134,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "38b63c4b-4983-4c28-ac01-a7cf46bc7d48",
+						"id": "5ab79c20-7829-4360-9176-35ad8772f013",
 						"type": "text/javascript",
 						"exec": [
 							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"var status_code = 200;",
-							"",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
 							"});",
 							"",
 							"pm.test(\"Group code is correct\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
 							"});",
 							"",
 							"",
@@ -154,7 +157,7 @@
 							"",
 							"",
 							"pm.test(\"Group name set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA modified\");",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name + \" modified\");",
 							"});",
 							""
 						]
@@ -196,7 +199,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "27ccf3f9-f821-45eb-8ab2-5109644f3c6e",
+						"id": "7d1afeef-aae7-4e10-a91a-757bc00de8ae",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -224,7 +227,7 @@
 							"});",
 							"",
 							"pm.test(\"Group name set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA modified\");",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name + \" modified\");",
 							"});",
 							"",
 							"",
@@ -284,45 +287,27 @@
 	],
 	"variable": [
 		{
-			"id": "64948e10-8c7e-4ab7-a88a-24fe6a40faef",
+			"id": "fb6dc4eb-d1c4-4b98-8e2d-673f78463264",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "b61eb6a6-ab29-4f39-8b45-cd61a67c09dd",
+			"id": "e060f120-630a-48c5-b148-5e80752aabea",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "5128fad9-c3b9-424a-a1c8-b5ec208bdef9",
+			"id": "8aa09221-a8d3-447f-af16-de9991c613e7",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		},
 		{
-			"id": "2ad3f074-acb3-418a-83ed-7a4e65f407cb",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "f66f0684-7048-4f39-8e31-d37bd9eee89c",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "a67b4340-cca6-4533-8e0f-db9eaaef1e5a",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "e1a91ac0-4bab-456d-bd50-cc867d28bf8e",
+			"id": "ccc7ee9a-88bb-4da0-910c-fa242edd45e0",
 			"key": "payload_modified",
-			"value": "{\n    \"name\": \"AAA modified\",\n    \"code\": \"{{item_name}}\"\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis modified\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string",
 			"description": ""
 		}

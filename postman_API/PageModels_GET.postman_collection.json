@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "862f58eb-8133-4380-a8b3-2649291442e4",
+		"_postman_id": "9bf83686-8a84-43c3-b5de-11c1f1de49ee",
 		"name": "PageModels_GET",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -90,19 +90,19 @@
 	],
 	"variable": [
 		{
-			"id": "5254ff3e-578d-4b2a-97e3-b6142e8ac741",
+			"id": "81cbbaf3-8dd4-4253-bee4-3420e4ec043f",
 			"key": "api_url",
 			"value": "api/pageModels",
 			"type": "string"
 		},
 		{
-			"id": "499c54fe-1cc1-47c0-a799-68c7a26eac4c",
+			"id": "917efb06-2a45-46c6-a6ff-2cdef7d72fe7",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "f49592a4-4aba-4e56-aab5-a11b6fe37e66",
+			"id": "bd30b964-f728-40dc-901c-5461578d7519",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string"

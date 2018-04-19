@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5fe4e80a-2bc6-4385-aecc-38de1d55a19d",
+		"_postman_id": "335c620a-5726-4af1-8d58-b5930f11ef57",
 		"name": "Role_GET_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -164,21 +164,21 @@
 	],
 	"variable": [
 		{
-			"id": "263d9faf-f78b-4e28-94c1-a762f2fa4aed",
+			"id": "4018d027-5c56-4a38-bbc8-45d4a3acc809",
 			"key": "api_url",
 			"value": "api/roles",
 			"type": "string"
 		},
 		{
-			"id": "15769251-9c6d-4bee-9933-fe0319c9be67",
+			"id": "e662ad2b-56f3-40f0-bc7e-b9eb5b0b2fbd",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "e677c86b-3570-40ee-b326-16bd6059b362",
+			"id": "3e1f2213-51f7-4bc4-883a-fdb8bcf92623",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA-Name\",\n    \"code\": \"AAA\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUserProfile\": true\n    }\n }",
+			"value": "{\n    \"name\": \"{{item_name}}\",\n    \"code\": \"{{item_name}}\",\n    \"permissions\": {\n        \"editContents\": true,\n        \"editUserProfile\": true\n    }\n }",
 			"type": "string",
 			"description": ""
 		}

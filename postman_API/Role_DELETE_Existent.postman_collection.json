@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "41ff6d32-2dca-4c19-a685-b151d4ce75e1",
+		"_postman_id": "5144d736-1af2-45d2-ad53-44d5ad9be79e",
 		"name": "Role_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -213,21 +213,21 @@
 	],
 	"variable": [
 		{
-			"id": "ac6b242a-3b4a-4baf-a53f-c910f8a63a10",
+			"id": "91a49c12-cf02-4d22-a904-87c053c11e6b",
 			"key": "api_url",
 			"value": "api/roles",
 			"type": "string"
 		},
 		{
-			"id": "e8fcb22b-ed84-4b33-bda0-d11727cab00f",
+			"id": "b808fa4b-16f9-4d8f-ae96-ec574e2f2e7b",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "8da1b804-182e-45df-abc9-ce9ac5621103",
+			"id": "4b9ad566-ddb1-47ca-93cc-bf62fa753235",
 			"key": "payload",
-			"value": "{\n\"name\": \"AAA\",\n\"code\": \"AAA\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
+			"value": "{\n\"name\": \"{{item_name}}\",\n\"code\": \"{{item_name}}\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
 			"type": "string",
 			"description": ""
 		}

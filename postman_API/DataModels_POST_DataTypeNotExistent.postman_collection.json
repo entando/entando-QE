@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bec9fd19-5bb2-4aad-8650-c9698cdaea20",
+		"_postman_id": "e6ed391d-2a39-4916-a389-f0561a460609",
 		"name": "DataModels_POST_DataTypeNotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -275,39 +275,39 @@
 	],
 	"variable": [
 		{
-			"id": "81cbd371-5a7f-4c1d-a593-c5b447bf0766",
+			"id": "d33a7e7c-8efe-4c5b-8fd2-42df87ef7509",
 			"key": "api_url",
 			"value": "api/dataModels",
 			"type": "string"
 		},
 		{
-			"id": "a7c715e2-50df-4416-8ace-cb4ea86fae53",
+			"id": "c2c6ff8b-5b69-44f7-b847-01536f9a6688",
 			"key": "item_name",
 			"value": "666",
 			"type": "string"
 		},
 		{
-			"id": "6d2bbb85-3ba5-4ce7-8f54-544d109f4ae1",
+			"id": "be93149e-2328-482f-a361-e84c55f9ed5d",
 			"key": "payload",
 			"value": "{\n    \"modelId\": \"{{item_name}}\",\n    \"descr\": \"data model sample\",\n    \"type\": \"AAA\",\n    \"model\": \"model\",\n    \"stylesheet\": \"\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "74ece64b-1a27-4717-86b9-72d2ac902da1",
+			"id": "d295c3b9-d8ac-46a1-8222-5e2a834f7be6",
 			"key": "payload_datatype_not_existent",
 			"value": "{\n    \"modelId\": \"{{item_name}}\",\n    \"descr\": \"data model sample\",\n    \"type\": \"notype\",\n    \"model\": \"model\",\n    \"stylesheet\": \"\"\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "9663ef6e-07f1-43cd-b00f-2cc596ecab7e",
+			"id": "0898cd3e-1c57-4b9f-8ee0-d05fef4c0639",
 			"key": "payload_data_type",
 			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"AAA\",\n    \"attributes\": [{\n        \"type\": \"Boolean\",\n        \"code\": \"attrCode\",\n        \"name\": \"attr name\",\n        \"status\": \"0\",\n        \"roles\": [{\n            \"code\": \"firstCode\",\n            \"descr\": \"firstCode\"\n        },{\n            \"code\": \"secondCode\",\n            \"descr\": \"secondDescr\"\n        }],\n        \"disablingCodes\": [\n            \"firstDisablingCode\",\n            \"secondDisablingCode\"\n        ],\n        \"mandatory\": true,\n        \"listFilter\": true,\n        \"indexable\": true,\n        \"enumeratorStaticItems\": null,\n        \"enumeratorStaticItemsSeparator\": null,\n        \"enumeratorExtractorBean\": null,\n        \"validationRules\": {\n            \"ognlValidation\": {\n                \"ognlExpression\": \"expression\",\n                \"applyOnlyToFilledAttr\": false,\n                \"helpMessage\": \"Help message\",\n                \"keyForHelpMessage\": null,\n                \"errorMessage\": \"Error Message\",\n                \"keyForErrorMessage\": null\n            },\n            \"minLength\": null,\n            \"maxLength\": null,\n            \"regex\": null,\n            \"rangeStartString\": null,\n            \"rangeEndString\": null,\n            \"rangeStartStringAttribute\": null,\n            \"rangeEndStringAttribute\": null,\n            \"equalString\": null,\n            \"equalStringAttribute\": null,\n            \"rangeStartDate\": null,\n            \"rangeEndDate\": null,\n            \"rangeStartDateAttribute\": null,\n            \"rangeEndDateAttribute\": null,\n            \"equalDate\": null,\n            \"equalDateAttribute\": null,\n            \"rangeStartNumber\" : null,\n                \"rangeStartNumberAttribute\" : null,\n            \"rangeEndNumber\" : null,\n            \"rangeEndNumberAttribute\" : null,\n            \"equalNumber\" : null,\n            \"equalNumberAttribute\" : null\n        },\n        \"nestedAttribute\": null,\n        \"compositeAttributes\": null\n    }],\n      \"viewPage\": null,\n      \"listModel\": null,\n      \"defaultModel\": null\n}\n",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "ba346924-161d-420f-8338-61e1385e1f56",
+			"id": "4951d814-3b9f-4c5e-9dc0-7fbe222ce59e",
 			"key": "api_url_data_type",
 			"value": "api/dataTypes",
 			"type": "string",

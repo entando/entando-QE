@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fd6448cc-c659-480e-9294-c20455305906",
+		"_postman_id": "5e542453-0ccd-488d-8230-706f070ad16d",
 		"name": "DataTypes_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -143,7 +143,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "80482ac0-47b4-4564-8936-7db3ef84a918",
+						"id": "1de16e8b-8775-4513-9fbf-c8d281784957",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
@@ -173,7 +173,7 @@
 							"pm.test(\"Parameters set correctly\", function (){",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.payload.name).to.eql(item_name);",
-							"    pm.expect(jsonData.payload.status).to.eql(\"0\");",
+							"    pm.expect(jsonData.payload.status).to.eql(\"2\");",
 							"    pm.expect(jsonData.payload.attributes[0].code).to.eql(\"attrCode\");",
 							"    pm.expect(jsonData.payload.attributes[0].type).to.eql(\"Boolean\");",
 							"",

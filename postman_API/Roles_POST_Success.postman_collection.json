@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "eb5381d5-0d75-409c-96f0-92b232e92906",
+		"_postman_id": "0bec5730-669b-490c-8f03-dd5e22440404",
 		"name": "Roles_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -71,12 +71,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "41dcb4ba-560a-490d-bb0a-8fdd4ec435f3",
+						"id": "92021d12-bc0e-41dd-932a-5d114b63b42d",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,8 +90,8 @@
 							"",
 							"",
 							"pm.test(\"Parameters are set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
-							"    pm.expect(pm.response.json().payload.name).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name);",
 							"    pm.expect(pm.response.json().payload.permissions.editUsers).to.be.eql(true);",
 							"    pm.expect(pm.response.json().payload.permissions.editContents).to.be.eql(true);",
 							"});"
@@ -216,39 +217,21 @@
 	],
 	"variable": [
 		{
-			"id": "c57c0c4b-e2bf-4dcc-bf43-6da114ab132f",
+			"id": "4487d2b6-e9b8-432f-84ee-5695ef97f042",
 			"key": "api_url",
 			"value": "api/roles",
 			"type": "string"
 		},
 		{
-			"id": "cd202d04-15c2-4ee8-bd17-df05d4958022",
+			"id": "712f1111-398a-4bed-8d21-239f2d9114dd",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "23f70030-a2c7-480d-9eed-dbafbe10cad2",
+			"id": "54235dd0-7ea3-4ef6-b3a9-f356f0e690b6",
 			"key": "payload",
-			"value": "{\n\"name\": \"AAA\",\n\"code\": \"AAA\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
-			"type": "string"
-		},
-		{
-			"id": "08eb0172-85de-4743-a680-8a1bf6e307ba",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "eaadb99c-5207-449a-a513-76f06c6b24f3",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "0da0b63c-3986-4468-93ed-fe62cd46b2c3",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n\"name\": \"{{item_name}}\",\n\"code\": \"{{item_name}}\",\n\"permissions\": {\n\"editContents\": true,\n\"editUsers\": true\n}\n}",
 			"type": "string"
 		}
 	]

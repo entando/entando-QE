@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7e1900e9-62f1-4df1-b9cd-1d78f43107f3",
+		"_postman_id": "818e8e7f-e664-437b-a7d6-81fe556adedf",
 		"name": "Widget_DELETE_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -207,39 +207,21 @@
 	],
 	"variable": [
 		{
-			"id": "aa74fd01-22c3-4010-aeca-44d47442ee61",
+			"id": "b09ce953-86c3-4d97-a17e-ad1ff8f5d04e",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "dc4b5eb8-fe0e-4a6a-82e9-3f6483b68d14",
+			"id": "00a12eb0-4c48-47be-8661-df4cc45979ea",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "6668486c-d5bf-4857-8e7a-5a93e23e3593",
+			"id": "8958fb1e-2a19-457d-9131-30de31c22bec",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
-			"type": "string"
-		},
-		{
-			"id": "a46679a9-91ce-48c5-9dea-8e9ea213a493",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "d006ea70-1b16-417e-a9cc-0cf3e62648ff",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "a596e72e-244f-45b7-a110-39212b3c9704",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		}
 	]

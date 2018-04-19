@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8d675603-eed8-4640-b2d5-8d84e08335c0",
+		"_postman_id": "888955ec-6956-409f-830d-506003ae1bfa",
 		"name": "Page_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -209,21 +209,21 @@
 	],
 	"variable": [
 		{
-			"id": "e5938be8-1ef2-493e-af73-6a3597a0d799",
+			"id": "a9dd03fe-30b0-41d4-9935-9a4759d9cb1a",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "04673d80-ae6f-4147-b54c-a8a5b3294dbe",
+			"id": "95be227d-1137-4b30-b30e-1fed64685481",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "4fbdec4c-c19d-41ce-8d74-d0088393052f",
+			"id": "dc5e035a-e4aa-432b-9695-93ec0362403c",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string"
 		}
 	]

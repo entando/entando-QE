@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "72e21d3d-666c-4d6a-ab78-85e6949dee57",
+		"_postman_id": "7b118a7c-ea2b-4111-bc77-3165180894a2",
 		"name": "Widget_DELETE_Locked",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -144,32 +144,32 @@
 	],
 	"variable": [
 		{
-			"id": "c78f0bee-78a3-4931-9793-fdce01423579",
+			"id": "4f5ac1ce-e539-4079-ab3c-60e30b6f2d72",
 			"key": "api_url",
 			"value": "api/widgets",
 			"type": "string"
 		},
 		{
-			"id": "e68cc08a-8119-428f-8057-1f2f3eef2111",
+			"id": "7a9c0d4c-20c4-49b9-82c1-46ee808d7c2f",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "97aa569b-0571-456e-af80-b5444a172f8f",
+			"id": "57979c84-8229-44a9-a405-ef6b2a916a54",
 			"key": "payload",
-			"value": "{\n \"code\": \"AAA\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
+			"value": "{\n \"code\": \"{{item_name}}\",\n \"titles\": {\n \"it\": \"Mio Widget\",\n \"en\": \"My Widget\"\n },\n \"group\": \"free\",\n \"customUi\": \"<div>ciao</div>\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "4ec3f071-be90-4fa7-b91e-c909f9f3d7db",
+			"id": "f762a0f0-f05d-4479-ba65-c0815db7276a",
 			"key": "referenced_widget",
 			"value": "content_viewer",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "866afaec-76c7-4b15-b1ed-d84002311deb",
+			"id": "50006345-d848-4ff1-846e-fd07b45f3e33",
 			"key": "locked_widget",
 			"value": "content_viewer",
 			"type": "string",

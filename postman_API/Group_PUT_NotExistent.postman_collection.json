@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8f58a346-59b1-4681-a498-80e5536ad26d",
+		"_postman_id": "4af5300a-abdf-468b-b756-8113ce799b0d",
 		"name": "Group_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -210,39 +210,21 @@
 	],
 	"variable": [
 		{
-			"id": "a10baf4d-6c7d-46a4-b19c-f749e5853c4e",
+			"id": "1d1911f9-52c4-497e-beb7-8a836fb63f67",
 			"key": "api_url",
 			"value": "api/groups",
 			"type": "string"
 		},
 		{
-			"id": "b21528e3-3f94-42a5-b8c6-be4dc400b067",
+			"id": "acf81eec-83f2-43b6-aae2-b088f43fd199",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUseThis",
 			"type": "string"
 		},
 		{
-			"id": "caa97b3a-1240-4061-ac6d-e84cb8534114",
+			"id": "04580d0b-39ea-4ffe-abe2-712ed0e02e81",
 			"key": "payload",
-			"value": "{\n    \"name\": \"AAA\",\n    \"code\": \"{{item_name}}\"\n }",
-			"type": "string"
-		},
-		{
-			"id": "e71a7c3f-af96-46bf-ae07-745a2829d32d",
-			"key": "payload_missing_default_language",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "187da56e-3f36-4ce1-95fb-46758ce60c0b",
-			"key": "payload_language_not_active",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"bg\": \"Bulgarian\"\n    }\n }",
-			"type": "string"
-		},
-		{
-			"id": "cc5ffee9-3fff-4a62-992e-bc11cad0a89c",
-			"key": "payload_language_not_valid",
-			"value": "{\n    \"key\": \"{{item_name}}\",\n    \"titles\": {\n        \"it\": \"Mio Titolo\",\n\"en\": \"My Title\",\n\"zz\": \"Language Not Existent\"\n    }\n }",
+			"value": "{\n    \"name\": \"PleaseDoNotUseThis\",\n    \"code\": \"{{item_name}}\"\n }",
 			"type": "string"
 		}
 	]
