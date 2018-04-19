@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "642c2990-5fe1-4a62-a645-dd5a5fe4c1a2",
+		"_postman_id": "8585f25e-e569-48b4-9f89-76229aa5a1fb",
 		"name": "Page_DELETE_Authorization_Error",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,12 +11,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"id": "96ac0eab-dea5-4372-8169-b5df9fb0f2bb",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
-							"var labelName= \"AAA1\";",
+							"",
 							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -71,12 +71,14 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d135177f-f8ba-4fa7-9680-4a23f34d64c9",
+						"id": "f316b0c3-fe20-4887-886f-510a2cc646a0",
 						"type": "text/javascript",
 						"exec": [
 							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
 							"",
 							"var status_code = 200",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"var user_name = item_name;",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -89,9 +91,11 @@
 							"",
 							"",
 							"pm.test(\"Username and user status set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(user_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"active\");",
-							"});"
+							"});",
+							"",
+							""
 						]
 					}
 				}
@@ -130,11 +134,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4dc138fc-87d8-4975-8ad4-f3cfaa0774a3",
+						"id": "3411f6fc-c4a2-4dce-899c-ec3e90943bf1",
 						"type": "text/javascript",
 						"exec": [
 							"var GET_status_code = 200;",
 							"var item_name = pm.variables.get(\"item_name\");",
+							"var user_name = item_name;",
 							"",
 							"//check status code",
 							"pm.test(\"Status code is \" + GET_status_code, function () {",
@@ -153,7 +158,7 @@
 							"",
 							"",
 							"pm.test(\"Username and user status set correctly\", function(){",
-							"    pm.expect(pm.response.json().payload.username).to.be.eql(\"AAA\");",
+							"    pm.expect(pm.response.json().payload.username).to.be.eql(user_name);",
 							"    pm.expect(pm.response.json().payload.status).to.be.eql(\"active\");",
 							"});",
 							"",
@@ -366,13 +371,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f5378176-d2f5-4c01-bdaf-66796a7545fe",
+						"id": "5ba7403b-251e-4aab-8228-2d4f98155a35",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract: 400, 2, The widget <widgetCode> cannot be deleted because it is locked",
 							"var status_code = 403;",
 							"var error_code = '120';",
-							"var error_message = \"AAA is not allowed to\";",
+							"var error_message = \"is not allowed to\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -509,32 +514,32 @@
 	],
 	"variable": [
 		{
-			"id": "90bf26a3-1608-434e-9dff-2d660a221232",
+			"id": "eae25c6c-2754-41e0-ac05-a04811a183df",
 			"key": "users_api_url",
 			"value": "api/users",
 			"type": "string"
 		},
 		{
-			"id": "a745b2dd-08a3-4789-8806-932504216aa1",
+			"id": "0d75603e-f8af-4fae-890f-3a9a5f46666f",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "4cdb2309-d967-41d7-9579-b2b53ad0bd88",
+			"id": "a7e7b0b8-117e-42e4-86fc-cb555c2395aa",
 			"key": "user_payload",
 			"value": "{\n    \"username\": \"{{item_name}}\",\n    \"status\": \"active\",\n    \"password\": \"password\"\n}",
 			"type": "string"
 		},
 		{
-			"id": "4aa19aae-36b7-44a5-9c29-2dc3ecd2f934",
+			"id": "c13c09a6-2ff7-4358-8a66-ead0366f85b2",
 			"key": "page_payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUse Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "23efbad3-9376-43c7-ad84-b38e82e883cf",
+			"id": "5b97a544-2ecb-49bb-9a9b-4dbc23aa5518",
 			"key": "pages_api_url",
 			"value": "api/pages",
 			"type": "string",

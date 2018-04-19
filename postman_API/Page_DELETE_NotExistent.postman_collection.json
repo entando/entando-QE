@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b76be8f7-11f2-414d-a7e7-bfb7f7b0afac",
+		"_postman_id": "d8fe6d7a-fa73-4f3b-81b0-4378db1bf96e",
 		"name": "Page_DELETE_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -131,12 +131,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2a89e05a-7371-4366-acb1-e5f4b661ecee",
+						"id": "b83d8862-ff96-45f0-9f13-908f62b2c15e",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found\";",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"var error_message = \" and status 'draft' could be found\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -152,6 +153,8 @@
 							"   var jsonData = pm.response.json();",
 							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
 							"});",
+							"",
+							"",
 							""
 						]
 					}
@@ -207,15 +210,15 @@
 	],
 	"variable": [
 		{
-			"id": "2b236397-2362-4fc2-b159-506fc459bda5",
+			"id": "52fec0e4-a08f-4dd7-96bc-17792e206b57",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "a8e0c70f-1fa0-41d7-b404-a29c9698b9b4",
+			"id": "b7a17590-22c8-4df8-b740-83c3231b38ea",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		}
 	]

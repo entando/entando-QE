@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "464f6121-703f-4623-b224-e8b5a5fe66f5",
+		"_postman_id": "dda0da72-cbe6-418c-8afb-e3c07413b9cc",
 		"name": "Page_DELETE_OnlinePage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -145,19 +145,19 @@
 	],
 	"variable": [
 		{
-			"id": "c724303b-21be-4a7a-a7c6-6d15cb752fcc",
+			"id": "c9edcb5e-dd7d-4c68-ab57-a95fe08b0bb7",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "808e6abe-d25a-495a-99c9-5ec5ea550595",
+			"id": "65347f57-0e44-471e-8b98-e5519df9f6b0",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "1d838920-c765-4de2-b0cb-cecdae12f308",
+			"id": "774aa449-d9e7-4db8-bb3b-fe9b4cc945a9",
 			"key": "page_online",
 			"value": "homepage",
 			"type": "string",

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "22a3c42b-065d-409d-ab26-01c85fecb050",
+		"_postman_id": "c758555a-65a4-4dd3-8e9f-3ef893bfbf13",
 		"name": "Page_DELETE_HasChildren",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -393,42 +393,42 @@
 	],
 	"variable": [
 		{
-			"id": "b55335af-1acf-407a-95b2-b30459bd1a26",
+			"id": "376be8c8-a2bf-4fc1-bc00-32b731156029",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "a4e6fbc5-d255-4e55-9d78-7b1f3e4ee9a5",
+			"id": "09c25615-5dd6-4a8c-9328-72b0de4923f9",
 			"key": "item_name",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "821770c9-ef5e-44af-9243-3aa5b2f5b07f",
+			"id": "bc97029b-36f7-49dd-8700-df52fe24e68b",
 			"key": "page_with_children",
-			"value": "AAA",
+			"value": "PleaseDoNotUse",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "6939f0cb-2e22-4c0a-9954-ddf3c6354e8b",
+			"id": "e07ec624-b676-4f20-8823-dab7d6a3f4b3",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"AAA Titolo\",\n                \"en\":\"AAA Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUse Titolo\",\n                \"en\":\"PleaseDoNotUse Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "b1c8e5f1-5d45-402e-b238-d26258d3c34a",
+			"id": "c7d2b96f-a12d-49ba-8ae2-b2e1fecd01a0",
 			"key": "payload_child_page",
-			"value": "{\n    \"code\": \"{{item_child_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"AAA\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"BBB Titolo\",\n                \"en\":\"BBB Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
+			"value": "{\n    \"code\": \"{{item_child_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"{{item_name}}\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "c153bdfa-2e97-47a8-b1e0-31ce429a65f7",
+			"id": "ad6fc2c6-05ea-4217-b7b9-bf864fc21bfe",
 			"key": "item_child_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string",
 			"description": ""
 		}

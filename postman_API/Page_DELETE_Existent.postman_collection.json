@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb90f781-1491-47c1-b7b3-a6484e25ff31",
+		"_postman_id": "5d735630-529b-463d-a68e-c421eb427b0a",
 		"name": "Page_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -137,12 +137,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eb99b764-4ecc-4070-b4bc-03ef60ffc9ac",
+						"id": "075a713a-d1e1-462b-9a1d-1d16000e3ec6",
 						"type": "text/javascript",
 						"exec": [
 							"var status_code = 404;",
 							"var error_code = '1';",
-							"var error_message = \"no page with the code 'BBB' and status 'draft' could be found.\";",
+							"var error_message = \"and status 'draft' could be found.\";",
 							"",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
@@ -213,19 +213,19 @@
 	],
 	"variable": [
 		{
-			"id": "055c34c0-35e3-4ef6-9006-1868f615a218",
+			"id": "e94c7972-53d6-4273-8cf8-fa9ddd3e63be",
 			"key": "api_url",
 			"value": "api/pages",
 			"type": "string"
 		},
 		{
-			"id": "9bbe73f3-d902-4e7a-86e0-f3da23f5779b",
+			"id": "15a3e77a-ff8d-4b9d-b9fe-62d1042d239d",
 			"key": "item_name",
-			"value": "BBB",
+			"value": "PleaseDoNotUseReally",
 			"type": "string"
 		},
 		{
-			"id": "c9a582bd-8e8f-4500-97f3-49bdc5aa0968",
+			"id": "1b18e0af-d0ab-4c27-93e6-b500695564ee",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"service\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"Mio Titolo\",\n                \"en\":\"My title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n        \"free\"\n    ]\n}",
 			"type": "string"
