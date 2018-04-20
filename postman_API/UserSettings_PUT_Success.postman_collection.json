@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "58c911b0-7f2b-4295-b431-6f2ba061e211",
+		"name": "UserSettings_PUT_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PUT_UserSettings_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5558421d-2bdf-4e42-84f7-cb435970ce86",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been updated correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.passwordAlwaysActive).to.be.eql(false);",
+							"    pm.expect(pm.response.json().payload.enableGravatarIntegration).to.be.eql(true);",
+							"    ",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserSettings_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ec1c168-71a5-464f-a266-9c450114ab5c",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been updated correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.passwordAlwaysActive).to.be.eql(true);",
+							"    pm.expect(pm.response.json().payload.enableGravatarIntegration).to.be.eql(false);",
+							"    ",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85e558c9-2396-486c-bb8e-af8da588459d",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"User has been updated correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.passwordAlwaysActive).to.be.eql(true);",
+							"    pm.expect(pm.response.json().payload.enableGravatarIntegration).to.be.eql(false);",
+							"    ",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "07233ba6-c380-4737-8bdc-6cad3df29682",
+			"key": "api_url",
+			"value": "api/userSettings",
+			"type": "string"
+		},
+		{
+			"id": "e7943e50-01fa-420f-938a-278e09cc30c9",
+			"key": "payload",
+			"value": "{\n    \"restrictionsActive\": true,\n    \"enableGravatarIntegration\": true,\n    \"lastAccessPasswordExpirationMonths\": 6,\n    \"maxMonthsPasswordValid\": 3,\n    \"passwordAlwaysActive\": false\n}",
+			"type": "string"
+		},
+		{
+			"id": "a5574eed-0a3e-404d-892c-37a479bb58a4",
+			"key": "payload_modified",
+			"value": "{\n    \"restrictionsActive\": true,\n    \"enableGravatarIntegration\": false,\n    \"lastAccessPasswordExpirationMonths\": 6,\n    \"maxMonthsPasswordValid\": 3,\n    \"passwordAlwaysActive\": true\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
