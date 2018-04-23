@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "53efa524-f5bb-4877-b561-a81765154577",
+		"name": "DatabaseStatus_GET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DatabaseStatus_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7c05b5b-abc0-4c34-aeb0-9b306d4b8416",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for GETs Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var GET_status_code = 200;",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload status\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload.status).to.be.eql(\"0\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c97345f3-4b9a-428a-bf89-9feeb62b86a5",
+			"key": "api_url",
+			"value": "api/database",
+			"type": "string"
+		}
+	]
+}
