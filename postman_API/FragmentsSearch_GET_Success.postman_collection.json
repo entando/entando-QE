@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "b88efc42-1a1b-4f75-913b-ef05cd85e831",
+		"name": "FragmentsSearch_GET_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2a64ee5-1605-4219-a9c2-d9d0df7466b6",
+						"type": "text/javascript",
+						"exec": [
+							"//Labels\tPOST\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var status_code = 200",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Code is set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(\"AAA\");",
+							"});",
+							"",
+							"pm.test(\"GUI code is set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.guiCode).to.be.eql(\"<div></div>\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0334366-efc4-4ea6-b5f1-2d021c1ddb2c",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload[0]).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload[0].code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?sort=code&direction=ASC&filters[0].attribute=code&filters[0].operator=eq&filters[0].value={{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "filters[0].attribute",
+							"value": "code"
+						},
+						{
+							"key": "filters[0].operator",
+							"value": "eq"
+						},
+						{
+							"key": "filters[0].value",
+							"value": "{{item_name}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cf8fb6e5-b558-429f-a2ec-d578acc4e455",
+			"key": "api_url",
+			"value": "api/fragments",
+			"type": "string"
+		},
+		{
+			"id": "334d40f4-5fd5-419b-baae-1d4aa843430d",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "f90de4f0-cfe4-438f-93eb-b6fed91d2ffc",
+			"key": "payload",
+			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
+			"type": "string"
+		}
+	]
+}

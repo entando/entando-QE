@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "16045088-f3be-4eb8-aef8-d5e4a6726847",
+		"name": "FragmentsSearch_GET_NotExistent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58654880-7986-4ad7-be33-30d3a5d66c2f",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload is empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.be.eql([]);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?sort=code&direction=ASC&filters[0].attribute=code&filters[0].operator=eq&filters[0].value={{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "filters[0].attribute",
+							"value": "code"
+						},
+						{
+							"key": "filters[0].operator",
+							"value": "eq"
+						},
+						{
+							"key": "filters[0].value",
+							"value": "{{item_name}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3009e3e8-a6d0-49a8-8890-27f6cfcf6c58",
+			"key": "api_url",
+			"value": "api/fragments",
+			"type": "string"
+		},
+		{
+			"id": "3e17b490-21b2-43ac-a91f-aea95a026f0a",
+			"key": "item_name",
+			"value": "AAA",
+			"type": "string"
+		},
+		{
+			"id": "88d11579-f367-42e7-8fd8-ad818650248e",
+			"key": "payload",
+			"value": "{\n  \"code\": \"AAA\",\n  \"guiCode\": \"<div></div>\"\n}",
+			"type": "string"
+		}
+	]
+}
