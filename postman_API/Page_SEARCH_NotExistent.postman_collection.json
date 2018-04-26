@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "14b08846-f0fd-45a5-99ee-10580ca8e827",
+		"name": "Page_SEARCH_NotExistent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "360eaf61-f0f6-49a1-92b1-4b2297980e1e",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload is empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.be.eql([]);",
+							"});",
+							"",
+							"pm.test(\"Total items is 0\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.metaData.totalItems).to.be.eql(0);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{search_api_url}}/?sort=code&direction=ASC&pageCodeToken={{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{search_api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "pageCodeToken",
+							"value": "{{item_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bc4a9e57-4851-46f7-b647-e196fda7c635",
+			"key": "api_url",
+			"value": "api/pages",
+			"type": "string"
+		},
+		{
+			"id": "fcebee0e-5421-4b71-863b-096587b24373",
+			"key": "item_name",
+			"value": "PleaseDoNotUseReally",
+			"type": "string"
+		},
+		{
+			"id": "387fb267-3253-4894-acb9-e530a873e47f",
+			"key": "payload",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"type": "string"
+		},
+		{
+			"id": "8afa2993-c493-4c6e-a100-f5bfab57ad70",
+			"key": "search_api_url",
+			"value": "api/pages/search",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

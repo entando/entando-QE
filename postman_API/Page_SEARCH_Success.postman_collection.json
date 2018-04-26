@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "3b730d55-ee94-401d-9a30-9d3955af994f",
+		"name": "Page_SEARCH_Success",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"type": "text/javascript",
+						"exec": [
+							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
+							"var labelName= \"AAA1\";",
+							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29f72065-c877-4cb6-8e49-c09452473bcb",
+						"type": "text/javascript",
+						"exec": [
+							"//Label\tPUT\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"var status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Page code is correct\", function(){",
+							"    pm.expect(pm.response.json().payload.code).to.be.eql(item_name);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload array is not empty\", function(){",
+							"    var array_length = pm.response.json().payload.length;",
+							"    pm.expect(array_length).to.not.be.eql(0);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Titles are set correctly\", function(){",
+							"    pm.expect(pm.response.json().payload.titles.en).to.be.eql(item_name + \" Title\");",
+							"    pm.expect(pm.response.json().payload.titles.it).to.be.eql( item_name + \" Titolo\");",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SEARCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09778055-3dc8-40e9-98a6-19e3caa91d60",
+						"type": "text/javascript",
+						"exec": [
+							"var GET_status_code = 200;",
+							"var item_name = pm.variables.get(\"item_name\");",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload[0]).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload[0].code).to.eql(item_name);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Total items is 1\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.metaData.totalItems).to.be.eql(1);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{search_api_url}}/?sort=code&direction=ASC&pageCodeToken={{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{search_api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "code"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "pageCodeToken",
+							"value": "{{item_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "65f2e1e7-4f5e-4bb1-beca-50101978baa6",
+			"key": "api_url",
+			"value": "api/pages",
+			"type": "string"
+		},
+		{
+			"id": "804f79d5-7d61-42fc-94f4-9de8125551b3",
+			"key": "item_name",
+			"value": "PleaseDoNotUseReally",
+			"type": "string"
+		},
+		{
+			"id": "1e78f4a0-1b6d-4997-8fd0-d39425c1e125",
+			"key": "payload",
+			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"displayedInMenu\": true,\n    \"pageModel\": \"home\",\n    \"charset\": \"utf8\",\n    \"contentType\": \"text/html\",\n    \"parentCode\": \"homepage\",\n    \"seo\": false,\n    \"titles\": {\n                \"it\":\"PleaseDoNotUseReally Titolo\",\n                \"en\":\"PleaseDoNotUseReally Title\"\n            },\n    \"ownerGroup\": \"administrators\",\n    \"joinGroups\": [\n    ]\n}",
+			"type": "string"
+		},
+		{
+			"id": "0c8b716f-61db-4ccc-ad00-16bd2546da40",
+			"key": "search_api_url",
+			"value": "api/pages/search",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
