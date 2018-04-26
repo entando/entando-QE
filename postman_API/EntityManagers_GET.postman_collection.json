@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "62186f31-862b-4f6b-8d72-af403911022a",
+		"name": "EntityManagers_GET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EntityManagers_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfc5692f-797b-498c-a21a-bbb1ae0e724e",
+						"type": "text/javascript",
+						"exec": [
+							"//Fragments\tGET\t\tSuccess\t200\tN/A\t\t\t\t\tDone",
+							"",
+							"var GET_status_code = 200;",
+							"",
+							"//check status code",
+							"pm.test(\"Status code is \" + GET_status_code, function () {",
+							"    pm.response.to.have.status(GET_status_code);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d05a31ed-5622-4098-a221-64decd261efa",
+			"key": "api_url",
+			"value": "api/entityManagers",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "3fee781c-4295-4232-ac07-87cd28373b45",
+		"name": "EntityManager_GET_NotExistent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EntityManager_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "908ccd21-b05e-43e4-820f-711f42bde2bd",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/notExistent",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"notExistent"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b969a4d0-a3a8-472e-89fb-7f2c2bfcc6d7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83a2dbc4-539e-41a6-918f-0f07c6957bfb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "04043a3b-e17b-438b-98f4-a41586a64aed",
+			"key": "api_url",
+			"value": "api/entityManagers",
+			"type": "string"
+		}
+	]
+}
