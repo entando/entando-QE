@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "b1899854-b087-49e2-bc03-49e90b705a7c",
+		"name": "FileBrowser_-_Directory_DELETE_Existent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FileBrowser_-_Directory_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5063c1ae-f854-4787-bd0f-3a514678e61c",
+						"type": "text/javascript",
+						"exec": [
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				},
+				"description": "POST di una nuova cartella"
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowser_GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1978755b-4e14-4e98-b2a2-bcf7310e899a",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var status_code = 200;",
+							"var newDir_name = pm.variables.get(\"newDir_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Parameters set correctly\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.metaData.protectedFolder).to.eql(false);",
+							"    pm.expect(jsonData.metaData.currentPath).to.eql(\"//\"+newDir_name);",
+							"    ",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/api/fileBrowser/?protectedFolder=false&currentPath={{dir_path}}/{{newDir_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"fileBrowser",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{dir_path}}/{{newDir_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowser_-_Directory_DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8546d48d-e5d6-4d05-be35-01f75977d89f",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"var deleteStatusCode = pm.environment.get(\"http_code_delete_existent\");",
+							"var obj = \"directory\";",
+							"",
+							"",
+							"",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"//Interpretazione del codice di errore",
+							"pm.test(\"Status code is \" + deleteStatusCode, function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?protectedFolder=false&currentPath={{newDir_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{newDir_name}}"
+						}
+					]
+				},
+				"description": "Cancella l'eventuale cartella già presente"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3eb61775-4b60-4987-aeb2-251ef0cc5869",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "eb4446a3-76bd-47f4-998e-af6b82c9f63a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "69cbe563-e15d-497c-84c8-aca71de74605",
+			"key": "api_url",
+			"value": "api/fileBrowser/directory",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "85cee838-86cc-4624-ab9f-ab86e05e317d",
+			"key": "dir_path",
+			"value": "/",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "3ba6093f-6919-4882-b6df-066a61ecf58d",
+			"key": "newDir_name",
+			"value": "PostmanTestFolder",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "4afef4f4-7787-4097-8918-8b231827be67",
+			"key": "payload",
+			"value": "{\n    \"protectedFolder\": false,\n    \"path\": \"{{dir_path}}/{{newDir_name}}\"\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

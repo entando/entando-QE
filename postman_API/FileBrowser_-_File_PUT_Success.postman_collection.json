@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "aeec4c7c-9fe7-453a-b2ab-b4425632b229",
+		"name": "FileBrowser_-_File_PUT_Success",
+		"description": "Test sulla POST di un file",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FileBrowser_-_File_POST_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ceea42da-0c95-42ce-88a4-cd73421849be",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
+							"",
+							"var codeObjCreated = 200;",
+							"var codeObjAlreadyExistent = 409;",
+							"var obj = \"object\";",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"if(pm.response.code === codeObjCreated){",
+							"    pm.test(\"new \" + obj + \" has been created\", function(){",
+							"        return true;",
+							"    });",
+							"} else if(pm.response.code === codeObjAlreadyExistent){",
+							"    pm.test(obj + \" already present\", function(){",
+							"         pm.expect(jsonData.errors[0].message).to.include(\"already exists\");",
+							"    }); ",
+							"} else {",
+							"    pm.test(\"Got this message \" + pm.response.code, function () {",
+							"    pm.expect(0).to.be.equal(1);",
+							"    });",
+							"    ",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowser_-_File_GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e8f91f4-872f-4761-ac84-86566f790753",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var status_code = 200;",
+							"var file_name = pm.variables.get(\"file_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.filename).to.eql(file_name);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?protectedFolder=false&currentPath={{file_path}}/{{file_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{file_path}}/{{file_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowserPUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8ab05a9-ae62-43e6-923f-c9b0a4cbdbc6",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var status_code = 200;",
+							"var file_name = pm.variables.get(\"file_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.filename).to.eql(file_name);",
+							"});",
+							"",
+							"pm.test(\"Parameters set correctly\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.protectedFolder).to.eql(false);",
+							"    pm.expect(jsonData.payload.path).to.eql(\"/\"+file_name);",
+							"    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_modified}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowser_-_File_GET_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32f5d606-0cde-4f73-af55-a90e4ce1e11c",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var status_code = 200;",
+							"var file_name = pm.variables.get(\"file_name\");",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Payload not empty\", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.payload).to.not.be.eql({});",
+							"});",
+							"",
+							"",
+							"pm.test(\"Item name is correct\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.filename).to.eql(file_name);",
+							"});",
+							"",
+							"pm.test(\"Parameters set correctly\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.protectedFolder).to.eql(false);",
+							"    pm.expect(jsonData.payload.path).to.eql(\"//\"+file_name);",
+							"    pm.expect(jsonData.payload.base64).to.eql(\"SGVsbG8gdGhpcyBpcyBwb3N0bWFuIHRlc3QgbW9kaWZpZWQhISE=\");",
+							"    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?protectedFolder=false&currentPath={{file_path}}/{{file_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{file_path}}/{{file_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "706b8b30-65f4-4040-b24f-2b527422fe7a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f59bd18c-41c5-4d1f-9568-bf62089c4784",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9caad651-a754-4bfb-8ac9-3fe9951e6a21",
+			"key": "api_url",
+			"value": "api/fileBrowser/file",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "d36704d2-eae3-4ea2-8942-faafe3ef4cbf",
+			"key": "file_path",
+			"value": "/",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "0a73440e-3a24-42be-8914-2d406eafd510",
+			"key": "file_name",
+			"value": "PostmanTestFile.txt",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "19ed61c1-e66d-4b7a-a503-30b2343e768c",
+			"key": "payload",
+			"value": "{\n    \"protectedFolder\": false,\n    \"path\": \"/PostmanTestFile.txt\",\n    \"filename\": \"PostmanTestFile.txt\",\n    \"base64\": \"SGVsbG8gdGhpcyBpcyBwb3N0bWFuISE=\"\n}",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "f2c27d8c-e3f6-4612-9b64-8e4baa712458",
+			"key": "payload_modified",
+			"value": "{\n    \"protectedFolder\": false,\n    \"path\": \"/PostmanTestFile.txt\",\n    \"filename\": \"PostmanTestFile.txt\",\n    \"base64\": \"SGVsbG8gdGhpcyBpcyBwb3N0bWFuIHRlc3QgbW9kaWZpZWQhISE=\"\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}

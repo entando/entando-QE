@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "8f55a0e7-ab42-49fe-98fb-5d3f60c7201a",
+		"name": "FileBrowser_-_File_POST_FileNameMismatch",
+		"description": "Test sulla POST di un file",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FileBrowser_-_File_DELETE_HELPER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22b3ad52-1dc1-4d58-9ba2-bc8fc0307d53",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"var deleteStatusCode = pm.environment.get(\"http_code_delete_existent\");",
+							"var obj = \"file\";",
+							"",
+							"",
+							"//Test sul tempo di risposta",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"//Interpretazione del codice di errore",
+							"pm.test(\"Status code is \" + deleteStatusCode, function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/?protectedFolder=false&currentPath={{file_path}}/{{file_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{file_path}}/{{file_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FileBrowser_-_File_POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2866d978-43ee-4104-a0ca-3300015462f7",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"var jsonData = pm.response.json();",
+							"var status_code = 409;",
+							"var error_code = '5';",
+							"var error_message = \"does not match with the last section\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_HELPER_NOT_FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e3550ac-7540-4537-8e35-9f285e745438",
+						"type": "text/javascript",
+						"exec": [
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"code could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/fileBrowser/?protectedFolder=false&currentPath={{file_path}}/{{file_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"fileBrowser",
+						""
+					],
+					"query": [
+						{
+							"key": "protectedFolder",
+							"value": "false"
+						},
+						{
+							"key": "currentPath",
+							"value": "{{file_path}}/{{file_name}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "706b8b30-65f4-4040-b24f-2b527422fe7a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f59bd18c-41c5-4d1f-9568-bf62089c4784",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "71053145-37d6-47ba-a427-7c1b220bcf34",
+			"key": "api_url",
+			"value": "api/fileBrowser/file",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "043c6242-a3f5-491b-befc-e767dc5d5ae9",
+			"key": "file_path",
+			"value": "/",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "e5a353b7-c013-4c4f-9ee9-744291d13da4",
+			"key": "file_name",
+			"value": "PostmanTestFile.txt",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "3f7c7dfa-f8cf-43bc-998c-3f252e1dfa02",
+			"key": "payload",
+			"value": "{\n    \"protectedFolder\": false,\n    \"path\": \"/PostmanTestFile.txt\",\n    \"filename\": \"ErroneousName.txt\",\n    \"base64\": \"SGVsbG8gdGhpcyBpcyBwb3N0bWFuISE=\"\n}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
