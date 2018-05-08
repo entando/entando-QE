@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "10e2aeea-1227-4711-8801-b9905afe6cc4",
+		"_postman_id": "66485d61-c084-4435-87bb-79b48a1befc6",
 		"name": "DatabaseDumpReport_GET_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1169c8a7-77bf-447b-ada1-65c8dff11002",
+						"id": "cc176703-e68d-4f68-b25d-f91f3f16c584",
 						"type": "text/javascript",
 						"exec": [
 							"//Post HELPER CREATES AN OBJECT FOR FURTHER USAGE",
@@ -39,7 +39,16 @@
 							"    });",
 							"    ",
 							"}",
-							""
+							"",
+							"function pausecomp(millis)",
+							" {",
+							"  var date = new Date();",
+							"  var curDate = null;",
+							"  do { curDate = new Date(); }",
+							"  while(curDate-date < millis);",
+							"}",
+							"",
+							"pausecomp(1000);"
 						]
 					}
 				}

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7d3158e7-29d4-4ff9-a222-149933e5bbca",
+		"_postman_id": "f1521ed2-497e-4312-9c99-cff08cf272ae",
 		"name": "DatabaseStartBackup_POST_Success",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,12 +11,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
+						"id": "f37dd84d-8765-4867-aaaf-8377c0794d36",
 						"type": "text/javascript",
 						"exec": [
 							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
 							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
-							"var labelName= \"AAA1\";",
 							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -72,7 +71,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4ffb7899-5a77-4609-9d7c-cca89bc9f441",
+						"id": "c9b9caab-a443-4fce-b142-a976434552be",
 						"type": "text/javascript",
 						"exec": [
 							"//ProfileTypes\tPOST\t\tSuccess\t200\t\tN/A\t\t\t\tDone",
@@ -88,6 +87,17 @@
 							"    var array_length = pm.response.json().payload.length;",
 							"    pm.expect(array_length).to.not.be.eql(0);",
 							"});",
+							"",
+							"",
+							"function pausecomp(millis)",
+							" {",
+							"  var date = new Date();",
+							"  var curDate = null;",
+							"  do { curDate = new Date(); }",
+							"  while(curDate-date < millis);",
+							"}",
+							"",
+							"pausecomp(1000);",
 							"",
 							""
 						]
@@ -129,9 +139,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5b302900-3157-423c-9424-861f2da1f46c",
+						"id": "535bc469-5e3c-4aa3-adc9-088be464b8a9",
 						"type": "text/javascript",
 						"exec": [
+							"",
 							"var GET_status_code = 200;",
 							"var item_name = pm.variables.get(\"item_name\");",
 							"",
@@ -158,6 +169,16 @@
 							"",
 							"",
 							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d4fffc9-08c6-46ec-8823-198994a70661",
+						"type": "text/javascript",
+						"exec": [
 							""
 						]
 					}
