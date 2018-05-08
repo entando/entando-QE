@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6f889b18-259a-432a-ba6a-adf5f121457f",
+		"_postman_id": "24112bfa-d0ec-40df-ba37-4c7c45eaa2c1",
 		"name": "Page_GET_Existent_Wrong_Status",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -126,13 +126,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{url}}/{{api_url}}/{{item_name}}?status=published",
+					"raw": "{{url}}/{{api_url}}/{{item_name}}/?status=published",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"{{api_url}}",
-						"{{item_name}}"
+						"{{item_name}}",
+						""
 					],
 					"query": [
 						{

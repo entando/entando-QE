@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c758555a-65a4-4dd3-8e9f-3ef893bfbf13",
+		"_postman_id": "d6ab56d4-d25a-4306-949b-39f47a0ad7b2",
 		"name": "Page_DELETE_HasChildren",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -249,6 +249,38 @@
 					],
 					"path": [
 						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PageStatusPut_HELPER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"draft\"\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{page_with_children}}/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{page_with_children}}",
+						"status"
 					]
 				}
 			},

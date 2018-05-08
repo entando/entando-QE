@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5d735630-529b-463d-a68e-c421eb427b0a",
+		"_postman_id": "ae65db0d-3e16-4c18-8fb8-b46802c5d071",
 		"name": "Page_DELETE_Existent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -67,6 +67,38 @@
 					],
 					"path": [
 						"{{api_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PageStatusPut_HELPER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"draft\"\n }"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}",
+						"status"
 					]
 				}
 			},
