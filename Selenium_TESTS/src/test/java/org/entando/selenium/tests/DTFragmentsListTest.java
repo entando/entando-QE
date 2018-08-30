@@ -45,9 +45,9 @@ public class DTFragmentsListTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Fragments");
+        dTDashboardPage.SelectSecondOrderLink("UX Patterns", "Fragments");
 
-        List<String> expectedHeaderTitles = Arrays.asList("Name", "Widget Type", "Plugin", "Actions");
+        List<String> expectedHeaderTitles = Arrays.asList("Code", "Widget Type", "Plugin", "Actions");
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTFragmentPage.getTableHeader());
 

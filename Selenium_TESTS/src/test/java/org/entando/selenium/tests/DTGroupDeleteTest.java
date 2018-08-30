@@ -45,7 +45,7 @@ public class DTGroupDeleteTest extends FunctionalTest{
         ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Groups");
         
         Utils.Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), 1, "button");
         kebab.getClickable().click();

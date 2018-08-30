@@ -47,7 +47,7 @@ public class DTGroupDetailsTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Groups");
         
         String pageTitle = "Groups";
         Assert.assertEquals(pageTitle, dTGroupsPage.getPageTitle().getText());

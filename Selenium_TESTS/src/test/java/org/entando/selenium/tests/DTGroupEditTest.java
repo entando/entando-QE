@@ -46,7 +46,7 @@ public class DTGroupEditTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Groups");
         
         Kebab kebab = util.getKebabOnTable(dtGroupsPage.getGroupsTable(), "Code", "administrators", "button");
         kebab.getClickable().click();

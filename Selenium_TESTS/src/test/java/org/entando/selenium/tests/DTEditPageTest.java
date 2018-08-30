@@ -46,17 +46,17 @@ public class DTEditPageTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
+        dTDashboardPage.SelectSecondOrderLink("Page Designer", "Page Tree");
 
         WebElement table = driver.findElement(By.className("PageTree"));
-        Kebab kebab = util.getKebabOnTable(table, 1, "i");
+        Kebab kebab = util.getKebabOnTable(table, 1, "button");
         kebab.getClickable().click();
         
         util.waitUntilIsVisible(driver, kebab.getActionList());
         
         util.clickKebabActionOnList(kebab.getActionList(), "Edit");
         
-         String pageTitle = "Edit";
+        String pageTitle = "Edit";
         
          //Asserts that the page title is the expected one
         Assert.assertEquals(pageTitle, dTPageEditPage.getPageTitle().getText());

@@ -49,7 +49,7 @@ public class DTPageTreeListTest extends FunctionalTest {
         assertTrue(receiptDtPage.isInitialized());
 
         List<String> expectedHeaderTitles = Arrays.asList("Page tree", "Status", "Displayed in menu", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("Page Creator", "Page Tree");
+        dTDashboardPage.SelectSecondOrderLink("Page Designer", "Page Tree");
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTPageTreePage.getTableHeader());
 

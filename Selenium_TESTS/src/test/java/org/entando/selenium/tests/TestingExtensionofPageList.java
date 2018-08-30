@@ -44,7 +44,7 @@ public class TestingExtensionofPageList extends DTWidgetsListTest {
         dTWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
         dTWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
 
-        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Customers");
+        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Free Access");
 
         dTWidgetEditPage.save();
 

@@ -22,6 +22,7 @@ import org.entando.selenium.pages.DTPageTreePage;
 import org.entando.selenium.pages.DTUserDetailsPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
 import org.entando.selenium.pages.DTUsersPage;
+import org.entando.selenium.pages.DTUserEditPage;
 import org.entando.selenium.pages.DTWidgetEditPage;
 import org.entando.selenium.pages.DTWidgetPage;
 import org.openqa.selenium.WebDriver;
@@ -134,6 +135,12 @@ public class AppConfig {
     @Scope("prototype")
     public DTUserDetailsPage dTUserDetailsPage(WebDriver driver){
         return new DTUserDetailsPage(driver);
+    }
+    
+    @Bean
+    @Scope("prototype")
+    public DTUserEditPage dTUserEditPage(WebDriver driver){
+        return new DTUserEditPage(driver);
     }
     
     @Bean

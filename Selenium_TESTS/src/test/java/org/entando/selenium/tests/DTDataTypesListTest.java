@@ -63,7 +63,7 @@ public class DTDataTypesListTest extends FunctionalTest {
         Assert.assertEquals(pageTitle, dTDataTypesPage.getPageTitle().getText());
 
         //Asserts the presence of the button with displayed name as argument
-        Assert.assertTrue(util.checkButtonPresenceByName(driver, "Add"));
+        Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
     }
 }

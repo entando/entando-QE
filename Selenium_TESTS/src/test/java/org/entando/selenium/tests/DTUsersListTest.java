@@ -48,8 +48,8 @@ public class DTUsersListTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        List<String> expectedHeaderTitles = Arrays.asList("Username", "Full name", "Email", "Status", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        List<String> expectedHeaderTitles = Arrays.asList("Username", "Full Name", "Email", "Status", "Actions");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Users");
         // dtDashboardPage.selectTab("User Settings");
 
         dTUsersPage.getPageTitle().getText();

@@ -32,6 +32,6 @@ public class DTLoginFormTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        assertEquals(" Admin ", receiptDtPage.confirmationHeader());
+        assertEquals("admin", receiptDtPage.confirmationHeader());
     }
 }

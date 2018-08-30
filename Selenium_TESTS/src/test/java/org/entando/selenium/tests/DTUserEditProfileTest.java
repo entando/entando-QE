@@ -41,9 +41,9 @@ public class DTUserEditProfileTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("User Settings", "Users");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Users");
         
-        String user = "admin";
+        String user = "usertest10";
         Utils.Kebab kebab = util.getKebabOnTable(dTUsersPage.getUsersTable(), "Username", user, "button");
         kebab.getClickable().click();
         

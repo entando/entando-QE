@@ -22,20 +22,20 @@ public class DTDashboardPage extends PageObject {
 
     @FindBy(linkText = "Dashboard")
     private WebElement dashBoardTab;
-    @FindBy(linkText = "Page Creator")
-    private WebElement pageCreatorTab;
-    @FindBy(linkText = "UX Pattern")
+    @FindBy(linkText = "Page Designer") //mod
+    private WebElement pageDesignerTab;
+    @FindBy(linkText = "UX Patterns") //mod
     private WebElement uxPatternTab;
-    @FindBy(linkText = "Integration")
+    @FindBy(linkText = "Integrations") //mod
     private WebElement integrationTab;
     @FindBy(linkText = "Data")
     private WebElement dataTab;
     @FindBy(linkText = "Configuration")
     private WebElement configurationTab;
-    @FindBy(linkText = "User Settings")
-    private WebElement userSettingsTab;
+    @FindBy(linkText = "User Management") //mod
+    private WebElement userManagementTab;
 
-    public void selectTab(String tabName) {
+    private void selectTab(String tabName) {
 
         switch (tabName) {
 
@@ -43,16 +43,16 @@ public class DTDashboardPage extends PageObject {
                 dashBoardTab.click();
                 break;
             }
-            case "Page Creator": {
-                pageCreatorTab.click();
+            case "Page Designer": {
+                pageDesignerTab.click();
                 break;
             }
-            case "UX Pattern": {
+            case "UX Patterns": {
                 uxPatternTab.click();
                 break;
 
             }
-            case "Integration": {
+            case "Integrations": {
                 integrationTab.click();
                 break;
 
@@ -70,8 +70,8 @@ public class DTDashboardPage extends PageObject {
 
             }
 
-            case "User Settings": {
-                userSettingsTab.click();
+            case "User Management": {
+                userManagementTab.click();
                 break;
 
             }

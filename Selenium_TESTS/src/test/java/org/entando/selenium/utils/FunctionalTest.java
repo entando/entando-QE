@@ -21,6 +21,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver; //aggiunto
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -45,6 +46,7 @@ public class FunctionalTest {
     
     @BeforeAll
     public void setUp() {
+        //driver = new ChromeDriver();   //aggiunto
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 

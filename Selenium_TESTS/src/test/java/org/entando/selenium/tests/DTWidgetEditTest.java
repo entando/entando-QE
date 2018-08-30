@@ -47,7 +47,7 @@ public class DTWidgetEditTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
 
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
+        dTDashboardPage.SelectSecondOrderLink("UX Patterns", "Widgets");
 
         Assert.assertTrue(util.checkButtonPresenceByName(driver, "New"));
 
@@ -67,7 +67,7 @@ public class DTWidgetEditTest extends FunctionalTest {
         dTWidgetEditPage.setItTitle("Titolo Italiano modificato da Selenium");
         dTWidgetEditPage.setCustomUI("<p>Custom UI changed and set by Selenium</p>");
 
-        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Customers");
+        util.selectSetByValue(dTWidgetEditPage.getGroup(), "Free Access");
 
         dTWidgetEditPage.save();
 

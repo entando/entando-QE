@@ -48,7 +48,7 @@ public class DTWidgetsListTest extends FunctionalTest {
         assertTrue(receiptDtPage.isInitialized());
 
         List<String> expectedHeaderTitles = Arrays.asList("Name", "Code", "used", "Actions");
-        dTDashboardPage.SelectSecondOrderLink("UX Pattern", "Widgets");
+        dTDashboardPage.SelectSecondOrderLink("UX Patterns", "Widgets");
 
         List<String> fetchedHeaderTitles = util.fetchHeaderTitles(dTDataTypesPage.getTableHeader());
 

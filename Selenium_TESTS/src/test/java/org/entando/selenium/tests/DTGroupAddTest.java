@@ -42,7 +42,7 @@ public class DTGroupAddTest extends FunctionalTest {
         ReceiptDTLoginPage receiptDtPage = dtLoginPage.submit();
         assertTrue(receiptDtPage.isInitialized());
         
-        dTDashboardPage.SelectSecondOrderLink("Configuration", "Groups");
+        dTDashboardPage.SelectSecondOrderLink("User Management", "Groups");
 
         dTGroupsPage.getAddButton().click();
         
