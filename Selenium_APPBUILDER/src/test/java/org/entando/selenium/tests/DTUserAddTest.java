@@ -16,12 +16,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.pages.DTUserAddPage;
-import org.entando.selenium.pages.DTUsersPage;
+
+import org.entando.selenium.pages.*;
 import org.entando.selenium.utils.UsersTestBase;
 import org.entando.selenium.utils.Utils;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +42,16 @@ public class DTUserAddTest extends UsersTestBase {
     
     @Autowired
     public DTUsersPage dTUsersPage;
-    
+
     @Autowired
     public DTUserAddPage dTUserAddPage;
-            
+
+    @Autowired
+    public DTUserProfileTypePage dtUserProfileTypePage;
+
+    @Autowired
+    public DTUserProfileTypeAddPage dtUserProfileTypeAddPage;
+
     /*
         Test
     */
@@ -78,7 +86,8 @@ public class DTUserAddTest extends UsersTestBase {
         */
         //Login
         login();
-        
+        dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, "Profile types");
+        addProfileType(dtUserProfileTypePage,dtUserProfileTypeAddPage, this.profileType);
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
@@ -154,5 +163,16 @@ public class DTUserAddTest extends UsersTestBase {
         }
         /** End Debug code**/
         
+    }
+
+    @AfterEach
+    public void killProfileType() {
+        try {
+            dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Profile types");
+            deleteProfileType(dtUserProfileTypePage,this.profileType);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println();
     }
 }//end class
