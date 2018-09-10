@@ -160,7 +160,7 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         dTUsersPage.getDeleteModalButton().click();
         Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+//        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
         Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
                 
         Utils.waitUntilIsVisible(driver, dTUsersPage.getTableBody());
