@@ -1,5 +1,3 @@
-
-
 ### Selenium_APPBUILDER
 
 The project has been developed on AppBuilder application 
