@@ -16,6 +16,7 @@ import org.entando.selenium.pages.DTGroupDeletePage;
 import org.entando.selenium.pages.DTGroupDetailsPage;
 import org.entando.selenium.pages.DTGroupEditPage;
 import org.entando.selenium.pages.DTGroupsPage;
+import org.entando.selenium.pages.DTLabelsAndLanguagesPage;
 import org.entando.selenium.pages.DTLoginPage;
 import org.entando.selenium.pages.DTPageEditPage;
 import org.entando.selenium.pages.DTPageTreePage;
@@ -165,6 +166,12 @@ public class AppConfig {
     @Scope("prototype")
     public DTWidgetPage dTWidgetPage(WebDriver driver){
         return new DTWidgetPage(driver);
+    }
+    
+    @Bean
+    @Scope("prototype")
+    public DTLabelsAndLanguagesPage dTLabelsAndLanguagesPage(WebDriver driver){
+        return new DTLabelsAndLanguagesPage(driver);
     }
     
     @Bean

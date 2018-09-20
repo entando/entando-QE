@@ -289,7 +289,7 @@ public class Utils {
     public String[] getText(List<WebElement> items) {
         String[] result = new String[items.size()];
         for(int i = 0; i < items.size(); i++){
-            result[i] = items.get(i).getAttribute(innerText);
+            result[i] = items.get(i).getAttribute(innerText).trim();
         }
         return result;
     }
@@ -302,6 +302,16 @@ public class Utils {
     public void waitUntilIsVisible(WebDriver driver, WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    
+    public int getTableCount(WebElement table){
+        return table.findElements(By.xpath("/tbody/tr")).size();
+    }
+    
+    public void waitUntilTableSizeChange(WebDriver driver, WebElement table){
+        int size = getTableCount(table);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        waitUntilSizeChange(wait, table, "/tbody/tr", size);
     }
     
     private void waitUntilSizeChange(WebDriverWait wait, WebElement element, String childrenSelector, int currentSize){
