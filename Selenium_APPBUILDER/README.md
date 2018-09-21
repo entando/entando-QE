@@ -1,8 +1,7 @@
 ### Selenium_APPBUILDER
 
-The project has been developed on AppBuilder application 
-You can find it on http://appbuilder.serv.run/
-else you can install it on your local machine.
+The project has been developed on AppBuilder application. 
+You can install it on your local machine.
 
 
 __Prerequisites__
@@ -112,9 +111,7 @@ __How to set tests options__
 • Set the landing page
 1) Open the class DTLoginPage in the package `org.entando.selenium.pages`
 2) Find the class constructor method
-3) Change the parameter of driver.get("http://appbuilder.landing.page/")
-Now it set to "http://appbuilder.serv.run/" (the our online AppBuilder)
-You can use your local AppBuilder and the parameter to be set will be similar to "http://localhost:8080/myApp/"
+3) Change the parameter of driver.get("http://localhost:8080/myApp/") to whatever suits your needs.
 
 • Set headless mode (a solution to run tests without opening the browser)
 1) Open the class AppConfig in the package `org.entando.selenium.utils`
