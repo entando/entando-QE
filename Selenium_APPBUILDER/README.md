@@ -139,4 +139,4 @@ It's recommended to use output redirection to read tests results
 For Example:
 `mvn -Dtest=DTEx* test > Example-Results.txt`
 
-If you prefer you can run the tests on your favorite IDE likes NetBeans, JUnit or IntelliJ.
+If you prefer you can run the tests on your favorite IDE likes NetBeans, Eclipse, etc.
