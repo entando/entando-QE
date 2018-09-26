@@ -85,9 +85,13 @@ public class FunctionalTestBase {
 
     @AfterAll
     public void tearDown() {
-        driver.close();
+        //driver.close();
         driver.quit();
     }
+    
+    
+    
+    
     
     /**
      * This login test is common to almost all test Classes

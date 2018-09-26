@@ -99,7 +99,7 @@ public class DTSystemLabelsEditTest extends SystemLabelsTestBase{
         Assert.assertEquals("The PAGE TITLE isn't the expected one",
                 pageTitle, dTSystemLabelsAddPage.getPageTitle().getText());
         
-        sleep(300);
+        sleep(600);
         
         //Verify fields
         Assert.assertFalse("Code Field is enabled",

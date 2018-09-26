@@ -76,14 +76,16 @@ public class DTPageModelsAddTest extends PageModelsTestBase{
         //Click on New Button
         dTPageModelsPage.getAddButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getSaveButton());
+        Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getNameField());
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTPageModelsAddPage.getPageTitle().getText());
         
         //Asserts the presence of the HELP button
+        sleep(200);
         dTPageModelsAddPage.getHelp().click();
-        Assert.assertTrue(dTPageModelsAddPage.getTooltip().isDisplayed());
+        Assert.assertTrue("I clicked on right-top Help button but the tooltip didn't appear",
+                dTPageModelsAddPage.getTooltip().isDisplayed());
         
         Assert.assertFalse("Save button is enabled",
                 dTPageModelsAddPage.getSaveButton().isEnabled());

@@ -62,7 +62,7 @@ public class DTUserAddTest extends UsersTestBase {
         //Usernames to set
         Random generator = new Random();
         int randomNumber = generator.nextInt(9999);
-        String username = "1SLNM_TEST_" + randomNumber;
+        String username = "1SLNM_ADD_TEST_" + randomNumber;
         String falseUsername = "1SLNM_TEST-*-" + randomNumber;
                 
         //Passwords to set

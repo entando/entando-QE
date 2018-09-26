@@ -23,20 +23,23 @@ import org.openqa.selenium.support.FindBy;
  */
 public class DTFileBrowserCreateFolderPage extends PageObject{
     
-    @FindBy(xpath = "//h1/div")
+    @FindBy(xpath = "//h1")
     private WebElement pageTitle;
     
     @FindBy(xpath = "//*[contains(@role, 'tooltip')]")
     private WebElement tooltip;
     
-    @FindBy(css = "i.fa-question-circle-o")
+    @FindBy(css = "i.PageTitle__icon")
     private WebElement help;
     
-    @FindBy(xpath = "//div[@id = 'main']//child::ol")
+    @FindBy(xpath = "//div[@class = 'FileBreadcrumb']//child::ol")
     private WebElement breadcrumb;
     
-    @FindBy(xpath = "//input[@name = 'dirname']")
+    @FindBy(xpath = "//input[@name = 'path']")
     private WebElement folderName;
+    
+    @FindBy(xpath = "//input[@name = 'path']/../span/span")
+    private WebElement folderNameError;
     
     @FindBy(xpath = "//input[@value = 'Cancel']")
     private WebElement cancelButton;
@@ -82,7 +85,9 @@ public class DTFileBrowserCreateFolderPage extends PageObject{
         this.folderName.clear();
         this.folderName.sendKeys(folderName);
     }
-    
-    
+
+    public WebElement getFolderNameError() {
+        return folderNameError;
+    }
     
 }

@@ -11,64 +11,19 @@ details.
  */
 package org.entando.selenium.utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import org.entando.selenium.pages.DTCategoriesAddPage;
-import org.entando.selenium.pages.DTCategoriesDetailsPage;
-import org.entando.selenium.pages.DTCategoriesPage;
-import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.pages.DTDataModelsAddPage;
-import org.entando.selenium.pages.DTDataModelsPage;
-import org.entando.selenium.pages.DTDataTypesAddPage;
-import org.entando.selenium.pages.DTDataTypesPage;
-import org.entando.selenium.pages.DTDatabasePage;
-import org.entando.selenium.pages.DTFileBrowserCreateFolderPage;
-import org.entando.selenium.pages.DTFileBrowserCreateTextFilePage;
-import org.entando.selenium.pages.DTFileBrowserPage;
-import org.entando.selenium.pages.DTFileBrowserUploadPage;
-import org.entando.selenium.pages.DTFragmentEditPage;
-import org.entando.selenium.pages.DTFragmentNewPage;
-import org.entando.selenium.pages.DTFragmentPage;
-import org.entando.selenium.pages.DTFragmentsDetailsPage;
-import org.entando.selenium.pages.DTLabelsAndLanguagesPage;
-import org.entando.selenium.pages.DTUserGroupAddPage;
-import org.entando.selenium.pages.DTUserGroupDetailsPage;
-import org.entando.selenium.pages.DTUserGroupEditPage;
-import org.entando.selenium.pages.DTUserGroupsPage;
-import org.entando.selenium.pages.DTLoginPage;
-import org.entando.selenium.pages.DTPageAddPage;
-import org.entando.selenium.pages.DTPageClonePage;
-import org.entando.selenium.pages.DTPageConfigurePage;
-import org.entando.selenium.pages.DTPageDetailsPage;
-import org.entando.selenium.pages.DTPageEditPage;
-import org.entando.selenium.pages.DTPageModelsAddPage;
-import org.entando.selenium.pages.DTPageModelsDetailsPage;
-import org.entando.selenium.pages.DTPageModelsPage;
-import org.entando.selenium.pages.DTPageSettingsPage;
-import org.entando.selenium.pages.DTPageTreePage;
-import org.entando.selenium.pages.DTReloadConfigurationPage;
-import org.entando.selenium.pages.DTSystemLabelsAddPage;
-import org.entando.selenium.pages.DTSystemLabelsPage;
-import org.entando.selenium.pages.DTUserAddPage;
-import org.entando.selenium.pages.DTUserDetailsPage;
-import org.entando.selenium.pages.DTUserManageAuthorityPage;
-import org.entando.selenium.pages.DTUsersPage;
-import org.entando.selenium.pages.DTUserEditPage;
-import org.entando.selenium.pages.DTUserProfileTypeAddPage;
-import org.entando.selenium.pages.DTUserProfileTypeEditPage;
-import org.entando.selenium.pages.DTUserProfileTypePage;
-import org.entando.selenium.pages.DTUserRestrictionsPage;
-import org.entando.selenium.pages.DTUserRoleAddPage;
-import org.entando.selenium.pages.DTUserRoleDetailsPage;
-import org.entando.selenium.pages.DTUserRoleEditPage;
-import org.entando.selenium.pages.DTUserRolesPage;
-import org.entando.selenium.pages.DTWidgetAddPage;
-import org.entando.selenium.pages.DTWidgetEditPage;
-import org.entando.selenium.pages.DTWidgetPage;
+import org.entando.selenium.pages.*;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -101,19 +56,32 @@ public class AppConfig {
     
     @Bean
     @Scope("test")
-    public WebDriver webDriver(){
+    public WebDriver webDriver() throws MalformedURLException{
+        
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setBrowserName("chrome");
+        capabilities.setPlatform(Platform.ANY);
+        WebDriver driver =  new RemoteWebDriver(new URL("http://192.168.1.112:4444/wd/hub"), capabilities);
+        return driver;
+        
+        /*
         if (HEADLESS)
         {
-            ChromeOptions options = new ChromeOptions();
+            //WebDriver driver = new ChromeDriver();
+            WebDriver driver = new FirefoxDriver();
+            //ChromeOptions options = new ChromeOptions();
+            FirefoxOptions options = new FirefoxOptions();
             options.addArguments("headless");
             options.addArguments("window-size=1200x600");
-            return new ChromeDriver(options);
+            //WebDriver driver = new ChromeDriver(options);
+            return driver;
         }
         else
         {
-            return new ChromeDriver();
-            //return new FirefoxDriver();
-        }
+            //WebDriver driver = new ChromeDriver();
+            WebDriver driver = new FirefoxDriver();
+            return driver;
+        }*/
     } 
     
     @Bean

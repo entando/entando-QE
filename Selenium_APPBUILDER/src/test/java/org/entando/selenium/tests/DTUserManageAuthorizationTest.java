@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
 import org.entando.selenium.pages.DTUsersPage;
-import org.entando.selenium.utils.FunctionalTestBase;
 import org.entando.selenium.utils.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
@@ -83,7 +82,7 @@ public class DTUserManageAuthorizationTest extends UsersTestBase{
         
         //Manage the page
         Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
-        Assert.assertFalse(kebab == null);
+        Assert.assertFalse("User not found!", kebab == null);
         
         //Click on kebab menù
         kebab.getClickable().click();

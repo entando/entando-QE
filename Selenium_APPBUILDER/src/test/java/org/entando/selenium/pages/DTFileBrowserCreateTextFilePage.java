@@ -24,26 +24,32 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class DTFileBrowserCreateTextFilePage extends PageObject{
     
-    @FindBy(xpath = "//h1/div")
+    @FindBy(xpath = "//h1")
     private WebElement pageTitle;
     
     @FindBy(xpath = "//*[contains(@role, 'tooltip')]")
     private WebElement tooltip;
     
-    @FindBy(css = "i.fa-question-circle-o")
+    @FindBy(css = "i.PageTitle__icon")
     private WebElement help;
     
-    @FindBy(xpath = "//div[@id = 'main']//child::ol")
+    @FindBy(xpath = "//div[@class = 'FileBreadcrumb']//child::ol")
     private WebElement breadcrumb;
     
-    @FindBy(xpath = "//input[@name = 'filename']")
+    @FindBy(xpath = "//input[@name = 'name']")
     private WebElement fileName;
     
-    @FindBy(xpath = "//select[@name = 'textFileExtension']")
+    @FindBy(xpath = "//input[@name = 'name']/../span/span")
+    private WebElement fileNameError;
+    
+    @FindBy(xpath = "//select[@name = 'extension']")
     private WebElement selectType;
     
-    @FindBy(xpath = "//textarea[@name = 'fileText']")
+    @FindBy(xpath = "//textarea[@name = 'content']")
     private WebElement fileContent;
+    
+    @FindBy(xpath = "//div[contains(@class, 'RenderTextAreaInput')]/span/span")
+    private WebElement fileContentError;
     
     @FindBy(xpath = "//input[@value = 'Cancel']")
     private WebElement cancelButton;
@@ -97,6 +103,15 @@ public class DTFileBrowserCreateTextFilePage extends PageObject{
         this.fileContent.clear();
         this.fileContent.sendKeys(fileContent);
     }
+
+    public WebElement getFileNameError() {
+        return fileNameError;
+    }
+
+    public WebElement getFileContentError() {
+        return fileContentError;
+    }
+    
     
     
     

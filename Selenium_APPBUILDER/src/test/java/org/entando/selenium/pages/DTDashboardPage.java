@@ -35,8 +35,8 @@ public class DTDashboardPage extends PageObject {
     private WebElement integrationTab;
     @FindBy(linkText = "Data")
     private WebElement dataTab;
-    @FindBy(linkText = "Settings")
-    private WebElement settingsTab;
+    @FindBy(linkText = "Configuration")
+    private WebElement configurationTab;
     @FindBy(linkText = "User Management")
     private WebElement userManagementTab;
 
@@ -62,8 +62,8 @@ public class DTDashboardPage extends PageObject {
                 dataTab.click();
                 break;
             }
-            case "Settings": {
-                settingsTab.click();
+            case "Configuration": {
+                configurationTab.click();
                 break;
             }
             case "User Management": {
@@ -81,7 +81,7 @@ public class DTDashboardPage extends PageObject {
     
     public void SelectSecondOrderLinkWithSleep(String TabName, String Link) throws InterruptedException {
         this.selectTab(TabName);
-        sleep(1000);
+        sleep(500);
         WebElement secondOrderLink = driver.findElement(By.linkText(Link));
         secondOrderLink.click();
     }

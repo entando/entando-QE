@@ -14,6 +14,7 @@ package org.entando.selenium.pages;
 import org.entando.selenium.utils.PageObject;
 import org.entando.selenium.utils.pageParts.Breadcrumb;
 import org.entando.selenium.utils.pageParts.SimpleTable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,7 @@ public class DTFileBrowserPage extends PageObject{
     @FindBy(xpath = "//*[contains(@role, 'tooltip')]")
     private WebElement tooltip;
     
-    @FindBy(css = "i.fa-question-circle-o")
+    @FindBy(css = "i.PageTitle__icon")
     private WebElement help;
     
     @FindBy(xpath ="//table[contains(@class, 'table')]")
@@ -52,21 +53,30 @@ public class DTFileBrowserPage extends PageObject{
     @FindBy(xpath = "//a[contains(., 'Create text')]")
     private WebElement createTextFileButton;
     
-    @FindBy(xpath = "//a[contains(., 'up ..')]")
+    @FindBy(xpath = "//a[contains(., 'up..')]")
     private WebElement upButton;
     
-    @FindBy(xpath = "//div[@id = 'main']//child::ol")
+    @FindBy(xpath = "//div[@class = 'FileBreadcrumb']//child::ol")
     private WebElement breadcrumb;
     
-    @FindBy(xpath = "//h1//../ol")
+    @FindBy(xpath = "//div[@class = 'row'][1]//child::ol")
     private WebElement pageBreadcrumb;
-    
-    @FindBy(xpath = "//p[@class = 'esclamation-underline-text']")
-    private WebElement deleteMessage;
     
     @FindBy(xpath = "//button[contains(.,'Delete')]")
     private WebElement deleteButton;
     
+    @FindBy(xpath = "//button[contains(@id, 'button-delete')]")
+    private WebElement deleteModalButton;
+    
+    @FindBy(xpath = "//div[contains(@class, 'modal-body')]")
+    private WebElement modalBody;
+    
+    @FindBy(xpath = "//div[contains(@class, 'alert')]")
+    private WebElement alertMessage;
+    
+    public final By spinnerTag = By.xpath("//div[contains(@class, 'spinner-md')]");
+    
+    public static final By modalWindowTag = By.xpath("//div[contains(@class, 'modal-content')]");
     
     
     public WebElement getPageTitle() {
@@ -113,10 +123,6 @@ public class DTFileBrowserPage extends PageObject{
         return (new Breadcrumb(breadcrumb));
     }
 
-    public WebElement getDeleteMessage() {
-        return deleteMessage;
-    }
-
     public WebElement getDeleteButton() {
         return deleteButton;
     }
@@ -124,7 +130,26 @@ public class DTFileBrowserPage extends PageObject{
     public Breadcrumb getPageBreadcrumb() {
         return (new Breadcrumb(pageBreadcrumb));
     }
+
+    public WebElement getDeleteModalButton() {
+        return deleteModalButton;
+    }
+
+    public WebElement getModalBody() {
+        return modalBody;
+    }
+        
+    public WebElement getCloseMessageButton(){
+        return alertMessage.findElement(By.xpath(".//button"));
+    }    
     
+    public String getAlertMessageContent(){
+        return alertMessage.getText();
+    }
+
+    public WebElement getAlertMessage() {
+        return alertMessage;
+    }
     
     
     

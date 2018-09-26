@@ -143,7 +143,7 @@ public class DataModelsTestBase extends BrowsableTableTestTypology{
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getAlertMessage());
         Assert.assertTrue("Alert Message has not displayed",
                 dTDataModelsPage.getAlertMessage().isDisplayed());
-        Assert.assertTrue("Invalid Alert Message content",
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...successfully created\"",
                 dTDataModelsPage.getAlertMessageContent().contains("successfully deleted"));
         dTDataModelsPage.getCloseMessageButton().click();
         //alert toast-pf alert-success alert-dismissable

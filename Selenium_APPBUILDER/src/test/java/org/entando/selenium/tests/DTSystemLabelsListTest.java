@@ -64,7 +64,7 @@ public class DTSystemLabelsListTest extends SystemLabelsTestBase{
         login();
         
         //Navigation to the page
-        dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
+        dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Loading page
         Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);

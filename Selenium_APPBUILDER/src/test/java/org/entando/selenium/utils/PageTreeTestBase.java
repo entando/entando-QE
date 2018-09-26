@@ -37,7 +37,7 @@ public class PageTreeTestBase extends ExpandableTableTestTypology{
     //Owner group name
     public final String ownerGroupName = "1SeleniumTest_DontTouch";
     //Owner group code
-    public final String ownerGroupCode = "aaaa";
+    public final String ownerGroupCode = "1seleniumtest_dontto";
     //Join Group name
     public final String joinGroupName = "1SeleniumTest_DontTouch";
     //Page model name
@@ -59,10 +59,15 @@ public class PageTreeTestBase extends ExpandableTableTestTypology{
     public boolean addPage(DTPageTreePage dTPageTreePage, DTPageAddPage dTPageTreeAddPage, String pageName, String branchName) 
             throws InterruptedException
     {
+        sleep(500);
         dTPageTreePage.getAddButton().click();
-        Utils.waitUntilIsVisible(driver, dTPageTreeAddPage.getPageTitle());
-        driver.get(driver.getCurrentUrl());
+        /** Debug code **/ Logger.getGlobal().info("Add page clicked");
         Utils.waitUntilIsVisible(driver, dTPageTreeAddPage.getTableElement());
+        /** Debug code **/ Logger.getGlobal().info("Table founded");
+        driver.get(driver.getCurrentUrl());
+        /** Debug code **/ Logger.getGlobal().info("Reload page");
+        Utils.waitUntilIsVisible(driver, dTPageTreeAddPage.getTableElement());
+        /** Debug code **/ Logger.getGlobal().info("Table already founded");
         
         //Compiling the fields
         dTPageTreeAddPage.setEnTitleField(pageName);

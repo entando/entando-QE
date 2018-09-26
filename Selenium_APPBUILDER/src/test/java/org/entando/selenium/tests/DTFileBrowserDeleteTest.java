@@ -53,12 +53,9 @@ public class DTFileBrowserDeleteTest extends FileBrowserTestBase{
             Parameters
         */
         //Link menù buttons
-        String firstLevelLink = "Settings";
-        String secondLevelLink = "File Browser";
-        
-        //Final page title
-        String pageTitle = "Delete";
-        
+        String firstLevelLink = "Configuration";
+        String secondLevelLink = "File browser";
+                
         /*
             Actions and asserts
         */
@@ -69,17 +66,18 @@ public class DTFileBrowserDeleteTest extends FileBrowserTestBase{
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Click on public folder
-        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 1, 1).click();
+        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0).click();
         
         //Wait loading page
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Create a folder
-        createFolder(dTFileBrowserPage, dTFileBrowserCreateFolderPage, createFolderName);
+        Assert.assertTrue("Unable to create folder",
+                createFolder(dTFileBrowserPage, dTFileBrowserCreateFolderPage, createFolderName));
         
         //Find Kebab on file list
         Kebab kebab = dTFileBrowserPage.getTable().getKebabOnTable(
-                folderPrefixName + createFolderName, 1, 4);
+                createFolderName, 0, 3);
         Assert.assertFalse("Created Folder not found!", kebab == null);
         //Click on kebab menù
         kebab.getClickable().click();
@@ -89,31 +87,26 @@ public class DTFileBrowserDeleteTest extends FileBrowserTestBase{
         kebab.getAction("Delete").click();
         /** Debug code **/ Logger.getGlobal().info("Kebab delete clicked");
         
-        //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getDeleteButton());
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getDeleteModalButton());
+        Assert.assertTrue("Delete confirm message not contains the folder name",
+                dTFileBrowserPage.getModalBody().getText().contains(createFolderName));
+        Utils.waitUntilIsClickable(driver, dTFileBrowserPage.getDeleteModalButton());
+        sleep(100);
+        dTFileBrowserPage.getDeleteModalButton().click();
+        Utils.waitUntilIsDisappears(driver, DTFileBrowserPage.modalWindowTag);
+        Utils.waitUntilIsDisappears(driver, kebab.getClickable());
         
-        //Asserts the PAGE TITLE is the expected one
-        Assert.assertEquals("Page title is incorrect", pageTitle, 
-                Utils.trimInitialSpaces(dTFileBrowserPage.getPageTitle().getText()));        
+        //Verify the alert message
+        Assert.assertTrue("Alert Message has not displayed",
+                dTFileBrowserPage.getAlertMessage().isDisplayed());
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...successfully deleted\"",
+                dTFileBrowserPage.getAlertMessageContent().contains("successfully deleted"));
+        dTFileBrowserPage.getCloseMessageButton().click();
         
-        Assert.assertTrue("Delete message not contains the Folder name",
-                dTFileBrowserPage.getDeleteMessage().getText().contains(createFolderName));
-        
-        Assert.assertEquals("Page Breadcrumb is not displayed correctly", 
-                3, dTFileBrowserPage.getPageBreadcrumb().getNumberOfCrumbs());
-        
-        Assert.assertEquals("The last item of the Page Breadcrumb is not corrected",
-                pageTitle, dTFileBrowserPage.getPageBreadcrumb().getLastCrumb());
-        
-        dTFileBrowserPage.getDeleteButton().click();
-        
-        //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the absence of the created folder in the file browser table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
-                .findRowList(folderPrefixName + createFolderName, 1);
+                .findRowList(createFolderName, 0);
         Assert.assertTrue("Created folder is still present in the file browser table",
                 createdFolder.isEmpty());
         

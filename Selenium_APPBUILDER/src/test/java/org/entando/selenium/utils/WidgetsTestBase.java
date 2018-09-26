@@ -21,6 +21,8 @@ import org.entando.selenium.pages.DTWidgetPage;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
  /**
  * This class contains some utils methos for the Widgets tests (Helpers)
@@ -86,23 +88,29 @@ public class WidgetsTestBase extends FunctionalTestBase {
      * @param dTWidgetPage
      * @param code
      * @return
+     * @throws java.lang.InterruptedException
      */
-    public boolean deleteWidget(DTWidgetPage dTWidgetPage, String code){
+    public boolean deleteWidget(DTWidgetPage dTWidgetPage, String code) throws InterruptedException{
         SimpleTable table = new SimpleTable(dTWidgetPage.getTables().get("user"));
         Kebab kebab = table.getKebabOnTable(code, expectedHeaderTitles.get(1), expectedHeaderTitles.get(3));
-        if(kebab == null)
-        {
-            /** Debug code **/ Logger.getGlobal().info("Widget not found!");
-            return false;
-        }
+        Assert.assertFalse("Widget to be deleted (with code: \"" + code + "\") not found!", kebab == null);
         //Click on kebab menù
         kebab.getClickable().click();
         /** Debug code **/ Logger.getGlobal().info("Kebab clicked");
         Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
         //Click on the action
+        sleep(200);
         kebab.getAction("Delete").click();
         /** Debug code **/ Logger.getGlobal().info("Kebab delete clicked");
-        Utils.waitUntilIsVisible(driver, dTWidgetPage.getSuccessMessage());
+        try
+        {
+            Utils.waitUntilIsVisible(driver, dTWidgetPage.getSuccessMessage());
+        }
+        catch(TimeoutException | NoSuchElementException exception)
+        {
+            Assert.assertTrue("Delete success message not displayed", false);
+        }
+        
         Assert.assertEquals("Delete success message content not valid ", 
                 deleteSuccessMessage, dTWidgetPage.getAlertMessageContent());
         dTWidgetPage.getCloseAlertMessageButton().click();

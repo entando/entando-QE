@@ -86,7 +86,7 @@ public class DTFragmentPage extends PageObject implements BrowsableTablePageInte
     @FindBy(xpath = "//input[@name = 'code']")
     private WebElement codeSearchField;
     
-    @FindBy(xpath = "//select[@name = 'widgetType']")
+    @FindBy(xpath = "//select[@name = 'widgetType.code']")
     private WebElement widgetTypeSelect;
     
     @FindBy(xpath = "//select[@name = 'plugin']")

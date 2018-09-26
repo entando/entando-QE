@@ -46,7 +46,7 @@ public class CategoriesTestBase extends ExpandableTableTestTypology{
     public final String defaultBranchName = "All";
     
     //Default category already present
-    public final String defaultCategoryNameAlreadyPresent = "1_SLNM_TEST_DONT_TOUCH";
+    public final String defaultCategoryNameAlreadyPresent = "SeleniumTest_DontTouch";
     
     
     

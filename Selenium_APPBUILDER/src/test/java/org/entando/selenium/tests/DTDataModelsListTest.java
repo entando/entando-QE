@@ -79,7 +79,8 @@ public class DTDataModelsListTest extends DataModelsTestBase{
         Assert.assertEquals(expectedHeaderTitles, dTDataModelsPage.getTable().getHeaderTitlesList());
         
         //Assert the functionality of BROWSABLE TABLE
-        Assert.assertTrue(checkBrowsableTable(dTDataModelsPage));
+        Assert.assertTrue("Browsable table functionality wrong",
+                checkBrowsableTable(dTDataModelsPage));
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

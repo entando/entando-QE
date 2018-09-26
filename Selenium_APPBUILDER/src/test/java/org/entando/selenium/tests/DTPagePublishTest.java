@@ -80,6 +80,16 @@ public class DTPagePublishTest extends PageTreeTestBase{
         //Create a page to publish/unpublish
         Assert.assertTrue(addPage(dTPageTreePage, dTPageAddPage, pageName));
         
+        WebElement cell = dTPageTreePage.getTable().getCell(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(1));
+        //Assert the presence of the element
+        Assert.assertFalse("Can't find a page just created",
+                cell == null);
+        WebElement icon = cell.findElement(DTPageTreePage.statusIconTag);
+        
+        //Assert the status icon is green
+        Assert.assertTrue("Page icon status isn't grey when the page is offline",
+                icon.getAttribute("title").equals("Draft"));
+        
         
         Kebab kebab = dTPageTreePage.getTable().getKebabOnTable(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(3));
         //Assert the presence of kebab
@@ -97,15 +107,17 @@ public class DTPagePublishTest extends PageTreeTestBase{
         dTPageTreePage.getPublishModalButton().click();
         Utils.waitUntilIsDisappears(driver, DTPageTreePage.getModalWindowTag());
         
-        WebElement cell = dTPageTreePage.getTable().getCell(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(1));
+        sleep(100);
+        
+        cell = dTPageTreePage.getTable().getCell(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(1));
         //Assert the presence of the element
-        Assert.assertFalse(cell == null);
-        WebElement icon = cell.findElement(DTPageTreePage.statusIconTag);
-        
-        
+        Assert.assertFalse("Can't find a page just created",
+                cell == null);
+        icon = cell.findElement(DTPageTreePage.statusIconTag);
         
         //Assert the status icon is green
-        Assert.assertTrue(icon.getAttribute("title").equals("Online"));
+        Assert.assertTrue("Page icon status isn't green when the page is online",
+                icon.getAttribute("title").equals("Online"));
         
         
         
@@ -133,8 +145,9 @@ public class DTPagePublishTest extends PageTreeTestBase{
         Assert.assertFalse(cell == null);
         icon = cell.findElement(DTPageTreePage.statusIconTag);
         
-        //Assert the status icon is grey
-        Assert.assertTrue(icon.getAttribute("title").equals("Draft"));
+        //Assert the status icon is green
+        Assert.assertTrue("Page icon status isn't grey when the page is offline",
+                icon.getAttribute("title").equals("Draft"));
         
         //Delete the page
         deletePage(dTPageTreePage, pageName);

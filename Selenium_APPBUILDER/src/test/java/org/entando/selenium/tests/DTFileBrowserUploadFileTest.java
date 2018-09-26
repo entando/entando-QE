@@ -52,11 +52,9 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
             Parameters
         */
         //Link menù buttons
-        String firstLevelLink = "Settings";
-        String secondLevelLink = "File Browser";
+        String firstLevelLink = "Configuration";
+        String secondLevelLink = "File browser";
         
-        //Final page title
-        String pageTitle = "Upload";
         
         /*
             Actions and asserts
@@ -68,45 +66,54 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Click on public folder
-        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 1, 1).click();
+        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0).click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
-        //Click on Create text file button
+        //Click on Upload file button
         dTFileBrowserPage.getUploadButton().click();
         
         //Wait loading page
         Utils.waitUntilIsVisible(driver, dTFileBrowserUploadPage.getSaveButton());
         
-        //Asserts the PAGE TITLE is the expected one
-        Assert.assertEquals("Page title is incorrect", pageTitle, 
-                Utils.trimInitialSpaces(dTFileBrowserPage.getPageTitle().getText()));        
-        
-        //Asserts the presence of the HELP button
-        dTFileBrowserPage.getHelp().click();
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTooltip());
-        Assert.assertTrue(dTFileBrowserPage.getTooltip().isDisplayed());
+        //Assert the save button is disabled
+        Assert.assertFalse("Save Button is enabled but Fields are empty",
+                dTFileBrowserUploadPage.getSaveButton().isEnabled());
         
         //Set the fields
         dTFileBrowserUploadPage.setFilePath(fileToUploadPath + fileToUploadName);
+        
+        //Assert the save button is enabled
+        Assert.assertTrue("Save Button is disabled but Folder Name field is compiled",
+                dTFileBrowserUploadPage.getSaveButton().isEnabled());
         
         //Save the data
         dTFileBrowserUploadPage.getSaveButton().click();
         
         //Wait loading prev. page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getAlertMessage());
+        
+        Assert.assertTrue("Alert Message has not displayed",
+                dTFileBrowserPage.getAlertMessage().isDisplayed());
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...complete\"",
+                dTFileBrowserPage.getAlertMessageContent().contains("complete"));
+        dTFileBrowserPage.getCloseMessageButton().click();
+        
+        sleep(500);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the uploaded file in the file browser table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
-                .findRowList(filePrefixName + fileToUploadName, 1);
-        Assert.assertFalse("Created file is not present in the file browser table",
+                .findRowList(fileToUploadName, 0);
+        Assert.assertFalse("Uploaded file is not present in the file browser table",
                 createdFolder.isEmpty());
         
         //Delete the file
         Assert.assertTrue("File has not been deleted",
-                deleteFile(dTFileBrowserPage, filePrefixName + fileToUploadName));
+                deleteFile(dTFileBrowserPage, fileToUploadName));
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

@@ -78,7 +78,7 @@ public class DTUsersListTest extends UsersTestBase {
         Assert.assertEquals(usersTableHeaderTitles, dTUsersPage.getTable().getHeaderTitlesList());
         
         //Assert the functionality of BROWSABLE TABLE
-        Assert.assertTrue(checkBrowsableTable(dTUsersPage));
+        Assert.assertTrue("Some problems with Browsable Table (See logger messages)", checkBrowsableTable(dTUsersPage));
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

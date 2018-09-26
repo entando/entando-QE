@@ -12,9 +12,11 @@ details.
 
 package org.entando.selenium.utils;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,7 +34,7 @@ public class Utils {
      * @param element 
      */
     public static void waitUntilIsVisible(WebDriver driver, WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 8);
+        WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     
@@ -43,7 +45,7 @@ public class Utils {
      * @param element 
      */
     public static void waitUntilIsVisible(WebDriver driver, By element) {
-        WebDriverWait wait = new WebDriverWait(driver, 8);
+        WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
     
@@ -140,10 +142,16 @@ public class Utils {
      * @param element
      * @param attribute 
      */
-    public static void waitUntilAttributeToBeNotEmpty(WebDriver driver, WebElement element, String attribute)
+    public static void waitUntilAttributeToBeNotEmpty(WebDriver driver, WebElement element, String attribute) 
     {
         WebDriverWait wait = new WebDriverWait(driver, 4, 50);
-        wait.until(ExpectedConditions.attributeToBeNotEmpty(element, attribute));
+        try{
+            wait.until(ExpectedConditions.attributeToBeNotEmpty(element, attribute));
+        }
+        catch(TimeoutException exception)
+        {
+            Assert.assertTrue("Attribute is empty", false);
+        }
     }
     
     

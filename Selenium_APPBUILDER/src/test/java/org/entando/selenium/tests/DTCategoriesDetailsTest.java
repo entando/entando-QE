@@ -101,15 +101,15 @@ public class DTCategoriesDetailsTest extends CategoriesTestBase{
         dTCategoriesDetailsPage.getInfoButton().click();
         Utils.waitUntilIsVisible(driver, dTCategoriesDetailsPage.getItField());
         
-        Assert.assertEquals("Code Field not contains the right Category Code",
-                defaultCategoryNameAlreadyPresent,
-                dTCategoriesDetailsPage.getCodeField().getText());
-        Assert.assertEquals("En Field not contains the right En Category Name",
-                defaultCategoryNameAlreadyPresent,
-                dTCategoriesDetailsPage.getEnField().getText().substring(2));
-        Assert.assertEquals("It Field not contains the right It Category Name",
-                defaultCategoryNameAlreadyPresent,
-                dTCategoriesDetailsPage.getItField().getText().substring(2));
+        Assert.assertTrue("Code Field not contains the right Category Code",
+                defaultCategoryNameAlreadyPresent.equalsIgnoreCase(
+                        dTCategoriesDetailsPage.getCodeField().getText()));
+        Assert.assertTrue("En Field not contains the right En Category Name",
+                defaultCategoryNameAlreadyPresent.equalsIgnoreCase(
+                        dTCategoriesDetailsPage.getEnField().getText().substring(2)));
+        Assert.assertTrue("It Field not contains the right It Category Name",
+                defaultCategoryNameAlreadyPresent.equalsIgnoreCase(
+                dTCategoriesDetailsPage.getItField().getText().substring(2)));
         
         
         /** Debug code **/

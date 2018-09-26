@@ -24,6 +24,8 @@ import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -75,6 +77,8 @@ public class DTWidgetEditTest extends WidgetsTestBase {
         Assert.assertTrue("Unable to add a widget",
                 addWidget(dTWidgetPage, dTWidgetAddPage));
         
+        //refresh the page
+        driver.navigate().refresh();
         
         //Edit the widget
         SimpleTable table = new SimpleTable(dTWidgetPage.getTables().get("user"));
@@ -98,9 +102,23 @@ public class DTWidgetEditTest extends WidgetsTestBase {
         dTWidgetEditPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        try
+        {
+            Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
+        }
+        catch(TimeoutException | NoSuchElementException exception)
+        {
+            Assert.assertTrue("The Spinner did not appear after save the changes", false);
+        }
+        
+        try
+        {
+            Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        }
+        catch(TimeoutException exception)
+        {
+            Assert.assertTrue("The Spinner did not disappear after save the changes", false);
+        }
         
         //Verify the success message
         Assert.assertEquals("Success message content not valid",

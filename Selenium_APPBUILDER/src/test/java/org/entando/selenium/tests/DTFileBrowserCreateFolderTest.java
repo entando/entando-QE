@@ -52,11 +52,11 @@ public class DTFileBrowserCreateFolderTest extends FileBrowserTestBase{
             Parameters
         */
         //Link menù buttons
-        String firstLevelLink = "Settings";
-        String secondLevelLink = "File Browser";
+        String firstLevelLink = "Configuration";
+        String secondLevelLink = "File browser";
         
         //Final page title
-        String pageTitle = "Create folder";
+        String pageTitle = "File browser";
         
         /*
             Actions and asserts
@@ -68,9 +68,14 @@ public class DTFileBrowserCreateFolderTest extends FileBrowserTestBase{
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Click on public folder
-        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 1, 1).click();
+        WebElement link = dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0);
+        Assert.assertFalse("Can't find " + publicFolder + "in the table",
+                link == null);
+        link.click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Click on Create folder button
@@ -88,25 +93,48 @@ public class DTFileBrowserCreateFolderTest extends FileBrowserTestBase{
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTooltip());
         Assert.assertTrue(dTFileBrowserPage.getTooltip().isDisplayed());
         
+        //Assert the save button is disabled
+        Assert.assertFalse("Save Button is enabled but Folder Name field is empty",
+                dTFileBrowserCreateFolderPage.getSaveButton().isEnabled());
+        
+        //Verify "field required" warning
+        dTFileBrowserCreateFolderPage.getFolderName().click();
+        dTFileBrowserCreateFolderPage.getHelp().click();
+        Assert.assertTrue("Folder Name Field Error is not displayed", 
+                dTFileBrowserCreateFolderPage.getFolderNameError().isDisplayed());
+        
         //Set the fields
         dTFileBrowserCreateFolderPage.setFolderName(createFolderName);
+        
+        //Assert the save button is disabled
+        Assert.assertTrue("Save Button is disabled but Folder Name field is compiled",
+                dTFileBrowserCreateFolderPage.getSaveButton().isEnabled());
         
         //Save the data
         dTFileBrowserCreateFolderPage.getSaveButton().click();
         
-        //Wait loading prev. page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
+        //Wait loading prev. page        
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getAlertMessage());
+        
+        Assert.assertTrue("Alert Message has not displayed",
+                dTFileBrowserPage.getAlertMessage().isDisplayed());
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...successfully created\"",
+                dTFileBrowserPage.getAlertMessageContent().contains("successfully created"));
+        dTFileBrowserPage.getCloseMessageButton().click();
+        
+        sleep(500);
+        
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the created folder in the file browser table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
-                .findRowList(folderPrefixName + createFolderName, 1);
+                .findRowList(createFolderName, 0);
         Assert.assertFalse("Created folder is not present in the file browser table",
                 createdFolder.isEmpty());
         
         //Delete the folder
         Assert.assertTrue("Folder has not been deleted",
-                deleteFile(dTFileBrowserPage, folderPrefixName + createFolderName));
+                deleteFile(dTFileBrowserPage, createFolderName));
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

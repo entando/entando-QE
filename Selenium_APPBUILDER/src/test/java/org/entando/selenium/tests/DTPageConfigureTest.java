@@ -77,7 +77,8 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         
         Kebab kebab = dTPageTreePage.getTable().getKebabOnTable(pageName, headerTitles.get(0), headerTitles.get(3));
         //Assert the item has been found
-        Assert.assertFalse(kebab == null);
+        Assert.assertFalse("Can't find element \"SeleniumTest_DontTouch\" in the table",
+                kebab == null);
         //Click on kebab menù
         kebab.getClickable().click();
         Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
@@ -111,11 +112,11 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         WebElement widgetText = driver.findElement(By.xpath("//span[text()='Widgets']"));
         WebElement infoButton = dTPageConfigurePage.getInfoButton();
         
-        WebElement from = driver.findElement(By.xpath("//a[text()='language widget']"));
+        WebElement from = driver.findElement(By.xpath("//a[text()='SeleniumTest_DontTouch']"));
         Assert.assertNotNull(from);
-        WebElement from2 = driver.findElement(By.xpath("//a[text()='English-widget']"));
+        WebElement from2 = driver.findElement(By.xpath("//a[text()='News - Archive']"));
         Assert.assertNotNull(from2);
-        WebElement to = driver.findElement(By.xpath("//div[contains(@class, 'PageConfigGrid')]//*[text()= 'SeleniumCell']/../.."));
+        WebElement to = driver.findElement(By.xpath("//div[contains(@class, 'PageConfigGrid')]//*[text()= 'Test frame']/../.."));
         Assert.assertNotNull(to);
         
         Assert.assertTrue(from.isDisplayed());

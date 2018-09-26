@@ -74,16 +74,16 @@ public class DTUserRestrictionsTest extends UsersTestBase {
         sleep(800);
         
         //Assert the switch buttons status
-        Assert.assertTrue(dTUserRestrictionsPage.getPasswordAlwaysActiveSwitchButton().isOn());
-        Assert.assertTrue(dTUserRestrictionsPage.getEnableGravatarIntegrationSwitchButton().isOn());
+        Assert.assertFalse(dTUserRestrictionsPage.getPasswordAlwaysActiveSwitchButton().isOn());
+        Assert.assertFalse(dTUserRestrictionsPage.getEnableGravatarIntegrationSwitchButton().isOn());
         
         //Assert the field are disabled
-        Assert.assertFalse(dTUserRestrictionsPage.getMaxMonthsPasswordValid().isEnabled());
-        Assert.assertFalse(dTUserRestrictionsPage.getLastAccessPasswordExpirationMonths().isEnabled());
+        Assert.assertTrue(dTUserRestrictionsPage.getMaxMonthsPasswordValid().isEnabled());
+        Assert.assertTrue(dTUserRestrictionsPage.getLastAccessPasswordExpirationMonths().isEnabled());
         
         //Assert the content of the fields
-        Assert.assertEquals("0", dTUserRestrictionsPage.getMaxMonthsPasswordValid().getAttribute("value"));
-        Assert.assertEquals("0", dTUserRestrictionsPage.getLastAccessPasswordExpirationMonths().getAttribute("value"));
+        Assert.assertEquals("3", dTUserRestrictionsPage.getMaxMonthsPasswordValid().getAttribute("value"));
+        Assert.assertEquals("6", dTUserRestrictionsPage.getLastAccessPasswordExpirationMonths().getAttribute("value"));
         
         //Assert the save button is enabled
         Assert.assertTrue(dTUserRestrictionsPage.getSaveButton().isEnabled());

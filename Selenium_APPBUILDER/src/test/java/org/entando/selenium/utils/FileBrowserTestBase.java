@@ -11,6 +11,8 @@ details.
  */
 package org.entando.selenium.utils;
 
+import static java.lang.Thread.sleep;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -29,32 +31,25 @@ import org.openqa.selenium.WebElement;
 public class FileBrowserTestBase extends FunctionalTestBase{
     
     //Expected table header titles
-    public final List<String> expectedHeaderTitles = Arrays.asList("","","",
-            "","","","up ..", "Size", "Last edit", "Actions");
+    public final List<String> expectedHeaderTitles = Arrays.asList("up..", "Size", "Last Edit", "Actions");
     
     Random generator = new Random();
     int randomNumber = generator.nextInt(9999);
-    
-    //Default first part of the folder name
-    public final String folderPrefixName = "Folder\n";
-    
-    //Default first part of the folder name
-    public final String filePrefixName = "File\n";
-    
+        
     //Default public folder name
-    public final String publicFolder = folderPrefixName + "public";
+    public final String publicFolder = "public";
     
     //Default protected folder name
-    public final String protectedFolder = folderPrefixName + "protected";
+    public final String protectedFolder = "protected";
     
     //Default folder to browse name
-    public final String browseFolder = folderPrefixName + "plugins";
+    public final String browseFolder = "plugins";
     
     //Default create folder name
-    public final String createFolderName = "SeleniumFolderDontTouch";
+    public final String createFolderName = "SeleniumFolderDontTouch" + randomNumber;
     
     //Default create file name
-    public final String createFileName = "SeleniumTextFileDontTouch";
+    public final String createFileName = "SeleniumTextFileDontTouch" + randomNumber;
     
     //Default content file
     public final String contentFile = 
@@ -68,16 +63,18 @@ public class FileBrowserTestBase extends FunctionalTestBase{
     
     
     
+    
     /**
      * 
      * @param dTFileBrowserPage
      * @param dTFileBrowserCreateFolderPage
      * @param folderName
      * @return 
+     * @throws java.lang.InterruptedException 
      */
     public boolean createFolder (DTFileBrowserPage dTFileBrowserPage,
             DTFileBrowserCreateFolderPage dTFileBrowserCreateFolderPage, 
-            String folderName){
+            String folderName) throws InterruptedException{
         dTFileBrowserPage.getCreateFolderButton().click();
         
         //Wait loading page
@@ -89,13 +86,18 @@ public class FileBrowserTestBase extends FunctionalTestBase{
         //Save the data
         dTFileBrowserCreateFolderPage.getSaveButton().click();
         
+        
         //Wait loading prev. page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getAlertMessage());
+        dTFileBrowserPage.getCloseMessageButton().click();
+        
+        sleep(500);
+        
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the created page in the "page tree" table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
-                .findRowList(folderPrefixName + createFolderName, 1);
+                .findRowList(createFolderName, 0);
         
         return(!createdFolder.isEmpty());
     }
@@ -107,10 +109,11 @@ public class FileBrowserTestBase extends FunctionalTestBase{
      * @param dTFileBrowserPage
      * @param fileName
      * @return 
+     * @throws java.lang.InterruptedException 
      */
-    public boolean deleteFile (DTFileBrowserPage dTFileBrowserPage, String fileName){
+    public boolean deleteFile (DTFileBrowserPage dTFileBrowserPage, String fileName) throws InterruptedException{
         Kebab kebab = dTFileBrowserPage.getTable().getKebabOnTable(
-                fileName, 1, 4);
+                fileName, 0, 3);
         if(kebab == null)
         {
             /** Debug code **/ Logger.getGlobal().info("File not found!");
@@ -124,14 +127,25 @@ public class FileBrowserTestBase extends FunctionalTestBase{
         kebab.getAction("Delete").click();
         /** Debug code **/ Logger.getGlobal().info("Kebab delete clicked");
         
-        //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getDeleteButton());
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getDeleteModalButton());
+        /** Debug code **/ Logger.getGlobal().info(dTFileBrowserPage.getModalBody().getText());
+        /** Debug code **/ Logger.getGlobal().info(MessageFormat.format("Expected: {0}", fileName));
+        Assert.assertTrue("Delete confirm message not contains the file name",
+                dTFileBrowserPage.getModalBody().getText().contains(fileName));
+        Utils.waitUntilIsClickable(driver, dTFileBrowserPage.getDeleteModalButton());
+        sleep(100);
+        dTFileBrowserPage.getDeleteModalButton().click();
+        Utils.waitUntilIsDisappears(driver, DTFileBrowserPage.modalWindowTag);
+        Utils.waitUntilIsDisappears(driver, kebab.getClickable());
         
-        dTFileBrowserPage.getDeleteButton().click();
+        //Verify the alert message
+        Assert.assertTrue("Alert Message has not displayed",
+                dTFileBrowserPage.getAlertMessage().isDisplayed());
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...successfully created\"",
+                dTFileBrowserPage.getAlertMessageContent().contains("successfully deleted"));
+        dTFileBrowserPage.getCloseMessageButton().click();
         
-        //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
-        
+        /** Debug code **/ Logger.getGlobal().info("delete folder return true");
         return true;
     }
 }

@@ -21,6 +21,8 @@ import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.WidgetsTestBase;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -130,9 +132,23 @@ public class DTWidgetAddTest extends WidgetsTestBase {
         dTWidgetAddPage.getSaveButton().click();
                 
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        try
+        {
+            Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
+        }
+        catch(TimeoutException | NoSuchElementException exception)
+        {
+            Assert.assertTrue("The Spinner did not appear after save the changes", false);
+        }
+        
+        try
+        {
+            Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        }
+        catch(TimeoutException exception)
+        {
+            Assert.assertTrue("The Spinner did not disappear after save the changes", false);
+        }
         
         //Verify the success message
         Assert.assertEquals("Success message content not valid",

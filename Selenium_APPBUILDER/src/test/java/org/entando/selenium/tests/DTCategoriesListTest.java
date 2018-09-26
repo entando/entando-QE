@@ -87,11 +87,12 @@ public class DTCategoriesListTest extends CategoriesTestBase {
         //Verification of the opening tree functionality
         expandTable(dTCategoriesPage);
         
-        List<WebElement> createdFragment = dTCategoriesPage.getTable()
+        //Searching default category name in the table
+        List<WebElement> foundedCategories = dTCategoriesPage.getTable()
                 .findRowList(defaultCategoryNameBase, expectedHeaderTitles.get(0));
         
-        Assert.assertTrue("There is a problem to expand the table",
-                !createdFragment.isEmpty());
+        Assert.assertTrue("Can't find category \"SeleniumTest_DontTouch\" in the table",
+                !foundedCategories.isEmpty());
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

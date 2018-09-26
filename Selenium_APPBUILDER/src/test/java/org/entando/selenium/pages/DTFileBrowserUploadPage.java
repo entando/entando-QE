@@ -29,13 +29,13 @@ public class DTFileBrowserUploadPage extends PageObject{
     @FindBy(xpath = "//*[contains(@role, 'tooltip')]")
     private WebElement tooltip;
     
-    @FindBy(css = "i.fa-question-circle-o")
+    @FindBy(css = "i.PageTitle__icon")
     private WebElement help;
     
-    @FindBy(xpath = "//div[@id = 'main']//child::ol")
+    @FindBy(xpath = "//div[@class = 'FileBreadcrumb']//child::ol")
     private WebElement breadcrumb;
     
-    @FindBy(xpath = "//input[@id = 'file-upload']")
+    @FindBy(xpath = "//input[@name = 'file']")
     private WebElement uploadButton;
     
     @FindBy(xpath = "//button[contains(.,'Cancel')]")

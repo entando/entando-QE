@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.entando.selenium.utils.pageParts.SimpleTable;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -92,10 +93,12 @@ public class BrowsableTableTestTypology extends FunctionalTestBase{
      * @param countPageNumber the page counter
      * @return true, if the numeric tag are correct, false otherwise
      */
-    private static boolean checkNumericTagsOnBrowsableTable(BrowsableTablePageInterface browsableTablePage, int countPageNumber){
+    private static boolean checkNumericTagsOnBrowsableTable(
+            BrowsableTablePageInterface browsableTablePage, int countPageNumber){
         //The number of table pages displayed in the first page
         int numberOfTablePages = browsableTablePage.getNumberOfTablePages();
-        /* Debug code */  Logger.getGlobal().log(Level.INFO, "Number Of Table Pages displayed is: {0}", numberOfTablePages);
+        /* Debug code */  Logger.getGlobal().log(Level.INFO, 
+                "Number Of Table Pages displayed is: {0}", numberOfTablePages);
         //The actual page number displayed in the page number field
         int actualPageNumber = browsableTablePage.getActualPageNumber();
         //The number of total items in the entire table
@@ -108,34 +111,64 @@ public class BrowsableTableTestTypology extends FunctionalTestBase{
                     actualPageNumber, countPageNumber));
         
         //Assert the page number displayed is correct
-        if (actualPageNumber != countPageNumber){
-            /* Debug code */  Logger.getGlobal().info(MessageFormat.format(
-                    "The page number displayed is incorrect! actualPageNumber: {0} countPageNumber: {1}",
-                    actualPageNumber, countPageNumber));
-            return false;
-         }
+        Assert.assertFalse(MessageFormat.format(
+                "The page number displayed is incorrect! "
+                + "actualPageNumber: {0}; "
+                + "countPageNumber: {1}",
+                actualPageNumber, countPageNumber),
+                actualPageNumber != countPageNumber);
+        
         //Assert the pagination is correct
         int expectedNumberOfTablePages = numberOfTotalItems / itemPerPage;
-        Logger.getGlobal().info(MessageFormat.format(
-                    "number of total items: {0} itemPerPage: {1} expectedNumberOfTablePages: {2}",
-                    numberOfTotalItems, itemPerPage, expectedNumberOfTablePages));
         if ((numberOfTotalItems % itemPerPage) > 0){
             expectedNumberOfTablePages += 1;
         }
-        if (expectedNumberOfTablePages != numberOfTablePages){
-            /* Debug code */  Logger.getGlobal().info(MessageFormat.format(
-                    "The page number displayed is incorrect! expectedNumberOfTablePages: {0} numberOfTablePages: {1}",
-                    expectedNumberOfTablePages, numberOfTablePages));
-            return false;
-         }
-        //Test the effective items number
+        
+        Logger.getGlobal().info(MessageFormat.format(
+                    "number of displayed total items: {0}; "
+                    + "itemPerPage displayed: {1}; "
+                    + "expectedNumberOfTablePages: {2}",
+                    numberOfTotalItems, itemPerPage, expectedNumberOfTablePages));
+        
+        Assert.assertFalse(MessageFormat.format(
+                "The page number displayed is incorrect! "
+                + "\n expectedNumberOfTablePages: {0}; "
+                + "\ndisplayed numberOfTablePages: {1}",
+                expectedNumberOfTablePages, numberOfTablePages),
+                expectedNumberOfTablePages != numberOfTablePages);
+        
+        
+        //Test the real items number
         SimpleTable table = browsableTablePage.getTable();
         int tableSize = table.tableSize();
-        if ((tableSize != (numberOfTotalItems % itemPerPage))&&(tableSize != itemPerPage)){
-            /* Debug code */  Logger.getGlobal().info("The effective items number is incorrect!!!");
-            return false;
-         }
+        if ((tableSize != (numberOfTotalItems % itemPerPage)))
+        {
+            Assert.assertFalse(MessageFormat.format(
+                    "The effective items number is incorrect!!! "
+                    + "\nReal table size: {0}; "
+                    + "\nTotal items displayed: {1}; "
+                    + "\nItem per page selected: {2}",
+                    tableSize, numberOfTotalItems, itemPerPage),
+                    tableSize != itemPerPage);
+        }else{
+            Assert.assertFalse(MessageFormat.format(
+                    "The effective items number is incorrect!!!"
+                    + "\nReal table size: {0}; "
+                    + "\nTotal items displayed: {1}; "
+                    + "\nItem per page selected: {2}",
+                    tableSize, numberOfTotalItems, itemPerPage),
+                    (tableSize == 0) && (numberOfTotalItems != 0));
+        }
+        
+        Assert.assertFalse(MessageFormat.format(
+                "The table size is bigger than Item Per Page selected button! "
+                + "\nReal table size: {0}; "
+                + "\nItem per page selected: {1}",
+                tableSize, itemPerPage),
+                tableSize > itemPerPage);
+        
+        
         return true;
     }
     
-}
+}//end class

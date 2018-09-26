@@ -11,6 +11,7 @@ details.
  */
 package org.entando.selenium.tests;
 
+import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,6 +25,13 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 
 /**
  * This class perform a test of the Add Data Models Page
@@ -47,7 +55,7 @@ public class DTDataModelsAddTest extends DataModelsTestBase {
         Test
     */
     @Test
-    public void runTest() throws InterruptedException {
+    public void runTest() throws InterruptedException, IOException {
         /*
                 Parameters
         */
@@ -65,6 +73,25 @@ public class DTDataModelsAddTest extends DataModelsTestBase {
         /*
             Actions and asserts
         */
+        
+        /**
+        String payload = "grant_type=password," +
+                        "username=\"admin\"," +
+                        "password=\"admin\"," +
+                        "client_id=REST_API," +
+                        "client_secret=REAST_API_SEC";
+        StringEntity entity = new StringEntity(payload,
+                ContentType.APPLICATION_FORM_URLENCODED);
+
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost request = new HttpPost("http://tests.serv.run/entando-sample/OAuth2/access_token");
+        request.setEntity(entity);
+
+        HttpResponse response = httpClient.execute(request);
+        System.out.println(response.getStatusLine().getStatusCode());
+        **/
+        
+        
         //Login
         login();
         

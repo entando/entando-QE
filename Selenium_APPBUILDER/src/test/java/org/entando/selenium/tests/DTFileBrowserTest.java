@@ -20,6 +20,7 @@ import org.entando.selenium.utils.FileBrowserTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -46,11 +47,11 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
             Parameters
         */
         //Link menù buttons
-        String firstLevelLink = "Settings";
-        String secondLevelLink = "File Browser";
+        String firstLevelLink = "Configuration";
+        String secondLevelLink = "File browser";
         
         //Final page title
-        String pageTitle = "File Browser";
+        String pageTitle = "File browser";
         
         /*
             Actions and asserts
@@ -75,9 +76,14 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
                 1, dTFileBrowserPage.getBreadcrumb().getNumberOfCrumbs());
         
         //Click on public folder
-        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 1, 1).click();
+        WebElement link = dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0);
+        Assert.assertFalse("Can't find " + publicFolder + "in the table",
+                link == null);
+        link.click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Asserts table COLUMNS NAME are the expected ones
@@ -89,9 +95,14 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
                 2, dTFileBrowserPage.getBreadcrumb().getNumberOfCrumbs());
         
         //Browse to plugins folder
-        dTFileBrowserPage.getTable().getLinkOnTable(browseFolder, 1, 1).click();
+        link = dTFileBrowserPage.getTable().getLinkOnTable(browseFolder, 0, 0);
+        Assert.assertFalse("Can't find " + browseFolder + "in the table",
+                link == null);
+        link.click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
         
         //Asserts the breadcrumb is corrected
@@ -102,6 +113,8 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         dTFileBrowserPage.getUpButton().click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
         
         //Asserts the breadcrumb is corrected

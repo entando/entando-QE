@@ -52,8 +52,8 @@ public class DTFileBrowserCreateTextFileTest extends FileBrowserTestBase{
             Parameters
         */
         //Link menù buttons
-        String firstLevelLink = "Settings";
-        String secondLevelLink = "File Browser";
+        String firstLevelLink = "Configuration";
+        String secondLevelLink = "File browser";
         
         //Final page title
         String pageTitle = "Create text file";
@@ -68,9 +68,14 @@ public class DTFileBrowserCreateTextFileTest extends FileBrowserTestBase{
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Click on public folder
-        dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 1, 1).click();
+        WebElement link = dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0);
+        Assert.assertFalse("Can't find " + publicFolder + "in the table",
+                link == null);
+        link.click();
         
         //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Click on Create text file button
@@ -88,27 +93,51 @@ public class DTFileBrowserCreateTextFileTest extends FileBrowserTestBase{
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTooltip());
         Assert.assertTrue(dTFileBrowserPage.getTooltip().isDisplayed());
         
+        //Assert the save button is disabled
+        Assert.assertFalse("Save Button is enabled but Fields are empty",
+                dTFileBrowserCreateTextFilePage.getSaveButton().isEnabled());
+        
+        //Verify "field required" warning
+        dTFileBrowserCreateTextFilePage.getFileName().click();
+        dTFileBrowserCreateTextFilePage.getFileContent().click();
+        dTFileBrowserCreateTextFilePage.getPageTitle().click();
+        Assert.assertTrue("File Name Field Error is not displayed", 
+                dTFileBrowserCreateTextFilePage.getFileNameError().isDisplayed());
+        Assert.assertTrue("File Content Field Error is not displayed", 
+                dTFileBrowserCreateTextFilePage.getFileContentError().isDisplayed());
+        
         //Set the fields
         dTFileBrowserCreateTextFilePage.setFileName(createFileName);
         dTFileBrowserCreateTextFilePage.setFileContent(contentFile);
         dTFileBrowserCreateTextFilePage.getSelectType().selectByVisibleText("txt");
         
+        //Assert the save button is enabled
+        Assert.assertTrue("Save Button is disabled but Folder Name field is compiled",
+                dTFileBrowserCreateTextFilePage.getSaveButton().isEnabled());
+        
         //Save the data
         dTFileBrowserCreateTextFilePage.getSaveButton().click();
         
-        //Wait loading prev. page
-        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
+        //Wait loading prev. page        
+        Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getAlertMessage());
+        
+        Assert.assertTrue("Alert Message has not displayed",
+                dTFileBrowserPage.getAlertMessage().isDisplayed());
+        Assert.assertTrue("Invalid Alert Message content. Expected contains \"...complete\"",
+                dTFileBrowserPage.getAlertMessageContent().contains("complete"));
+        dTFileBrowserPage.getCloseMessageButton().click();
+        
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the created file in the file browser table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
-                .findRowList(filePrefixName + createFileName + ".txt", 1);
+                .findRowList(createFileName + ".txt", 0);
         Assert.assertFalse("Created file is not present in the file browser table",
                 createdFolder.isEmpty());
         
         //Delete the file
         Assert.assertTrue("File has not been deleted",
-                deleteFile(dTFileBrowserPage, filePrefixName + createFileName + ".txt"));
+                deleteFile(dTFileBrowserPage, createFileName + ".txt"));
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

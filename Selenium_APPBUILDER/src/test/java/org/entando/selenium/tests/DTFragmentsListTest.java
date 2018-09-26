@@ -98,8 +98,8 @@ public class DTFragmentsListTest extends FragmentsTestBase {
         Assert.assertTrue("Save button is not present",
                 dTFragmentPage.getSaveButton().isDisplayed());
         
-        Assert.assertTrue("Switch button is off",
-                dTFragmentPage.getEnableEditingSwitch().isOn());
+        Assert.assertTrue("Switch button is on",
+                !dTFragmentPage.getEnableEditingSwitch().isOn());
         
         dTFragmentPage.getSaveButton().click();
         
