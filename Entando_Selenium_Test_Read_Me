@@ -1,0 +1,9 @@
+Page ADD Page
+- Label for="seo" c'è due volte
+- Gli switch non hanno identificatori per essere distinti
+- Idem per i popover
+- Su Chrome va in crash il test
+- Il test è ora scritto con la lingua spagnola attiva.
+
+Page Tree Page
+- Se vado veloce mi carica una pagina inaspettata

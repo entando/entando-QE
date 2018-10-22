@@ -1,0 +1,248 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_APPBUILDER/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTFileBrowserCreateTextFileTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.059 sec - in org.entando.selenium.tests.DTFileBrowserCreateTextFileTest
+Running org.entando.selenium.tests.DTPageDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.769 sec - in org.entando.selenium.tests.DTPageDetailsTest
+Running org.entando.selenium.tests.DTPageModelsEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.189 sec - in org.entando.selenium.tests.DTPageModelsEditTest
+Running org.entando.selenium.tests.DTUserGroupDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.225 sec - in org.entando.selenium.tests.DTUserGroupDeleteTest
+Running org.entando.selenium.tests.DTCategoriesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.549 sec - in org.entando.selenium.tests.DTCategoriesListTest
+Running org.entando.selenium.tests.DTFileBrowserUploadFileTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.376 sec - in org.entando.selenium.tests.DTFileBrowserUploadFileTest
+Running org.entando.selenium.tests.DTPageAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.118 sec - in org.entando.selenium.tests.DTPageAddTest
+Running org.entando.selenium.tests.DTFragmentsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.015 sec - in org.entando.selenium.tests.DTFragmentsAddTest
+Running org.entando.selenium.tests.DTUserEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.27 sec - in org.entando.selenium.tests.DTUserEditTest
+Running org.entando.selenium.tests.DTSystemLabelsEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.416 sec - in org.entando.selenium.tests.DTSystemLabelsEditTest
+Running org.entando.selenium.tests.DTPageTreeListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.117 sec - in org.entando.selenium.tests.DTPageTreeListTest
+Running org.entando.selenium.tests.DTWidgetsListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.285 sec - in org.entando.selenium.tests.DTWidgetsListTest
+Running org.entando.selenium.tests.DTFileBrowserTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.174 sec - in org.entando.selenium.tests.DTFileBrowserTest
+Running org.entando.selenium.tests.DTUserProfileTypeEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.867 sec - in org.entando.selenium.tests.DTUserProfileTypeEditTest
+Running org.entando.selenium.tests.DTCategoriesEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.888 sec - in org.entando.selenium.tests.DTCategoriesEditTest
+Running org.entando.selenium.tests.DTFragmentsDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.239 sec - in org.entando.selenium.tests.DTFragmentsDeleteTest
+Running org.entando.selenium.tests.DTFragmentsDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.509 sec - in org.entando.selenium.tests.DTFragmentsDetailsTest
+Running org.entando.selenium.tests.DTPageTreeSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.324 sec - in org.entando.selenium.tests.DTPageTreeSearchTest
+Running org.entando.selenium.tests.DTSystemLabelsDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.377 sec - in org.entando.selenium.tests.DTSystemLabelsDeleteTest
+Running org.entando.selenium.tests.DTDatabaseTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.014 sec - in org.entando.selenium.tests.DTDatabaseTest
+Running org.entando.selenium.tests.DTUserDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.575 sec - in org.entando.selenium.tests.DTUserDeleteTest
+Running org.entando.selenium.tests.DTDataModelsSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.818 sec - in org.entando.selenium.tests.DTDataModelsSearchTest
+Running org.entando.selenium.tests.DTFragmentsListTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 20.682 sec <<< FAILURE! - in org.entando.selenium.tests.DTFragmentsListTest
+runTest  Time elapsed: 4.487 sec  <<< FAILURE!
+org.junit.ComparisonFailure: Alert message is incorrect expected:<The settings have []been updated> but was:<The settings have [not ]been updated>
+	at org.entando.selenium.tests.DTFragmentsListTest.runTest(DTFragmentsListTest.java:106)
+
+Running org.entando.selenium.tests.DTDataModelsDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.954 sec - in org.entando.selenium.tests.DTDataModelsDeleteTest
+Running org.entando.selenium.tests.DTCategoriesAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.314 sec - in org.entando.selenium.tests.DTCategoriesAddTest
+Running org.entando.selenium.tests.DTUserRoleDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.477 sec - in org.entando.selenium.tests.DTUserRoleDetailsTest
+Running org.entando.selenium.tests.DTDataTypesAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.765 sec - in org.entando.selenium.tests.DTDataTypesAddTest
+Running org.entando.selenium.tests.DTCategoriesDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.206 sec - in org.entando.selenium.tests.DTCategoriesDeleteTest
+Running org.entando.selenium.tests.DTPageEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.524 sec - in org.entando.selenium.tests.DTPageEditTest
+Running org.entando.selenium.tests.DTUserProfileTypeDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.375 sec - in org.entando.selenium.tests.DTUserProfileTypeDeleteTest
+Running org.entando.selenium.tests.DTCategoriesDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.919 sec - in org.entando.selenium.tests.DTCategoriesDetailsTest
+Running org.entando.selenium.tests.DTUserRoleDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.743 sec - in org.entando.selenium.tests.DTUserRoleDeleteTest
+Running org.entando.selenium.tests.DTPageConfigureTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 21.368 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageConfigureTest
+runTest  Time elapsed: 6.761 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//a[text()='SeleniumTest_DontTouch']"}
+  (Session info: headless chrome=68.0.3440.106)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-33-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 68.0.3440.106, webStorageEnabled: true}
+Session ID: b20c2fd4c6fa62562c8f38a8684b386f
+*** Element info: {Using=xpath, value=//a[text()='SeleniumTest_DontTouch']}
+	at org.entando.selenium.tests.DTPageConfigureTest.runTest(DTPageConfigureTest.java:115)
+
+Running org.entando.selenium.tests.DTPageDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.129 sec - in org.entando.selenium.tests.DTPageDeleteTest
+Running org.entando.selenium.tests.DTPageCloneTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.826 sec - in org.entando.selenium.tests.DTPageCloneTest
+Running org.entando.selenium.tests.DTSystemLabelsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.391 sec - in org.entando.selenium.tests.DTSystemLabelsAddTest
+Running org.entando.selenium.tests.DTPagePublishTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.541 sec - in org.entando.selenium.tests.DTPagePublishTest
+Running org.entando.selenium.tests.DTLoginFormTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.18 sec - in org.entando.selenium.tests.DTLoginFormTest
+Running org.entando.selenium.tests.DTUserRolesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.778 sec - in org.entando.selenium.tests.DTUserRolesListTest
+Running org.entando.selenium.tests.DTWidgetDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.512 sec - in org.entando.selenium.tests.DTWidgetDeleteTest
+Running org.entando.selenium.tests.DTUserRoleEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.275 sec - in org.entando.selenium.tests.DTUserRoleEditTest
+Running org.entando.selenium.tests.DTUserAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.236 sec - in org.entando.selenium.tests.DTUserAddTest
+Running org.entando.selenium.tests.DTPageModelsListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.975 sec - in org.entando.selenium.tests.DTPageModelsListTest
+Running org.entando.selenium.tests.DTUserProfileTypeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.244 sec - in org.entando.selenium.tests.DTUserProfileTypeTest
+Running org.entando.selenium.tests.DTDataModelsEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.754 sec - in org.entando.selenium.tests.DTDataModelsEditTest
+Running org.entando.selenium.tests.DTDataTypesEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.227 sec - in org.entando.selenium.tests.DTDataTypesEditTest
+Running org.entando.selenium.tests.DTWidgetAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 13.707 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetAddTest
+runTest  Time elapsed: 5.57 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":".//li"}
+  (Session info: headless chrome=68.0.3440.106)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-33-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 68.0.3440.106, webStorageEnabled: true}
+Session ID: 8881b262e4413fe97aadf14571e18675
+*** Element info: {Using=xpath, value=.//li}
+	at org.entando.selenium.tests.DTWidgetAddTest.runTest(DTWidgetAddTest.java:121)
+
+Running org.entando.selenium.tests.DTReloadConfigurationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.376 sec - in org.entando.selenium.tests.DTReloadConfigurationTest
+Running org.entando.selenium.tests.DTSystemLabelsSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.998 sec - in org.entando.selenium.tests.DTSystemLabelsSearchTest
+Running org.entando.selenium.tests.DTPageModelsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.18 sec - in org.entando.selenium.tests.DTPageModelsAddTest
+Running org.entando.selenium.tests.DTDataTypesDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.171 sec - in org.entando.selenium.tests.DTDataTypesDeleteTest
+Running org.entando.selenium.tests.DTUserGroupAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.625 sec - in org.entando.selenium.tests.DTUserGroupAddTest
+Running org.entando.selenium.tests.DTDataModelsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.363 sec - in org.entando.selenium.tests.DTDataModelsAddTest
+Running org.entando.selenium.tests.DTDataModelsListTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.361 sec <<< FAILURE! - in org.entando.selenium.tests.DTDataModelsListTest
+runTest  Time elapsed: 3.708 sec  <<< FAILURE!
+java.lang.AssertionError: 
+The effective items number is incorrect!!! 
+Real table size: 0; 
+Total items displayed: 4; 
+Item per page selected: 10
+	at org.entando.selenium.tests.DTDataModelsListTest.runTest(DTDataModelsListTest.java:83)
+
+Running org.entando.selenium.tests.DTUserProfileTypeAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.178 sec - in org.entando.selenium.tests.DTUserProfileTypeAddTest
+Running org.entando.selenium.tests.DTLabelsAndLanguagesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.11 sec - in org.entando.selenium.tests.DTLabelsAndLanguagesTest
+Running org.entando.selenium.tests.DTUserRestrictionsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.021 sec - in org.entando.selenium.tests.DTUserRestrictionsTest
+Running org.entando.selenium.tests.DTFileBrowserDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.999 sec - in org.entando.selenium.tests.DTFileBrowserDeleteTest
+Running org.entando.selenium.tests.DTUserGroupDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.757 sec - in org.entando.selenium.tests.DTUserGroupDetailsTest
+Running org.entando.selenium.tests.DTSystemLabelsListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.402 sec - in org.entando.selenium.tests.DTSystemLabelsListTest
+Running org.entando.selenium.tests.DTWidgetEditTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 27.919 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetEditTest
+runTest  Time elapsed: 15.31 sec  <<< FAILURE!
+java.lang.AssertionError: Delete success message not displayed
+	at org.entando.selenium.tests.DTWidgetEditTest.runTest(DTWidgetEditTest.java:130)
+
+Running org.entando.selenium.tests.DTUserGroupEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.321 sec - in org.entando.selenium.tests.DTUserGroupEditTest
+Running org.entando.selenium.tests.DTUsersListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.714 sec - in org.entando.selenium.tests.DTUsersListTest
+Running org.entando.selenium.tests.DTFragmentsSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.82 sec - in org.entando.selenium.tests.DTFragmentsSearchTest
+Running org.entando.selenium.tests.DTPageModelsDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.101 sec - in org.entando.selenium.tests.DTPageModelsDetailsTest
+Running org.entando.selenium.tests.DTUserSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.215 sec - in org.entando.selenium.tests.DTUserSearchTest
+Running org.entando.selenium.tests.DTDataTypesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.843 sec - in org.entando.selenium.tests.DTDataTypesListTest
+Running org.entando.selenium.tests.DTFileBrowserCreateFolderTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.921 sec - in org.entando.selenium.tests.DTFileBrowserCreateFolderTest
+Running org.entando.selenium.tests.DTFragmentsEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.36 sec - in org.entando.selenium.tests.DTFragmentsEditTest
+Running org.entando.selenium.tests.DTPageModelsDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.145 sec - in org.entando.selenium.tests.DTPageModelsDeleteTest
+Running org.entando.selenium.tests.DTUserRoleAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.053 sec - in org.entando.selenium.tests.DTUserRoleAddTest
+Running org.entando.selenium.tests.DTUserManageAuthorizationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.856 sec - in org.entando.selenium.tests.DTUserManageAuthorizationTest
+
+Results :
+
+Failed tests: 
+  DTDataModelsListTest.runTest:83->BrowsableTableTestTypology.checkBrowsableTable:46->BrowsableTableTestTypology.checkNumericTagsOnBrowsableTable:146 The effective items number is incorrect!!! 
+Real table size: 0; 
+Total items displayed: 4; 
+Item per page selected: 10
+  DTFragmentsListTest.runTest:106 Alert message is incorrect expected:<The settings have []been updated> but was:<The settings have [not ]been updated>
+  DTWidgetEditTest.runTest:130->WidgetsTestBase.deleteWidget:111 Delete success message not displayed
+Tests in error: 
+  DTPageConfigureTest.runTest:115 » NoSuchElement no such element: Unable to loc...
+  DTWidgetAddTest.runTest:121 » NoSuchElement no such element: Unable to locate ...
+
+Tests run: 72, Failures: 3, Errors: 2, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 23:50 min
+[INFO] Finished at: 2018-09-18T13:11:15+02:00
+[INFO] Final Memory: 19M/494M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project seleniumtest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/ufficio/entando_json/entando-QE/Selenium_APPBUILDER/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

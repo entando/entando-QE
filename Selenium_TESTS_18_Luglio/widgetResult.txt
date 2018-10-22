@@ -1,0 +1,94 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTWidgetsListTest
+GeoReferenced contents
+custom
+Entando CMS
+Tag Cloud
+My Avatar
+CAS Client
+Web Dynamic Forms
+Entando Red Hat PAM Connector
+Content Feedback
+Newsletter
+RSS
+Collaboration
+Survey - Questionnaire
+Token API
+Widget Utils
+stock
+User Registration
+user
+Blog
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.646 sec - in org.entando.selenium.tests.DTWidgetsListTest
+Running org.entando.selenium.tests.DTWidgetDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.426 sec - in org.entando.selenium.tests.DTWidgetDeleteTest
+Running org.entando.selenium.tests.DTWidgetAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.007 sec - in org.entando.selenium.tests.DTWidgetAddTest
+Running org.entando.selenium.tests.DTWidgetEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 30.651 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetEditTest
+runTest  Time elapsed: 21.309 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[contains(@class, 'alert')]' (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTWidgetEditTest.runTest(DTWidgetEditTest.java:112)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'alert')]"}
+  (Session info: chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: 847630483eea8e38f67406e05e6932a0
+*** Element info: {Using=xpath, value=//div[contains(@class, 'alert')]}
+	at org.entando.selenium.tests.DTWidgetEditTest.runTest(DTWidgetEditTest.java:112)
+
+
+Results :
+
+Tests in error: 
+  DTWidgetEditTest.runTest:112->WidgetsTestBase.deleteWidget:105 » Timeout Expec...
+
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:36 min
+[INFO] Finished at: 2018-07-24T11:42:16+02:00
+[INFO] Final Memory: 15M/314M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project seleniumtest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

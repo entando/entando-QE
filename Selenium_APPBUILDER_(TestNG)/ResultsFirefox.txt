@@ -1,0 +1,169 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_APPBUILDER/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTFileBrowserCreateTextFileTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 26.089 sec <<< FAILURE! - in org.entando.selenium.tests.DTFileBrowserCreateTextFileTest
+runTest  Time elapsed: 9.011 sec  <<< ERROR!
+org.openqa.selenium.StaleElementReferenceException: 
+The element reference of <tbody> is stale; either the element is no longer attached to the DOM, it is not in the current frame context, or the document has been refreshed
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 7845, moz:profile: /tmp/rust_mozprofile.TDo6wH..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 53221602-d09e-43ea-8daf-99d4c7de65a4
+	at org.entando.selenium.tests.DTFileBrowserCreateTextFileTest.runTest(DTFileBrowserCreateTextFileTest.java:130)
+
+org.entando.selenium.tests.DTFileBrowserCreateTextFileTest  Time elapsed: 9.582 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 7845, moz:profile: /tmp/rust_mozprofile.TDo6wH..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 53221602-d09e-43ea-8daf-99d4c7de65a4
+
+Running org.entando.selenium.tests.DTPageDetailsTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 25.737 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageDetailsTest
+org.entando.selenium.tests.DTPageDetailsTest  Time elapsed: 14.414 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 8058, moz:profile: /tmp/rust_mozprofile.3S8oxm..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 698ad3a3-a11b-4150-a8e8-21c3d0b547f7
+
+Running org.entando.selenium.tests.DTPageModelsEditTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 31.846 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageModelsEditTest
+runTest  Time elapsed: 19.695 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTPageModelsEditTest.runTest(DTPageModelsEditTest.java:80)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //div[contains(@class, 'spinner-md')]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTPageModelsEditTest.runTest(DTPageModelsEditTest.java:80)
+
+org.entando.selenium.tests.DTPageModelsEditTest  Time elapsed: 20.26 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 8275, moz:profile: /tmp/rust_mozprofile.IdoqaJ..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: caaa6702-c7ca-4bf4-b700-970fb1722475
+
+Running org.entando.selenium.tests.DTUserGroupDeleteTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 12.826 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserGroupDeleteTest
+org.entando.selenium.tests.DTUserGroupDeleteTest  Time elapsed: 2.215 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 8506, moz:profile: /tmp/rust_mozprofile.3d7LtW..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: b1b9f90b-2455-4110-99b0-2180bec2d9f9
+
+Running org.entando.selenium.tests.DTCategoriesListTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 18.732 sec <<< FAILURE! - in org.entando.selenium.tests.DTCategoriesListTest
+org.entando.selenium.tests.DTCategoriesListTest  Time elapsed: 6.79 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 8714, moz:profile: /tmp/rust_mozprofile.nqw7A4..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 78cb5ae5-76f5-4e09-a77f-4fd837b0e069
+
+Running org.entando.selenium.tests.DTFileBrowserUploadFileTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 19.263 sec <<< FAILURE! - in org.entando.selenium.tests.DTFileBrowserUploadFileTest
+org.entando.selenium.tests.DTFileBrowserUploadFileTest  Time elapsed: 9.409 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 8899, moz:profile: /tmp/rust_mozprofile.x41m9G..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 2c832e44-30ee-4475-b320-80a64ad1acbd
+
+Running org.entando.selenium.tests.DTPageAddTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 29.774 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageAddTest
+org.entando.selenium.tests.DTPageAddTest  Time elapsed: 20.698 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 9095, moz:profile: /tmp/rust_mozprofile.v5F7sb..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 5a059014-f04a-4b09-9230-2c9eeddabb50
+
+Running org.entando.selenium.tests.DTFragmentsAddTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 20.426 sec <<< FAILURE! - in org.entando.selenium.tests.DTFragmentsAddTest
+org.entando.selenium.tests.DTFragmentsAddTest  Time elapsed: 7.742 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 9346, moz:profile: /tmp/rust_mozprofile.Uz6gwJ..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 7b3398b1-ba72-425d-b2de-94e10686642a
+
+Running org.entando.selenium.tests.DTUserEditTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 22.632 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserEditTest
+org.entando.selenium.tests.DTUserEditTest  Time elapsed: 10.915 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 9566, moz:profile: /tmp/rust_mozprofile.g5OB1w..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: b9b981c1-1516-4c45-bf3a-471526e3e401
+
+Running org.entando.selenium.tests.DTSystemLabelsEditTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 21.095 sec <<< FAILURE! - in org.entando.selenium.tests.DTSystemLabelsEditTest
+runTest  Time elapsed: 11.073 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTSystemLabelsEditTest.runTest(DTSystemLabelsEditTest.java:79)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //div[contains(@class, 'spinner-md')]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTSystemLabelsEditTest.runTest(DTSystemLabelsEditTest.java:79)
+
+org.entando.selenium.tests.DTSystemLabelsEditTest  Time elapsed: 11.645 sec  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Tried to run command without establishing a connection
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-33-generic', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 62.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 9793, moz:profile: /tmp/rust_mozprofile.dT3vxI..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-33-generic, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}
+Session ID: 6f47ea82-d77f-4927-a7ba-b5f51ea71131
+
+Running org.entando.selenium.tests.DTPageTreeListTest

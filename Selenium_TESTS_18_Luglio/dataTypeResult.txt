@@ -1,0 +1,45 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTDataTypesAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.808 sec - in org.entando.selenium.tests.DTDataTypesAddTest
+Running org.entando.selenium.tests.DTDataTypesEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.933 sec - in org.entando.selenium.tests.DTDataTypesEditTest
+Running org.entando.selenium.tests.DTDataTypesDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.96 sec - in org.entando.selenium.tests.DTDataTypesDeleteTest
+Running org.entando.selenium.tests.DTDataTypesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.489 sec - in org.entando.selenium.tests.DTDataTypesListTest
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:20 min
+[INFO] Finished at: 2018-08-02T11:58:58+02:00
+[INFO] Final Memory: 19M/501M
+[INFO] ------------------------------------------------------------------------

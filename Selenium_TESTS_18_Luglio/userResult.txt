@@ -1,0 +1,296 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTUserGroupDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.754 sec - in org.entando.selenium.tests.DTUserGroupDeleteTest
+Running org.entando.selenium.tests.DTUserEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 21.351 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserEditTest
+runTest  Time elapsed: 4.448 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+Cannot locate element with text: 1SeleniumTest_DontTouch
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTUserEditTest.runTest(DTUserEditTest.java:87)
+
+Running org.entando.selenium.tests.DTUserDetailsTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.444 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserDetailsTest
+runTest  Time elapsed: 2.531 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"h1.PageTitle__title > span:nth-child(1)"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: e0f9e0543dc5b54178d9083f08ba8909
+*** Element info: {Using=css selector, value=h1.PageTitle__title > span:nth-child(1)}
+	at org.entando.selenium.tests.DTUserDetailsTest.runTest(DTUserDetailsTest.java:62)
+
+Running org.entando.selenium.tests.DTUserProfileTypeEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 25.413 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserProfileTypeEditTest
+runTest  Time elapsed: 12.6 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //button[contains(.,'New')]' (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserProfileTypeEditTest.runTest(DTUserProfileTypeEditTest.java:86)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(.,'New')]"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: 3277d1568c176445a5b354da3483784a
+*** Element info: {Using=xpath, value=//button[contains(.,'New')]}
+	at org.entando.selenium.tests.DTUserProfileTypeEditTest.runTest(DTUserProfileTypeEditTest.java:86)
+
+Running org.entando.selenium.tests.DTUserDeleteTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.194 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserDeleteTest
+runTest  Time elapsed: 4.268 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+Cannot locate element with text: 1SeleniumTest_DontTouch
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTUserDeleteTest.runTest(DTUserDeleteTest.java:76)
+
+Running org.entando.selenium.tests.DTUserRoleDetailsTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 24.149 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserRoleDetailsTest
+runTest  Time elapsed: 13.341 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //table' (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserRoleDetailsTest.runTest(DTUserRoleDetailsTest.java:88)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//table"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: b3120f85906bbaed1465d59feade96b4
+*** Element info: {Using=xpath, value=//table}
+	at org.entando.selenium.tests.DTUserRoleDetailsTest.runTest(DTUserRoleDetailsTest.java:88)
+
+Running org.entando.selenium.tests.DTUserProfileTypeDeleteTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 25.63 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserProfileTypeDeleteTest
+runTest  Time elapsed: 12.424 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //button[contains(.,'New')]' (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserProfileTypeDeleteTest.runTest(DTUserProfileTypeDeleteTest.java:79)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(.,'New')]"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: f98e8f5eef13af60dac8ce99afa32c20
+*** Element info: {Using=xpath, value=//button[contains(.,'New')]}
+	at org.entando.selenium.tests.DTUserProfileTypeDeleteTest.runTest(DTUserProfileTypeDeleteTest.java:79)
+
+Running org.entando.selenium.tests.DTUserRoleDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.809 sec - in org.entando.selenium.tests.DTUserRoleDeleteTest
+Running org.entando.selenium.tests.DTUserEditProfileTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.799 sec - in org.entando.selenium.tests.DTUserEditProfileTest
+Running org.entando.selenium.tests.DTUserRolesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.081 sec - in org.entando.selenium.tests.DTUserRolesListTest
+Running org.entando.selenium.tests.DTUserRoleEditTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.093 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserRoleEditTest
+runTest  Time elapsed: 6.726 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[1SLNM_TEST_3549]> but was:<[]>
+	at org.entando.selenium.tests.DTUserRoleEditTest.runTest(DTUserRoleEditTest.java:114)
+
+Running org.entando.selenium.tests.DTUserAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 15.487 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserAddTest
+runTest  Time elapsed: 5.297 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+Cannot locate element with text: 1SeleniumTest_DontTouch
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTUserAddTest.runTest(DTUserAddTest.java:122)
+
+Running org.entando.selenium.tests.DTUserProfileTypeTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 16.806 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserProfileTypeTest
+runTest  Time elapsed: 3.271 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<Profile Type[]> but was:<Profile Type[s]>
+	at org.entando.selenium.tests.DTUserProfileTypeTest.runTest(DTUserProfileTypeTest.java:68)
+
+Running org.entando.selenium.tests.DTUserGroupAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 15.156 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserGroupAddTest
+test  Time elapsed: 3.787 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(.,'Add')]"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: d6b5253e07632b3ec06d335cbdd3d5e3
+*** Element info: {Using=xpath, value=//button[contains(.,'Add')]}
+	at org.entando.selenium.tests.DTUserGroupAddTest.test(DTUserGroupAddTest.java:115)
+
+Running org.entando.selenium.tests.DTUserProfileTypeAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 24.594 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserProfileTypeAddTest
+runTest  Time elapsed: 12.621 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //button[contains(.,'New')]' (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserProfileTypeAddTest.runTest(DTUserProfileTypeAddTest.java:78)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(.,'New')]"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: 8189c0abd02b953b80b8390d8fa7f72f
+*** Element info: {Using=xpath, value=//button[contains(.,'New')]}
+	at org.entando.selenium.tests.DTUserProfileTypeAddTest.runTest(DTUserProfileTypeAddTest.java:78)
+
+Running org.entando.selenium.tests.DTUserRestrictionsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.74 sec - in org.entando.selenium.tests.DTUserRestrictionsTest
+Running org.entando.selenium.tests.DTUserGroupDetailsTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 21.567 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserGroupDetailsTest
+runTest  Time elapsed: 2.596 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"h1.PageTitle__title > span:nth-child(1)"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: 679c3acac21a4ad25a4f16bed0c7812f
+*** Element info: {Using=css selector, value=h1.PageTitle__title > span:nth-child(1)}
+	at org.entando.selenium.tests.DTUserGroupDetailsTest.runTest(DTUserGroupDetailsTest.java:52)
+
+Running org.entando.selenium.tests.DTUserGroupEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.346 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserGroupEditTest
+test  Time elapsed: 3.704 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(.,'Add')]"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: 637739b6c74249036afc60ab19debe24
+*** Element info: {Using=xpath, value=//button[contains(.,'Add')]}
+	at org.entando.selenium.tests.DTUserGroupEditTest.test(DTUserGroupEditTest.java:85)
+
+Running org.entando.selenium.tests.DTUsersListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.809 sec - in org.entando.selenium.tests.DTUsersListTest
+Running org.entando.selenium.tests.DTUserSearchTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 13.157 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserSearchTest
+runTest  Time elapsed: 4.392 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+Cannot locate element with text: 1SeleniumTest_DontTouch
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: driver.version: unknown
+	at org.entando.selenium.tests.DTUserSearchTest.runTest(DTUserSearchTest.java:81)
+
+Running org.entando.selenium.tests.DTUserRoleAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.934 sec - in org.entando.selenium.tests.DTUserRoleAddTest
+Running org.entando.selenium.tests.DTUserManageAuthorizationTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.516 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserManageAuthorizationTest
+runTest  Time elapsed: 3.568 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"link text","selector":"Manage autorization for: 1SLNM_DONT_TOUCH"}
+  (Session info: headless chrome=67.0.3396.99)
+  (Driver info: chromedriver=2.40.565383 (76257d1ab79276b2d53ee976b2c3e3b9f335cde7),platform=Linux 4.15.0-24-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'entando-HP-Pavilion-Notebook', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-24-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565383 (76257d1ab79276..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.99, webStorageEnabled: true}
+Session ID: ba6a92672a08b3961d5acecd9f6ee33f
+*** Element info: {Using=link text, value=Manage autorization for: 1SLNM_DONT_TOUCH}
+	at org.entando.selenium.tests.DTUserManageAuthorizationTest.runTest(DTUserManageAuthorizationTest.java:93)
+
+
+Results :
+
+Failed tests: 
+  DTUserProfileTypeTest.runTest:68 expected:<Profile Type[]> but was:<Profile Type[s]>
+  DTUserRoleEditTest.runTest:114 expected:<[1SLNM_TEST_3549]> but was:<[]>
+Tests in error: 
+  DTUserAddTest.runTest:122 » NoSuchElement Cannot locate element with text: 1Se...
+  DTUserDeleteTest.runTest:76->UsersTestBase.addUser:128->UsersTestBase.addUser:91 » NoSuchElement
+  DTUserDetailsTest.runTest:62 » NoSuchElement no such element: Unable to locate...
+  DTUserEditTest.runTest:87->UsersTestBase.addUser:128->UsersTestBase.addUser:91 » NoSuchElement
+  DTUserGroupAddTest.test:115 » NoSuchElement no such element: Unable to locate ...
+  DTUserGroupDetailsTest.runTest:52 » NoSuchElement no such element: Unable to l...
+  DTUserGroupEditTest.test:85->UsersTestBase.addGroup:337 » NoSuchElement no suc...
+  DTUserManageAuthorizationTest.runTest:93 » NoSuchElement no such element: Unab...
+  DTUserProfileTypeAddTest.runTest:78 » Timeout Expected condition failed: waiti...
+  DTUserProfileTypeDeleteTest.runTest:79 » Timeout Expected condition failed: wa...
+  DTUserProfileTypeEditTest.runTest:86 » Timeout Expected condition failed: wait...
+  DTUserRoleDetailsTest.runTest:88 » Timeout Expected condition failed: waiting ...
+  DTUserSearchTest.runTest:81->UsersTestBase.addUser:128->UsersTestBase.addUser:91 » NoSuchElement
+
+Tests run: 22, Failures: 2, Errors: 13, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 06:59 min
+[INFO] Finished at: 2018-07-24T12:02:54+02:00
+[INFO] Final Memory: 18M/485M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project seleniumtest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,0 +1,64 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.entando.selenium.tests.DTCategoriesListTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 26.066 sec <<< FAILURE! - in org.entando.selenium.tests.DTCategoriesListTest
+runTest  Time elapsed: 11.623 sec  <<< FAILURE!
+java.lang.AssertionError: There is a problem to expand the table
+	at org.entando.selenium.tests.DTCategoriesListTest.runTest(DTCategoriesListTest.java:93)
+
+Running org.entando.selenium.tests.DTCategoriesEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.209 sec - in org.entando.selenium.tests.DTCategoriesEditTest
+Running org.entando.selenium.tests.DTCategoriesAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.357 sec - in org.entando.selenium.tests.DTCategoriesAddTest
+Running org.entando.selenium.tests.DTCategoriesDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.29 sec - in org.entando.selenium.tests.DTCategoriesDeleteTest
+Running org.entando.selenium.tests.DTCategoriesDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.461 sec - in org.entando.selenium.tests.DTCategoriesDetailsTest
+
+Results :
+
+Failed tests: 
+  DTCategoriesListTest.runTest:93 There is a problem to expand the table
+
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:48 min
+[INFO] Finished at: 2018-08-07T14:48:45+02:00
+[INFO] Final Memory: 19M/489M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project seleniumtest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/ufficio/entando_json/entando-QE/Selenium_TESTS_18_Luglio/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
