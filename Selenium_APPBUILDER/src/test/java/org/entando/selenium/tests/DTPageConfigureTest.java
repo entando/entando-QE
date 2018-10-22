@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTPageConfigurePage;
 import org.entando.selenium.pages.DTPageTreePage;
-import org.entando.selenium.utils.PageTreeTestBase;
+import org.entando.selenium.testHelpers.PageTreeTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;
@@ -116,7 +116,7 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         Assert.assertNotNull(from);
         WebElement from2 = driver.findElement(By.xpath("//a[text()='News - Archive']"));
         Assert.assertNotNull(from2);
-        WebElement to = driver.findElement(By.xpath("//div[contains(@class, 'PageConfigGrid')]//*[text()= 'Test frame']/../.."));
+        WebElement to = driver.findElement(By.xpath("//div[contains(@class, 'PageConfigGrid')]//*[text()= 'SeleniumCell']/../.."));
         Assert.assertNotNull(to);
         
         Assert.assertTrue(from.isDisplayed());

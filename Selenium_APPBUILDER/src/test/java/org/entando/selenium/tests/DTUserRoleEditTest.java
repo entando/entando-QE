@@ -20,7 +20,7 @@ import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserRoleAddPage;
 import org.entando.selenium.pages.DTUserRoleEditPage;
 import org.entando.selenium.pages.DTUserRolesPage;
-import org.entando.selenium.utils.UsersTestBase;
+import org.entando.selenium.testHelpers.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;
@@ -110,7 +110,7 @@ public class DTUserRoleEditTest extends UsersTestBase {
         Assert.assertTrue(dTUserRoleEditPage.getTooltip().isDisplayed());
         
         //Verify fields
-        sleep(500);
+        sleep(800);
         String realValue = dTUserRoleEditPage.getNameField().getAttribute("value");
         Assert.assertEquals(roleName, realValue);
         Assert.assertFalse(dTUserRoleEditPage.getCodeField().isEnabled());

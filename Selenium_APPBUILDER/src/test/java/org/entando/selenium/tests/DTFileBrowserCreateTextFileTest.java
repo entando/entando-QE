@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTFileBrowserCreateTextFilePage;
 import org.entando.selenium.pages.DTFileBrowserPage;
-import org.entando.selenium.utils.FileBrowserTestBase;
+import org.entando.selenium.testHelpers.FileBrowserTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -127,6 +127,7 @@ public class DTFileBrowserCreateTextFileTest extends FileBrowserTestBase{
                 dTFileBrowserPage.getAlertMessageContent().contains("complete"));
         dTFileBrowserPage.getCloseMessageButton().click();
         
+        sleep(400);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the created file in the file browser table

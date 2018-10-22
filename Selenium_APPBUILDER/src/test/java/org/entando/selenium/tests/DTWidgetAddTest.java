@@ -18,7 +18,7 @@ import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTWidgetAddPage;
 import org.entando.selenium.pages.DTWidgetPage;
 import org.entando.selenium.utils.Utils;
-import org.entando.selenium.utils.WidgetsTestBase;
+import org.entando.selenium.testHelpers.WidgetsTestBase;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.NoSuchElementException;

@@ -57,31 +57,32 @@ public class AppConfig {
     @Bean
     @Scope("test")
     public WebDriver webDriver() throws MalformedURLException{
-        
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.ANY);
-        WebDriver driver =  new RemoteWebDriver(new URL("http://192.168.1.112:4444/wd/hub"), capabilities);
-        return driver;
-        
+        //WebDriver driver;
         /*
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setBrowserName("firefox");
+        capabilities.setPlatform(Platform.ANY);
+        WebDriver driver =  new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        return driver;
+        */
+        
         if (HEADLESS)
         {
             //WebDriver driver = new ChromeDriver();
-            WebDriver driver = new FirefoxDriver();
-            //ChromeOptions options = new ChromeOptions();
-            FirefoxOptions options = new FirefoxOptions();
+            //WebDriver driver = new FirefoxDriver();
+            ChromeOptions options = new ChromeOptions();
+            //FirefoxOptions options = new FirefoxOptions();
             options.addArguments("headless");
             options.addArguments("window-size=1200x600");
-            //WebDriver driver = new ChromeDriver(options);
+            WebDriver driver = new ChromeDriver(options);
             return driver;
         }
         else
         {
-            //WebDriver driver = new ChromeDriver();
-            WebDriver driver = new FirefoxDriver();
+            WebDriver driver = new ChromeDriver();
+            //WebDriver driver = new FirefoxDriver();
             return driver;
-        }*/
+        }
     } 
     
     @Bean

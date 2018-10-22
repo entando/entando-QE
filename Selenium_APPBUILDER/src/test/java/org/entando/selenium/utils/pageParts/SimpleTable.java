@@ -149,6 +149,8 @@ public class SimpleTable {
     }
     
     
+    
+    
     /**
      * Find a single row (a list of cells) by item name in the table and item column index
      * @param itemName
@@ -310,6 +312,8 @@ public class SimpleTable {
     }
     
     
+    
+    
     /** 
      * Looks for a button in a cell by item column name and data column name
      * @param itemName the string to search in the table
@@ -325,6 +329,9 @@ public class SimpleTable {
         return null; 
     }
     
+    
+    
+    
     /** 
      * Looks for a button in a cell by item column index and data column index
      * @param itemName the string to search in the table
@@ -339,6 +346,32 @@ public class SimpleTable {
         }
         return null; 
     }
+    
+    
+    
+    
+    /** 
+     * Looks for all buttons by column index
+     * @param buttonColumn the column index in which to collect the data
+     * @return a WebElement represent a button, (null) if item name not has been found
+     */
+    public List<WebElement> getAllButtonsOnColumn(String buttonColumn){
+        List<WebElement> buttons = new ArrayList<>();
+        List<WebElement> rowsList = this.getRowsList();
+        
+        //Find the data columns index
+        int buttonColumnIndex = this.findColumnIndex(buttonColumn);
+        
+        for(WebElement row : rowsList)
+        {
+            List<WebElement> rowCells = row.findElements(cellTag);
+            WebElement cell = rowCells.get(buttonColumnIndex);
+            buttons.add(cell);
+        }
+        return buttons;
+    }
+    
+    
     
     
     /** 

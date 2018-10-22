@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTPageAddPage;
 import org.entando.selenium.pages.DTPageTreePage;
-import org.entando.selenium.utils.PageTreeTestBase;
+import org.entando.selenium.testHelpers.PageTreeTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.ExpandableTable;
 import org.junit.Assert;

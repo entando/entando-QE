@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.entando.selenium.utils.ExpandableTablePageInterface;
+import org.entando.selenium.testHelpers.ExpandableTablePageInterface;
 import org.entando.selenium.utils.PageObject;
 import org.entando.selenium.utils.pageParts.ExpandableTable;
 import org.entando.selenium.utils.pageParts.SwitchButton;

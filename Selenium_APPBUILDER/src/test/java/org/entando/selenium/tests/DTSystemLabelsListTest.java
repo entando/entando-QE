@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTLabelsAndLanguagesPage;
 import org.entando.selenium.pages.DTSystemLabelsPage;
-import org.entando.selenium.utils.SystemLabelsTestBase;
+import org.entando.selenium.testHelpers.SystemLabelsTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

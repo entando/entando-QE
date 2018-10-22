@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTFileBrowserPage;
-import org.entando.selenium.utils.FileBrowserTestBase;
+import org.entando.selenium.testHelpers.FileBrowserTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

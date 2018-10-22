@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: org.entando.selenium.tests.DTWidgetEditTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 31.48 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetEditTest
+runTest  Time elapsed: 17.935 sec  <<< FAILURE!
+java.lang.AssertionError: Delete success message not displayed
+	at org.entando.selenium.tests.DTWidgetEditTest.runTest(DTWidgetEditTest.java:131)
+

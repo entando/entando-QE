@@ -55,8 +55,8 @@ public class FunctionalTestBase {
         Parameters
     */
     //Login credentials
-    private final String USERNAME = "admin";
-    private final String PASSWORD = "adminadmin";
+    private final String USERNAME = "username";
+    private final String PASSWORD = "password";
     
     //Time in milliseconds used for the sleep when the Logger is turned on
     public final int SLEEPTIME = 2000;
@@ -72,7 +72,7 @@ public class FunctionalTestBase {
             Remember to set 'Level.OFF' to turn off Loger
             Set 'Level.INFO' to turn on Logger
         */
-        Logger.getGlobal().setLevel(Level.INFO);
+        Logger.getGlobal().setLevel(Level.OFF);
         
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

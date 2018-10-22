@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTPageAddPage;
 import org.entando.selenium.pages.DTPageTreePage;
-import org.entando.selenium.utils.PageTreeTestBase;
+import org.entando.selenium.testHelpers.PageTreeTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.ExpandableTable;
 import org.entando.selenium.utils.pageParts.Kebab;
@@ -107,7 +107,7 @@ public class DTPagePublishTest extends PageTreeTestBase{
         dTPageTreePage.getPublishModalButton().click();
         Utils.waitUntilIsDisappears(driver, DTPageTreePage.getModalWindowTag());
         
-        sleep(100);
+        sleep(500);
         
         cell = dTPageTreePage.getTable().getCell(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(1));
         //Assert the presence of the element
@@ -139,6 +139,8 @@ public class DTPagePublishTest extends PageTreeTestBase{
         sleep(100);
         dTPageTreePage.getUnpublishModalButton().click();
         Utils.waitUntilIsDisappears(driver, DTPageTreePage.getModalWindowTag());
+        
+        sleep(200);
         
         cell = dTPageTreePage.getTable().getCell(pageName, expectedHeaderTitles.get(0), expectedHeaderTitles.get(1));
         //Assert the presence of the element        

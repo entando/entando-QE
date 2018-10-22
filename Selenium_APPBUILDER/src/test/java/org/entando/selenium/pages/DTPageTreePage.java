@@ -12,6 +12,7 @@ details.
 
 package org.entando.selenium.pages;
 
+import org.entando.selenium.testHelpers.ExpandableTablePageInterface;
 import org.entando.selenium.utils.*;
 import org.entando.selenium.utils.pageParts.ExpandableTable;
 import org.entando.selenium.utils.pageParts.SimpleTable;

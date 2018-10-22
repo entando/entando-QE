@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTDataTypesAddPage;
 import org.entando.selenium.pages.DTDataTypesPage;
-import org.entando.selenium.utils.DataTypesTestBase;
+import org.entando.selenium.testHelpers.DataTypesTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;

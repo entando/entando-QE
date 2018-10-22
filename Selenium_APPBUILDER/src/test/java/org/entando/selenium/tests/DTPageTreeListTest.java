@@ -11,6 +11,7 @@ details.
  */
 package org.entando.selenium.tests;
 
+import org.entando.selenium.testHelpers.PageTreeTestBase;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
@@ -97,7 +98,7 @@ public class DTPageTreeListTest extends PageTreeTestBase {
         Assert.assertTrue(dTPageTreePage.getAddButton().getText().equals(button1));
         
         //Asserts table COLUMNS NAME are the expected ones
-        Assert.assertEquals(super.headerTitles, dTPageTreePage.getTable().getHeaderTitlesList());
+        Assert.assertEquals(PageTreeTestBase.headerTitles, dTPageTreePage.getTable().getHeaderTitlesList());
         
         //Verification of the opening tree functionality
         expandTable(dTPageTreePage);

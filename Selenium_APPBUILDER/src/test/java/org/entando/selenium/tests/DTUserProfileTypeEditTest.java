@@ -20,7 +20,7 @@ import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserProfileTypeAddPage;
 import org.entando.selenium.pages.DTUserProfileTypeEditPage;
 import org.entando.selenium.pages.DTUserProfileTypePage;
-import org.entando.selenium.utils.UsersTestBase;
+import org.entando.selenium.testHelpers.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTPageModelsAddPage;
 import org.entando.selenium.pages.DTPageModelsPage;
-import org.entando.selenium.utils.PageModelsTestBase;
+import org.entando.selenium.testHelpers.PageModelsTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -76,7 +76,7 @@ public class DTPageModelsAddTest extends PageModelsTestBase{
         //Click on New Button
         dTPageModelsPage.getAddButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getNameField());
+        Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getJsonConfigurationField());
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTPageModelsAddPage.getPageTitle().getText());

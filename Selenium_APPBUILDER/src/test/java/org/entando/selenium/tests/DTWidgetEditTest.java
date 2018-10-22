@@ -12,6 +12,7 @@ details.
 
 package org.entando.selenium.tests;
 
+import org.entando.selenium.testHelpers.WidgetsTestBase;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;

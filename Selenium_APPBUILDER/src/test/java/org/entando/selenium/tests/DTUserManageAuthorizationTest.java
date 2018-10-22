@@ -19,13 +19,15 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
 import org.entando.selenium.pages.DTUsersPage;
-import org.entando.selenium.utils.UsersTestBase;
+import org.entando.selenium.testHelpers.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -80,7 +82,6 @@ public class DTUserManageAuthorizationTest extends UsersTestBase{
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
         
-        //Manage the page
         Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
         Assert.assertFalse("User not found!", kebab == null);
         
@@ -148,7 +149,15 @@ public class DTUserManageAuthorizationTest extends UsersTestBase{
         dTUserManageAuthorityPage.getUserRole().selectByVisibleText(userRole);
         dTUserManageAuthorityPage.getAddButton().click();
         
-        table = dTUserManageAuthorityPage.getTable();
+        try
+        {
+            table = dTUserManageAuthorityPage.getTable();
+        }
+        catch(TimeoutException | NoSuchElementException exception)
+        {
+            Assert.assertTrue("Unable to add an authorization to \"1SLNM_DONT_TOUCH\" user", false);
+        }
+        
         
         //Asserts the presence of a authorization 
         Assert.assertEquals(1, table.tableSize());

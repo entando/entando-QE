@@ -12,6 +12,7 @@ details.
 
 package org.entando.selenium.tests;
 
+import org.entando.selenium.testHelpers.FragmentsTestBase;
 import static java.lang.Thread.sleep;
 import java.util.List;
 import org.entando.selenium.utils.*;

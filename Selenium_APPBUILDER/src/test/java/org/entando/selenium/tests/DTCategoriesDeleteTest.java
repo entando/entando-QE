@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 import org.entando.selenium.pages.DTCategoriesAddPage;
 import org.entando.selenium.pages.DTCategoriesPage;
 import org.entando.selenium.pages.DTDashboardPage;
-import org.entando.selenium.utils.CategoriesTestBase;
+import org.entando.selenium.testHelpers.CategoriesTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;

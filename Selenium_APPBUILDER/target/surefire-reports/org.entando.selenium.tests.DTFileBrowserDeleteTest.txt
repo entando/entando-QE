@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.entando.selenium.tests.DTFileBrowserDeleteTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.38 sec - in org.entando.selenium.tests.DTFileBrowserDeleteTest

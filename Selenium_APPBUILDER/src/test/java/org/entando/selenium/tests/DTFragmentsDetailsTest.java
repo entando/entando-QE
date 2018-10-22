@@ -20,7 +20,7 @@ import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTFragmentNewPage;
 import org.entando.selenium.pages.DTFragmentPage;
 import org.entando.selenium.pages.DTFragmentsDetailsPage;
-import org.entando.selenium.utils.FragmentsTestBase;
+import org.entando.selenium.testHelpers.FragmentsTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;

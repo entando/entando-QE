@@ -11,6 +11,7 @@ details.
  */
 package org.entando.selenium.tests;
 
+import org.entando.selenium.testHelpers.UsersTestBase;
 import static java.lang.Thread.sleep;
 import org.entando.selenium.utils.*;
 import org.entando.selenium.pages.DTDashboardPage;
@@ -62,6 +63,10 @@ public class DTUsersListTest extends UsersTestBase {
         
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
+        
+        //Wait loading page
+        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);   
                 
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUsersPage.getPageTitle().getText());

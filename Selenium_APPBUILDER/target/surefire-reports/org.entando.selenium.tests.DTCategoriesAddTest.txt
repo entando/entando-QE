@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.entando.selenium.tests.DTCategoriesAddTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.43 sec - in org.entando.selenium.tests.DTCategoriesAddTest

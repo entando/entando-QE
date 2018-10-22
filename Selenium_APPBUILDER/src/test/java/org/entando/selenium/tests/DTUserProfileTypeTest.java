@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserProfileTypePage;
-import org.entando.selenium.utils.UsersTestBase;
+import org.entando.selenium.testHelpers.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

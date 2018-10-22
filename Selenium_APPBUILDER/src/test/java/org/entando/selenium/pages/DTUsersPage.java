@@ -11,6 +11,7 @@ details.
  */
 package org.entando.selenium.pages;
 
+import org.entando.selenium.testHelpers.BrowsableTablePageInterface;
 import org.entando.selenium.utils.*;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.entando.selenium.utils.pageParts.SimpleTable;

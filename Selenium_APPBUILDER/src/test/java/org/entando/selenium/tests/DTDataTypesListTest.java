@@ -12,6 +12,7 @@ details.
 
 package org.entando.selenium.tests;
 
+import org.entando.selenium.testHelpers.DataTypesTestBase;
 import static java.lang.Thread.sleep;
 import org.entando.selenium.utils.*;
 import org.entando.selenium.pages.DTDataTypesPage;
