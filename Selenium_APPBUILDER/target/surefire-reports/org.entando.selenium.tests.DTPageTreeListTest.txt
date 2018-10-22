@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.entando.selenium.tests.DTPageTreeListTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.733 sec - in org.entando.selenium.tests.DTPageTreeListTest
