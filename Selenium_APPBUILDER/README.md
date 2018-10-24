@@ -60,6 +60,7 @@ You can use Level.OFF to disable debug mode or `Level.INFO` if enable it
 
 
 __Before run the tests__
+
 It's essential to create the necessary environment for the tests to work properly.
 This involves the creation of various elements within the application that will be used during the execution of the tests.
 To automate this operation you can run the Environment Checker class as if it were a normal test.
