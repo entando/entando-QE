@@ -117,7 +117,7 @@ It's essential to create the necessary environment for the tests to work properl
 This involves the creation of various elements within the application that will be used during the execution of the tests.
 To automate this operation you can run the Environment Checker class as if it were a normal test.
 How to run Environment Checker:
-1) Set `false` GRID_EXECUTION parameter in the FunctionalTestBase class (
+1) Set `false` GRID_EXECUTION parameter in the FunctionalTestBase class (package `org.entando.selenium.utils`)
 2) Open a bash terminal then positioned in the folder that contains pom.xml
 3) Type the command: 
 `mvn -Dtest=*EnvironmentChecker.java test`
@@ -127,7 +127,7 @@ Moreover it's essential to create a text file in your local file system like `se
 
 
 
-__How to run the test__
+__How to run the tests__
 
 1) Open a bash terminal then positioned in the folder that contains pom.xml
 2) If you run ALL tests type the command:
