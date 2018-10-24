@@ -1,9 +1,12 @@
 ### Selenium_GRID_APPBUILDER
 
 The project has been developed on AppBuilder application. 
+
 You can install it on your local machine.
 
+
 __Notes__
+
 This Selenium Project contains the same test cases of Selenium_APPBUILDER project, but it also implements the possibility of parallel run of the tests.
 You can run the same test in one or more machines (also virtual) with different combinations of Operating Systems and browsers simultaneous.
 
@@ -48,6 +51,7 @@ For more information see this link: http://chromedriver.chromium.org/downloads
 
 
 __How to set the Grid__
+
 A grid consists of a single hub, and one or more nodes, Hub and Node are the two main elements that you come across when using grid.
 The Hub is the central point which will receive all the test requests along with information on which browser, platform and other informations.
 Based on the request received, it will distribute them to the registered nodes.
