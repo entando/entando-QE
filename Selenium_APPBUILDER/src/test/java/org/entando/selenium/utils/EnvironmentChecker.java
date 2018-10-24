@@ -79,15 +79,15 @@ import org.openqa.selenium.WebElement;
 
 • Data Type
 	Name: SeleniumTest_DontTouch
-	Code: SLN
+	Code: 11S
 
 • Data Type
 	Name: SeleniumTest_DontTouch1
-	Code: SLM
+	Code: 12S
 	
 • Data Type
 	Name: SeleniumTest_DontTouch2
-	Code: SLL
+	Code: 13S
 
 • Widget
 	Name: SeleniumTest_DontTouch
@@ -254,7 +254,7 @@ public class EnvironmentChecker extends FunctionalTestBase{
         {
             //Create a page model            
             Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
-                    "SeleniumTest_DontTouch", "SLN"));
+                    "SeleniumTest_DontTouch", "11S"));
         }
         sleep(300);
         dataTypes = dTDataTypesPage.getTable().
@@ -264,7 +264,7 @@ public class EnvironmentChecker extends FunctionalTestBase{
         {
             //Create a page model            
             Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
-                    "SeleniumTest_DontTouch1", "SLM"));
+                    "SeleniumTest_DontTouch1", "12S"));
         }
         sleep(300);
         dataTypes = dTDataTypesPage.getTable().
@@ -274,7 +274,7 @@ public class EnvironmentChecker extends FunctionalTestBase{
         {
             //Create a page model            
             Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
-                    "SeleniumTest_DontTouch2", "SLL"));
+                    "SeleniumTest_DontTouch2", "13S"));
         }
         sleep(300);
     }

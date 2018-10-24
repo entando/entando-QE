@@ -73,9 +73,6 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getNewButton());
         
-        //Create a Data Type
-        Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage));
-        
         Kebab kebab = dTDataTypesPage.getTable().getKebabOnTable(dataTypeCode,
                 expectedHeaderTitles.get(1), expectedHeaderTitles.get(3));
         Assert.assertFalse("Element not found on data types table", kebab == null);
@@ -106,7 +103,7 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
                 dataTypeCode, 
                 dTDataTypesAddPage.getCode().getAttribute("value"));
         Assert.assertEquals("Invalid Name field content", 
-                dataTypeName, 
+                dataTypeNameExist, 
                 dTDataTypesAddPage.getName().getAttribute("value"));
         
         
@@ -118,15 +115,11 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
-        List<WebElement> createdDataType = dTDataTypesPage.getTable()
+        List<WebElement> existentDataType = dTDataTypesPage.getTable()
                 .findRowList(dataTypeCode, expectedHeaderTitles.get(1));
         
-        Assert.assertTrue(!createdDataType.isEmpty());
-        
-        //Delete the Data Type
-        Assert.assertTrue("Unable to delete the data type",
-                deleteDataType(dTDataTypesPage, dataTypeCode));
-        
+        Assert.assertTrue(!existentDataType.isEmpty());
+                
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

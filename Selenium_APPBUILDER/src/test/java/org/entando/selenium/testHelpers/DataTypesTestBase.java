@@ -40,10 +40,11 @@ public class DataTypesTestBase extends BrowsableTableTestTypology{
     
     //Data Type name
     public final String dataTypeName = "1SLNM_TEST_" + randomNumber;
+    public final String dataTypeNameExist = "SeleniumTest_DontTouch";
     
     //Data Type Code
-    public final String dataTypeCode = "ABA";
-    public final String dataTypeCodeExistent = "SLN";
+    public final String dataTypeCode = "11S";
+    public final String dataTypeCodeExistent = "11S";
     
     
     
