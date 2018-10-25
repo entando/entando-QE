@@ -94,8 +94,8 @@ public class FunctionalTestBase {
         Others Parameters
     */
     //Login credentials
-    private final String USERNAME = "admin";
-    private final String PASSWORD = "adminadmin";
+    private final String USERNAME = "username";
+    private final String PASSWORD = "password";
     
     //Time in milliseconds used for the sleep when the Logger is turned on
     public final int SLEEPTIME = 2000;
