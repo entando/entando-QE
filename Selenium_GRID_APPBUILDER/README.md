@@ -8,7 +8,7 @@ You can install it on your local machine.
 __Notes__
 
 This Selenium Project contains the same test cases of Selenium_APPBUILDER project, but it also implements the possibility of parallel run of the tests.
-You can run the same test in one or more machines (also virtual) with different combinations of Operating Systems and browsers simultaneous.
+You can run the same test in one or more machines (also virtual) with different environments (combinations of Operating Systems and browsers) simultaneous.
 
 __Prerequisites__
 
