@@ -72,7 +72,7 @@ public class FunctionalTestBase {
             Remember to set 'Level.OFF' to turn off Loger
             Set 'Level.INFO' to turn on Logger
         */
-        Logger.getGlobal().setLevel(Level.OFF);
+        Logger.getGlobal().setLevel(Level.INFO);
         
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
