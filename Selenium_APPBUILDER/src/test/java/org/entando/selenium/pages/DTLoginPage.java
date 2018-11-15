@@ -36,7 +36,7 @@ public class DTLoginPage extends PageObject {
 
     public DTLoginPage(WebDriver driver) {
         super(driver);
-        driver.get("http://localhost:8080/myApp/");
+        driver.get("http://appbuilder.serv.run/");
     }
 
     public ReceiptDTLoginPage submit() {
