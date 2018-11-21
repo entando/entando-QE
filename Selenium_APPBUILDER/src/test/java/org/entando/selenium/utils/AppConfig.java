@@ -38,7 +38,14 @@ import org.springframework.context.annotation.Scope;
 public class AppConfig {
     
     private static final boolean HEADLESS = false;
-    
+
+    /**
+     * browserstack credentials
+     */
+
+    private static final String USERNAME = "";
+    private static final String AUTOMATE_KEY = "";
+    private static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
     
     @Bean
     public TestScope testScope() {
@@ -65,7 +72,18 @@ public class AppConfig {
         WebDriver driver =  new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
         return driver;
         */
-        
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browser", "Chrome");
+        caps.setCapability("browser_version", "70.0");
+        caps.setCapability("os", "Windows");
+        caps.setCapability("os_version", "10");
+        caps.setCapability("resolution", "1280x1024");
+        caps.setCapability("project", "appbuilder-5.1.0");
+        caps.setCapability("browserstack.debug", "true");
+        caps.setCapability("browserstack.networkLogs", "true");
+        caps.setCapability("browserstack.appiumLogs", "false");
+        caps.setCapability("browserstack.selenium_version", "2.52.0");
+
         if (HEADLESS)
         {
             //WebDriver driver = new ChromeDriver();
@@ -79,8 +97,9 @@ public class AppConfig {
         }
         else
         {
-            WebDriver driver = new ChromeDriver();
+            //WebDriver driver = new ChromeDriver();
             //WebDriver driver = new FirefoxDriver();
+            WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
             return driver;
         }
     } 
