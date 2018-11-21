@@ -61,7 +61,7 @@ public class FileBrowserTestBase extends FunctionalTestBase{
     public final String fileToUploadName = "seleniumTest-File.txt";
      
     //Default upload file path
-    public final String fileToUploadPath = "/home/ufficio/";
+    public final String fileToUploadPath = "/home/centos/jenkins/workspace/Selenium-appbuilder/";
     
     
     
