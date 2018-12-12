@@ -87,8 +87,12 @@ public class DTUserGroupEditTest extends UsersTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getAddButton());
         
+        
+        
         //Create a group
         Assert.assertTrue(addGroup(dTUserGroupsPage, dTUserGroupAddPage, groupName));
+        
+       
         
         Kebab kebab = dTUserGroupsPage.getTable().getKebabOnTable(groupName, 
                 groupsTableHeaderTitles.get(0), groupsTableHeaderTitles.get(2));
@@ -145,10 +149,14 @@ public class DTUserGroupEditTest extends UsersTestBase {
         //Save and return
         dTUserGroupAddPage.getSaveButton().click();
         
+        
+        sleep(3000);
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
+        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getTableBody());
+        
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
         
         //Assert the presence of the created role in the Group table
         List<WebElement> createdUser = dTUserGroupsPage.getTable()

@@ -13,6 +13,7 @@ package org.entando.selenium.pages;
 
 import org.entando.selenium.utils.PageObject;
 import org.entando.selenium.utils.pageParts.SwitchButton;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -144,5 +145,8 @@ public class DTUserAddPage extends PageObject{
     public DTUserAddPage(WebDriver driver) {
         super(driver);
     }
+    
+    
+    
     
 }

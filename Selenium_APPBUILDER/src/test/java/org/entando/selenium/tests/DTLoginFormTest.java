@@ -12,12 +12,16 @@ details.
 
 package org.entando.selenium.tests;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import org.entando.selenium.utils.*;
 import org.entando.selenium.pages.DTLoginPage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DTLoginFormTest extends FunctionalTestBase {
@@ -28,10 +32,7 @@ public class DTLoginFormTest extends FunctionalTestBase {
     @Test
     public void LogIn() {
         dTLoginPage.logIn("admin", "adminadmin");
-
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
-
-        assertEquals("admin", receiptDtPage.confirmationHeader());
+                
+        
     }
 }

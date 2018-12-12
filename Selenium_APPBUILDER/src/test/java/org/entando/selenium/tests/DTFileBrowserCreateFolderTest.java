@@ -74,8 +74,8 @@ public class DTFileBrowserCreateFolderTest extends FileBrowserTestBase{
         link.click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Click on Create folder button

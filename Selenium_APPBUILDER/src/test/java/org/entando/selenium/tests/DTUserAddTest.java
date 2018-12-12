@@ -132,10 +132,14 @@ public class DTUserAddTest extends UsersTestBase {
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         
+        
+        Utils.waitUntilIsPresent(driver, dTUsersPage.Table);
+        
+       
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, super.usersTableHeaderTitles.get(0));
         Assert.assertFalse(createdUser.isEmpty());

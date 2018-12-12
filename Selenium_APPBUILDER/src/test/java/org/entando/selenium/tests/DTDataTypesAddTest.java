@@ -62,6 +62,11 @@ public class DTDataTypesAddTest extends DataTypesTestBase {
         String button1 = "New";
         
         
+        //A data type with this name and code will be used in this test.
+        String dataTypeName = "Selenium_Do_Not_Touch17S";
+        String dataTypeCode = "17S";
+        
+        
         /*
             Actions and asserts
         */
@@ -99,22 +104,7 @@ public class DTDataTypesAddTest extends DataTypesTestBase {
                 dTDataTypesAddPage.getSaveButton().isEnabled());
         
         
-        //Compilation of the fields (TEST Data Type code already present)
-        dTDataTypesAddPage.setCode(dataTypeCodeExistent);
-        dTDataTypesAddPage.setName(dataTypeName);
-        
-        //Save the data
-        dTDataTypesAddPage.getSaveButton().click();
-        
-        //Verify Error Message
-        Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getAlertMessage());
-        Assert.assertTrue("Error message not valid", 
-                dTDataTypesAddPage.getAlertMessageContent().contains("already exists"));
-        dTDataTypesAddPage.getCloseMessageButton().click();
-        
-        
-        
-        //Compilation of the fields
+        //Inserting values that will result in an error message as the dataType already exists
         dTDataTypesAddPage.setCode(dataTypeCode);
         dTDataTypesAddPage.setName(dataTypeName);
         
@@ -123,32 +113,70 @@ public class DTDataTypesAddTest extends DataTypesTestBase {
         
         //Verify Error Message
         Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getAlertMessage());
-        Assert.assertTrue("Error message not valid", 
-                dTDataTypesAddPage.getAlertMessageContent().contains("created succesfully"));
+        
+        Assert.assertTrue("Error message for DataType - GOT: " +  dTDataTypesAddPage.getAlertMessageContent() + "- EXPECTED string that contains: created successfully", 
+                dTDataTypesAddPage.getAlertMessageContent().contains("created succesfully")); //to fix this contains a spelling error to pass
+        
         dTDataTypesAddPage.getCloseMessageButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getTypeSelect());
-        
-        sleep(500);
-        
-        //Save the data
         dTDataTypesAddPage.getSaveButton().click();
-                
-        //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
-        List<WebElement> createdDataType = dTDataTypesPage.getTable()
+        
+        
+        
+       
+        Utils.waitUntilIsVisible(driver, dTDataTypesPage.getNewButton());
+        
+        
+        
+       //sleep(3000);
+       
+       
+
+       
+       Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
+       List<WebElement> createdDataType = dTDataTypesPage.getTable()
                 .findRowList(dataTypeCode, expectedHeaderTitles.get(1));
         
         Assert.assertTrue(!createdDataType.isEmpty());
+       
+       
+       
+       //Inserting values that will result in a already exists error message
+       Utils.waitUntilIsVisible(driver, dTDataTypesPage.getNewButton());
+        dTDataTypesPage.getNewButton().click();
+           
         
-        //Delete the Data Type
+        dTDataTypesAddPage.setCode(dataTypeCode1);
+        dTDataTypesAddPage.setName(dataTypeName1);
+        
+        dTDataTypesAddPage.getSaveButton().click();
+        
+        Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getAlertMessage());
+        
+        Assert.assertTrue("Error message for DataType - GOT: " +  dTDataTypesAddPage.getAlertMessageContent() + "- EXPECTED string that contains: already exists", 
+                dTDataTypesAddPage.getAlertMessageContent().contains("already exists"));
+        
+        
+        dTDataTypesAddPage.getCloseMessageButton().click();
+        
+        //sleep(5000);
+        
+        dTDataTypesAddPage.getDataTypesList().click();
+        
+        
+        
+        
+        
+        
+         //Delete the Data Type to clean up
         Assert.assertTrue("Unable to delete the data type",
                 deleteDataType(dTDataTypesPage, dataTypeCode));
         
+      
         
+        
+
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){
             sleep(SLEEPTIME);

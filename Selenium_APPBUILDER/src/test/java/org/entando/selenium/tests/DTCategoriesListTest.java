@@ -67,8 +67,8 @@ public class DTCategoriesListTest extends CategoriesTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTCategoriesPage.getPageTitle().getText());        

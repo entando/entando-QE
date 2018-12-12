@@ -103,8 +103,8 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, usersTableHeaderTitles.get(0));
@@ -161,8 +161,8 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         dTUsersPage.getDeleteModalButton().click();
         Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
                 
         Utils.waitUntilIsVisible(driver, dTUsersPage.getTableBody());
         /** Debug code **/ Logger.getGlobal().info("delete page return true");        
@@ -181,7 +181,7 @@ public class UsersTestBase extends BrowsableTableTestTypology{
     public boolean addRole(DTUserRolesPage dTUserRolesPage, DTUserRoleAddPage dTUserRoleAddPage, String roleName){
         dTUserRolesPage.getAddButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUserRoleAddPage.getPageTitle());
+        //Utils.waitUntilIsVisible(driver, dTUserRoleAddPage.getPageTitle());
         
         //Compilation of the page
         dTUserRoleAddPage.setNameField(roleName);
@@ -201,13 +201,14 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         //Save and return
         dTUserRoleAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
+        
+        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getTableBody() );
         List<WebElement> createdUser = dTUserRolesPage.getTable().findRowList(roleName, rolesTableHeaderTitles.get(0));
         
         return(!createdUser.isEmpty());
@@ -280,8 +281,8 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         dTUserProfileTypeAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
         
         //Assert the presence of the created profile type in the Profile type table
@@ -349,11 +350,12 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         //Save and return
         dTUserGroupAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
+        //Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
+        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getTableBody() );
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUserGroupsPage.getTable().findRowList(groupName, rolesTableHeaderTitles.get(0));

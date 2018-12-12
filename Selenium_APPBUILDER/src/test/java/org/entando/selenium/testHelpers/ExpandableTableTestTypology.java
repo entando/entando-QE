@@ -88,8 +88,8 @@ public class ExpandableTableTestTypology extends FunctionalTestBase{
                 //Utils.waitUntilIsVisible(driver, button);
                 //sleep(100);
                 button.click();
-                Utils.waitUntilIsPresent(driver, ExpandableTable.rowSpinner);
-                Utils.waitUntilIsDisappears(driver, ExpandableTable.rowSpinner);
+                //Utils.waitUntilIsPresent(driver, ExpandableTable.rowSpinner);
+                //Utils.waitUntilIsDisappears(driver, ExpandableTable.rowSpinner);
             }
     }
     

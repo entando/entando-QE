@@ -11,7 +11,12 @@ details.
  */
 package org.entando.selenium.tests;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import static java.lang.Thread.sleep;
+import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,6 +60,24 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
         String firstLevelLink = "Configuration";
         String secondLevelLink = "File browser";
         
+      
+        
+        //This portion of code is responsible to create a file that will be uploaded later in the test.
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter("/tmp/seleniumTest-File.txt", "UTF-8");
+            writer.println("This is a test file created by Selenium! Questo è un file creato da Selenium!");
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DTFileBrowserUploadFileTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(DTFileBrowserUploadFileTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+
+        
         
         /*
             Actions and asserts
@@ -69,8 +92,8 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
         dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0).click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Click on Upload file button

@@ -12,6 +12,7 @@ details.
 package org.entando.selenium.testHelpers;
 
 import static java.lang.Thread.sleep;
+import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -58,10 +59,10 @@ public class FileBrowserTestBase extends FunctionalTestBase{
             "This is a Selenium Test!!! Ne pas toucher, Merçi!";
     
     //Default upload file name
-    public final String fileToUploadName = "seleniumTest-File.txt";
+   public final String fileToUploadName = "seleniumTest-File.txt";
      
     //Default upload file path
-    public final String fileToUploadPath = "/home/ufficio/";
+    public final String fileToUploadPath = "/tmp/";
     
     
     

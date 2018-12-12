@@ -77,6 +77,8 @@ public class DTPageModelsPage extends PageObject implements BrowsableTablePageIn
     
     public final By spinnerTag = By.xpath("//div[contains(@class, 'spinner-md')]");
     
+    public final By Table = By.xpath("//table[contains(@class, 'table-striped')]");
+    
     @Override
     public SimpleTable getTable() {
         return (new SimpleTable(table));

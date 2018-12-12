@@ -15,6 +15,7 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.pages.DTDashboardPage;
+import org.entando.selenium.pages.DTDataModelsAddPage;
 import org.entando.selenium.pages.DTDataModelsPage;
 import org.entando.selenium.testHelpers.DataModelsTestBase;
 import org.entando.selenium.utils.Utils;
@@ -36,6 +37,9 @@ public class DTDataModelsListTest extends DataModelsTestBase{
     
     @Autowired
     public DTDataModelsPage dTDataModelsPage;
+    
+    @Autowired
+    public DTDataModelsAddPage dtDataModelsAddPage;
 
     /*
         Test
@@ -78,9 +82,38 @@ public class DTDataModelsListTest extends DataModelsTestBase{
         //Asserts table COLUMNS NAME are the expected ones
         Assert.assertEquals(expectedHeaderTitles, dTDataModelsPage.getTable().getHeaderTitlesList());
         
+        
+        for(int i=1; i<5; i++){
+            deleteDataModel(dTDataModelsPage, String.valueOf(i));
+        }
+        
+        
+        
+        for(int i=1; i<5; i++){
+        Assert.assertTrue(addDataModel(dTDataModelsPage, dtDataModelsAddPage, String.valueOf(i), "model_name"+String.valueOf(i), "SeleniumTest_DontTouch"));
+        Assert.assertTrue("Browsable table functionality wrong",
+                checkBrowsableTable(dTDataModelsPage));
+        
+         }
+        
+        
         //Assert the functionality of BROWSABLE TABLE
         Assert.assertTrue("Browsable table functionality wrong",
                 checkBrowsableTable(dTDataModelsPage));
+        
+        
+        for(int i=1; i<5; i++){
+            Assert.assertTrue(deleteDataModel(dTDataModelsPage, String.valueOf(i)));
+            
+            Assert.assertTrue("Browsable table functionality wrong",
+                checkBrowsableTable(dTDataModelsPage));
+        }
+        
+         //Assert the functionality of BROWSABLE TABLE
+        Assert.assertTrue("Browsable table functionality wrong",
+                checkBrowsableTable(dTDataModelsPage));
+        
+        
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

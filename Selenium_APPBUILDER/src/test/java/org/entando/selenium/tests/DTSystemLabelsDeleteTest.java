@@ -69,8 +69,8 @@ public class DTSystemLabelsDeleteTest extends SystemLabelsTestBase{
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
         
         dTLabelsAndLanguagesPage.getSystemLabelsButton().click();
         

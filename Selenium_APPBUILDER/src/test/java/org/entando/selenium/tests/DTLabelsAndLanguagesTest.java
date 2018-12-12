@@ -74,8 +74,8 @@ public class DTLabelsAndLanguagesTest extends FunctionalTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals("Page Title isn't the expected one",

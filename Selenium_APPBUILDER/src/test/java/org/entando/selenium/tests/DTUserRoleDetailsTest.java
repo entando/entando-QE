@@ -85,7 +85,7 @@ public class DTUserRoleDetailsTest extends UsersTestBase {
         /** Debug code **/ Logger.getGlobal().info("Kebab action clicked");
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTUserRoleDetailsPage.getTable());
+        Utils.waitUntilIsVisible(driver, dTUserRoleDetailsPage.getPageTitle());
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUserRoleDetailsPage.getPageTitle().getText());

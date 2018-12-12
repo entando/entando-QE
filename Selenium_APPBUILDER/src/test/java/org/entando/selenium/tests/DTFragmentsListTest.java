@@ -110,8 +110,8 @@ public class DTFragmentsListTest extends FragmentsTestBase {
         dTFragmentPage.getCloseMessageButton().click();
         dTFragmentPage.getListButton().click();
         
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         
         //Assert the functionality of BROWSABLE TABLE
         Assert.assertTrue(checkBrowsableTable(dTFragmentPage));

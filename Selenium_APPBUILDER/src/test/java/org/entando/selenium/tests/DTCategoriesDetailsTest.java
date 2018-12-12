@@ -74,8 +74,8 @@ public class DTCategoriesDetailsTest extends CategoriesTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         //Click on Details kebab menù
         Kebab kebab = dTCategoriesPage.getTable().getKebabOnTable(defaultCategoryNameAlreadyPresent,

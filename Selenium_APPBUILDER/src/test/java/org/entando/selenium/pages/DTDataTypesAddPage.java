@@ -79,10 +79,18 @@ public class DTDataTypesAddPage extends PageObject{
     @FindBy(xpath = "//select[contains(@name, 'type')]")
     private WebElement typeSelect;
     
+    @FindBy (xpath = "//*[@id=\"root\"]/div[2]/div[3]/div[1]/div/ol/li[2]/a/span")
+    private WebElement dataTypesList;
+    
     
     public DTDataTypesAddPage(WebDriver driver) {
         super(driver);
     }
+
+    public WebElement getDataTypesList() {
+        return dataTypesList;
+    }
+    
 
     public WebElement getPageTitle() {
         return pageTitle;

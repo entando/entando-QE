@@ -24,7 +24,10 @@ import org.entando.selenium.utils.pageParts.Kebab;
 import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * This class perform a check of the AppBuilder Environment to execute tests correctly
@@ -134,9 +137,10 @@ public class EnvironmentChecker extends FunctionalTestBase{
         checkUser();
         checkPageModel();
         checkDataType();
-        checkWidget();
+        
         checkPage();
         checkCategories();
+        checkWidget();
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){
@@ -155,8 +159,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("Configuration", "Categories");
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         //Assert the presence of the page
         List<WebElement> categories = dTCategoriesPage.getTable().
@@ -164,9 +168,9 @@ public class EnvironmentChecker extends FunctionalTestBase{
                         CategoriesTestBase.expectedHeaderTitles.get(0));
         if(categories.isEmpty())
         {
-            //Create a page model            
+            //Create a category         
             Assert.assertTrue(addCategory(dTCategoriesPage, dTCategoriesAddPage,
-                    "SeleniumTest_DontTouch", "All"));
+                    "SeleniumTest_DontTouch", "root"));
         }
         sleep(300);        
     }
@@ -213,20 +217,33 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("UX Patterns", "Widgets");
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
-        
-        //Assert the presence of the widget
-        SimpleTable table = new SimpleTable(dTWidgetPage.getTables().get("user"));
-        List<WebElement> dataTypes = table.findRowList("  SeleniumTest_DontTouch", 
+        //Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+    
+        try {
+         SimpleTable table = new SimpleTable(dTWidgetPage.getTables().get("user"));
+            List<WebElement> widgets = table.findRowList("  SeleniumTest_DontTouch", 
                         WidgetsTestBase.expectedHeaderTitles.get(0));
-        if(dataTypes.isEmpty())
+        }
+        catch(NullPointerException e)
+{
+    sleep(300);
+    Assert.assertTrue(addWidget(dTWidgetPage, dTWidgetAddPage,"SeleniumTest_DontTouch"));
+    sleep(300);
+} 
+        SimpleTable table = new SimpleTable(dTWidgetPage.getTables().get("user"));
+        List<WebElement> widgets = table.findRowList("  SeleniumTest_DontTouch", 
+                        WidgetsTestBase.expectedHeaderTitles.get(0));
+        
+           if(widgets.isEmpty())
         {
             //Create a page model            
             Assert.assertTrue(addWidget(dTWidgetPage, dTWidgetAddPage,
                     "SeleniumTest_DontTouch"));
         }
-        sleep(300);
+        
+        
+        
     }
     
     
@@ -242,17 +259,19 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("Data", "Data Types");
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
+        //Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
-        //Assert the presence of the data types
-        List<WebElement> dataTypes = dTDataTypesPage.getTable().
+        Boolean isElementPresent = driver.findElements(By.cssSelector("table > tbody")).size()!= 0;
+        
+        if (isElementPresent == true){
+            List<WebElement> dataTypes = dTDataTypesPage.getTable().
                 findRowList("SeleniumTest_DontTouch", 
                         DataTypesTestBase.expectedHeaderTitles.get(0));
         if(dataTypes.isEmpty())
         {
-            //Create a page model            
+            //Create a Data Type           
             Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
                     "SeleniumTest_DontTouch", "11S"));
         }
@@ -262,7 +281,7 @@ public class EnvironmentChecker extends FunctionalTestBase{
                         DataTypesTestBase.expectedHeaderTitles.get(0));
         if(dataTypes.isEmpty())
         {
-            //Create a page model            
+            //Create a Data Type            
             Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
                     "SeleniumTest_DontTouch1", "12S"));
         }
@@ -277,6 +296,21 @@ public class EnvironmentChecker extends FunctionalTestBase{
                     "SeleniumTest_DontTouch2", "13S"));
         }
         sleep(300);
+            
+        } else {
+            
+            //Create a Data Type           
+            Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
+                    "SeleniumTest_DontTouch", "11S"));
+            
+            Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
+                    "SeleniumTest_DontTouch1", "12S"));
+            
+            Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage,
+                    "SeleniumTest_DontTouch2", "13S"));
+            
+        }
+    
     }
     
     
@@ -292,8 +326,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("UX Patterns", "Page Models");
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         //Assert the presence of the page model
         List<WebElement> pageModels = dTPageModelsPage.getTable().
@@ -323,24 +357,29 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("User Management", "Users");
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         //Assert the presence of the user in the Users table
+        
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+        
         List<WebElement> users = dTUsersPage.getTable().
                 findRowList(username, UsersTestBase.usersTableHeaderTitles.get(0));
         
         if(users.isEmpty())
         {
             //Create a role
-            Assert.assertTrue(addUser(dTUsersPage, dTUserAddPage,
-                    username));
+            Assert.assertTrue(addUser(dTUsersPage, dTUserAddPage, username));
+            
+            
             Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, 
                     UsersTestBase.usersTableHeaderTitles.get(0), UsersTestBase.usersTableHeaderTitles.get(4));
             Assert.assertFalse("User not found!", kebab == null);
+            
             //Click on kebab menù
             kebab.getClickable().click();
-            /** Debug code **/ Logger.getGlobal().info("Kebab clicked");
+            //Debug code  Logger.getGlobal().info("Kebab clicked");
             Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
             //Click on the action
             String kebabAction = "Manage authorization for: " + username;
@@ -348,18 +387,19 @@ public class EnvironmentChecker extends FunctionalTestBase{
             
             DTUserManageAuthorityPage dTUserManageAuthorityPage = new DTUserManageAuthorityPage(driver);
             Utils.waitUntilIsVisible(driver, dTUserManageAuthorityPage.getPageTitle());
-            Utils.waitUntilIsPresent(driver, dTUserManageAuthorityPage.spinnerTag);
-            Utils.waitUntilIsDisappears(driver, dTUserManageAuthorityPage.spinnerTag);
-            SimpleTable table = dTUserManageAuthorityPage.getTable();
+            //Utils.waitUntilIsPresent(driver, dTUserManageAuthorityPage.spinnerTag);
+            //Utils.waitUntilIsDisappears(driver, dTUserManageAuthorityPage.spinnerTag);
+             
+            
             //Add a authorization
             dTUserManageAuthorityPage.getUserGroup().selectByVisibleText(profileTypeName);
             dTUserManageAuthorityPage.getUserRole().selectByVisibleText(roleName);
             dTUserManageAuthorityPage.getAddButton().click();
-            dTUserManageAuthorityPage.getSaveButton().click();
-            Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-            Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+            dTUserManageAuthorityPage.getSaveButton().click(); 
+            //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+            //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
             
-        }
+        } 
         sleep(300);
     }
     
@@ -377,8 +417,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("User Management", "Roles");
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
         
         //Assert the presence of the user role
         List<WebElement> roles = dTUserRolesPage.getTable().
@@ -408,8 +448,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("User Management", "Profile types");
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
         
         //Assert the absence of the Profile Type
@@ -438,9 +478,10 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink("User Management", "Groups");
         Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
         
+        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getGroupsTable());
         //Assert the absence of the user group in the User Group table
         List<WebElement> createdUserGroup = dTUserGroupsPage.getTable()
                 .findRowList(userGroupName, UsersTestBase.groupsTableHeaderTitles.get(0));
@@ -464,11 +505,12 @@ public class EnvironmentChecker extends FunctionalTestBase{
         DTLabelsAndLanguagesPage dTLabelsAndLanguagesPage = new DTLabelsAndLanguagesPage(driver);
         
         //Navigation to the page
+  
         dTDashboardPage.SelectSecondOrderLink("Configuration", "Labels and Languages");
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
         
         List<String> expectedHeaderTitles = 
             Arrays.asList("Code", "Name", "Actions");
@@ -503,8 +545,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
             
             driver.get(driver.getCurrentUrl());
             //Loading page
-            Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-            Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+            //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+            //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
             
             dTLabelsAndLanguagesPage.getLanguageSelect().selectByVisibleText("it – Italian");
             dTLabelsAndLanguagesPage.getAddButton().click();
@@ -535,6 +577,13 @@ public class EnvironmentChecker extends FunctionalTestBase{
                                                 "      \"mainFrame\": false,\n" +
                                                 "      \"defaultWidget\": null,\n" +
                                                 "      \"sketch\": null\n" +
+                                                "    },\n" +
+                                                                "    {\n" +
+                                                "      \"pos\": 1,\n" +
+                                                "      \"descr\": \"SeleniumCell1\",\n" +
+                                                "      \"mainFrame\": false,\n" +
+                                                "      \"defaultWidget\": null,\n" +
+                                                "      \"sketch\": null\n" +
                                                 "    }\n" +
                                                 "  ]\n" +
                                                 "}";
@@ -547,8 +596,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         
         Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getSaveButton());
         
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         //Compilation of the fields
         dTPageModelsAddPage.setCodeField(code);
@@ -561,16 +610,16 @@ public class EnvironmentChecker extends FunctionalTestBase{
         dTPageModelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         Utils.waitUntilIsVisible(driver, dTPageModelsPage.getMessage());
         dTPageModelsPage.getCloseMessageButton().click();
                 
         //Reload the page
         driver.get(driver.getCurrentUrl());
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         
         //Assert the element is present in the table
@@ -607,17 +656,24 @@ public class EnvironmentChecker extends FunctionalTestBase{
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
+        
+        
+        
+        
+        //Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
+        Utils.waitUntilIsPresent(driver, dTUsersPage.Table);
+        
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, 
                 UsersTestBase.usersTableHeaderTitles.get(0));
         
         return(!createdUser.isEmpty());
+        
     }
     
     
@@ -647,8 +703,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUserRolesPage.getTable().
@@ -681,8 +737,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         dTUserProfileTypeAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
         
         //Assert the presence of the created profile type in the Profile type table
@@ -710,8 +766,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);        
         
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUserGroupsPage.getTable().
@@ -739,8 +795,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         dTDataTypesAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
         List<WebElement> createdDataType = dTDataTypesPage.getTable()
@@ -769,9 +825,9 @@ public class EnvironmentChecker extends FunctionalTestBase{
         dTWidgetAddPage.getSaveButton().click();
                 
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
+        //Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
         
         dTWidgetPage.getCloseAlertMessageButton().click();
         
@@ -850,18 +906,19 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Return back
         Assert.assertTrue("Save Button is disabled", dTCategoriesAddPage.getSaveButton().isEnabled());
         dTCategoriesAddPage.getSaveButton().click();
+       
         
         Utils.waitUntilIsVisible(driver, dTCategoriesPage.getAddButton());
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+       // Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
-        List<WebElement> createdCategory = dTCategoriesPage.getTable()
+       List<WebElement> createdCategory = dTCategoriesPage.getTable()
                 .findRowList(categoryName, 
                         CategoriesTestBase.expectedHeaderTitles.get(0));
         if(createdCategory.isEmpty())
             return false;
         else
-            return true;
+            return true; 
     }
 }
 

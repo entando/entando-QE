@@ -16,7 +16,7 @@
         <junit.platform.version>1.1.0</junit.platform.version>
     </properties>
     
-    <build>
+    <build> 
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -61,7 +61,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.11.0</version>
+            <version>3.141.59</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -109,7 +109,7 @@
         <dependency>
             <groupId>org.apache.maven.surefire</groupId>
             <artifactId>maven-surefire-common</artifactId>
-            <version>2.20.1</version>
+            <version>2.22.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -121,17 +121,19 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.0.5.RELEASE</version>
+            <version>5.1.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.5.RELEASE</version>
+            <version>5.1.2.RELEASE</version>
+            <scope>test</scope>
+            <type>jar</type>
         </dependency>  
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.0.5.RELEASE</version>
+            <version>5.1.2.RELEASE</version>
         </dependency>
         <!-- http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar -->
         <dependency>
@@ -139,5 +141,32 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>3.141.59</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+<dependency>
+    <groupId>com.github.detro.ghostdriver</groupId>
+    <artifactId>phantomjsdriver</artifactId>
+    <version>1.1.0</version>
+</dependency>
+
     </dependencies>
 </project>

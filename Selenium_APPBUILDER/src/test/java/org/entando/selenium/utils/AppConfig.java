@@ -16,18 +16,28 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import org.entando.selenium.pages.*;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+//import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Configuration;
+
+/*import org.springframework.beans.factory.config.CustomScopeConfigurer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;*/
+//import org.springframework.beans.factory.config.CustomScopeConfigurer;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.Scope;
 
 /**
  * 
@@ -37,7 +47,7 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class AppConfig {
     
-    private static final boolean HEADLESS = false;
+    private static final boolean HEADLESS = true;
     
     
     @Bean
@@ -73,14 +83,16 @@ public class AppConfig {
             ChromeOptions options = new ChromeOptions();
             //FirefoxOptions options = new FirefoxOptions();
             options.addArguments("headless");
-            options.addArguments("window-size=1200x600");
+            options.addArguments("window-size=1920x1200");
             WebDriver driver = new ChromeDriver(options);
+            
             return driver;
         }
         else
         {
             WebDriver driver = new ChromeDriver();
             //WebDriver driver = new FirefoxDriver();
+            //WebDriver driver = new OperaDriver();
             return driver;
         }
     } 

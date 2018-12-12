@@ -12,6 +12,9 @@ details.
 
 package org.entando.selenium.utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +26,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -55,8 +59,8 @@ public class FunctionalTestBase {
         Parameters
     */
     //Login credentials
-    private final String USERNAME = "username";
-    private final String PASSWORD = "password";
+    private final String USERNAME = "admin";
+    private final String PASSWORD = "adminadmin";
     
     //Time in milliseconds used for the sleep when the Logger is turned on
     public final int SLEEPTIME = 2000;
@@ -99,8 +103,6 @@ public class FunctionalTestBase {
     protected void login(){
         driver.manage().window().maximize();
         dTLoginPage.logIn(USERNAME, PASSWORD);
-        ReceiptDTLoginPage receiptDtPage = dTLoginPage.submit();
-        assertTrue(receiptDtPage.isInitialized());
     }
     
     /**

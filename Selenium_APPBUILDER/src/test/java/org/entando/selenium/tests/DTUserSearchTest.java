@@ -88,8 +88,8 @@ public class DTUserSearchTest  extends UsersTestBase {
         dTUsersPage.getSearchField().sendKeys(username1);
         dTUsersPage.getSearchButton().click();
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         Assert.assertEquals(1, dTUsersPage.getTable().tableSize());
         
@@ -99,8 +99,8 @@ public class DTUserSearchTest  extends UsersTestBase {
         dTUsersPage.getSearchField().sendKeys(username2);
         dTUsersPage.getSearchButton().click();
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         Assert.assertEquals(1, dTUsersPage.getTable().tableSize());
         
@@ -110,8 +110,8 @@ public class DTUserSearchTest  extends UsersTestBase {
         dTUsersPage.getSearchField().sendKeys(baseUsername);
         dTUsersPage.getSearchButton().click();
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         Assert.assertTrue(dTUsersPage.getTable().tableSize() >= 2);
         
@@ -121,8 +121,8 @@ public class DTUserSearchTest  extends UsersTestBase {
         dTUsersPage.getSearchField().sendKeys(fakeUsername);
         dTUsersPage.getSearchButton().click();
         //Wait loading results
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         Assert.assertTrue(dTUsersPage.getNotFoundMessage().isDisplayed());
         
@@ -133,8 +133,8 @@ public class DTUserSearchTest  extends UsersTestBase {
         dTUsersPage.getSearchButton().click();
         
         //Wait loading table
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         
         //Delete the created page

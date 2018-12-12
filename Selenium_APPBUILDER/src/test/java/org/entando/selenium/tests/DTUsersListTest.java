@@ -65,8 +65,8 @@ public class DTUsersListTest extends UsersTestBase {
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);   
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);   
                 
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUsersPage.getPageTitle().getText());

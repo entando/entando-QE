@@ -11,9 +11,12 @@ details.
  */
 package org.entando.selenium.pages;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import org.entando.selenium.utils.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+//import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class DTLoginPage extends PageObject {
@@ -32,16 +35,24 @@ public class DTLoginPage extends PageObject {
 
         this.passWord.clear();
         this.passWord.sendKeys(passWord);
+        
+        this.submitButton.click();
     }
 
     public DTLoginPage(WebDriver driver) {
         super(driver);
-        driver.get("http://localhost:8080/myApp/");
+        driver.get("http://localhost:3000");
+        //driver.get("http://appbuilder-503.dev.entando.org");
+        
+	
+        
+        
+        
+        
+        
+        
+        
     }
-
-    public ReceiptDTLoginPage submit() {
-        submitButton.click();
-        return new ReceiptDTLoginPage(driver);
-    }
+   
 
 }

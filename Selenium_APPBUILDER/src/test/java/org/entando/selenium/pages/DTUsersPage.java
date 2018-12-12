@@ -98,6 +98,8 @@ public class DTUsersPage extends PageObject implements BrowsableTablePageInterfa
     
     public final By spinnerTag = By.xpath("//div[contains(@class, 'spinner-md')]");
     
+    public final By Table = By.xpath("//table[contains(@class, 'UserListTable__table')]");
+    
     
     public WebElement getUsersTable() {
         return usersTable;

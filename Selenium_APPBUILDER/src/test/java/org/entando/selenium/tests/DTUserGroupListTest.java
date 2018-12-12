@@ -67,8 +67,8 @@ public class DTUserGroupListTest extends UsersTestBase {
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);   
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);   
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUserGroupsPage.getPageTitle().getText());

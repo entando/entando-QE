@@ -103,8 +103,8 @@ public class DTFragmentsAddTest extends FragmentsTestBase  {
         
         //Wait loading page
         Utils.waitUntilIsVisible(driver, dTFragmentPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         
         
         //Assert the presence of the added fragment in the fragment table

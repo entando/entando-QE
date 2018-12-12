@@ -120,8 +120,8 @@ public class DTPageModelsDetailsTest extends PageModelsTestBase {
         //Navigate to previous page
         driver.navigate().back();
         
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
               
         //delete the fragment
         Assert.assertTrue(deletePageModel(dTPageModelsPage, code));

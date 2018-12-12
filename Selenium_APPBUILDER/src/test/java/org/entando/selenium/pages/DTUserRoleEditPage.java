@@ -73,7 +73,7 @@ public class DTUserRoleEditPage extends PageObject {
     @FindBy(xpath = "//label[text() = 'Rating Editing']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement ratingEditingSwitch;
     
-    @FindBy(xpath = "//label[text() = 'Gestione Web Dynamic Forms']/..//div[contains(@class,'bootstrap-switch wrapper')]")
+    @FindBy(xpath = "//label[text() = 'Manage Web Dynamic Forms']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement gestioneWebDynamicFormsSwitch;
     
     @FindBy(xpath = "//label[text() = 'Operations on Resources']/..//div[contains(@class,'bootstrap-switch wrapper')]")
@@ -175,7 +175,7 @@ public class DTUserRoleEditPage extends PageObject {
         return new SwitchButton( ratingEditingSwitch);
     }
 
-    public SwitchButton getGestioneWebDynamicFormsSwitch() {
+    public SwitchButton getManageWebDynamicFormsSwitch() {
         return new SwitchButton( gestioneWebDynamicFormsSwitch);
     }
 

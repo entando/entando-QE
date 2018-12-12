@@ -67,8 +67,8 @@ public class DTSystemLabelsListTest extends SystemLabelsTestBase{
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
         
         dTLabelsAndLanguagesPage.getSystemLabelsButton().click();
         

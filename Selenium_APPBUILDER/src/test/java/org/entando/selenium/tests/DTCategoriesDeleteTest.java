@@ -69,8 +69,10 @@ public class DTCategoriesDeleteTest extends CategoriesTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        
+        
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         //Create a category
         Assert.assertTrue(addCategory(dTCategoriesPage, dTCategoriesAddPage));

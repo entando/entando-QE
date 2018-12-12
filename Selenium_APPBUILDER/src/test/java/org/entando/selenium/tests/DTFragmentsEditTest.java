@@ -114,8 +114,8 @@ public class DTFragmentsEditTest extends FragmentsTestBase {
         //Save the changes and come back to prev. page
         dTFragmentEditPage.save();
         
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         
         //Assert the presence of the edited fragment in the table
         List<WebElement> createdFragment = dTFragmentPage.getTable()

@@ -125,9 +125,10 @@ public class DTUserGroupAddTest extends UsersTestBase {
         dTUserGroupAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getPageTitle());
+        Utils.waitUntilIsVisible(driver, dTUserGroupsPage.getTableBody());
+        //Utils.waitUntilIsPresent(driver, dTUserGroupsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupsPage.spinnerTag);
         
         //Assert the presence of the created group in the Group table
         List<WebElement> createdUser = dTUserGroupsPage.getTable()

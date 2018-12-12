@@ -88,8 +88,8 @@ public class PageModelsTestBase extends BrowsableTableTestTypology{
         
         Utils.waitUntilIsVisible(driver, dTPageModelsAddPage.getSaveButton());
         
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         //Compilation of the fields
         dTPageModelsAddPage.setCodeField(code);
@@ -102,16 +102,16 @@ public class PageModelsTestBase extends BrowsableTableTestTypology{
         dTPageModelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         Utils.waitUntilIsVisible(driver, dTPageModelsPage.getMessage());
         dTPageModelsPage.getCloseMessageButton().click();
                 
         //Reload the page
         driver.get(driver.getCurrentUrl());
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         
         //Assert the element is present in the table
