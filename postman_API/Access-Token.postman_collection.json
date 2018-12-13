@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e5a10e10-2e88-4f4f-8bc0-cbdecdf715e4",
+		"_postman_id": "8f620762-e3e9-42d6-9a87-a3ff2a642fa3",
 		"name": "Access-Token",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,6 @@
 					"listen": "test",
 					"script": {
 						"id": "1b286494-914c-4c8e-84f3-5a7412c9ebbf",
-						"type": "text/javascript",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"access_token\", data.access_token);",
@@ -26,21 +25,37 @@
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
 						"id": "28ca9674-96f9-40b8-8feb-2e724de9ff4e",
-						"type": "text/javascript",
 						"exec": [
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "appbuilder",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "appbuilder_secret",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -65,27 +80,18 @@
 							"key": "grant_type",
 							"value": "password",
 							"type": "text"
-						},
-						{
-							"key": "client_id",
-							"value": "REST_API",
-							"type": "text"
-						},
-						{
-							"key": "client_secret",
-							"value": "REAST_API_SEC",
-							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{url}}/OAuth2/access_token",
+					"raw": "{{url}}/api/oauth/token",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"OAuth2",
-						"access_token"
+						"api",
+						"oauth",
+						"token"
 					]
 				},
 				"description": "Request to return the Access Token (based on Bearer Token)"
