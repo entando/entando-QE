@@ -73,7 +73,7 @@
 			"response": []
 		},
 		{
-			"name": "PageModelDelete_DELETE",
+			"name": "DigitalExchangeDelete_DELETE",
 			"event": [
 				{
 					"listen": "test",
@@ -213,19 +213,19 @@
 	],
 	"variable": [
 		{
-			"id": "27879b44-76c2-4945-9507-3cee35403282",
+			"id": "21b7d970-1add-46f0-8b01-fb6fde63c4ad",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "cba4d310-c92a-4302-b221-598c1c1ee595",
+			"id": "b84117df-07b6-4297-b2d3-24ebf457dd67",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "965de1bc-7739-4090-88db-ac601ba247f7",
+			"id": "42df869c-08db-4bfe-9e7d-2cc266a4681a",
 			"key": "payload",
 			"value": "{\n  \"name\": \"PleaseDoNotUse\",\n  \"url\": \"http://de.entando.org\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
 			"type": "string"

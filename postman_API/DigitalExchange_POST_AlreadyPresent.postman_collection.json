@@ -138,7 +138,7 @@
 			"response": []
 		},
 		{
-			"name": "PageModels_POST",
+			"name": "DigitalExchange_POST",
 			"event": [
 				{
 					"listen": "test",
@@ -225,19 +225,19 @@
 	],
 	"variable": [
 		{
-			"id": "81cc3e4b-d74a-4789-9a2f-84c8321480e1",
+			"id": "25baa693-732e-4286-bf0c-e236766d873d",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "289ceeaa-567d-4a5d-bbe2-27ff47a9a966",
+			"id": "f6ee0217-9e9f-4151-a440-08fe4cea4c16",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "81ec05eb-fd11-470f-a5a6-5c651f3a5bcb",
+			"id": "ae6b5e70-c759-4c4f-ab67-bb2b16c08ec4",
 			"key": "payload",
 			"value": "{\n  \"name\": \"PleaseDoNotUse\",\n  \"url\": \"http://de.entando.org\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
 			"type": "string"

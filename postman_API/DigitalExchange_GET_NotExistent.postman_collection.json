@@ -150,13 +150,13 @@
 	],
 	"variable": [
 		{
-			"id": "f79ba151-99e9-441f-885b-cb1860dad396",
+			"id": "033fdd06-85e6-4f02-ac97-558882a71893",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "6bf5dac6-2fa2-44ff-9f33-ff13490a4b9d",
+			"id": "c6e0c1a5-f48f-46e6-8229-b20b1ca5c3d9",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"

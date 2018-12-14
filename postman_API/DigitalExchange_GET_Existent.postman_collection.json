@@ -164,19 +164,19 @@
 	],
 	"variable": [
 		{
-			"id": "dc54101e-1d4c-4def-8e85-b777a0f76cf6",
+			"id": "ac6061ea-dde0-409a-92bd-ccca57ce6b4c",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "75023023-e61b-4306-85e8-97dcfc3a726d",
+			"id": "5d197911-673b-4c72-93de-b5ab0d151f2f",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "cc1e8596-8909-4b4f-b813-41f20e13aae4",
+			"id": "d75594c7-cb41-4f41-9260-0962cfe3bbf7",
 			"key": "payload",
 			"value": "{\n  \"name\": \"PleaseDoNotUse\",\n  \"url\": \"http://de.entando.org\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
 			"type": "string"
