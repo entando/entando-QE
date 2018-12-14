@@ -12,18 +12,8 @@
 					"listen": "test",
 					"script": {
 						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
-						"type": "text/javascript",
 						"exec": [
-							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
-							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
-							"var labelName= \"AAA1\";",
-							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
 							"",
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
-							"});",
 							"",
 							"",
 							"",
@@ -32,7 +22,8 @@
 							"",
 							"",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -206,19 +197,19 @@
 	],
 	"variable": [
 		{
-			"id": "bebcb34f-212c-44f9-9369-948d798c1ea9",
+			"id": "749ea1d5-ca5f-443a-ad2b-37d8a85c3f06",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "d8fb49b4-9068-41b8-86b6-026e95d1fbce",
+			"id": "00e0e878-2b97-4a86-b38a-c2c4b3d4d0ef",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "5030e2f5-f2b1-41c5-b130-1897e00e0681",
+			"id": "93f30a37-c6c3-4762-a219-51588f9793fa",
 			"key": "payload",
 			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
 			"type": "string"
