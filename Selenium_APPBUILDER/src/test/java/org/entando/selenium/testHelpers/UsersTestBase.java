@@ -16,6 +16,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.pages.DTUserAddPage;
 import org.entando.selenium.pages.DTUserGroupAddPage;
@@ -100,11 +101,20 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
         
-        //Wait loading page
-        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
+        try {
+            //Wait loading page
+            //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+            //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+
+            sleep(2000);
+            Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(UsersTestBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
         
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, usersTableHeaderTitles.get(0));
@@ -164,7 +174,8 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
                 
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getTableBody());
+        sleep(2000);
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
         /** Debug code **/ Logger.getGlobal().info("delete page return true");        
         return true;
     }

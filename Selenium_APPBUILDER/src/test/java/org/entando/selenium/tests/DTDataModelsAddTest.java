@@ -70,32 +70,12 @@ public class DTDataModelsAddTest extends DataModelsTestBase {
         String button1 = "New";
         
         
-        /*
-            Actions and asserts
-        */
-        
-        /**
-        String payload = "grant_type=password," +
-                        "username=\"admin\"," +
-                        "password=\"admin\"," +
-                        "client_id=REST_API," +
-                        "client_secret=REAST_API_SEC";
-        StringEntity entity = new StringEntity(payload,
-                ContentType.APPLICATION_FORM_URLENCODED);
-
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("http://tests.serv.run/entando-sample/OAuth2/access_token");
-        request.setEntity(entity);
-
-        HttpResponse response = httpClient.execute(request);
-        System.out.println(response.getStatusLine().getStatusCode());
-        **/
-        
         
         //Login
         login();
         
         //Navigation to the page
+       
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getNewButton());
         

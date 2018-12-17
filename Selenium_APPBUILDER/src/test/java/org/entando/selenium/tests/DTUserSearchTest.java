@@ -75,10 +75,15 @@ public class DTUserSearchTest  extends UsersTestBase {
         
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
+        sleep(2000);
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable() );
         
         //Create a pages to search
         Assert.assertTrue(addUser(dTUsersPage, dTUserAddPage, username1));
+        
+        
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable() );
+        sleep(2000);
         Assert.assertTrue(addUser(dTUsersPage, dTUserAddPage, username2));
         
         

@@ -369,8 +369,8 @@ public class EnvironmentChecker extends FunctionalTestBase{
         
         if(users.isEmpty())
         {
-            //Create a role
-            Assert.assertTrue(addUser(dTUsersPage, dTUserAddPage, username));
+            //Create a user
+            addUser(dTUsersPage, dTUserAddPage, username);
             
             
             Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, 
@@ -660,14 +660,14 @@ public class EnvironmentChecker extends FunctionalTestBase{
         
         
         
-        //Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
+        try {
+            
+            sleep(2000);
+            Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EnvironmentChecker.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        //Wait loading page
-        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);        
-        
-        //Assert the presence of the created user in the Users table
-        Utils.waitUntilIsPresent(driver, dTUsersPage.Table);
         
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, 
                 UsersTestBase.usersTableHeaderTitles.get(0));

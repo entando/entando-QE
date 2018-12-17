@@ -41,8 +41,8 @@ public class DTLoginPage extends PageObject {
 
     public DTLoginPage(WebDriver driver) {
         super(driver);
-        driver.get("http://localhost:3000");
-        //driver.get("http://appbuilder-503.dev.entando.org");
+        //driver.get("http://localhost:3000");
+        driver.get("http://appbuilder.serv.run");
         
 	
         

@@ -137,15 +137,19 @@ public class DTUserAddTest extends UsersTestBase {
         
         
         
-        Utils.waitUntilIsPresent(driver, dTUsersPage.Table);
+        
+        sleep(2000);
+        
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+        
         
        
         //Assert the presence of the created user in the Users table
-        List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, super.usersTableHeaderTitles.get(0));
+        List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, UsersTestBase.usersTableHeaderTitles.get(0));
         Assert.assertFalse(createdUser.isEmpty());
         
         //Verify "Status" is "Active"
-        WebElement cell = dTUsersPage.getTable().getCell(username, super.usersTableHeaderTitles.get(0), super.usersTableHeaderTitles.get(3));
+        WebElement cell = dTUsersPage.getTable().getCell(username, UsersTestBase.usersTableHeaderTitles.get(0), super.usersTableHeaderTitles.get(3));
         Assert.assertEquals(statusString, cell.getText());
         
         //Delete the created user

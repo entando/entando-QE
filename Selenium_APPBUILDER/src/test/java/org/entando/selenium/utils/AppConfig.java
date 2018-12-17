@@ -47,7 +47,7 @@ import org.springframework.context.annotation.Scope;*/
 @Configuration
 public class AppConfig {
     
-    private static final boolean HEADLESS = true;
+    private static final boolean HEADLESS = false;
     
     
     @Bean

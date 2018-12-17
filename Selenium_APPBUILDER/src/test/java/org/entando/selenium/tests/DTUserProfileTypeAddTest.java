@@ -104,15 +104,20 @@ public class DTUserProfileTypeAddTest extends UsersTestBase {
         dTUserProfileTypeAddPage.getSaveButton().click();
         
         //Loading next step
-        Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getAddButton());
-        sleep(400);
+        sleep(2000);
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getSaveButton());
+        
         
         dTUserProfileTypeAddPage.getSaveButton().click();
         
         //Wait loading page
         //Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
+       
+        
+        sleep(2000);
+            Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getProfileTypeTable());
+        
         
         //Assert the presence of the created profile type in the Profile type table
         List<WebElement> createdUser = dTUserProfileTypePage.getTable()
