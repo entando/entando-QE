@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "03a12798-b814-4a91-bec2-9d6f3c828293",
-		"name": "DigitalExchange_POST_Success",
+		"_postman_id": "3eb2eadb-452c-4fdf-ba95-18ea44a50729",
+		"name": "DigitalExchangePUT_CodeMismatch",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -13,6 +13,7 @@
 					"script": {
 						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
 						"exec": [
+							"",
 							"",
 							"",
 							"",
@@ -55,15 +56,17 @@
 			"response": []
 		},
 		{
-			"name": "DigitalExchange_POST",
+			"name": "DigitalExchange_POST_HELPER",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "748b65fd-e784-4be3-8cc8-aefa8212dcf9",
+						"id": "6145f5cb-ba7c-4c52-b67c-5038ec001849",
 						"exec": [
-							"var status_code = 200",
-							"var item_name = pm.variables.get(\"item_name\");",
+							"//Contract for POST Successful: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
+							"",
+							"var status_code = 200;",
+							"var item_name =  pm.variables.get(\"item_name\");",
 							"",
 							"pm.test(\"Status code is \" + status_code, function () {",
 							"    pm.response.to.have.status(status_code);",
@@ -75,11 +78,9 @@
 							"});",
 							"",
 							"",
-							"pm.test(\"DigitalExchange params set correctly\", function(){",
+							"pm.test(\"Code is set correctly\", function(){",
 							"    pm.expect(pm.response.json().payload.name).to.be.eql(item_name);",
-							"});",
-							"",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -114,12 +115,75 @@
 			"response": []
 		},
 		{
+			"name": "DigitalExchange_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ecaf28b-9548-4881-a383-86c5d324d9d5",
+						"exec": [
+							"//Label\tPUT\t\tDefaultLangMissing\t400\t2\t\t\t\t\tDone",
+							"",
+							"var status_code = 400;",
+							"var error_code = '3';",
+							"var error_message = \"does not match\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
+							"});",
+							"",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
+							"});",
+							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{payload_code_mismatch}}"
+				},
+				"url": {
+					"raw": "{{url}}/{{api_url}}/{{item_name}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{api_url}}",
+						"{{item_name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET_HELPER",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "ca6a63a6-1eac-480d-b7a7-a2a0f522ca4a",
+						"id": "b7898a0f-30f1-4391-b150-197a810f633b",
 						"exec": [
 							"var GET_status_code = 200;",
 							"var item_name = pm.variables.get(\"item_name\");",
@@ -143,6 +207,11 @@
 							"pm.test(\"Item name is correct\", function (){",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.payload.name).to.eql(item_name);",
+							"});",
+							"",
+							"pm.test(\"The Url is unaltered\", function(){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.payload.url).to.eql(\"http://de.entando.org\");",
 							"});",
 							"",
 							"",
@@ -203,21 +272,27 @@
 	],
 	"variable": [
 		{
-			"id": "30a40c58-5c8f-4791-bb9e-d1b2ee618321",
+			"id": "10694ea2-3a4f-4eab-8989-2bef74dfd219",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "0ef177b6-9ee7-4353-a4ef-e811932e7b56",
+			"id": "24aaed5e-51da-4e2c-8365-0616bd855e20",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "e80a3fe2-a662-410f-9dcb-2ef6d1b6e21e",
+			"id": "4d24df90-2345-4738-9ad3-17d3338e44d8",
 			"key": "payload",
 			"value": "{\n  \"name\": \"PleaseDoNotUse\",\n  \"url\": \"http://de.entando.org\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
+			"type": "string"
+		},
+		{
+			"id": "063c2e39-95fb-400b-9bff-ea6cf6b23a26",
+			"key": "payload_code_mismatch",
+			"value": "{\n  \"name\": \"PleaseDoNotUse-Changed\",\n  \"url\": \"http://de.entando.org-changed\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
 			"type": "string"
 		}
 	]

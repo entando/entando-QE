@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "88fd2992-ead1-4fb3-a5f3-eda8be60969f",
-		"name": "DigitalExchange_DELETE_NotExistent",
+		"_postman_id": "b256f7ff-4753-46ca-b4f6-083a69798f7b",
+		"name": "DigitalExchange_PUT_NotExistent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,18 +12,8 @@
 					"listen": "test",
 					"script": {
 						"id": "dfdb2979-633f-47df-aecf-82ca7fed9d30",
-						"type": "text/javascript",
 						"exec": [
-							"//Contract for DELETE Existent: Status Code: \"200\", Error Code: \"-\", Error Message: \"-\"",
-							"var DELETE_status_code = pm.environment.get(\"http_code_delete_existent\");",
-							"var labelName= \"AAA1\";",
-							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
 							"",
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
-							"});",
 							"",
 							"",
 							"",
@@ -32,7 +22,8 @@
 							"",
 							"",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -66,37 +57,41 @@
 			"response": []
 		},
 		{
-			"name": "DigitalExchange_DELETE",
+			"name": "DigitalExchange_PUT",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "761939e0-5105-4665-af80-57486a939f5a",
+						"id": "70904307-fe8c-4ed2-b42f-39b2c1ad4bb2",
+						"type": "text/javascript",
 						"exec": [
-							"//Label\tDELETE\t\tNotExistent\t200\tN/A\t\t\t\t\tDone",
-							"var DELETE_status_code = 404",
-							"pm.test(\"Status code is \" + DELETE_status_code, function () {",
-							"    pm.response.to.have.status(DELETE_status_code);",
+							"//Label\tPUT\t\tNotExistent\t404\t1\t\t\t\t\tDone",
+							"",
+							"var status_code = 404;",
+							"var error_code = '1';",
+							"var error_message = \"could not be found\";",
+							"",
+							"",
+							"pm.test(\"Status code is \" + status_code, function () {",
+							"    pm.response.to.have.status(status_code);",
 							"});",
 							"",
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"pm.test(\"Error code is \" + error_code, function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].code).to.eql(error_code);",
 							"});",
 							"",
-							"",
-							"",
-							"",
-							"",
-							"",
-							"",
+							"pm.test(\"Error message is correct \", function () {",
+							"   var jsonData = pm.response.json();",
+							"  pm.expect(jsonData.errors[0].message).to.include(error_message);",
+							"});",
 							""
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
 			],
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
@@ -109,7 +104,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n }"
+					"raw": "{{payload}}"
 				},
 				"url": {
 					"raw": "{{url}}/{{api_url}}/{{item_name}}",
@@ -206,21 +201,21 @@
 	],
 	"variable": [
 		{
-			"id": "bebcb34f-212c-44f9-9369-948d798c1ea9",
+			"id": "206a8f11-114e-4331-b0ea-83d128b54d98",
 			"key": "api_url",
 			"value": "api/digitalExchange/exchanges",
 			"type": "string"
 		},
 		{
-			"id": "d8fb49b4-9068-41b8-86b6-026e95d1fbce",
+			"id": "ef9328ff-e2d4-4bde-af00-9d4c6c4444b0",
 			"key": "item_name",
 			"value": "PleaseDoNotUse",
 			"type": "string"
 		},
 		{
-			"id": "5030e2f5-f2b1-41c5-b130-1897e00e0681",
+			"id": "db7e9183-0f6d-4fd7-9812-eb2dd8a3ae1a",
 			"key": "payload",
-			"value": "{\n    \"code\": \"{{item_name}}\",\n    \"descr\": \"{{item_name}}\",\n    \"configuration\": {\n        \"frames\": [{\n                \"pos\": \"0\",\n                \"descr\": \"Navbar\",\n                \"sketch\": {\n                    \"x1\": \"0\",\n                    \"y1\": \"0\",\n                    \"x2\": \"2\",\n                    \"y2\": \"0\"\n                }\n            },\n            {\n                \"pos\": \"1\",\n                \"descr\": \"Navbar 2\",\n                \"sketch\": {\n                    \"x1\": \"3\",\n                    \"y1\": \"0\",\n                    \"x2\": \"5\",\n                    \"y2\": \"0\"\n                }\n            }\n        ]\n    },\n    \"template\": \"<html></html>\"\n}",
+			"value": "{\n  \"name\": \"PleaseDoNotUse\",\n  \"url\": \"http://de.entando.org\",\n  \"active\": true,\n  \"timeout\": 5000\n}",
 			"type": "string"
 		}
 	]
