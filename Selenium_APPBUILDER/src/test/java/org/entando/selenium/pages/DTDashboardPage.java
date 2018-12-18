@@ -42,34 +42,71 @@ public class DTDashboardPage extends PageObject {
     
     
     
+    public WebElement getDashboardTab() {
+        return dashBoardTab;
+    }
+    
+    public WebElement getPageDesignerTab() {
+        return pageDesignerTab;
+    }
+    
+    public WebElement getUxPatternTab() {
+        return uxPatternTab;
+    }
+    
+    public WebElement getIntegrationTab() {
+        return integrationTab;
+    }
+    
+    public WebElement getDataTab() {
+        return dataTab;
+    }
+    
+    public WebElement getConfigurationTab() {
+        return configurationTab;
+    }
+    
+    public WebElement getUserManagementTab() {
+        return userManagementTab;
+    }
+    
+    
+ 
 
     private void selectTab(String tabName) {
         switch (tabName) {
             case "Dashboard": {
+                Utils.waitUntilIsVisible(driver, dashBoardTab);
                 dashBoardTab.click();
                 break;
             }
             case "Page Designer": {
+                Utils.waitUntilIsVisible(driver, pageDesignerTab);
                 pageDesignerTab.click();
                 break;
             }
             case "UX Patterns": {
+                Utils.waitUntilIsVisible(driver, uxPatternTab);
                 uxPatternTab.click();
                 break;
             }
             case "Integrations": {
+                Utils.waitUntilIsVisible(driver, integrationTab);
                 integrationTab.click();
                 break;
             }
             case "Data": {
+                Utils.waitUntilIsVisible(driver, dataTab);
                 dataTab.click();
                 break;
             }
             case "Configuration": {
+                Utils.waitUntilIsVisible(driver, configurationTab);
                 configurationTab.click();
                 break;
             }
             case "User Management": {
+                Utils.waitUntilIsVisible(driver, userManagementTab);
                 userManagementTab.click();
                 break;
             }
@@ -78,7 +115,10 @@ public class DTDashboardPage extends PageObject {
 
     public void SelectSecondOrderLink(String TabName, String Link){
         this.selectTab(TabName);
+        Utils.waitUntilIsVisible(driver, driver.findElement(By.linkText(Link)));
+        
         WebElement secondOrderLink = driver.findElement(By.linkText(Link));
+        
         Utils.waitUntilIsVisible(driver, secondOrderLink);
         secondOrderLink.click();
     }
