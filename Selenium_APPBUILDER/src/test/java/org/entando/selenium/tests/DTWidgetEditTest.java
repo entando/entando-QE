@@ -102,34 +102,21 @@ public class DTWidgetEditTest extends WidgetsTestBase {
         
         dTWidgetEditPage.getSaveButton().click();
         
-        //Wait loading page
-        try
-        {
-            Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        }
-        catch(TimeoutException | NoSuchElementException exception)
-        {
-            Assert.assertTrue("The Spinner did not appear after save the changes", false);
-        }
+        sleep(3000);
         
-        try
-        {
-            Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
-        }
-        catch(TimeoutException exception)
-        {
-            Assert.assertTrue("The Spinner did not disappear after save the changes", false);
-        }
-        
-        //Verify the success message
+      
+        //Utils.waitUntilIsVisible(driver, dTWidgetPage.getCloseAlertMessageButton());
         Assert.assertEquals("Success message content not valid",
                 editSuccessMessage, dTWidgetPage.getAlertMessageContent());
-        dTWidgetPage.getCloseAlertMessageButton().click();
+       dTWidgetPage.getCloseAlertMessageButton().click();
+        
+        //Utils.waitUntilIsVisible(driver, dTWidgetPage.getNewButton());
+        //Utils.waitUntilIsVisible(driver, dTWidgetPage.getSuccessMessage());
         
         //Delete the Widget
-        Assert.assertTrue("Unable to delete the widget", 
+        driver.navigate().refresh();
+       Assert.assertTrue("Unable to delete the widget", 
                 deleteWidget(dTWidgetPage, code));
-        
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){

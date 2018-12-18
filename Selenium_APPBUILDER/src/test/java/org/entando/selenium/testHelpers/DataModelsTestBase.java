@@ -94,9 +94,9 @@ public class DataModelsTestBase extends BrowsableTableTestTypology{
         dTDataModelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTableBody());
+        //Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTableBody());
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getAlertMessage());
         
         dTDataModelsPage.getCloseMessageButton().click();

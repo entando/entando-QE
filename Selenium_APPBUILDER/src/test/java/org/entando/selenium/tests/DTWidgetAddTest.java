@@ -131,30 +131,23 @@ public class DTWidgetAddTest extends WidgetsTestBase {
         //Save the data
         dTWidgetAddPage.getSaveButton().click();
                 
-        //Wait loading page
-        try
-        {
-            Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        }
-        catch(TimeoutException | NoSuchElementException exception)
-        {
-            Assert.assertTrue("The Spinner did not appear after save the changes", false);
-        }
-        
-        try
-        {
-            Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
-        }
-        catch(TimeoutException exception)
-        {
-            Assert.assertTrue("The Spinner did not disappear after save the changes", false);
-        }
-        
+          
         //Verify the success message
+        
+        try
+        {
+            Utils.waitUntilIsVisible(driver, dTWidgetPage.getAlertMessage());
         Assert.assertEquals("Success message content not valid",
                 addSuccessMessage, dTWidgetPage.getAlertMessageContent());
         
         dTWidgetPage.getCloseAlertMessageButton().click();
+        }
+        catch(TimeoutException ex)
+        {
+           Assert.assertTrue("The alert message did not appear", false);
+        }
+        
+        
         
         
         //Delete the Widget

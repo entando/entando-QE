@@ -68,8 +68,8 @@ public class DTCategoriesAddTest extends CategoriesTestBase{
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         //Click on New Button
         dTCategoriesPage.getAddButton().click();
@@ -120,8 +120,8 @@ public class DTCategoriesAddTest extends CategoriesTestBase{
         
         //Return back
         Utils.waitUntilIsVisible(driver, dTCategoriesPage.getAddButton());
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         List<WebElement> createdCategory = dTCategoriesPage.getTable()
                 .findRowList(defaultCategoryName, expectedHeaderTitles.get(0));

@@ -39,6 +39,9 @@ public class DTDashboardPage extends PageObject {
     private WebElement configurationTab;
     @FindBy(linkText = "User Management")
     private WebElement userManagementTab;
+    
+    
+    
 
     private void selectTab(String tabName) {
         switch (tabName) {
@@ -76,6 +79,7 @@ public class DTDashboardPage extends PageObject {
     public void SelectSecondOrderLink(String TabName, String Link){
         this.selectTab(TabName);
         WebElement secondOrderLink = driver.findElement(By.linkText(Link));
+        Utils.waitUntilIsVisible(driver, secondOrderLink);
         secondOrderLink.click();
     }
     

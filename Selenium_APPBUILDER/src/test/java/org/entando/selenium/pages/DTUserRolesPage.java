@@ -84,7 +84,7 @@ public class DTUserRolesPage extends PageObject implements BrowsableTablePageInt
         return pageTitle;
     }
 
-    public WebElement getUsersTable() {
+    public WebElement getRolesTable() {
         return roleTable;
     }
 

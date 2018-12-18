@@ -72,8 +72,16 @@ public class DTUserRoleDeleteTest  extends UsersTestBase {
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTUserRolesPage.getAddButton());
         
-        //Create a role to delete
+        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getRolesTable());
+
+
+//Create a role to delete
+        
         Assert.assertTrue(addRole(dTUserRolesPage, dTUserRoleAddPage, roleName));
+        
+        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getRolesTable());
+        
+        
         
         //Delete the created page
         Assert.assertTrue(deleteRole(dTUserRolesPage, roleName));

@@ -44,7 +44,7 @@ public class CategoriesTestBase extends ExpandableTableTestTypology{
     public final String defaultCategoryName = defaultCategoryNameBase + randomNumber;
     
     //Default branch name
-    public final String defaultBranchName = "All";
+    public final String defaultBranchName = "root";
     
     //Default category already present
     public final String defaultCategoryNameAlreadyPresent = "SeleniumTest_DontTouch";
@@ -80,8 +80,8 @@ public class CategoriesTestBase extends ExpandableTableTestTypology{
         dTCategoriesAddPage.getSaveButton().click();
         
         Utils.waitUntilIsVisible(driver, dTCategoriesPage.getAddButton());
-        Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTCategoriesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTCategoriesPage.spinnerTag);
         
         List<WebElement> createdCategory = dTCategoriesPage.getTable()
                 .findRowList(categoryName, expectedHeaderTitles.get(0));

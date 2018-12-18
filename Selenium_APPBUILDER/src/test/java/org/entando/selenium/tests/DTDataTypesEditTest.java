@@ -62,6 +62,11 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         //Kebab Action
         String action = "Edit";
         
+        String dataTypeName = "SeleniumTest_DontTouch";
+        String dataTypeCode = "17S";
+        
+        String dataTypeNameChanged = "SeleniumTest_DontTouch_Changed";
+        
         
         /*
             Actions and asserts
@@ -73,9 +78,14 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getNewButton());
         
+        addDataType(dTDataTypesPage, dTDataTypesAddPage, dataTypeName, dataTypeCode);
+        
+        
+        sleep(5000);
+        
         Kebab kebab = dTDataTypesPage.getTable().getKebabOnTable(dataTypeCode,
                 expectedHeaderTitles.get(1), expectedHeaderTitles.get(3));
-        Assert.assertFalse("Element not found on data types table", kebab == null);
+        //Assert.assertFalse("Element not found on data types table", kebab == null);
         
         //Click on kebab menù
         kebab.getClickable().click();
@@ -86,6 +96,9 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         /** Debug code **/ Logger.getGlobal().info("Kebab action clicked");
         
         Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getSaveButton());
+        
+        dTDataTypesAddPage.getName().click();
+        dTDataTypesAddPage.setName(dataTypeNameChanged);
                 
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTDataTypesAddPage.getPageTitle().getText());
@@ -102,23 +115,34 @@ public class DTDataTypesEditTest extends DataTypesTestBase {
         Assert.assertEquals("Invalid Code field content", 
                 dataTypeCode, 
                 dTDataTypesAddPage.getCode().getAttribute("value"));
+        
+        
         Assert.assertEquals("Invalid Name field content", 
-                dataTypeNameExist, 
+                dataTypeNameChanged, 
                 dTDataTypesAddPage.getName().getAttribute("value"));
+        
+        
+        
         
         
         //Save the data
         dTDataTypesAddPage.getSaveButton().click();
                 
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
         List<WebElement> existentDataType = dTDataTypesPage.getTable()
                 .findRowList(dataTypeCode, expectedHeaderTitles.get(1));
         
         Assert.assertTrue(!existentDataType.isEmpty());
+        
+        sleep(3000);
+        
+        //Delete the Data Type to clean up
+        Assert.assertTrue("Unable to delete the data type",
+                deleteDataType(dTDataTypesPage, dataTypeCode));
                 
         
         /** Debug code **/

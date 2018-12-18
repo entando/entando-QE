@@ -130,17 +130,20 @@ public class DTDataModelsAddTest extends DataModelsTestBase {
         //Compilation of the fields
         dTDataModelsAddPage.setCode(dataModelCode);
         dTDataModelsAddPage.setName(dataModelName);
+        
+        sleep(3000);
         dTDataModelsAddPage.setTypeSelect(defaultType);
         dTDataModelsAddPage.setModel(defaultModel);
         dTDataModelsAddPage.setStyleSheet(defaultStyleSheet);
         
+        sleep(3000);
         //Save the data
         dTDataModelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTableBody());
+        //Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTableBody());
         
         //Verify the alert message
         Assert.assertTrue("Alert Message has not displayed",

@@ -63,6 +63,8 @@ public class DTDataModelsEditTest extends DataModelsTestBase {
         String action = "Edit";
         
         
+        
+        
         /*
             Actions and asserts
         */
@@ -72,6 +74,11 @@ public class DTDataModelsEditTest extends DataModelsTestBase {
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getNewButton());
+        
+        
+        //delete the datamodel with code 1 just to be sure that it is not present
+        deleteDataModel(dTDataModelsPage, "1");
+        
         
         //Create a Data Model
         Assert.assertTrue(addDataModel(dTDataModelsPage, dTDataModelsAddPage));
@@ -116,8 +123,8 @@ public class DTDataModelsEditTest extends DataModelsTestBase {
         dTDataModelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTableBody());
         
         //Verify the alert message

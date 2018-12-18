@@ -46,6 +46,9 @@ public class DataTypesTestBase extends BrowsableTableTestTypology{
     public final String dataTypeCode = "11S";
     public final String dataTypeCodeExistent = "11S";
     
+    public final String dataTypeCode1 = "17S";
+    public final String dataTypeName1 = "SeleniumTest_DontTouch17S";
+    
     
     
     /**
@@ -87,8 +90,8 @@ public class DataTypesTestBase extends BrowsableTableTestTypology{
         dTDataTypesAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
         
         List<WebElement> createdDataType = dTDataTypesPage.getTable()
@@ -96,6 +99,38 @@ public class DataTypesTestBase extends BrowsableTableTestTypology{
         
         return (!createdDataType.isEmpty());
     }
+    
+    
+    public boolean addDataType(DTDataTypesPage dTDataTypesPage,
+            DTDataTypesAddPage dTDataTypesAddPage, String dataTypeName, String dataTypeCode) throws InterruptedException{
+        //Click on New Button
+        dTDataTypesPage.getNewButton().click();
+        
+        Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getSaveButton());
+        dTDataTypesAddPage.setCode(dataTypeCode);
+        dTDataTypesAddPage.setName(dataTypeName);
+        
+        //Save the data
+        dTDataTypesAddPage.getSaveButton().click();
+        Utils.waitUntilIsVisible(driver, dTDataTypesAddPage.getTypeSelect());
+        sleep(500);
+        dTDataTypesAddPage.getSaveButton().click();
+        
+        //Wait loading page
+        //Utils.waitUntilIsPresent(driver, dTDataTypesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataTypesPage.spinnerTag);
+        Utils.waitUntilIsVisible(driver, dTDataTypesPage.getTableBody());
+        
+        List<WebElement> createdDataType = dTDataTypesPage.getTable()
+                .findRowList(dataTypeCode, expectedHeaderTitles.get(1));
+        
+        return (!createdDataType.isEmpty());
+    }
+    
+    
+    
+    
+    
     
     
     

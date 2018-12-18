@@ -74,8 +74,8 @@ public class SystemLabelsTestBase extends BrowsableTableTestTypology{
         dTSystemLabelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTSystemLabelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTSystemLabelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTSystemLabelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTSystemLabelsPage.spinnerTag);
         
         return true;
     }

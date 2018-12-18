@@ -77,9 +77,10 @@ public class FragmentsTestBase extends BrowsableTableTestTypology{
         dTFragmentNewPage.save();
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTFragmentPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        Utils.waitUntilIsVisible(driver, dTFragmentPage.getNewButton());
+        //Utils.waitUntilIsVisible(driver, element);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         
         return true;
     }

@@ -125,7 +125,7 @@ public class DTUserRoleEditTest extends UsersTestBase {
         Assert.assertTrue(dTUserRoleEditPage.getViewUsersAndProfilesSwitch().isOn());
         Assert.assertTrue(dTUserRoleEditPage.getUserProfileEditingSwitch().isOn());
         Assert.assertTrue(dTUserRoleEditPage.getCommentEditingSwitch().isOn());
-        Assert.assertTrue(dTUserRoleEditPage.getGestioneWebDynamicFormsSwitch().isOn());
+        Assert.assertTrue(dTUserRoleEditPage.getManageWebDynamicFormsSwitch().isOn());
         
         Assert.assertTrue(dTUserRoleEditPage.getSaveButton().isEnabled());
         
@@ -133,9 +133,9 @@ public class DTUserRoleEditTest extends UsersTestBase {
         dTUserRoleEditPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
+        //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);
         
         //Assert the presence of the edited role in the Users table
         List<WebElement> createdUser = dTUserRolesPage.getTable()

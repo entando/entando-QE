@@ -127,8 +127,8 @@ public class DTFragmentsDetailsTest extends FragmentsTestBase{
         driver.navigate().back();
         
         Utils.waitUntilIsVisible(driver, dTFragmentPage.getSearchButton());
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
               
         //delete the fragment
         Assert.assertTrue(deleteFragment(dTFragmentPage, testCode));

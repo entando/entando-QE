@@ -127,8 +127,8 @@ public class DTPageModelsEditTest extends PageModelsTestBase{
         //Save the changes and come back to prev. page
         dTPageModelsAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTPageModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         //Assert the presence of the edited fragment in the table
         List<WebElement> createdPageModels = dTPageModelsPage.getTable()

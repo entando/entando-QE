@@ -121,8 +121,8 @@ public class DTUserRoleAddTest extends UsersTestBase {
         
         //Wait loading page
         Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
+        //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserRolesPage.spinnerTag);        
         //Utils.waitUntilIsVisible(driver, dTUserRolesPage.getTableBody());
         //sleep(1000);
         

@@ -67,13 +67,13 @@ public class DTUserRoleAddPage extends PageObject {
     @FindBy(xpath = "//label[text() = 'User Profile Editing']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement userProfileEditingSwitch;
     
-    @FindBy(xpath = "//label[text() = 'Comment Editing']/..//div[contains(@class,'bootstrap-switch wrapper')]")
+   @FindBy(xpath = "//label[text() = 'Comment Editing']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement commentEditingSwitch;
     
     @FindBy(xpath = "//label[text() = 'Rating Editing']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement ratingEditingSwitch;
     
-    @FindBy(xpath = "//label[text() = 'Gestione Web Dynamic Forms']/..//div[contains(@class,'bootstrap-switch wrapper')]")
+    @FindBy(xpath = "//label[text() = 'Manage Web Dynamic Forms']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement gestioneWebDynamicFormsSwitch;
     
     @FindBy(xpath = "//label[text() = 'Operations on Resources']/..//div[contains(@class,'bootstrap-switch wrapper')]")
@@ -85,7 +85,7 @@ public class DTUserRoleAddPage extends PageObject {
     @FindBy(xpath = "//label[text() = 'Comment Moderate']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement commentModerateSwitch;
     
-    @FindBy(xpath = "//label[text() = 'Newsletter Configuration']/..//div[contains(@class,'bootstrap-switch wrapper')]")
+    @FindBy(xpath = "//label[text() = 'Newsletter management']/..//div[contains(@class,'bootstrap-switch wrapper')]")
     private WebElement newsletterConfigurationSwitch;
     
     @FindBy(xpath = "//label[text() = 'Operations on Categories']/..//div[contains(@class,'bootstrap-switch wrapper')]")

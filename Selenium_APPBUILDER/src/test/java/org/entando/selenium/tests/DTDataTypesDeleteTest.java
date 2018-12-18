@@ -53,7 +53,13 @@ public class DTDataTypesDeleteTest extends DataTypesTestBase {
         */
         //Link menù buttons
         String firstLevelLink = "Data";
-        String secondLevelLink = "Data Types";        
+        String secondLevelLink = "Data Types"; 
+        
+        
+        //A datatype with this name and code will be used in this test
+        
+        String dataTypeName = "Selenium_Test_Do_Not_Touch17S";
+        String dataTypeCode = "17S";
         
         /*
             Actions and asserts
@@ -66,7 +72,7 @@ public class DTDataTypesDeleteTest extends DataTypesTestBase {
         Utils.waitUntilIsVisible(driver, dTDataTypesPage.getNewButton());
         
         //Create a Data Type
-        Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage));
+        Assert.assertTrue(addDataType(dTDataTypesPage, dTDataTypesAddPage, dataTypeName, dataTypeCode));
                 
         //Delete the Data Type
         Assert.assertTrue(deleteDataType(dTDataTypesPage, dataTypeCode));

@@ -95,8 +95,8 @@ public class DTUserManageAuthorizationTest extends UsersTestBase{
         
         Utils.waitUntilIsVisible(driver, dTUserManageAuthorityPage.getPageTitle());
         
-        Utils.waitUntilIsPresent(driver, dTUserManageAuthorityPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserManageAuthorityPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserManageAuthorityPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserManageAuthorityPage.spinnerTag);
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUserManageAuthorityPage.getPageTitle().getText());
@@ -164,8 +164,8 @@ public class DTUserManageAuthorizationTest extends UsersTestBase{
         
         dTUserManageAuthorityPage.getSaveButton().click();
         
-        Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
         
         /** Debug code **/
         Logger.getGlobal().info("TEST CONCLUSO");

@@ -92,7 +92,7 @@ public class DTWidgetPage extends PageObject {
         super(driver);
     }
 
-    public WebElement getSuccessMessage() {
+    public WebElement getAlertMessage() {
         return alertMessage;
     }
     

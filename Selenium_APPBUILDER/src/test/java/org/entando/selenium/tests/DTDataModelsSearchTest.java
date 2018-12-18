@@ -82,6 +82,11 @@ public class DTDataModelsSearchTest extends DataModelsTestBase {
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getNewButton());
         
+        //Delete the datamodels 1 and 2 just to be sure
+        deleteDataModel(dTDataModelsPage, "1");
+        deleteDataModel(dTDataModelsPage, "2");
+        
+        
         //Create two Data Models with the same type
         Assert.assertTrue(addDataModel(dTDataModelsPage, dTDataModelsAddPage,
                 dataModelCode1, dataModelName1, dataModelType1));
@@ -92,8 +97,8 @@ public class DTDataModelsSearchTest extends DataModelsTestBase {
         //Search tests 01
         dTDataModelsPage.setTypeSearchSelect(dataModelType1);
         dTDataModelsPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         int tableSize = dTDataModelsPage.getTable().tableSize();
         Assert.assertEquals("Elements founds: " + tableSize + " Expected: 2",
@@ -102,8 +107,8 @@ public class DTDataModelsSearchTest extends DataModelsTestBase {
         //Search tests 02
         dTDataModelsPage.setTypeSearchSelect(dataModelType2);
         dTDataModelsPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTDataModelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTDataModelsPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         tableSize = dTDataModelsPage.getTable().tableSize();
         Assert.assertEquals("Elements founds: " + tableSize + " Expected: 0",

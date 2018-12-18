@@ -74,8 +74,8 @@ public class DTSystemLabelsAddTest extends SystemLabelsTestBase{
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
         
         //Loading page
-        Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTLabelsAndLanguagesPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTLabelsAndLanguagesPage.spinnerTag);
         
         dTLabelsAndLanguagesPage.getSystemLabelsButton().click();
         
@@ -92,8 +92,8 @@ public class DTSystemLabelsAddTest extends SystemLabelsTestBase{
         dTSystemLabelsAddPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTSystemLabelsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTSystemLabelsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTSystemLabelsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTSystemLabelsPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTSystemLabelsPage.getTableBody());
         
         List<WebElement> createdDataModel = dTSystemLabelsPage.getTable()

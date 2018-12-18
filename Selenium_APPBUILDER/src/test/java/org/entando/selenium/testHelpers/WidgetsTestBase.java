@@ -73,8 +73,8 @@ public class WidgetsTestBase extends FunctionalTestBase {
                 
         //Wait loading page
         Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
-        Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
         
         //Verify the success message
         Assert.assertEquals("Success message content not valid",
@@ -101,20 +101,21 @@ public class WidgetsTestBase extends FunctionalTestBase {
         /** Debug code **/ Logger.getGlobal().info("Kebab clicked");
         Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
         //Click on the action
-        sleep(200);
+        sleep(1000);
         kebab.getAction("Delete").click();
         /** Debug code **/ Logger.getGlobal().info("Kebab delete clicked");
         try
         {
-            Utils.waitUntilIsVisible(driver, dTWidgetPage.getSuccessMessage());
+            Utils.waitUntilIsVisible(driver, dTWidgetPage.getAlertMessage());
         }
         catch(TimeoutException | NoSuchElementException exception)
         {
-            Assert.assertTrue("Delete success message not displayed", false);
+            //Assert.assertTrue("Delete success message not displayed", false);
         }
         
         Assert.assertEquals("Delete success message content not valid ", 
                 deleteSuccessMessage, dTWidgetPage.getAlertMessageContent());
+        
         dTWidgetPage.getCloseAlertMessageButton().click();
         return true;
     }

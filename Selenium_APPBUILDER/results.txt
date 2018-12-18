@@ -1,0 +1,345 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.mycompany:seleniumtest >---------------------
+[INFO] Building seleniumtest 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/simone/ENTANDO/QE-GithubCurrent/entando-QE/Selenium_APPBUILDER/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ seleniumtest ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ seleniumtest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/simone/ENTANDO/QE-GithubCurrent/entando-QE/Selenium_APPBUILDER/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ seleniumtest ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ seleniumtest ---
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.325 sec <<< FAILURE! - in org.entando.selenium.tests.DTFileBrowserUploadFileTest
+runTest  Time elapsed: 4.783 sec  <<< FAILURE!
+java.lang.AssertionError: Invalid Alert Message content. Expected contains "...complete"
+	at org.entando.selenium.tests.DTFileBrowserUploadFileTest.runTest(DTFileBrowserUploadFileTest.java:101)
+
+Running org.entando.selenium.tests.DTDataTypesDeleteTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 11.439 sec <<< FAILURE! - in org.entando.selenium.tests.DTDataTypesDeleteTest
+runTest  Time elapsed: 8.934 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //select[contains(@name, 'type')]' (tried for 3 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTDataTypesDeleteTest.runTest(DTDataTypesDeleteTest.java:69)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//select[contains(@name, 'type')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+
+*** Element info: {Using=xpath, value=//select[contains(@name, 'type')]}
+	at org.entando.selenium.tests.DTDataTypesDeleteTest.runTest(DTDataTypesDeleteTest.java:69)
+
+
+Running org.entando.selenium.tests.DTWidgetAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 24.374 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetAddTest
+runTest  Time elapsed: 21.561 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'alert')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:42421}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 8cc1aeb3e5bcfb9b1dede331c610098e
+*** Element info: {Using=xpath, value=//div[contains(@class, 'alert')]}
+	at org.entando.selenium.tests.DTWidgetAddTest.runTest(DTWidgetAddTest.java:155)
+
+
+Running org.entando.selenium.tests.DTPageConfigureTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 10.378 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageConfigureTest
+runTest  Time elapsed: 7.917 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//a[text()='News - Archive']"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:38795}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 8e9141e5edc7bb273bb3c5d2ab094f62
+*** Element info: {Using=xpath, value=//a[text()='News - Archive']}
+	at org.entando.selenium.tests.DTPageConfigureTest.runTest(DTPageConfigureTest.java:118)
+
+Running org.entando.selenium.tests.DTCategoriesDetailsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.169 sec - in org.entando.selenium.tests.DTCategoriesDetailsTest
+Running org.entando.selenium.tests.DTUserProfileTypeAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.705 sec - in org.entando.selenium.tests.DTUserProfileTypeAddTest
+Running org.entando.selenium.tests.DTUserProfileTypeEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.225 sec - in org.entando.selenium.tests.DTUserProfileTypeEditTest
+Running org.entando.selenium.tests.DTCategoriesEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.886 sec - in org.entando.selenium.tests.DTCategoriesEditTest
+Running org.entando.selenium.tests.DTUserManageAuthorizationTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 14.991 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserManageAuthorizationTest
+runTest  Time elapsed: 12.539 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserManageAuthorizationTest.runTest(DTUserManageAuthorizationTest.java:98)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'spinner-md')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:42705}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: a7e99c2026fc1d855712bc2db9616183
+*** Element info: {Using=xpath, value=//div[contains(@class, 'spinner-md')]}
+	at org.entando.selenium.tests.DTUserManageAuthorizationTest.runTest(DTUserManageAuthorizationTest.java:98)
+
+Running org.entando.selenium.tests.DTDataModelsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.474 sec - in org.entando.selenium.tests.DTDataModelsAddTest
+Running org.entando.selenium.tests.DTSystemLabelsListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.753 sec - in org.entando.selenium.tests.DTSystemLabelsListTest
+Running org.entando.selenium.tests.DTDataModelsSearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.061 sec - in org.entando.selenium.tests.DTDataModelsSearchTest
+Running org.entando.selenium.tests.DTDataTypesListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.181 sec - in org.entando.selenium.tests.DTDataTypesListTest
+Running org.entando.selenium.tests.DTUserEditTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.985 sec - in org.entando.selenium.tests.DTUserEditTest
+Running org.entando.selenium.tests.DTFragmentsDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.403 sec - in org.entando.selenium.tests.DTFragmentsDeleteTest
+Running org.entando.selenium.tests.DTLabelsAndLanguagesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.533 sec - in org.entando.selenium.tests.DTLabelsAndLanguagesTest
+Running org.entando.selenium.tests.DTSystemLabelsEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 19.568 sec <<< FAILURE! - in org.entando.selenium.tests.DTSystemLabelsEditTest
+runTest  Time elapsed: 16.813 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTSystemLabelsEditTest.runTest(DTSystemLabelsEditTest.java:121)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'spinner-md')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:33339}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: dbeb7874cb480612a6e286a2cf6c3234
+*** Element info: {Using=xpath, value=//div[contains(@class, 'spinner-md')]}
+	at org.entando.selenium.tests.DTSystemLabelsEditTest.runTest(DTSystemLabelsEditTest.java:121)
+
+Running org.entando.selenium.tests.DTWidgetsListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.532 sec - in org.entando.selenium.tests.DTWidgetsListTest
+Running org.entando.selenium.tests.DTPageModelsAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.851 sec <<< FAILURE! - in org.entando.selenium.tests.DTPageModelsAddTest
+runTest  Time elapsed: 14.357 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//table[contains(@class, 'table-striped')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41201}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 7c8d406eedfc4e0e52465962c836ec91
+*** Element info: {Using=xpath, value=//table[contains(@class, 'table-striped')]}
+	at org.entando.selenium.tests.DTPageModelsAddTest.runTest(DTPageModelsAddTest.java:134)
+
+Running org.entando.selenium.tests.DTFragmentsSearchTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.866 sec <<< FAILURE! - in org.entando.selenium.tests.DTFragmentsSearchTest
+runTest  Time elapsed: 5.368 sec  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//select[@name = 'plugin']"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:40441}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 192a402c11b8d1eccfbaf016e76c6a40
+*** Element info: {Using=xpath, value=//select[@name = 'plugin']}
+	at org.entando.selenium.tests.DTFragmentsSearchTest.runTest(DTFragmentsSearchTest.java:81)
+
+Running org.entando.selenium.tests.DTReloadConfigurationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.683 sec - in org.entando.selenium.tests.DTReloadConfigurationTest
+Running org.entando.selenium.tests.DTDataTypesEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 11.596 sec <<< FAILURE! - in org.entando.selenium.tests.DTDataTypesEditTest
+runTest  Time elapsed: 9.103 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //select[contains(@name, 'type')]' (tried for 3 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTDataTypesEditTest.runTest(DTDataTypesEditTest.java:76)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//select[contains(@name, 'type')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:41543}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 0bcf61a1dbe91018e9be2eee8d4bc20f
+*** Element info: {Using=xpath, value=//select[contains(@name, 'type')]}
+	at org.entando.selenium.tests.DTDataTypesEditTest.runTest(DTDataTypesEditTest.java:76)
+
+Running org.entando.selenium.tests.DTPageAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.785 sec - in org.entando.selenium.tests.DTPageAddTest
+Running org.entando.selenium.tests.DTDataTypesAddTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.346 sec <<< FAILURE! - in org.entando.selenium.tests.DTDataTypesAddTest
+runTest  Time elapsed: 4.814 sec  <<< FAILURE!
+java.lang.AssertionError: Error message for DataType - GOT: The Type 11S already exists- EXPECTED string that contains: created successfully
+	at org.entando.selenium.tests.DTDataTypesAddTest.runTest(DTDataTypesAddTest.java:112)
+
+Running org.entando.selenium.tests.DTSystemLabelsDeleteTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.5 sec <<< FAILURE! - in org.entando.selenium.tests.DTSystemLabelsDeleteTest
+runTest  Time elapsed: 13.915 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTSystemLabelsDeleteTest.runTest(DTSystemLabelsDeleteTest.java:78)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'spinner-md')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:35311}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: c74fd298670af02c430880282edcd3e5
+*** Element info: {Using=xpath, value=//div[contains(@class, 'spinner-md')]}
+	at org.entando.selenium.tests.DTSystemLabelsDeleteTest.runTest(DTSystemLabelsDeleteTest.java:78)
+
+Running org.entando.selenium.tests.DTPageDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.497 sec - in org.entando.selenium.tests.DTPageDeleteTest
+Running org.entando.selenium.tests.DTUserAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 11.476 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserAddTest
+runTest  Time elapsed: 9.105 sec  <<< ERROR!
+org.openqa.selenium.StaleElementReferenceException: 
+stale element reference: element is not attached to the page document
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:39985}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: 486a411ce39e636f5877b422cb308363
+*** Element info: {Using=xpath, value=.//th}
+	at org.entando.selenium.tests.DTUserAddTest.runTest(DTUserAddTest.java:140)
+
+Running org.entando.selenium.tests.DTWidgetEditTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 22.338 sec <<< FAILURE! - in org.entando.selenium.tests.DTWidgetEditTest
+runTest  Time elapsed: 19.869 sec  <<< FAILURE!
+java.lang.AssertionError: Delete success message not displayed
+	at org.entando.selenium.tests.DTWidgetEditTest.runTest(DTWidgetEditTest.java:131)
+
+
+Running org.entando.selenium.tests.DTDataModelsListTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.399 sec <<< FAILURE! - in org.entando.selenium.tests.DTDataModelsListTest
+runTest  Time elapsed: 4.559 sec  <<< FAILURE!
+java.lang.AssertionError: 
+The effective items number is incorrect!!! 
+Real table size: 0; 
+Total items displayed: 3; 
+Item per page selected: 10
+	at org.entando.selenium.tests.DTDataModelsListTest.runTest(DTDataModelsListTest.java:83)
+
+Running org.entando.selenium.tests.DTUserGroupEditTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 10.871 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserGroupEditTest
+test  Time elapsed: 8.254 sec  <<< ERROR!
+org.openqa.selenium.StaleElementReferenceException: 
+stale element reference: element is not attached to the page document
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:45231}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: a7e85a0b3193e69078527ecae0e6f259
+	at org.entando.selenium.tests.DTUserGroupEditTest.test(DTUserGroupEditTest.java:149)
+
+Running org.entando.selenium.tests.DTUserRoleAddTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 18.417 sec <<< FAILURE! - in org.entando.selenium.tests.DTUserRoleAddTest
+runTest  Time elapsed: 15.919 sec  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //div[contains(@class, 'spinner-md')] (tried for 8 second(s) with 500 milliseconds interval)
+	at org.entando.selenium.tests.DTUserRoleAddTest.runTest(DTUserRoleAddTest.java:124)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(@class, 'spinner-md')]"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.44.609551 (5d576e9a44fe4c5b6a07e568f1ebc753f1214634),platform=Linux 4.9.0-8-amd64 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DebDesk1', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.9.0-8-amd64', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.44.609551 (5d576e9a44fe4c..., userDataDir: /tmp/.org.chromium.Chromium...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:46297}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: e11464c515f65dcca2570688a8a64137
+*** Element info: {Using=xpath, value=//div[contains(@class, 'spinner-md')]}
+	at org.entando.selenium.tests.DTUserRoleAddTest.runTest(DTUserRoleAddTest.java:124)
+
+Running org.entando.selenium.tests.DTUserDeleteTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.076 sec - in org.entando.selenium.tests.DTUserDeleteTest
+Running org.entando.selenium.tests.DTSystemLabelsAddTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.041 sec - in org.entando.selenium.tests.DTSystemLabelsAddTest
+Running org.entando.selenium.tests.DTPagePublishTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.298 sec - in org.entando.selenium.tests.DTPagePublishTest
+
+Results :
+
+Failed tests: 
+  DTDataModelsListTest.runTest:83->BrowsableTableTestTypology.checkBrowsableTable:48->BrowsableTableTestTypology.checkNumericTagsOnBrowsableTable:148 The effective items number is incorrect!!! 
+Real table size: 0; 
+Total items displayed: 3; 
+Item per page selected: 10
+  DTDataTypesAddTest.runTest:112 Error message for DataType - GOT: The Type 11S already exists- EXPECTED string that contains: created successfully
+  DTFileBrowserUploadFileTest.runTest:101 Invalid Alert Message content. Expected contains "...complete"
+  DTWidgetEditTest.runTest:131->WidgetsTestBase.deleteWidget:113 Delete success message not displayed
+Tests in error: 
+  DTDataTypesDeleteTest.runTest:69->DataTypesTestBase.addDataType:61->DataTypesTestBase.addDataType:85 » Timeout
+  DTDataTypesEditTest.runTest:76->DataTypesTestBase.addDataType:85 » Timeout Exp...
+  DTFragmentsSearchTest.runTest:81 » NoSuchElement no such element: Unable to lo...
+  DTPageConfigureTest.runTest:118 » NoSuchElement no such element: Unable to loc...
+  DTPageModelsAddTest.runTest:134 » NoSuchElement no such element: Unable to loc...
+  DTSystemLabelsDeleteTest.runTest:78->SystemLabelsTestBase.addLabel:50->SystemLabelsTestBase.addLabel:77 » Timeout
+  DTSystemLabelsEditTest.runTest:121 » Timeout Expected condition failed: waitin...
+  DTUserAddTest.runTest:140 » StaleElementReference stale element reference: ele...
+  DTUserGroupEditTest.test:149 » StaleElementReference stale element reference: ...
+  DTUserManageAuthorizationTest.runTest:98 » Timeout Expected condition failed: ...
+  DTUserRoleAddTest.runTest:124 » Timeout Expected condition failed: waiting for...
+  DTWidgetAddTest.runTest:155 » NoSuchElement no such element: Unable to locate ...
+
+Tests run: 73, Failures: 4, Errors: 12, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 15:46 min
+[INFO] Finished at: 2018-11-29T19:55:52+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.19.1:test (default-test) on project seleniumtest: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/simone/ENTANDO/QE-GithubCurrent/entando-QE/Selenium_APPBUILDER/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

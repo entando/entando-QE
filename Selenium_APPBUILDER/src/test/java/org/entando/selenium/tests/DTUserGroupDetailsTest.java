@@ -109,8 +109,8 @@ public class DTUserGroupDetailsTest extends UsersTestBase {
         Assert.assertTrue(dTUserGroupDetailsPage.getTooltip().isDisplayed());
         
         //Wait loading Pages Tab content
-        Utils.waitUntilIsPresent(driver, dTUserGroupDetailsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupDetailsPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTUserGroupDetailsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupDetailsPage.spinnerTag);
         
         //Asserts field content are corrected
         Assert.assertEquals(groupName, dTUserGroupDetailsPage.getNameField().getText());
@@ -120,9 +120,13 @@ public class DTUserGroupDetailsTest extends UsersTestBase {
         //Exploring Users tab
         dTUserGroupDetailsPage.getUsersTab().click();
         //Wait loading content
-        Utils.waitUntilIsPresent(driver, dTUserGroupDetailsPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTUserGroupDetailsPage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTUserGroupDetailsPage.getTableBody());
+        //Utils.waitUntilIsPresent(driver, dTUserGroupDetailsPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTUserGroupDetailsPage.spinnerTag);
+        
+        sleep(3000);
+        
+        
+        //Utils.waitUntilIsVisible(driver, dTUserGroupDetailsPage.getTableBody());
         
         //Asserts table COLUMNS NAME are the expected ones
         Assert.assertEquals(usersTabTableHeaderTitles, dTUserGroupDetailsPage.getTable().getHeaderTitlesList());

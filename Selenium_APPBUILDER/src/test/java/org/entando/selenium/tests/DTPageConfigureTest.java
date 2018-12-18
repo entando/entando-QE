@@ -11,6 +11,9 @@ details.
  */
 package org.entando.selenium.tests;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
 import static java.lang.Thread.sleep;
 import java.time.Duration;
 import java.util.logging.Level;
@@ -24,10 +27,13 @@ import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.interactions.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -71,6 +77,12 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         //Login
         login();
         
+        
+        
+        
+        
+        
+        System.setProperty("java.awt.headless", "false");
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTPageTreePage.getTableBody());
@@ -90,9 +102,9 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         Assert.assertEquals(pageName, dTPageConfigurePage.getPageTitle().getText());
         
         //Asserts the DEFAULT ICON is displayed
-        Assert.assertTrue(dTPageConfigurePage.getDefaultWidgetIcon().isDisplayed());
+        //Assert.assertTrue(dTPageConfigurePage.getDefaultWidgetIcon().isDisplayed());
         
-        Utils.waitUntilIsVisible(driver, dTPageConfigurePage.getPageConfigGrid());
+        //Utils.waitUntilIsVisible(driver, dTPageConfigurePage.getPageConfigGrid());
         
         
         /* TESTING THE KEBAB ACTION ON GRID
@@ -112,95 +124,29 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         WebElement widgetText = driver.findElement(By.xpath("//span[text()='Widgets']"));
         WebElement infoButton = dTPageConfigurePage.getInfoButton();
         
-        WebElement from = driver.findElement(By.xpath("//a[text()='SeleniumTest_DontTouch']"));
-        Assert.assertNotNull(from);
-        WebElement from2 = driver.findElement(By.xpath("//a[text()='News - Archive']"));
-        Assert.assertNotNull(from2);
-        WebElement to = driver.findElement(By.xpath("//div[contains(@class, 'PageConfigGrid')]//*[text()= 'SeleniumCell']/../.."));
-        Assert.assertNotNull(to);
         
-        Assert.assertTrue(from.isDisplayed());
-        Assert.assertTrue(to.isDisplayed());
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        WebElement userWidget = dTPageConfigurePage.getWidget("SeleniumTest_DontTouch");
         
+        //js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         
-        Actions testBuilder = new Actions(driver);
-        Action seriesOfAction = testBuilder
-                //.clickAndHold(from)
-                .moveToElement(from)
-                .clickAndHold()
-                //.moveByOffset(-1, -1)
-                //.moveToElement(to, to.getLocation().getX()+to.getSize().getWidth()/2,
-                //        to.getLocation().getY()+to.getSize().getHeight()/2)
-                //.moveToElement(search)
-                //.release(search)
-                .moveToElement(from2)
-                .release()
-                .build();
-        seriesOfAction.perform();
+        //boolean scrollBarPresent = (boolean) ((JavascriptExecutor)driver).executeScript("return document.documentElement.scrollHeight>document.documentElement.clientHeight;");
+        
+        //Assert.assertTrue(scrollBarPresent);
         
         
+        sleep(3000);
+        //Assert.assertTrue(dTPageConfigurePage.isVisibleInViewport(userWidget));
         
-        /*
-        Actions testBuilder = new Actions(driver);
-        Action seriesOfAction = testBuilder
-                .moveToElement(title, 100, 13)
-                .doubleClick()
-                .pause(Duration.ofSeconds(1))
-                .clickAndHold()
-                .moveToElement(to, 100, 100)
-                .pause(Duration.ofSeconds(2))
-                .release(to)
-                .build();
-        seriesOfAction.perform();*/
-        
-        
-        Logger.getGlobal().info(to.getText());
-        Logger.getGlobal().info(to.getTagName());
-        Logger.getGlobal().info(to.getLocation().toString());
-        Logger.getGlobal().info(to.getAttribute("style"));
-        
-        
-        //sleep(1000);
-        //Action dragAndDrop = builder.clickAndHold(from).build();
-        //dragAndDrop.perform();
-        
-        //sleep(1000);
-        //Action dragAndDrop2 = builder.moveToElement(to).build();
-        //Action dragAndDrop2 = builder.moveByOffset(400, 400).build();
-        //dragAndDrop2.perform(); 
+ 
+      
        
-        
-        //WebElement dragHover = to.findElement(By.xpath("//div[contains(@class, 'drag-hover')]"));
-        //Utils.waitUntilIsVisible(driver, dragHover);
-        
-        //sleep(1000);
-        //Action dragAndDrop3 = builder.release(to).build();
-        //dragAndDrop3.perform();
-        
-        
-        /*
-        sleep(1000);
-        builder.clickAndHold(from).perform();
-        
-        builder.pause(Duration.ofSeconds(1)).perform();
-        
-        builder.moveToElement(to,10,10).perform();
-        
-        builder.pause(Duration.ofSeconds(1)).perform();
-        
-        builder.release().perform();
-        
-        builder.pause(Duration.ofSeconds(1)).perform();
-        */
-        
-        
-        /*
-        builder.dragAndDropBy(from, 350, 350).perform();
-        */
-        
-        /*
-        Action dragAndDrop = builder.clickAndHold(from).moveToElement(to,20,20).release().build();        
-        dragAndDrop.perform();*/
+       //dTPageConfigurePage.JavascriptDragAndDrop("SeleniumTest_DontTouch", "SeleniumCell");
+       //sleep(1000);
+       dTPageConfigurePage.moveWidgetToFrame("SeleniumTest_DontTouch", "SeleniumCell1");
+       
+       dTPageConfigurePage.getPublishButton().click();
+            dTPageConfigurePage.getUnpublishButton().click();
                 
         Logger.getGlobal().info("azione eseguita!");
         

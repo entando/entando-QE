@@ -71,24 +71,26 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLink(firstLevelLink, secondLevelLink);
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         
         //Verify default search form values
-        Assert.assertEquals("Default Widget Type value is not \"All\"", "All", 
+       /* Assert.assertEquals("Default Widget Type value is not \"All\"", "All", 
                 dTFragmentPage.getWidgetTypeSelect().getFirstSelectedOption().getText());
         Assert.assertEquals("Default Plugin value is not \"All\"", "All", 
-                dTFragmentPage.getPluginSelect().getFirstSelectedOption().getText());
+                dTFragmentPage.getPluginSelect().getFirstSelectedOption().getText()); */
         
         //Create elements to search
         Assert.assertTrue(addFragment(dTFragmentPage, dTFragmentNewPage, code1));
         Assert.assertTrue(addFragment(dTFragmentPage, dTFragmentNewPage, code2));
         
+        Utils.waitUntilIsVisible(driver, dTFragmentPage.getSearchButton());
+        
         //Search the first element
         dTFragmentPage.setCodeSearchField(code1);
         dTFragmentPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         int tableSize = dTFragmentPage.getTable().tableSize();
         Assert.assertTrue("First element not found!", tableSize > 0);
@@ -97,8 +99,8 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         //Search the second element
         dTFragmentPage.setCodeSearchField(code2);
         dTFragmentPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         tableSize = dTFragmentPage.getTable().tableSize();
         Assert.assertTrue("Second element not found!", tableSize > 0);
@@ -107,8 +109,8 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         //Search a portion of String of 
         dTFragmentPage.setCodeSearchField(code2.substring(0, 10));
         dTFragmentPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         tableSize = dTFragmentPage.getTable().tableSize();
         Assert.assertTrue("Elements not found!", tableSize > 0);
@@ -117,8 +119,8 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         //Search a invented fragment code
         dTFragmentPage.setCodeSearchField(code3);
         dTFragmentPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         tableSize = dTFragmentPage.getTable().tableSize();
         Assert.assertTrue("Elements not found!", tableSize == 0);
@@ -127,8 +129,8 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         //Delete the fragments
         dTFragmentPage.setCodeSearchField(code2.substring(0, 10));
         dTFragmentPage.getSearchButton().click();
-        Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         Assert.assertTrue(deleteFragment(dTFragmentPage, code1));
         Assert.assertTrue(deleteFragment(dTFragmentPage, code2));
                
