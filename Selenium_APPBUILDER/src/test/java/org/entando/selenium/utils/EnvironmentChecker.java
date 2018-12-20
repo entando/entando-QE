@@ -25,8 +25,10 @@ import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -136,7 +138,7 @@ public class EnvironmentChecker extends FunctionalTestBase{
         checkUserRole();
         checkUser();
         checkPageModel();
-        checkDataType();
+       checkDataType();
         
         checkPage();
         checkCategories();
@@ -570,23 +572,16 @@ public class EnvironmentChecker extends FunctionalTestBase{
             DTPageModelsAddPage dTPageModelsAddPage, String code) throws InterruptedException{
         //The code to insert in the fields
         String jsonConfiguration = "{\n" +
-                                                "  \"frames\": [\n" +
-                                                "    {\n" +
-                                                "      \"pos\": 0,\n" +
-                                                "      \"descr\": \"SeleniumCell\",\n" +
-                                                "      \"mainFrame\": false,\n" +
-                                                "      \"defaultWidget\": null,\n" +
-                                                "      \"sketch\": null\n" +
-                                                "    },\n" +
-                                                                "    {\n" +
-                                                "      \"pos\": 1,\n" +
-                                                "      \"descr\": \"SeleniumCell1\",\n" +
-                                                "      \"mainFrame\": false,\n" +
-                                                "      \"defaultWidget\": null,\n" +
-                                                "      \"sketch\": null\n" +
-                                                "    }\n" +
-                                                "  ]\n" +
-                                                "}";
+"  \"frames\": [\n" +
+"    {\n" +
+"      \"pos\": 0,\n" +
+"      \"descr\": \"Test frame\",\n" +
+"      \"mainFrame\": false,\n" +
+"      \"defaultWidget\": null,\n" +
+"      \"sketch\": null\n" +
+"    }\n" +
+"  ]\n" +
+"}\n";
         String template = "<>";
     
         Utils.waitUntilIsVisible(driver, dTPageModelsPage.getAddButton());
@@ -600,13 +595,20 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Utils.waitUntilIsDisappears(driver, dTPageModelsPage.spinnerTag);
         
         //Compilation of the fields
+        
+        dTPageModelsAddPage.clearJsonConfigurationFieldNew();
+    
+        
         dTPageModelsAddPage.setCodeField(code);
         dTPageModelsAddPage.setNameField(code);
-        dTPageModelsAddPage.clearJsonConfigurationField();
+        
+       
         dTPageModelsAddPage.setJsonConfigurationField(jsonConfiguration);
         dTPageModelsAddPage.setTemplateField(template);
         
         //Save the data
+        sleep(3000);
+        
         dTPageModelsAddPage.getSaveButton().click();
         
         //Wait loading page
@@ -700,7 +702,13 @@ public class EnvironmentChecker extends FunctionalTestBase{
         //Save and return
         dTUserRoleAddPage.getSaveButton().click();
         
-        Utils.waitUntilIsVisible(driver, dTUserRolesPage.getPageTitle());
+        try {
+            sleep(2000);
+            Utils.waitUntilIsVisible(driver, dTUserRolesPage.getRolesTable() );
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EnvironmentChecker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         //Wait loading page
         //Utils.waitUntilIsPresent(driver, dTUserRolesPage.spinnerTag);

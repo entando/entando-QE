@@ -82,8 +82,8 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         link.click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getUploadButton());
         
         //Asserts table COLUMNS NAME are the expected ones
@@ -101,8 +101,8 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         link.click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
         
         //Asserts the breadcrumb is corrected
@@ -113,8 +113,8 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         dTFileBrowserPage.getUpButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
-        Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
+        //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
         
         //Asserts the breadcrumb is corrected

@@ -70,6 +70,13 @@ public class DTPageModelsAddPage extends PageObject {
     @FindBy(xpath = "//label[* = 'Template']/..//div[@class = 'help-block']")
     private WebElement templateErrorField;
     
+    @FindBy(xpath = "//*[@id=\"root\"]/div[2]/div[3]/div[4]/div/form/div[2]/div/div/div/div/div/div/div[1]/textarea")
+    private WebElement jsonTextArea;
+    
+    public WebElement getJsonTextArea(){
+        return jsonTextArea;
+    }
+    
     
 
     public DTPageModelsAddPage(WebDriver driver) {
@@ -133,7 +140,7 @@ public class DTPageModelsAddPage extends PageObject {
     
     
     
-    public void clearJsonConfigurationField() {
+   /* public void clearJsonConfigurationField() {
         Actions builder = new Actions(driver); 
         builder.click(this.jsonConfigurationFieldLine3)
                 .doubleClick().perform();
@@ -151,7 +158,25 @@ public class DTPageModelsAddPage extends PageObject {
         builder.click(this.jsonConfigurationFieldLine1).perform();
         builder.doubleClick().perform();
         builder.sendKeys(Keys.BACK_SPACE).perform(); 
+    }*/
+    
+    
+    
+    public void clearJsonConfigurationFieldNew() {
+        String selectAll = Keys.chord(Keys.CONTROL, "a");
+        
+        Actions builder = new Actions(driver); 
+        builder.click(this.jsonConfigurationFieldLine3)
+                .doubleClick().perform();
+        builder.sendKeys(selectAll).perform();
+        builder.sendKeys(Keys.BACK_SPACE).perform();
+        Logger.getGlobal().info("step 1");
+        
+    
     }
+    
+    
+    
     
     
 

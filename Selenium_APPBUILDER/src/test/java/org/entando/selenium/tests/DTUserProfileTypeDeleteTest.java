@@ -66,6 +66,7 @@ public class DTUserProfileTypeDeleteTest extends UsersTestBase{
         Random generator = new Random();
         int randomNumber = generator.nextInt(9999);
         String profileTypeName = "1SLNM_TEST_" + randomNumber;
+        String profileTypeCode = "APT";
         
                 
         /*
@@ -80,7 +81,7 @@ public class DTUserProfileTypeDeleteTest extends UsersTestBase{
         
         //Create a profile type
         Assert.assertTrue(addProfileType(dTUserProfileTypePage, dTUserProfileTypeAddPage,
-                profileTypeName));
+                profileTypeName, profileTypeCode));
                 
         
         Kebab kebab = dTUserProfileTypePage.getTable().getKebabOnTable(profileTypeName, rolesTableHeaderTitles.get(0), rolesTableHeaderTitles.get(2));

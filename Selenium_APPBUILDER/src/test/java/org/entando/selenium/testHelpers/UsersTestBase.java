@@ -272,8 +272,12 @@ public class UsersTestBase extends BrowsableTableTestTypology{
      * @throws java.lang.InterruptedException 
      */
     public boolean addProfileType(DTUserProfileTypePage dTUserProfileTypePage,
-            DTUserProfileTypeAddPage dTUserProfileTypeAddPage, String profileTypeName) throws InterruptedException
+            DTUserProfileTypeAddPage dTUserProfileTypeAddPage, String profileTypeName, String profileTypeCode) throws InterruptedException
     {
+        
+        
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getAddButton());
+        
         dTUserProfileTypePage.getAddButton().click();
         
         Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getPageTitle());
@@ -286,7 +290,9 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         dTUserProfileTypeAddPage.getSaveButton().click();
         
         //Loading next step
-        Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getAddButton());
+        sleep(1000);
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getSaveButton());
+        //Utils.waitUntilIsVisible(driver, dTUserProfileTypeAddPage.getAddButton());
         sleep(400);
         
         dTUserProfileTypeAddPage.getSaveButton().click();
@@ -294,7 +300,9 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         //Wait loading page
         //Utils.waitUntilIsPresent(driver, dTUserProfileTypePage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTUserProfileTypePage.spinnerTag);
-        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
+        
+        sleep(3000);
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getProfileTypeTable());
         
         //Assert the presence of the created profile type in the Profile type table
         List<WebElement> createdUser = dTUserProfileTypePage.getTable()
@@ -332,6 +340,38 @@ public class UsersTestBase extends BrowsableTableTestTypology{
         Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getDeleteModalButton());
         /** Debug code **/ Logger.getGlobal().info(dTUserProfileTypePage.getModalBody().getText());
         /** Debug code **/ Logger.getGlobal().info(MessageFormat.format("Expected: {0}", profileTypeName));
+        Assert.assertTrue(dTUserProfileTypePage.getModalBody().getText().contains(profileTypeCode));
+        Utils.waitUntilIsClickable(driver, dTUserProfileTypePage.getDeleteModalButton());
+        sleep(100);
+        dTUserProfileTypePage.getDeleteModalButton().click();
+        Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
+        /** Debug code **/ Logger.getGlobal().info("delete Profile Type return true");   
+        return true;
+    }
+    
+    
+    
+    
+    public boolean deleteProfileTypeByCode(DTUserProfileTypePage dTUserProfileTypePage,
+            String profileTypeCode) throws InterruptedException
+    {
+        Kebab kebab = dTUserProfileTypePage.getTable().getKebabOnTable(profileTypeCode, rolesTableHeaderTitles.get(1), rolesTableHeaderTitles.get(2));
+        if(kebab == null)
+        {
+            /** Debug code **/ Logger.getGlobal().info("Profile Type not found!");
+            return false;
+        }
+        //Click on kebab menù
+        kebab.getClickable().click();
+        /** Debug code **/ Logger.getGlobal().info("Kebab clicked");
+        Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
+        //Click on the action
+        kebab.getAction("Delete").click();
+        /** Debug code **/ Logger.getGlobal().info("Kebab delete clicked");
+        
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getDeleteModalButton());
+        /** Debug code **/ Logger.getGlobal().info(dTUserProfileTypePage.getModalBody().getText());
+        /** Debug code **/ Logger.getGlobal().info(MessageFormat.format("Expected: {0}", profileTypeCode));
         Assert.assertTrue(dTUserProfileTypePage.getModalBody().getText().contains(profileTypeCode));
         Utils.waitUntilIsClickable(driver, dTUserProfileTypePage.getDeleteModalButton());
         sleep(100);

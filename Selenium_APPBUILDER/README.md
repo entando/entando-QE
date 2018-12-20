@@ -1,7 +1,7 @@
 ### Selenium_APPBUILDER
 
-The project has been developed on AppBuilder application. 
-You can install it on your local machine.
+This Maven project has been developed to perform automatic functional testing on the Entando AppBuilder application. 
+
 
 
 __Prerequisites__
@@ -30,7 +30,7 @@ ChromeDriver 2.40.565383
 
 Google Chrome 68.0.3440.106
 
-REMEMBER: If you use a pair major release of ChromeDriver (ex: x.40) you need a pair release of Google Chrome (ex: 68.x)
+REMEMBER: If you use a major release of ChromeDriver (ex: x.40) you need a paired release of Google Chrome (ex: 68.x) to be able to run the tests.
 For more information see this link: http://chromedriver.chromium.org/downloads
 
 
@@ -48,24 +48,34 @@ __How to set tests options__
 
 • Set debug mode (to show some message about the execution of the test and to identify unexpected errors in the tests)
 1) Open the class FunctionalTestBase in the package `org.entando.selenium.utils`
-2) find the method setUp()
+2) Find the method setUp()
 3) Change the parameter of `Logger.getGlobal().setLevel(Level.OFF)`
 You can use Level.OFF to disable debug mode or `Level.INFO` if enable it
 
 • Set headless mode (a solution to run tests without opening the browser)
 1) Open the class AppConfig in the package `org.entando.selenium.utils`
-2) find the local variable `HEADLESS`
-3) Set it true if you enable "headless mode" or false to disable it
+2) Find the local variable `HEADLESS`
+3) Set it to true if you would like you enable "headless mode" or false to disable it
+
+
+• Set browserstack mode (a solution to run tests on browserstack (TM))
+1) Open the class AppConfig in the package `org.entando.selenium.utils`
+2) Find the local variable `BROWSERSTACK`
+3) Set it to true if you would like to enable  the "browserstack mode" or false to disable it
+4) In order to be able to use Browserstack (TM) you need to have a valid account and to provide the correct browserstack (TM) credentials in the AppConfig class. 
+
+Note: By default the BROWSERSTACK variable is set to true.
 
 
 
 __Before run the tests__
 
 It's essential to create the necessary environment for the tests to work properly.
-This involves the creation of various elements within the application that will be used during the execution of the tests.
+This involves the creation of various elements within the application that will be used during the tests execution.
 To automate this operation you can run the Environment Checker class as if it were a normal test.
+
 How to run Environment Checker:
-1) Open a bash terminal then positioned in the folder that contains pom.xml
+1) Open a terminal in the folder that contains the pom.xml file
 2) Type the command: 
 `mvn -Dtest=*EnvironmentChecker.java test`
 Wait the end of this process.
@@ -76,16 +86,11 @@ Moreover it's essential to create a text file in your local file system like `se
 
 __How to run the test__
 
-1) Open a bash terminal then positioned in the folder that contains pom.xml
-2) If you run ALL tests type the command:
+1) Open a terminal in the folder that contains pom.xml file
+2) Should you prefer to run ALL tests type the command:
 `mvn test`
-If you run a specific test type the command:
+To run a specific test type the command:
 `mvn -Dtest=SpecificTest.java test`
-If you run a series of tests type the command:
-`mvn -Dtest=DTEx* test`
 
-It's recommended to use output redirection to read tests results
-For Example:
-`mvn -Dtest=DTEx* test > Example-Results.txt`
 
-If you prefer you can run the tests on your favorite IDE likes NetBeans or IntelliJ.
+The tests can of course been run from your favorite IDE.

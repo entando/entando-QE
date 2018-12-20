@@ -164,16 +164,7 @@ public class DTPageConfigurePage extends PageObject{
         WebElement to = driver.findElement(By.xpath( String.format("//div[contains(@class, 'EmptyFrame')]//*[text()= '%s']/../..", frameName)));
         Assert.assertNotNull(to);
         
-      
-        
-        
-        
-    
-      
-        
-        
-        
-        
+     
         //Utils.waitUntilIsVisible(driver, from);
         
         org.openqa.selenium.Dimension d = to.getSize();

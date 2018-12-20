@@ -94,7 +94,7 @@ public class DTPageModelsAddTest extends PageModelsTestBase{
         dTPageModelsAddPage.getCodeField().click();
         dTPageModelsAddPage.getNameField().click();
         dTPageModelsAddPage.getJsonConfigurationField().click();
-        dTPageModelsAddPage.clearJsonConfigurationField();
+        dTPageModelsAddPage.clearJsonConfigurationFieldNew();
         dTPageModelsAddPage.getTemplateField().click();
         dTPageModelsAddPage.getCodeField().click();
         Assert.assertTrue(dTPageModelsAddPage.getCodeErrorField().isDisplayed());

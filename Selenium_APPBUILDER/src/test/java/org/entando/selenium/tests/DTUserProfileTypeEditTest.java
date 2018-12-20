@@ -71,6 +71,7 @@ public class DTUserProfileTypeEditTest extends UsersTestBase {
         Random generator = new Random();
         int randomNumber = generator.nextInt(9999);
         String profileTypeName = "1SLNM_TEST_" + randomNumber;
+        String profileTypeCode = "ATP";
         
         
         
@@ -85,9 +86,12 @@ public class DTUserProfileTypeEditTest extends UsersTestBase {
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
         Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getAddButton());
         
+        deleteProfileTypeByCode(dTUserProfileTypePage, profileTypeCode);
+        
+        
         //Create a profile type
         Assert.assertTrue(addProfileType(dTUserProfileTypePage, dTUserProfileTypeAddPage,
-                profileTypeName));
+                profileTypeName, profileTypeCode));
                 
         
         Kebab kebab = dTUserProfileTypePage.getTable().getKebabOnTable(profileTypeName, rolesTableHeaderTitles.get(0), rolesTableHeaderTitles.get(2));
@@ -124,9 +128,9 @@ public class DTUserProfileTypeEditTest extends UsersTestBase {
         dTUserProfileTypeEditPage.getSaveButton().click();
         
         //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getPageTitle());      
-        //Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getTableBody());
-        //sleep(1000);
+        sleep(2000);
+        Utils.waitUntilIsVisible(driver, dTUserProfileTypePage.getProfileTypeTable());      
+        
         
         //Assert the presence of the created profile type in the Profile type table
         List<WebElement> createdUser = dTUserProfileTypePage.getTable()
@@ -135,7 +139,7 @@ public class DTUserProfileTypeEditTest extends UsersTestBase {
         Assert.assertTrue(!createdUser.isEmpty());
         
         //Delete the Profile type created for the test
-        Assert.assertTrue(deleteProfileType(dTUserProfileTypePage, profileTypeName));
+        Assert.assertTrue(deleteProfileTypeByCode(dTUserProfileTypePage, profileTypeCode));
         
         
         /** Debug code **/

@@ -15,6 +15,7 @@ import static java.lang.Thread.sleep;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.entando.selenium.pages.DTWidgetAddPage;
 import org.entando.selenium.pages.DTWidgetPage;
@@ -71,8 +72,14 @@ public class WidgetsTestBase extends FunctionalTestBase {
         //Save the data
         dTWidgetAddPage.getSaveButton().click();
                 
-        //Wait loading page
-        Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
+        try {
+            //Wait loading page
+            sleep(2000);
+            Utils.waitUntilIsVisible(driver, dTWidgetPage.getPageTitle());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(WidgetsTestBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //Utils.waitUntilIsPresent(driver, dTWidgetPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTWidgetPage.spinnerTag);
         

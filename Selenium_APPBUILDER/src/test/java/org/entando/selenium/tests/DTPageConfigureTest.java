@@ -79,9 +79,6 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         
         
         
-        
-        
-        
         System.setProperty("java.awt.headless", "false");
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep(firstLevelLink, secondLevelLink);
@@ -139,11 +136,11 @@ public class DTPageConfigureTest extends PageTreeTestBase{
         //Assert.assertTrue(dTPageConfigurePage.isVisibleInViewport(userWidget));
         
  
-      
+      //dTPageConfigurePage.moveWidgetToFrame("SeleniumTest_DontTouch", "Test frame");
        
-       //dTPageConfigurePage.JavascriptDragAndDrop("SeleniumTest_DontTouch", "SeleniumCell");
+       dTPageConfigurePage.JavascriptDragAndDrop("SeleniumTest_DontTouch", "Test frame");
        //sleep(1000);
-       dTPageConfigurePage.moveWidgetToFrame("SeleniumTest_DontTouch", "SeleniumCell1");
+       //dTPageConfigurePage.moveWidgetToFrame("SeleniumTest_DontTouch", "SeleniumCell1");
        
        dTPageConfigurePage.getPublishButton().click();
             dTPageConfigurePage.getUnpublishButton().click();

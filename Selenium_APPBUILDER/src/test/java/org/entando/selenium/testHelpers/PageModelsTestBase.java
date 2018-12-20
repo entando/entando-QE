@@ -94,7 +94,7 @@ public class PageModelsTestBase extends BrowsableTableTestTypology{
         //Compilation of the fields
         dTPageModelsAddPage.setCodeField(code);
         dTPageModelsAddPage.setNameField(code);
-        dTPageModelsAddPage.clearJsonConfigurationField();
+        dTPageModelsAddPage.clearJsonConfigurationFieldNew();
         dTPageModelsAddPage.setJsonConfigurationField(jsonConfiguration);
         dTPageModelsAddPage.setTemplateField(template);
         
