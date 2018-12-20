@@ -87,7 +87,7 @@ public class AppConfig {
         caps.setCapability("os", "Windows");
         caps.setCapability("os_version", "10");
         caps.setCapability("resolution", "1280x1024");
-        caps.setCapability("project", "appbuilder-5.1.0-simone-testing");
+        caps.setCapability("project", "appbuilder-5.1.0");
         caps.setCapability("browserstack.debug", "true");
         caps.setCapability("browserstack.networkLogs", "true");
         caps.setCapability("browserstack.appiumLogs", "false");
