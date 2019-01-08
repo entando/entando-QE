@@ -62,17 +62,17 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
         
       
         
-        //This portion of code is responsible to create a file that will be uploaded later in the test.
-        PrintWriter writer;
+        //This portion of code creates a file that will be uploaded later in the test.
+        /*PrintWriter writer;
         try {
-            writer = new PrintWriter("/tmp/seleniumTest-File.txt", "UTF-8");
+            writer = new PrintWriter(fileToUploadPath + fileToUploadName, "UTF-8");
             writer.println("This is a test file created by Selenium! Questo è un file creato da Selenium!");
             writer.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DTFileBrowserUploadFileTest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(DTFileBrowserUploadFileTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         
         
@@ -125,7 +125,7 @@ public class DTFileBrowserUploadFileTest extends FileBrowserTestBase{
                 dTFileBrowserPage.getAlertMessageContent().contains("complete"));
         dTFileBrowserPage.getCloseMessageButton().click();
         
-        sleep(500);
+        sleep(2000);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
         
         //Assert the presence of the uploaded file in the file browser table

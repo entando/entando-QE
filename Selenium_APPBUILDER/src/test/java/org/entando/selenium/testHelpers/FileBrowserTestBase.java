@@ -59,10 +59,10 @@ public class FileBrowserTestBase extends FunctionalTestBase{
             "This is a Selenium Test!!! Ne pas toucher, Merçi!";
     
     //Default upload file name
-   public final String fileToUploadName = "seleniumTest-File.txt";
+   public final String fileToUploadName = "doc-sample1.doc";
      
-    //Default upload file path
-    public final String fileToUploadPath = "/tmp/";
+    //Default upload file path (note this is customized to work on Browserstack Windows10, it needs to be refactored to work on any platform.
+    public final String fileToUploadPath = "C:\\Users\\hello\\Documents\\documents\\";
     
     
     
