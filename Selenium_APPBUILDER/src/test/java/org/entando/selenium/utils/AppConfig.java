@@ -13,23 +13,18 @@ package org.entando.selenium.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+
 import org.entando.selenium.pages.*;
+import org.entando.selenium.smoketests.STLoginPage;
 import org.openqa.selenium.*;
 //import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.springframework.beans.factory.config.CustomScopeConfigurer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
 /*import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -46,12 +41,21 @@ import org.springframework.context.annotation.Scope;*/
  * @version 1.01
  */
 @Configuration
+//@ImportResource("classpath:properties.xml")
+@Import({ScopeConfig.class,PropertiesConfig.class})
+@PropertySource(
+        value={"classpath:test.properties"},
+        ignoreResourceNotFound = true)
 public class AppConfig {
-    
-    private static final boolean HEADLESS = false;
-    private static final boolean BROWSERSTACK = true;
-    
-    
+
+    @Value("${entando.appbuilder.url:http://appbuilder.serv.run}")
+    private String appBuilderUrl;
+    @Value("${entando.run.headless:false}")
+    private boolean runHeadless;
+    //private static final boolean HEADLESS = false;
+    private static final boolean BROWSERSTACK = false;
+
+
     /**
      * browserstack credentials will be used only if BROWSERSTACK boolean variable is set to true
      */
@@ -59,28 +63,13 @@ public class AppConfig {
     private static final String USERNAME = "";
     private static final String AUTOMATE_KEY = "";
     private static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-    
-    
-    
-    @Bean
-    public TestScope testScope() {
-        return new TestScope();
-    }
-    
-    @Bean
-    public CustomScopeConfigurer customScopeConfigurer() {
-        CustomScopeConfigurer scopeConfigurer = new CustomScopeConfigurer();
-        Map<String, Object> scopes = new HashMap<>();
-        scopes.put("test", testScope());
-        scopeConfigurer.setScopes(scopes);
-        return scopeConfigurer;
-    }
-    
+
+
+
+
     @Bean
     @Scope("test")
     public WebDriver webDriver() throws MalformedURLException{
-       
-        
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browser", "Chrome");
         caps.setCapability("browser_version", "71.0");
@@ -92,359 +81,367 @@ public class AppConfig {
         caps.setCapability("browserstack.networkLogs", "true");
         caps.setCapability("browserstack.appiumLogs", "false");
         caps.setCapability("browserstack.selenium_version", "3.14.0");
-        
-        
-        
         if (BROWSERSTACK){
             WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
             driver.manage().window().maximize();
             return driver;
-            
-        } else if (!BROWSERSTACK && HEADLESS){
+        } else if (!BROWSERSTACK && runHeadless){
+            System.out.println("running headless on " + appBuilderUrl);
             ChromeOptions options = new ChromeOptions();
+            ChromeDriverService s = new ChromeDriverService.Builder().withVerbose(false).withWhitelistedIps("").usingPort(32432).
+                    build();
             options.addArguments("headless");
             options.addArguments("window-size=1920x1200");
-            WebDriver driver = new ChromeDriver(options);
-            return driver;      
+            options.addArguments("disable-extensions");
+            options.addArguments("no-sandbox");
+            WebDriver driver = new ChromeDriver(s,options);
+            return driver;
         } else {
           ChromeOptions options = new ChromeOptions();
           options.addArguments("window-size=1920x1200");
-            WebDriver driver = new ChromeDriver(options); 
+          WebDriver driver = new ChromeDriver(options);
             return driver;
-            
+
         }
-        
+
     }
-    
+
+    @Bean
+    @Scope("prototype")
+    public STLoginPage sTLoginPage(WebDriver driver){
+        driver.get(appBuilderUrl);
+        return new STLoginPage(driver);
+    }
+
     @Bean
     @Scope("prototype")
     public DTCategoriesPage dTCategoriesPage(WebDriver driver){
         return new DTCategoriesPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTCategoriesAddPage dTCategoriesAddPage(WebDriver driver){
         return new DTCategoriesAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTCategoriesDetailsPage dTCategoriesDetailsPage(WebDriver driver){
         return new DTCategoriesDetailsPage(driver);
-    } 
-    
+    }
+
     @Bean
     @Scope("prototype")
     public DTDashboardPage dTDashboardPage(WebDriver driver){
         return new DTDashboardPage(driver);
     }
-            
+
     @Bean
     @Scope("prototype")
     public DTDatabasePage dTDatabasePage(WebDriver driver){
         return new DTDatabasePage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTDataModelsPage dTDataModelsPage(WebDriver driver){
         return new DTDataModelsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTDataModelsAddPage dTDataModelsAddPage(WebDriver driver){
         return new DTDataModelsAddPage(driver);
-    }    
-    
+    }
+
     @Bean
     @Scope("prototype")
     public DTDataTypesPage dTDataTypesPage(WebDriver driver){
         return new DTDataTypesPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTDataTypesAddPage dTDataTypeAddPage(WebDriver driver){
         return new DTDataTypesAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFileBrowserCreateFolderPage dTFileBrowserCreateFolderPage(WebDriver driver){
         return new DTFileBrowserCreateFolderPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFileBrowserCreateTextFilePage dTFileBrowserCreateTextFilePage(WebDriver driver){
         return new DTFileBrowserCreateTextFilePage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFileBrowserPage dTFileBrowserPage(WebDriver driver){
         return new DTFileBrowserPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFileBrowserUploadPage dTFileBrowserUploadPage(WebDriver driver){
         return new DTFileBrowserUploadPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFragmentsDetailsPage dTFragmentsDetailsPage(WebDriver driver){
         return new DTFragmentsDetailsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFragmentEditPage dTFragmentEditPage(WebDriver driver){
         return new DTFragmentEditPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFragmentNewPage dTFragmentNewPage(WebDriver driver){
         return new DTFragmentNewPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTFragmentPage dTFragmentPage(WebDriver driver){
         return new DTFragmentPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserGroupAddPage dTGroupAddPage(WebDriver driver){
         return new DTUserGroupAddPage(driver);
     }
 
-    
+
     @Bean
     @Scope("prototype")
     public DTUserGroupDetailsPage dTGroupDetailsPage(WebDriver driver){
         return new DTUserGroupDetailsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserGroupEditPage dTGroupEditPage(WebDriver driver){
         return new DTUserGroupEditPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserGroupsPage dTGroupsPage(WebDriver driver){
         return new DTUserGroupsPage(driver);
     }
-    
-            
+
+
     @Bean
     @Scope("prototype")
     public DTLabelsAndLanguagesPage dTLabelsAndLanguagesPage(WebDriver driver){
         return new DTLabelsAndLanguagesPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTLoginPage dTLoginPage(WebDriver driver){
         return new DTLoginPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageModelsPage dTPageModelsPage(WebDriver driver){
         return new DTPageModelsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageModelsAddPage dTPageModelsAddPage(WebDriver driver){
         return new DTPageModelsAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageModelsDetailsPage dTPageModelsDetailsPage(WebDriver driver){
         return new DTPageModelsDetailsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageEditPage dTPageEditPage(WebDriver driver){
         return new DTPageEditPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageTreePage dTPageTreePage(WebDriver driver){
         return new DTPageTreePage(driver);
     }
-        
+
     @Bean
     @Scope("prototype")
     public DTPageAddPage dTPageAddPage(WebDriver driver){
         return new DTPageAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTPageClonePage dTPageClonePage(WebDriver driver){
         return new DTPageClonePage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTPageDetailsPage dTPageDetailsPage(WebDriver driver){
         return new DTPageDetailsPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTPageSettingsPage dTPageSettingsPage(WebDriver driver){
         return new DTPageSettingsPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTPageConfigurePage dTPageConfigurePage(WebDriver driver){
         return new DTPageConfigurePage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTReloadConfigurationPage dTReloadConfigurationPage(WebDriver driver){
         return new DTReloadConfigurationPage(driver);
-    }        
-    
+    }
+
     @Bean
     @Scope("prototype")
     public DTSystemLabelsPage dTSystemLabelsPage(WebDriver driver){
         return new DTSystemLabelsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTSystemLabelsAddPage dTSystemLabelsAddPage(WebDriver driver){
         return new DTSystemLabelsAddPage(driver);
     }
-         
+
     @Bean
     @Scope("prototype")
     public DTUserAddPage dTUserAddPage(WebDriver driver){
         return new DTUserAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserDetailsPage dTUserDetailsPage(WebDriver driver){
         return new DTUserDetailsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserEditPage dTUserEditPage(WebDriver driver){
         return new DTUserEditPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUserManageAuthorityPage dTUserManageAuthorityPage(WebDriver driver){
         return new DTUserManageAuthorityPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTUsersPage dTUsersPage(WebDriver driver){
         return new DTUsersPage(driver);
     }
-    
-            
+
+
     @Bean
     @Scope("prototype")
     public DTUserRolesPage dTUserRolesPage(WebDriver driver){
         return new DTUserRolesPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserRoleAddPage dTUserRoleAddPage(WebDriver driver){
         return new DTUserRoleAddPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserRoleEditPage dTUserRoleEditPage(WebDriver driver){
         return new DTUserRoleEditPage(driver);
     }
-    
-        
+
+
     @Bean
     @Scope("prototype")
     public DTUserRoleDetailsPage dTUserRoleDetailsPage(WebDriver driver){
         return new DTUserRoleDetailsPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserProfileTypePage dTUserProfileTypePage(WebDriver driver){
         return new DTUserProfileTypePage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserProfileTypeAddPage dTUserProfileTypeAddPage(WebDriver driver){
         return new DTUserProfileTypeAddPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserProfileTypeEditPage dTUserProfileTypeEditPage(WebDriver driver){
         return new DTUserProfileTypeEditPage(driver);
     }
-    
-    
+
+
     @Bean
     @Scope("prototype")
     public DTUserRestrictionsPage dTUserRestrictionsPage(WebDriver driver){
         return new DTUserRestrictionsPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTWidgetAddPage dTWidgetAddPage(WebDriver driver){
         return new DTWidgetAddPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTWidgetEditPage dTWidgetEditPage(WebDriver driver){
         return new DTWidgetEditPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public DTWidgetPage dTWidgetPage(WebDriver driver){
         return new DTWidgetPage(driver);
     }
-    
+
     @Bean
     @Scope("prototype")
     public Utils utils(){
         return new Utils();
     }
-    
+
 }

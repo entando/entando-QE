@@ -15,6 +15,7 @@ package org.entando.selenium.utils;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = AppConfig.class)
+@ContextConfiguration(classes = {AppConfig.class})
 @TestExecutionListeners({ SeleniumTestExecutionListener.class,
     DependencyInjectionTestExecutionListener.class })
 public class FunctionalTestBase {
@@ -100,7 +101,7 @@ public class FunctionalTestBase {
     /**
      * This login test is common to almost all test Classes
      */
-    protected void login(){
+    protected void login()  {
         driver.manage().window().maximize();
         dTLoginPage.logIn(USERNAME, PASSWORD);
     }
