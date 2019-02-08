@@ -116,6 +116,16 @@ public class STAddTestUserTest extends UsersTestBase {
         dTUserAddPage.setUsernameField(username);
         dTUserAddPage.setPasswordField("adminadmin");
         dTUserAddPage.setPasswordConfirmField("adminadmin");
+        Utils.waitUntilIsVisible(driver, dTUserAddPage.getProfileTypeSelect().getWrappedElement());
+        for(int i = 0; i < 5; i ++) {
+            try {
+                dTUserAddPage.getProfileTypeSelect().selectByVisibleText("Default user profile");
+                break;
+            } catch (NoSuchElementException e) {
+                Logger.getGlobal().info("Default user profile not yet loaded: " + e);
+                sleep(2000);
+            }
+        }
         dTUserAddPage.getProfileTypeSelect().selectByVisibleText("Default user profile");
         dTUserAddPage.getStatusSwitch().setOn();
 
