@@ -135,8 +135,7 @@ public class STAddTestUserTest extends UsersTestBase {
         dTUserAddPage.getSaveButton().click();
 
         //This sleep is required to ensure ChromeWebDriver does get a stale element which it never seems to discard
-        sleep(3000);
-
+        sleep(20000);
         Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
 
 
