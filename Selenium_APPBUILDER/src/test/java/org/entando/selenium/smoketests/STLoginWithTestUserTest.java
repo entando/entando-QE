@@ -46,7 +46,7 @@ public class STLoginWithTestUserTest extends UsersTestBase {
     @Test
     public void loginTestUser() throws InterruptedException {
         driver.manage().window().maximize();
-        sTLoginPage.logIn("mytestuser", "adminadmin");
+        sTLoginPage.logIn(SmokeTestUser.ADMIN);
         //Navigation to the page
         dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());

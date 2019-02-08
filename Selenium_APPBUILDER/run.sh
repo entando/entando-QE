@@ -1,0 +1,1 @@
+docker run --rm --network=fsi-credit-card-dispute_entando-network -e ENTANDO_APPBUILDER_URL=http://customer-appbuilder:5000   -v /home/lulu/Code/entando/entando-QE/Selenium_APPBUILDER:/entando-smoke-tests/    entando/entando-smoke-tests:5.1.0-SNAPSHOT mvn verify -Dtest=org.entando.selenium.smoketests.STAddTestUserTest

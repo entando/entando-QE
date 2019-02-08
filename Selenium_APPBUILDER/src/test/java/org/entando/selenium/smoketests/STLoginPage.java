@@ -11,19 +11,11 @@ details.
  */
 package org.entando.selenium.smoketests;
 
-import org.apache.commons.io.FileUtils;
 import org.entando.selenium.utils.PageObject;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.springframework.beans.factory.annotation.Value;
 
-import java.io.File;
-import java.io.IOException;
-
-//import org.openqa.selenium.WebElement;
 
 public class STLoginPage extends PageObject {
 
@@ -35,25 +27,13 @@ public class STLoginPage extends PageObject {
     @FindBy(xpath = "//button[contains(@*, 'submit')]")
     private WebElement submitButton;
 
-    public void logIn(String userName, String passWord) {
-        try {
-            this.userName.clear();
-            this.userName.sendKeys(userName);
-            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(src, new File("test1.png"));
-
-            this.passWord.clear();
-            this.passWord.sendKeys(passWord);
-            src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(src, new File("test2.png"));
-
-            this.submitButton.click();
-            src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(src, new File("test3.png"));
-            System.out.println("CLicked submitButton on " + super.driver.getCurrentUrl());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void logIn(SmokeTestUser user) {
+        this.userName.clear();
+        this.userName.sendKeys(user.getUsername());
+        this.passWord.clear();
+        this.passWord.sendKeys(user.getPassword());
+        this.submitButton.click();
+        ScreenPrintSaver.save(driver);
     }
 
     public STLoginPage(WebDriver driver) {

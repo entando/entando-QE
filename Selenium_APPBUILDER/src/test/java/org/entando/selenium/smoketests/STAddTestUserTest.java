@@ -11,7 +11,6 @@ details.
  */
 package org.entando.selenium.smoketests;
 
-import org.apache.commons.io.FileUtils;
 import org.entando.selenium.pages.DTDashboardPage;
 import org.entando.selenium.pages.DTUserAddPage;
 import org.entando.selenium.pages.DTUserManageAuthorityPage;
@@ -23,24 +22,18 @@ import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Arrays;
+import java.time.Duration;
 import java.util.List;
-import java.util.Random;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertTrue;
 
 /**
- * This class perform a test to add a user
- *
- * @version 1.01
+ * This class performs a test to add a user and add the Administrator role to it
  */
 public class STAddTestUserTest extends UsersTestBase {
     /*
@@ -62,45 +55,65 @@ public class STAddTestUserTest extends UsersTestBase {
     public DTUserManageAuthorityPage dTUserManageAuthorityPage;
 
     protected void login() {
-        try {
-            driver.manage().window().maximize();
-            sTLoginPage.logIn("admin", "adminadmin");
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
+        driver.manage().window().maximize();
+        sTLoginPage.logIn(SmokeTestUser.ADMIN);
     }
 
-    /*
-        Test
-    */
     @Test
     public void runTest() throws InterruptedException {
         login();
-        String username = "mytestuser";
-        try {
-            //Navigation to the page
-            dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
-            Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
-            Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
-            //Click on kebab menù
-            kebab.getClickable().click();
-            Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
-            //Click on the action
-            kebab.getAction("Delete").click();
-            Utils.waitUntilIsVisible(driver, dTUsersPage.getDeleteModalButton());
-            Assert.assertTrue(dTUsersPage.getModalBody().getText().contains(username));
-            Utils.waitUntilIsClickable(driver, dTUsersPage.getDeleteModalButton());
-            sleep(500);
-            dTUsersPage.getDeleteModalButton().click();
-            Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
-            //This sleep is required to ensure ChromeWebDriver does get a stale element which it never seems to discard
-            sleep(2000);
-            Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
-        } catch (Throwable e) {
-            Logger.getGlobal().info("No previous test user to delete: " + e);
-        }
+        cleanupDanglingTestUser();
+        addSmokeTestUser();
+        waitForUsersTableOnUsersPage();
+        addAdministratorAuthorization();
+        waitForUsersTableOnUsersPage();
+    }
 
-        //Navigation to the page
+    private void addAdministratorAuthorization() {
+        //Assert the presence of the created user in the Users table
+        List<WebElement> createdUser = dTUsersPage.getTable().findRowList(SmokeTestUser.SMOKE_TEST_USER.getUsername(), UsersTestBase.usersTableHeaderTitles.get(0));
+        Assert.assertFalse(createdUser.isEmpty());
+
+        //Verify "Status" is "Active"
+        WebElement cell = dTUsersPage.getTable().getCell(SmokeTestUser.SMOKE_TEST_USER.getUsername(), UsersTestBase.usersTableHeaderTitles.get(0), super.usersTableHeaderTitles.get(3));
+        Assert.assertEquals(" Active", cell.getText());
+
+        Kebab kebab = dTUsersPage.getTable().getKebabOnTable(SmokeTestUser.SMOKE_TEST_USER.getUsername(), usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
+        Assert.assertFalse("User not found!", kebab == null);
+
+        //Click on kebab menù
+        kebab.getClickable().click();
+        Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
+        //Click on the action
+        kebab.getAction("Manage authorization for: " + SmokeTestUser.SMOKE_TEST_USER.getUsername()).click();
+
+
+        Utils.waitUntilIsVisible(driver, dTUserManageAuthorityPage.getPageTitle());
+
+        //Asserts the PAGE TITLE is the expected one
+        Assert.assertEquals("Authorizations for " + SmokeTestUser.SMOKE_TEST_USER.getUsername(), dTUserManageAuthorityPage.getPageTitle().getText());
+
+        //Asserts the presence of the labels
+        assertTrue(dTUserManageAuthorityPage.getGroupLabel().isDisplayed());
+        assertTrue(dTUserManageAuthorityPage.getRoleLabel().isDisplayed());
+
+        //Asserts the presence of the buttons
+        assertTrue(dTUserManageAuthorityPage.getAddButton().isDisplayed());
+        assertTrue(dTUserManageAuthorityPage.getSaveButton().isDisplayed());
+
+
+        //Add a authorization
+        dTUserManageAuthorityPage.getUserGroup().selectByVisibleText("Administrators");
+        dTUserManageAuthorityPage.getUserRole().selectByVisibleText("Administrator");
+        dTUserManageAuthorityPage.getAddButton().click();
+
+        //Asserts the presence of a authorization
+        Assert.assertEquals(1, dTUserManageAuthorityPage.getTable().tableSize());
+
+        dTUserManageAuthorityPage.getSaveButton().click();
+    }
+
+    private void addSmokeTestUser() throws InterruptedException {
         dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
 
@@ -113,88 +126,63 @@ public class STAddTestUserTest extends UsersTestBase {
 
 
         //Compilation of the page
-        dTUserAddPage.setUsernameField(username);
-        dTUserAddPage.setPasswordField("adminadmin");
-        dTUserAddPage.setPasswordConfirmField("adminadmin");
+        dTUserAddPage.setUsernameField(SmokeTestUser.SMOKE_TEST_USER.getUsername());
+        dTUserAddPage.setPasswordField(SmokeTestUser.SMOKE_TEST_USER.getPassword());
+        dTUserAddPage.setPasswordConfirmField(SmokeTestUser.SMOKE_TEST_USER.getPassword());
         Utils.waitUntilIsVisible(driver, dTUserAddPage.getProfileTypeSelect().getWrappedElement());
-        for(int i = 0; i < 5; i ++) {
-            try {
-                dTUserAddPage.getProfileTypeSelect().selectByVisibleText("Default user profile");
-                break;
-            } catch (NoSuchElementException e) {
-                Logger.getGlobal().info("Default user profile not yet loaded: " + e);
-                sleep(2000);
-            }
-        }
-        dTUserAddPage.getProfileTypeSelect().selectByVisibleText("Default user profile");
+        selectDefaultProfileTypeWhenAvailable();
         dTUserAddPage.getStatusSwitch().setOn();
 
 
         //Save and come back to the Users list
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
+    }
 
-        //This sleep is required to ensure ChromeWebDriver does get a stale element which it never seems to discard
-        sleep(20000);
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+    private void selectDefaultProfileTypeWhenAvailable() {
+        new FluentWait<>(dTUserAddPage.getProfileTypeSelect())
+                .ignoring(NoSuchElementException.class)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(300))
+                .until(o -> {
+                    o.selectByVisibleText("Default user profile");
+                    return true;
+                });
+    }
 
+    private void cleanupDanglingTestUser() {
+        try {
+            //Navigation to the page
+            dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
+            Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
+            ScreenPrintSaver.save(driver);
 
-        //Assert the presence of the created user in the Users table
-        List<WebElement> createdUser = dTUsersPage.getTable().findRowList(username, UsersTestBase.usersTableHeaderTitles.get(0));
-        Assert.assertFalse(createdUser.isEmpty());
-
-        //Verify "Status" is "Active"
-        WebElement cell = dTUsersPage.getTable().getCell(username, UsersTestBase.usersTableHeaderTitles.get(0), super.usersTableHeaderTitles.get(3));
-        Assert.assertEquals(" Active", cell.getText());
-
-        Kebab kebab = dTUsersPage.getTable().getKebabOnTable(username, usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
-        Assert.assertFalse("User not found!", kebab == null);
-
-        //Click on kebab menù
-        kebab.getClickable().click();
-        /** Debug code **/ Logger.getGlobal().info("Kebab clicked");
-        Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
-        //Click on the action
-        kebab.getAction("Manage authorization for: " + username).click();
-
-
-        Utils.waitUntilIsVisible(driver, dTUserManageAuthorityPage.getPageTitle());
-
-        //Utils.waitUntilIsPresent(driver, dTUserManageAuthorityPage.spinnerTag);
-        //Utils.waitUntilIsDisappears(driver, dTUserManageAuthorityPage.spinnerTag);
-
-        //Asserts the PAGE TITLE is the expected one
-        Assert.assertEquals("Authorizations for " + username, dTUserManageAuthorityPage.getPageTitle().getText());
-
-        //Asserts the presence of the labels
-        assertTrue(dTUserManageAuthorityPage.getGroupLabel().isDisplayed());
-        assertTrue(dTUserManageAuthorityPage.getRoleLabel().isDisplayed());
-
-        //Asserts the presence of the buttons
-        assertTrue(dTUserManageAuthorityPage.getAddButton().isDisplayed());
-        assertTrue(dTUserManageAuthorityPage.getSaveButton().isDisplayed());
-
-        SimpleTable table = dTUserManageAuthorityPage.getTable();
-
-        //Add a authorization
-        dTUserManageAuthorityPage.getUserGroup().selectByVisibleText("Administrators");
-        dTUserManageAuthorityPage.getUserRole().selectByVisibleText("Administrator");
-        dTUserManageAuthorityPage.getAddButton().click();
-
-        table = dTUserManageAuthorityPage.getTable();
-        //Asserts the presence of a authorization
-        Assert.assertEquals(1, table.tableSize());
-
-        dTUserManageAuthorityPage.getSaveButton().click();
-
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getPageTitle());
-
-        /** Debug code **/
-        Logger.getGlobal().info("TEST CONCLUSO");
-        if(Logger.getGlobal().getLevel() == Level.INFO){
-            sleep(SLEEPTIME);
+            Kebab kebab = dTUsersPage.getTable().getKebabOnTable(SmokeTestUser.SMOKE_TEST_USER.getUsername(), usersTableHeaderTitles.get(0), usersTableHeaderTitles.get(4));
+            //Click on kebab menù
+            kebab.getClickable().click();
+            Utils.waitUntilIsVisible(driver, kebab.getAllActionsMenu());
+            //Click on the action
+            kebab.getAction("Delete").click();
+            Utils.waitUntilIsVisible(driver, dTUsersPage.getDeleteModalButton());
+            Assert.assertTrue(dTUsersPage.getModalBody().getText().contains(SmokeTestUser.SMOKE_TEST_USER.getUsername()));
+            Utils.waitUntilIsClickable(driver, dTUsersPage.getDeleteModalButton());
+            sleep(500);
+            dTUsersPage.getDeleteModalButton().click();
+            Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
+            waitForUsersTableOnUsersPage();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            Logger.getGlobal().info("No previous test user to delete: " + e);
         }
-        /** End Debug code**/
+    }
 
+    private void waitForUsersTableOnUsersPage() {
+        new FluentWait(this.driver)
+                .pollingEvery(Duration.ofMillis(300))
+                .withTimeout(Duration.ofSeconds(60))
+                .until(
+                        webDriver -> driver.getCurrentUrl().endsWith("/user")
+                );
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
     }
 }//end class
