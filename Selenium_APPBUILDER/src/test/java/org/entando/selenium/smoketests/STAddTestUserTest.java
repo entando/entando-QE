@@ -97,7 +97,7 @@ public class STAddTestUserTest extends UsersTestBase {
             sleep(2000);
             Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
         } catch (Throwable e) {
-            Logger.getGlobal().info("No provious test user deleted: " + e);
+            Logger.getGlobal().info("No previous test user to delete: " + e);
         }
 
         //Navigation to the page
