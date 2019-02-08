@@ -93,10 +93,7 @@ public class STAddTestUserTest extends UsersTestBase {
             sleep(500);
             dTUsersPage.getDeleteModalButton().click();
             Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
-            //Wait loading page
-            //Utils.waitUntilIsPresent(driver, dTUsersPage.spinnerTag);
-            //Utils.waitUntilIsDisappears(driver, dTUsersPage.spinnerTag);
-
+            //This sleep is required to ensure ChromeWebDriver does get a stale element which it never seems to discard
             sleep(2000);
             Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
         } catch (Throwable e) {
@@ -127,8 +124,8 @@ public class STAddTestUserTest extends UsersTestBase {
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
 
-
-        sleep(2000);
+        //This sleep is required to ensure ChromeWebDriver does get a stale element which it never seems to discard
+        sleep(3000);
 
         Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
 

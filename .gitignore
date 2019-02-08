@@ -13,3 +13,4 @@ buildNumber.properties
 newman.xml
 .idea
 /nbproject/private/
+*.iml
