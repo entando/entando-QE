@@ -17,8 +17,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class STLoginPage extends PageObject {
+public class STEngineLoginPage extends PageObject {
 
+    private final String engineUrl;
     @FindBy(id = "username")
     private WebElement userName;
     @FindBy(id = "password")
@@ -28,6 +29,7 @@ public class STLoginPage extends PageObject {
     private WebElement submitButton;
 
     public void logIn(SmokeTestUser user) {
+        this.driver.get(engineUrl+"/do/login");
         this.userName.clear();
         this.userName.sendKeys(user.getUsername());
         this.passWord.clear();
@@ -36,8 +38,9 @@ public class STLoginPage extends PageObject {
         ScreenPrintSaver.save(driver);
     }
 
-    public STLoginPage(WebDriver driver) {
+    public STEngineLoginPage(WebDriver driver, String engineUrl) {
         super(driver);
+        this.engineUrl = engineUrl;
     }
 
 

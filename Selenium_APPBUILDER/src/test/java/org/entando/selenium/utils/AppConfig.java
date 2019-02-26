@@ -15,7 +15,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.entando.selenium.pages.*;
-import org.entando.selenium.smoketests.STLoginPage;
+import org.entando.selenium.smoketests.STAppBuilderLoginPage;
+import org.entando.selenium.smoketests.STEngineLoginPage;
 import org.openqa.selenium.*;
 //import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,6 +51,8 @@ public class AppConfig {
 
     @Value("${entando.appbuilder.url:http://appbuilder.serv.run}")
     private String appBuilderUrl;
+    @Value("${entando.engine.url:http://tests.serv.run}")
+    private String engineUrl;
     @Value("${entando.run.headless:false}")
     private boolean runHeadless;
     //private static final boolean HEADLESS = false;
@@ -108,9 +111,13 @@ public class AppConfig {
 
     @Bean
     @Scope("prototype")
-    public STLoginPage sTLoginPage(WebDriver driver){
-        driver.get(appBuilderUrl);
-        return new STLoginPage(driver);
+    public STAppBuilderLoginPage sTAppBuilderLoginPage(WebDriver driver){
+        return new STAppBuilderLoginPage(driver,this.appBuilderUrl);
+    }
+    @Bean
+    @Scope("prototype")
+    public STEngineLoginPage sTEngineLoginPage(WebDriver driver){
+        return new STEngineLoginPage(driver,this.engineUrl);
     }
 
     @Bean

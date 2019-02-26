@@ -18,7 +18,6 @@ import org.entando.selenium.pages.DTUsersPage;
 import org.entando.selenium.testHelpers.UsersTestBase;
 import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
-import org.entando.selenium.utils.pageParts.SimpleTable;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
@@ -49,14 +48,14 @@ public class STAddTestUserTest extends UsersTestBase {
     public DTUserAddPage dTUserAddPage;
 
     @Autowired
-    public STLoginPage sTLoginPage;
+    public STAppBuilderLoginPage sTAppBuilderLoginPage;
 
     @Autowired
     public DTUserManageAuthorityPage dTUserManageAuthorityPage;
 
     protected void login() {
         driver.manage().window().maximize();
-        sTLoginPage.logIn(SmokeTestUser.ADMIN);
+        sTAppBuilderLoginPage.logIn(SmokeTestUser.ADMIN);
     }
 
     @Test
