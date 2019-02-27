@@ -56,9 +56,7 @@ public class STAddTestUserTest extends UsersTestBase {
     protected void login() throws InterruptedException {
         driver.manage().window().maximize();
         sTAppBuilderLoginPage.logIn(SmokeTestUser.ADMIN);
-        dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
-
+        waithForUrlEndingWith("/dashboard");
     }
 
     @Test
@@ -72,6 +70,7 @@ public class STAddTestUserTest extends UsersTestBase {
             waitForUsersTableOnUsersPage();
         } catch (RuntimeException e) {
             ScreenPrintSaver.save(driver);
+            throw e;
         }
     }
 
@@ -182,12 +181,19 @@ public class STAddTestUserTest extends UsersTestBase {
     }
 
     private void waitForUsersTableOnUsersPage() {
+        waithForUrlEndingWith("/user");
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
+    }
+
+    private void waithForUrlEndingWith(String path) {
         new FluentWait(this.driver)
                 .pollingEvery(Duration.ofMillis(300))
                 .withTimeout(Duration.ofSeconds(90))
                 .until(
-                        webDriver -> driver.getCurrentUrl().endsWith("/user")
+                        webDriver -> {
+                            return driver.getCurrentUrl().endsWith(path);
+                        }
                 );
-        Utils.waitUntilIsVisible(driver, dTUsersPage.getUsersTable());
     }
 }//end class
+
