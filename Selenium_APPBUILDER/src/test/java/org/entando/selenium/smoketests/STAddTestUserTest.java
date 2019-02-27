@@ -170,7 +170,6 @@ public class STAddTestUserTest extends UsersTestBase {
             Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
             waitForUsersTableOnUsersPage();
         } catch (Throwable e) {
-            e.printStackTrace();
             Logger.getGlobal().info("No previous test user to delete: " + e);
         }
     }
@@ -178,7 +177,7 @@ public class STAddTestUserTest extends UsersTestBase {
     private void waitForUsersTableOnUsersPage() {
         new FluentWait(this.driver)
                 .pollingEvery(Duration.ofMillis(300))
-                .withTimeout(Duration.ofSeconds(60))
+                .withTimeout(Duration.ofSeconds(90))
                 .until(
                         webDriver -> driver.getCurrentUrl().endsWith("/user")
                 );
