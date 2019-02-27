@@ -21,10 +21,14 @@ import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -69,8 +73,18 @@ public class STAddTestUserTest extends UsersTestBase {
             addAdministratorAuthorization();
             waitForUsersTableOnUsersPage();
         } catch (RuntimeException e) {
+            printLog(LogType.BROWSER);
+            printLog(LogType.CLIENT);
             ScreenPrintSaver.save(driver);
             throw e;
+        }
+    }
+
+    private void printLog(String browser) {
+        LogEntries logEntries = driver.manage().logs().get(browser);
+        for (LogEntry entry : logEntries) {
+            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+            //do something useful with the data
         }
     }
 
