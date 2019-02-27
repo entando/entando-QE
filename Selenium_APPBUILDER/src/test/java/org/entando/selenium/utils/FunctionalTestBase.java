@@ -101,7 +101,7 @@ public class FunctionalTestBase {
     /**
      * This login test is common to almost all test Classes
      */
-    protected void login()  {
+    protected void login() throws InterruptedException {
         driver.manage().window().maximize();
         dTLoginPage.logIn(USERNAME, PASSWORD);
     }

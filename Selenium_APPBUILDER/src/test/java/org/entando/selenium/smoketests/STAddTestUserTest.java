@@ -53,19 +53,26 @@ public class STAddTestUserTest extends UsersTestBase {
     @Autowired
     public DTUserManageAuthorityPage dTUserManageAuthorityPage;
 
-    protected void login() {
+    protected void login() throws InterruptedException {
         driver.manage().window().maximize();
         sTAppBuilderLoginPage.logIn(SmokeTestUser.ADMIN);
+        dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
+        Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
+
     }
 
     @Test
     public void runTest() throws InterruptedException {
-        login();
-        cleanupDanglingTestUser();
-        addSmokeTestUser();
-        waitForUsersTableOnUsersPage();
-        addAdministratorAuthorization();
-        waitForUsersTableOnUsersPage();
+        try {
+            login();
+            cleanupDanglingTestUser();
+            addSmokeTestUser();
+            waitForUsersTableOnUsersPage();
+            addAdministratorAuthorization();
+            waitForUsersTableOnUsersPage();
+        } catch (RuntimeException e) {
+            ScreenPrintSaver.save(driver);
+        }
     }
 
     private void addAdministratorAuthorization() {
