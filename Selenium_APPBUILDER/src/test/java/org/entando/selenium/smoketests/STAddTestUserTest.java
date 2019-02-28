@@ -195,7 +195,7 @@ public class STAddTestUserTest extends UsersTestBase {
             Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
             waitForUsersTableOnUsersPage();
         } catch (Throwable e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             Logger.getGlobal().info("No previous test user to delete: " + e);
 
         }
