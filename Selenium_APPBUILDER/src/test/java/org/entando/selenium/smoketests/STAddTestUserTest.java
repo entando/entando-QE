@@ -69,10 +69,9 @@ public class STAddTestUserTest extends UsersTestBase {
             login();
             cleanupDanglingTestUser();
             addSmokeTestUser();
-            waitForUsersTableOnUsersPage();
             addAdministratorAuthorization();
-            waitForUsersTableOnUsersPage();
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | InterruptedException e) {
+            e.printStackTrace();
             printLog(LogType.BROWSER);
             printLog(LogType.CLIENT);
             ScreenPrintSaver.save(driver);
@@ -81,14 +80,15 @@ public class STAddTestUserTest extends UsersTestBase {
     }
 
     private void printLog(String browser) {
+        System.out.println("Printing log for " + browser);
         LogEntries logEntries = driver.manage().logs().get(browser);
         for (LogEntry entry : logEntries) {
             System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
-            //do something useful with the data
         }
     }
 
     private void addAdministratorAuthorization() {
+        waitForUsersTableOnUsersPage();
         //Assert the presence of the created user in the Users table
         List<WebElement> createdUser = dTUsersPage.getTable().findRowList(SmokeTestUser.SMOKE_TEST_USER.getUsername(), UsersTestBase.usersTableHeaderTitles.get(0));
         Assert.assertFalse(createdUser.isEmpty());
@@ -130,10 +130,13 @@ public class STAddTestUserTest extends UsersTestBase {
         Assert.assertEquals(1, dTUserManageAuthorityPage.getTable().tableSize());
 
         dTUserManageAuthorityPage.getSaveButton().click();
+        waitForUsersTableOnUsersPage();
+
     }
 
     private void addSmokeTestUser() throws InterruptedException {
         dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
+        waitForUsersTableOnUsersPage();
         Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
 
         dTUsersPage.getAddButton().click();
@@ -156,6 +159,7 @@ public class STAddTestUserTest extends UsersTestBase {
         //Save and come back to the Users list
         Assert.assertTrue(dTUserAddPage.getSaveButton().isEnabled());
         dTUserAddPage.getSaveButton().click();
+        waitForUsersTableOnUsersPage();
     }
 
     private void selectDefaultProfileTypeWhenAvailable() {
@@ -169,10 +173,11 @@ public class STAddTestUserTest extends UsersTestBase {
                 });
     }
 
-    private void cleanupDanglingTestUser() {
+    private void cleanupDanglingTestUser() throws InterruptedException {
         try {
             //Navigation to the page
             dTDashboardPage.SelectSecondOrderLinkWithSleep("User Management", "Users");
+            waitForUsersTableOnUsersPage();
             Utils.waitUntilIsVisible(driver, dTUsersPage.getAddButton());
             ScreenPrintSaver.save(driver);
 
@@ -190,7 +195,9 @@ public class STAddTestUserTest extends UsersTestBase {
             Utils.waitUntilIsDisappears(driver, DTUsersPage.modalWindowTag);
             waitForUsersTableOnUsersPage();
         } catch (Throwable e) {
+            e.printStackTrace();
             Logger.getGlobal().info("No previous test user to delete: " + e);
+
         }
     }
 
@@ -205,7 +212,7 @@ public class STAddTestUserTest extends UsersTestBase {
                 .withTimeout(Duration.ofSeconds(90))
                 .until(
                         webDriver -> {
-                            return driver.getCurrentUrl().endsWith(path);
+                            return driver.getCurrentUrl().endsWith(path) && driver.getPageSource().endsWith("</html>");//Very unscientific way of hoping the page has loaded
                         }
                 );
     }
