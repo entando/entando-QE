@@ -16,6 +16,7 @@ import java.net.URL;
 
 import org.entando.selenium.pages.*;
 import org.entando.selenium.smoketests.STAppBuilderLoginPage;
+import org.entando.selenium.smoketests.STDashboardPage;
 import org.entando.selenium.smoketests.STEngineLoginPage;
 import org.openqa.selenium.*;
 //import org.openqa.selenium.WebDriver;
@@ -443,6 +444,11 @@ public class AppConfig {
     @Scope("prototype")
     public DTWidgetPage dTWidgetPage(WebDriver driver){
         return new DTWidgetPage(driver);
+    }
+    @Bean
+    @Scope("prototype")
+    public STDashboardPage stDashboardPage(WebDriver driver){
+        return new STDashboardPage(driver);
     }
 
     @Bean
