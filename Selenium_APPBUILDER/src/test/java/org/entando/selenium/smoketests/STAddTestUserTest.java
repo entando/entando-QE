@@ -19,6 +19,7 @@ import org.entando.selenium.utils.Utils;
 import org.entando.selenium.utils.pageParts.Kebab;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.logging.LogEntries;
@@ -62,7 +63,6 @@ public class STAddTestUserTest extends UsersTestBase {
     protected void login() throws InterruptedException {
         driver.manage().window().maximize();
         sTAppBuilderLoginPage.logIn(SmokeTestUser.ADMIN);
-        WaitUntil.urlEndingWith(driver, "/dashboard");
         try {
             navigateToUserTable();
             preloadAddUserPage();

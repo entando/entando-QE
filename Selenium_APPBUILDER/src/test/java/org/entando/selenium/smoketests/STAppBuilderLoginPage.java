@@ -12,9 +12,13 @@ details.
 package org.entando.selenium.smoketests;
 
 import org.entando.selenium.utils.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
 
 
 public class STAppBuilderLoginPage extends PageObject {
@@ -36,6 +40,12 @@ public class STAppBuilderLoginPage extends PageObject {
         this.passWord.sendKeys(user.getPassword());
         this.submitButton.click();
         ScreenPrintSaver.save(driver);
+        WaitUntil.urlEndingWith(driver, "/dashboard");
+        System.out.println(driver.getPageSource());
+        WebElement table = driver.findElement(By.xpath("//div[@class='PagesList']/table"));
+        WaitUntil.isVisible(driver, table);
+        new FluentWait<>(table).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofMillis(200)).until(
+                webElement ->  table.findElements(By.xpath("tbody/tr")).size()==5);
     }
 
     public STAppBuilderLoginPage(WebDriver driver, String appBuilderUrl) {
