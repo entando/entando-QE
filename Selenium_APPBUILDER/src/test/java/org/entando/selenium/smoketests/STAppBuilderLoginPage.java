@@ -45,7 +45,7 @@ public class STAppBuilderLoginPage extends PageObject {
         WebElement table = driver.findElement(By.xpath("//div[@class='PagesList']/table"));
         WaitUntil.isVisible(driver, table);
         new FluentWait<>(table).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofMillis(200)).until(
-                webElement ->  table.findElements(By.xpath("tbody/tr")).size()==5);
+                webElement ->  table.findElements(By.xpath("tbody/tr")).size()>=2);
     }
 
     public STAppBuilderLoginPage(WebDriver driver, String appBuilderUrl) {
