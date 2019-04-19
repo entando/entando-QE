@@ -1,0 +1,11 @@
+{
+    "id": "demo_page_model_2_v1",
+	"name": "demo_page_model_2",
+	"description": "Demo Page Model 2 Description",
+	"type": "pageModel",
+	"version": "5.1.0-V1",
+	"repoId": ${REPO_ID},
+	"repoDirectory": "DE/components/demo_page_model_2",
+	"commitId": "${COMMIT_ID}",
+	"password": "${PASSWORD}"
+}
