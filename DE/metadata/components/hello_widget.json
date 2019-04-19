@@ -1,0 +1,11 @@
+{
+    "id": "hello_widget_v1",
+	"name": "hello_widget",
+	"description": "Hello Widget Description",
+	"type": "widget",
+	"version": "5.1.0-V1",
+	"repoId": ${REPO_ID},
+	"repoDirectory": "digital_exchange/components/hello_widget",
+	"commitId": "${COMMIT_ID}",
+	"password": "${PASSWORD}"
+}

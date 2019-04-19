@@ -1,0 +1,10 @@
+{
+    "id": "bundle1_v1",
+	"name": "bundle1",
+	"description": "Bundle 1 Description",
+	"type": "bundle",
+	"version": "5.1.0-V1",
+	"repoId": ${REPO_ID},
+	"repoDirectory": "digital_exchange/components/bundle1",
+	"commitId": "${COMMIT_ID}"
+}

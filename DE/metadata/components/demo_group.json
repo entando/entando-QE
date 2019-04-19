@@ -1,0 +1,11 @@
+{
+    "id": "demo_group_v1",
+	"name": "demo_group",
+	"description": "Demo Group Description",
+	"type": "group",
+	"version": "5.1.0-V1",
+	"repoId": ${REPO_ID},
+	"repoDirectory": "digital_exchange/components/demo_group",
+	"commitId": "${COMMIT_ID}",
+	"password": "${PASSWORD}"
+}
