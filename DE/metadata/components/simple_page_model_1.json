@@ -5,7 +5,7 @@
 	"type": "pageModel",
 	"version": "5.1.0-V1",
 	"repoId": ${REPO_ID},
-	"repoDirectory": "digital_exchange/components/simple_page_model_1",
+	"repoDirectory": "DE/components/simple_page_model_1",
 	"commitId": "${COMMIT_ID}",
 	"password": "${PASSWORD}"
 }
