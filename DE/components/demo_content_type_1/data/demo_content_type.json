@@ -1,0 +1,51 @@
+{
+    "code": "DMO",
+    "name": "Demo",
+    "status": "0",
+    "attributes": [
+        {
+            "code": "title",
+            "type": "Text",
+            "name": "Title",
+            "roles": [
+                {
+                    "code": "jacms:title",
+                    "descr": "The main title of a Content"
+                }
+            ],
+            "disablingCodes": [],
+            "mandatory": true,
+            "listFilter": false,
+            "indexable": false,
+            "enumeratorStaticItems": null,
+            "enumeratorStaticItemsSeparator": null,
+            "enumeratorExtractorBean": null,
+            "validationRules": {
+                "minLength": null,
+                "maxLength": null,
+                "regex": null,
+                "rangeStartString": null,
+                "rangeEndString": null,
+                "rangeStartStringAttribute": null,
+                "rangeEndStringAttribute": null,
+                "equalString": null,
+                "equalStringAttribute": null,
+                "rangeStartDate": null,
+                "rangeEndDate": null,
+                "rangeStartDateAttribute": null,
+                "rangeEndDateAttribute": null,
+                "equalDate": null,
+                "equalDateAttribute": null,
+                "rangeStartNumber": null,
+                "rangeStartNumberAttribute": null,
+                "rangeEndNumber": null,
+                "rangeEndNumberAttribute": null,
+                "equalNumber": null,
+                "equalNumberAttribute": null,
+                "ognlValidation": null
+            },
+            "nestedAttribute": null,
+            "compositeAttributes": null
+        }
+    ]
+}

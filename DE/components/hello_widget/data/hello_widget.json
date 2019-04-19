@@ -1,0 +1,9 @@
+{
+    "code": "hello_widget",
+    "titles": {
+        "en": "Hello Widget",
+        "it": "Ciao Widget"
+    },
+    "group": "free",
+    "customUi": "<h1>HELLO FROM DigitalExchange</h1>"
+}

@@ -1,0 +1,9 @@
+{
+    "code": "bundle1_widget",
+    "titles": {
+        "en": "Bundle 1 Widget",
+        "it": "Bundle 1 Widget"
+    },
+    "group": "free",
+    "customUi": "<h2>Bundle 1 Widget</h2>"
+}

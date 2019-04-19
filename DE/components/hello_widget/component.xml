@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>hello_widget_v1</code>
+	<description>Hello Widget Description</description>
+	<dependencies>
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+				</datasource>
+            </defaultSqlResources>
+		</environment>
+		<environment code="test">
+		</environment>
+        <execution>
+            <op>#call('createWidget', 'hello_widget_v1/data/hello_widget.json')</op>
+        </execution>
+	</installation>
+	<uninstallation>
+		<sqlResources>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</sqlResources>
+		<resources>
+		</resources>
+        <execution>
+            <op>#call('deleteWidget', 'hello_widget')</op>
+        </execution>
+	</uninstallation>
+</component>
