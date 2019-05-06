@@ -22,6 +22,7 @@ import org.entando.selenium.utils.Utils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.asserts.SoftAssert;
 
 /**
  * This class perform a test of the Data Type page
@@ -75,6 +76,11 @@ public class DTDataModelsListTest extends DataModelsTestBase{
         dTDataModelsPage.getHelp().click();
         Utils.waitUntilIsVisible(driver, dTDataModelsPage.getTooltip());
         Assert.assertTrue(dTDataModelsPage.getTooltip().isDisplayed());
+        SoftAssert softAssertion= new SoftAssert();
+        softAssertion.assertEquals(false, dTDataModelsPage.getTooltip().getText().equals("datamodel.help"), "tooltip is wrong");
+        softAssertion.assertAll();
+        //Assert.assertFalse("The help content is wrong", );
+      
                 
         //Asserts the presence of the BUTTON with displayed name as argument
         Assert.assertTrue(dTDataModelsPage.getNewButton().getText().equals(button1));
