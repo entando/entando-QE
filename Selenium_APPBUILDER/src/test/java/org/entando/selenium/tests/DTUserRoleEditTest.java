@@ -98,8 +98,8 @@ public class DTUserRoleEditTest extends UsersTestBase {
         kebab.getAction(kebabAction).click();
         /** Debug code **/ Logger.getGlobal().info("Kebab action clicked");
         
-        
-        Utils.waitUntilIsVisible(driver, dTUserRoleEditPage.getUserEditingSwitchWebElement());
+        sleep(1000);
+        //Utils.waitUntilIsVisible(driver, dTUserRoleEditPage.getUserEditingSwitchWebElement());
         
         //Asserts the PAGE TITLE is the expected one
         Assert.assertEquals(pageTitle, dTUserRoleEditPage.getPageTitle().getText());
