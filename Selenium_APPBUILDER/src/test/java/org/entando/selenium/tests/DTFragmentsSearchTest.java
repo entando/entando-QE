@@ -24,6 +24,7 @@ import org.entando.selenium.pages.DTFragmentNewPage;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.asserts.SoftAssert;
 
 /**
  * This class perform a test of the Search in the Fragment page
@@ -106,34 +107,41 @@ public class DTFragmentsSearchTest extends FragmentsTestBase {
         Assert.assertTrue("Second element not found!", tableSize > 0);
         Assert.assertEquals(1, tableSize);
         
-        //Search a portion of String of 
+        //Search a fragment with a portion of its code
         dTFragmentPage.setCodeSearchField(code2.substring(0, 10));
         dTFragmentPage.getSearchButton().click();
         //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
         //Assert the presence of the serched element in the results table
         tableSize = dTFragmentPage.getTable().tableSize();
-        Assert.assertTrue("Elements not found!", tableSize > 0);
         
-        
-        //Search a invented fragment code
+         SoftAssert softAssertion= new SoftAssert();
+        softAssertion.assertEquals(true, tableSize > 0, "Searching for a Fragment with a part of its string code does not work!");
+         
+        //Search for an inexistent fragment
         dTFragmentPage.setCodeSearchField(code3);
         dTFragmentPage.getSearchButton().click();
         //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
-        //Assert the presence of the serched element in the results table
+        
+        //Asserts that the table is empty
         tableSize = dTFragmentPage.getTable().tableSize();
-        Assert.assertTrue("Elements not found!", tableSize == 0);
+        Assert.assertTrue("Looking for a nonexistent Fragment gives a result!", tableSize == 0);
         
         
         //Delete the fragments
-        dTFragmentPage.setCodeSearchField(code2.substring(0, 10));
+        //dTFragmentPage.setCodeSearchField(code2.substring(0, 10));
+        dTFragmentPage.setCodeSearchField(code1);
         dTFragmentPage.getSearchButton().click();
+        Assert.assertTrue(deleteFragment(dTFragmentPage, code1));
         //Utils.waitUntilIsPresent(driver, dTFragmentPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTFragmentPage.spinnerTag);
-        Assert.assertTrue(deleteFragment(dTFragmentPage, code1));
+        
+        dTFragmentPage.setCodeSearchField(code2);
+        dTFragmentPage.getSearchButton().click();
         Assert.assertTrue(deleteFragment(dTFragmentPage, code2));
-               
+        
+         softAssertion.assertAll();      
         
         /** Debug code **/
         if(Logger.getGlobal().getLevel() == Level.INFO){
