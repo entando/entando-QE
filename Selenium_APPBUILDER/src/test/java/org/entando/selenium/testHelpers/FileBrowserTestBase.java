@@ -46,7 +46,7 @@ public class FileBrowserTestBase extends FunctionalTestBase{
     public final String protectedFolder = "protected";
     
     //Default folder to browse name
-    public final String browseFolder = "plugins";
+    public final String browseFolder = "static";
     
     //Default create folder name
     public final String createFolderName = "SeleniumFolderDontTouch" + randomNumber;

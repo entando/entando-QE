@@ -125,7 +125,7 @@ public class DTFileBrowserCreateFolderTest extends FileBrowserTestBase{
         sleep(500);
         
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getTableBody());
-        
+        sleep(1000);
         //Assert the presence of the created folder in the file browser table
         List<WebElement> createdFolder = dTFileBrowserPage.getTable()
                 .findRowList(createFolderName, 0);

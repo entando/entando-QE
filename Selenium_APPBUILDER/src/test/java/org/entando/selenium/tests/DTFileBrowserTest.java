@@ -77,7 +77,7 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         
         //Click on public folder
         WebElement link = dTFileBrowserPage.getTable().getLinkOnTable(publicFolder, 0, 0);
-        Assert.assertFalse("Can't find " + publicFolder + "in the table",
+        Assert.assertFalse("Can't find " + publicFolder + " in the table",
                 link == null);
         link.click();
         
@@ -94,7 +94,7 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         Assert.assertEquals("The breadcrumb displays incorrect number of crumbs",
                 2, dTFileBrowserPage.getBreadcrumb().getNumberOfCrumbs());
         
-        //Browse to plugins folder
+        //Browse to static folder
         link = dTFileBrowserPage.getTable().getLinkOnTable(browseFolder, 0, 0);
         Assert.assertFalse("Can't find " + browseFolder + "in the table",
                 link == null);
@@ -104,6 +104,9 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
+        
+        
+        sleep(1000);
         
         //Asserts the breadcrumb is corrected
         Assert.assertEquals("The breadcrumb displays incorrect number of crumbs",
@@ -116,7 +119,7 @@ public class DTFileBrowserTest extends FileBrowserTestBase{
         //Utils.waitUntilIsPresent(driver, dTFileBrowserPage.spinnerTag);
         //Utils.waitUntilIsDisappears(driver, dTFileBrowserPage.spinnerTag);
         Utils.waitUntilIsVisible(driver, dTFileBrowserPage.getCreateFolderButton());
-        
+        sleep(1000);
         //Asserts the breadcrumb is corrected
         Assert.assertEquals("The breadcrumb displays incorrect number of crumbs",
                 2, dTFileBrowserPage.getBreadcrumb().getNumberOfCrumbs());
