@@ -41,7 +41,6 @@ public class STAppBuilderLoginPage extends PageObject {
         this.submitButton.click();
         ScreenPrintSaver.save(driver);
         WaitUntil.urlEndingWith(driver, "/dashboard");
-        System.out.println(driver.getPageSource());
         WebElement table = driver.findElement(By.xpath("//div[@class='PagesList']/table"));
         WaitUntil.isVisible(driver, table);
         new FluentWait<>(table).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofMillis(200)).until(

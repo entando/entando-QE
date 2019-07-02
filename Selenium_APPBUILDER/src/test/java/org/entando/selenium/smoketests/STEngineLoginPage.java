@@ -12,9 +12,13 @@ details.
 package org.entando.selenium.smoketests;
 
 import org.entando.selenium.utils.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
 
 
 public class STEngineLoginPage extends PageObject {
@@ -35,6 +39,10 @@ public class STEngineLoginPage extends PageObject {
         this.passWord.clear();
         this.passWord.sendKeys(user.getPassword());
         this.submitButton.click();
+        WebElement table = driver.findElement(By.xpath("//table[@id='page-table']"));
+        WaitUntil.isVisible(driver, table);
+        new FluentWait<>(table).withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofMillis(200)).until(
+                webElement ->  table.findElements(By.xpath("tbody/tr")).size()>=2);
         ScreenPrintSaver.save(driver);
     }
 

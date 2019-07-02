@@ -97,6 +97,10 @@ public class AppConfig {
             options.addArguments("headless");
             options.addArguments("window-size=1920x1200");
             options.addArguments("disable-extensions");
+            options.addArguments("disable-gpu");
+            //NB!!! Disable SHM !!!
+            //https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#tips
+            options.addArguments("disable-dev-shm-usage");
             options.addArguments("no-sandbox");
             WebDriver driver = new ChromeDriver(s,options);
             return driver;

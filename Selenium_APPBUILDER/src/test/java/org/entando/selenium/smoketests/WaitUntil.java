@@ -14,6 +14,7 @@ public class WaitUntil {
             } catch (NoSuchElementException e) {
                 return false;
             } catch (StaleElementReferenceException e) {
+                System.out.println(e);
                 return false;
             }
         });
@@ -24,6 +25,7 @@ public class WaitUntil {
             try {
                 return element.isDisplayed();
             } catch (StaleElementReferenceException e) {
+                System.out.println(e);
                 return false;
             }
         });
