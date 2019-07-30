@@ -1,8 +1,0 @@
-{
-    "id": "esercito_content_type",
-	"name": "esercito_content_type",
-	"description": "Demo Content Type 1 Description",
-	"type": "contentType",
-	"version": "5.2.0-V1",
-	"repoDirectory": "sme_components/data/esercito_content_type"
-}
