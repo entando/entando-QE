@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>demo_content_model_1_v1</code>
+	<description>Demo Content Model 1 Description</description>
+	<dependencies>
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+		</environment>
+		<environment code="test">
+		</environment>
+        <execution>
+            <op>#call('createContentModel', 'demo_content_model_1_v1/data/demo_content_model.xml')</op>
+        </execution>
+	</installation>
+	<uninstallation>
+		<sqlResources>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</sqlResources>
+		<resources>
+		</resources>
+        <execution>
+            <op>#call('deleteContentModel', 8880002)</op>
+        </execution>
+	</uninstallation>
+</component>
