@@ -1,8 +1,0 @@
-{
-    "id": "demo_content_type_1_v1",
-	"name": "demo_content_type_1",
-	"description": "Demo Content Type 1 Description",
-	"type": "contentType",
-	"version": "5.2.0-V1",
-	"repoDirectory": "demo_components/data/demo_content_type_1"
-}

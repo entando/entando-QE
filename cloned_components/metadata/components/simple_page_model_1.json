@@ -1,8 +1,0 @@
-{
-    "id": "simple_page_model_1_v1",
-	"name": "simple_page_model_1",
-	"description": "Simple Page Model 1 Description",
-	"type": "pageModel",
-	"version": "5.2.0-V1",
-	"repoDirectory": "demo_components/data/simple_page_model_1"
-}

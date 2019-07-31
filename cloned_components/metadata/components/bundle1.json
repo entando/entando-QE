@@ -1,8 +1,0 @@
-{
-    "id": "bundle1_v1",
-	"name": "bundle1",
-	"description": "Bundle 1 Description",
-	"type": "bundle",
-	"version": "5.2.0-V1",
-	"repoDirectory": "demo_components/data/bundle1"
-}

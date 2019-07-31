@@ -1,8 +1,0 @@
-{
-    "id": "hello_widget_v1",
-	"name": "hello_widget",
-	"description": "Hello Widget Description",
-	"type": "widget",
-	"version": "5.2.0-V1",
-	"repoDirectory": "demo_components/data/hello_widget"
-}
