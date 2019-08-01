@@ -1,7 +1,7 @@
 {
     "id": "bpm_admin",
 	"name": "Bpm Admin",
-	"description": "bpm admin description",
+	"description": "bpm admin group",
 	"type": "group",
 	"version": "v1",
 	"repoDirectory": "cloned_components/data/bpm_admin_group"

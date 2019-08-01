@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component>
     <code>bpm_admin</code>
-    <description>bpm admin description.</description>
+    <description>bpm admin group.</description>
     <dependencies>
     </dependencies>
     <installation>
@@ -20,7 +20,7 @@
             </defaultSqlResources>
         </environment>
         <execution>
-            <op>#call('createGroup', 'bpm_admin_group/data/Bpm Admin.json')</op>
+            <op>#call('createGroup', 'bpm_admin_group/data/bpm_admin_group.json')</op>
         </execution>
     </installation>
     <uninstallation>
