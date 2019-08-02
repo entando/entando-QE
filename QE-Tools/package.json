@@ -1,0 +1,30 @@
+{
+  "name": "de-components-generator",
+  "version": "1.0.0",
+  "description": "DE Components Generator",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "entando"
+  ],
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "console.table": "^0.10.0",
+    "dotenv": "^7.0.0",
+    "fs-extra": "7.0.1",
+    "imagemagick": "^0.1.3",
+    "js-image-generator": "^1.0.2",
+    "klaw-sync": "^6.0.0",
+    "ncp": "^2.0.0",
+    "nodegit": "^0.24.3",
+    "prompt-choices": "^5.0.0",
+    "readline-sync": "^1.4.9",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  }
+}
