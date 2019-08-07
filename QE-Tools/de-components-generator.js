@@ -18,14 +18,29 @@ const nodeGit = require("nodegit");
 const fsWalkerSync = require('klaw-sync');
 const path = require("path");
 const imagemagick = require('imagemagick');
+const xml2js = require('xml2js');
 
 
 
     var imgGen = require('js-image-generator');
+    var parseString = require("xml2js").parseString;
 
-const DEMO_COMPONENT_JSON_FOLDER = 'cloned_components/metadata/components/';
-const DEMO_COMPONENT_IMG_FOLDER = 'cloned_components/metadata/icons/';
+//const DEMO_COMPONENT_JSON_FOLDER = 'cloned_components/metadata/components/';
+//const DEMO_COMPONENT_IMG_FOLDER = 'cloned_components/metadata/icons/';
+
+//Template folders structure (data, metadata, metadata/icons, metadata/components)
 const TEMPLATE_COMPONENT_FOLDER = 'templates';
+const TEMPLATE_DATA = TEMPLATE_COMPONENT_FOLDER + "/data/";
+const TEMPLATE_METADATA = TEMPLATE_COMPONENT_FOLDER + "/metadata/";
+const TEMPLATE_METADATA_ICONS = TEMPLATE_COMPONENT_FOLDER + "/metadata/icons/";
+const TEMPLATE_METADATA_COMPONENTS = TEMPLATE_COMPONENT_FOLDER + "/metadata/components/";
+
+//Repo folders structure ()
+const REPODIR = process.env.LOCAL_REPO_URL;
+const REPO_DATA = REPODIR + "/data/";
+const REPO_METADATA = REPODIR + "/metadata/";
+const REPO_METADATA_ICONS= REPO_METADATA + "/icons/";
+const REPO_METADATA_COMPONENTS = REPO_METADATA + "/components/";
 
 // Display the help if no arguments is given
 if (process.argv.length === 2) {
@@ -683,8 +698,8 @@ function retrievePageModel(pageModelCode) {
                     headers: getHeaders()
                 }).then(res => {
                     resolve(JSON.parse(res).payload);
-                    console.log("Response from the API request for the page model: " + JSON.parse(res).payload.code);
-                    createComponent("pageModel", JSON.parse(res).payload.code, JSON.parse(res).payload.name);
+                    console.log("Response from the API request for the page model: " + JSON.parse(res).payload.descr);
+                    createComponent("pageModel", JSON.parse(res).payload.code, JSON.parse(res).payload.descr, JSON.parse(res).payload);
                 }).catch(res => {
                     printError("Unable to retrieve page model");
                     reject(res);
@@ -843,51 +858,75 @@ function createComponent(componentType, componentId, componentName, payload) {
     
        
     let componentVersion = readline.question("Component version: ");
+    let filesNamingSchema = componentId + "_" + componentType;
     let contentTypeCode = componentId;
+    let contentTypeCodeWithComponentType = filesNamingSchema;
+    let contentModelCodeWithComponentType = filesNamingSchema;
     let componentDescription = readline.question("Component description: ", {defaultInput: ""});
     
     createLocalRepositoryIfNotExists()
         .then(repo => {
-            let repoDir = process.env.LOCAL_REPO_URL;
+            let repoDir = REPODIR;
             let templatesDir = TEMPLATE_COMPONENT_FOLDER;
             
-            let templatesComponentTypeDirData = templatesDir + "/data/" + componentType;
-            let repoComponentDirData = repoDir + "/data/" + componentId + "_" + componentType;
             
+            //these are source (templates) and destination (repository) folders in data
+            let templatesComponentTypeDirData = TEMPLATE_DATA + componentType;
+            let repoComponentDirData = REPO_DATA + filesNamingSchema;
+            
+            //source and destination of files in metadata/components folder they are json files
+            let templatesComponentTypeDirMetadata = TEMPLATE_METADATA_COMPONENTS + componentType + ".json";
+           
+            let  componentJsonFile = filesNamingSchema + ".json";
+            let componentXmlFile = filesNamingSchema + ".xml"
+            let pageModelLabelJsonFile = filesNamingSchema + "_label" + ".json";
+            //here we set the name of the json file inside metadata/components
+            let repoComponentTypeDirMetadata = REPO_METADATA_COMPONENTS + componentJsonFile;
 
-            let templatesComponentTypeDirMetadata = templatesDir + "/metadata/components/"+ componentType + ".json";
-            let repoComponentTypeDirMetadata = repoDir + "/metadata/components/" + componentId + "_" + componentType + ".json";            
-            let repoComponentsMeta = repoDir + "/metadata/components/";
+            let repoComponentsMeta = REPO_METADATA_COMPONENTS;
 
             fs.copySync(templatesComponentTypeDirData, repoComponentDirData);
 
 if(componentType === 'contentModel'){
-    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + ".xml", repoComponentDirData + "/data/" + componentId + "_" + componentType + ".xml", 
+    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + ".xml", repoComponentDirData + "/data/" + componentXmlFile, 
     function(err) {
         if ( err ) console.log('ERROR: ' + err);
     });
+
+
+} else if(componentType === 'pageModel') {
+
+    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + ".json", repoComponentDirData + "/data/" + componentJsonFile, 
+    function(err) {
+        if ( err ) console.log('ERROR: ' + err);
+    });
+
+    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + "_label" + ".json", repoComponentDirData + "/data/" + pageModelLabelJsonFile, 
+    function(err) {
+        if ( err ) console.log('ERROR: ' + err);
+    });
+
 
 
 } else {
 
-    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + ".json", repoComponentDirData + "/data/" + componentId + "_" + componentType + ".json", 
+    fs.rename(repoComponentDirData + "/data/" + "template" + "_" + componentType + ".json", repoComponentDirData + "/data/" + componentJsonFile, 
     function(err) {
         if ( err ) console.log('ERROR: ' + err);
     });
-
-
-
 }
 
             
 
 fs.copyFileSync(templatesComponentTypeDirMetadata, repoComponentTypeDirMetadata);
+let contentModelId = (1 + Math.random() + "").replace('.', '').substring(0,6);
 
         let filesData = fsWalkerSync(repoComponentDirData, {nodir: true});
 
         filesData.forEach(fileData => {
             let content = fs.readFileSync(fileData.path, 'utf8');
-            content = content.replace(/#COMPONENT_ID#/g, componentId + "_" + componentType)
+            //here there are general parameters valid for any kind of component (almost)
+            content = content.replace(/#COMPONENT_ID#/g, filesNamingSchema)
                     .replace(/#COMPONENT_NAME#/g, componentName)
                     .replace(/#COMPONENT_VERSION#/g, componentVersion)
                     .replace(/#COMPONENT_DESCRIPTION#/g, componentDescription)
@@ -896,19 +935,39 @@ fs.copyFileSync(templatesComponentTypeDirMetadata, repoComponentTypeDirMetadata)
                 let contentModelShape = payload.contentShape;
                 let contentModelType = payload.contentType;
                 // contentModel needs a random numeric id
-                content = content.replace(/#CONTENT_MODEL_CODE#/g, (1 + Math.random() + "").replace('.', '').substring(0,6));
+                content = content.replace(/#CONTENT_MODEL_CODE#/g, contentModelId);
                 content = content.replace(/#CONTENT_MODEL_SHAPE#/, contentModelShape);
                 content = content.replace(/#CONTENT_MODEL_TYPE#/g, contentModelType);
+                content = content.replace(/#CONTENT_MODEL_CODE_AND_COMPONENT_TYPE#/g, contentModelCodeWithComponentType);
             } else if(componentType === 'contentType') {
-                let jsoncontentTypeAttributes = JSON.stringify(payload.attributes, null, 2);
-                    
-                content = content.replace(/#CONTENT_TYPE_CODE#/, contentTypeCode);
-                content = content.replace(/#CONTENT_TYPE_ATTRIBUTES#/, jsoncontentTypeAttributes);
-                console.log(jsoncontentTypeAttributes);
+                let contentTypeAttributes = JSON.stringify(payload.attributes, null, 2);
+                
+                //the content type code needs to be 3 capital letters (leave the imported one)
+                content = content.replace(/#CONTENT_TYPE_CODE#/g, contentTypeCode);
+                content = content.replace(/#CONTENT_TYPE_CODE_AND_COMPONENT_TYPE#/g, contentTypeCodeWithComponentType);
+                content = content.replace(/#CONTENT_TYPE_ATTRIBUTES#/, contentTypeAttributes);
+                content = content.replace(/#COMPONENT_FOLDER_NAME#/, filesNamingSchema);
+                console.log(contentTypeAttributes);
             } else if (componentType === 'role'){
                 let jsonRolePermissions = JSON.stringify(payload.permissions, null, 2);
                 content = content.replace(/#ROLE_PERMISSIONS#/, jsonRolePermissions);
+                
                 console.log("Permissions: " + jsonRolePermissions);
+
+            } else if (componentType === 'pageModel'){
+                let frames = JSON.stringify(payload.configuration.frames, null, 2);
+                //let template = JSON.stringify(payload.template, null, 2);
+                let template = payload.template;
+                
+                template = template.replace(/\\([\s\S])|(")/g, "\\$1$2");
+                template = template.replace(/\r?\n|\r/g, " ");
+               
+                content = content.replace(/#FRAMES#/, frames);
+                content = content.replace(/#TEMPLATE#/, template);
+                content = content.replace(/#LABEL_ID#/, componentName + "_LABEL" );
+                content = content.replace(/#IT_LABEL_CONTENT#/, "Label di "+ componentName);
+                content = content.replace(/#EN_LABEL_CONTENT#/, "Label for "+ componentName);
+
             }
             //fs.writeFileSync(fileData.path, content);
             fs.writeFile(fileData.path, content, 'utf8', function (err) {
@@ -919,23 +978,27 @@ fs.copyFileSync(templatesComponentTypeDirMetadata, repoComponentTypeDirMetadata)
         });
 
         let filesMeta = fsWalkerSync(repoComponentsMeta, {nodir: true});
-
+        
         filesMeta.forEach(fileMeta => {
             let content = fs.readFileSync(fileMeta.path, 'utf8');
-            content = content.replace(/#COMPONENT_ID#/g, componentId + "_" + componentType)
+            content = content.replace(/#COMPONENT_ID#/g, filesNamingSchema)
                     .replace(/#COMPONENT_NAME#/g, componentName)
                     .replace(/#COMPONENT_VERSION#/g, componentVersion)
                     .replace(/#COMPONENT_DESCRIPTION#/g, componentDescription)
                     .replace(/#REPO_DIRECTORY#/g, repoDir)
-                    .replace(/#COMPONENT_FOLDER_NAME#/g, componentId + "_" + componentType );
+                    .replace(/#COMPONENT_FOLDER_NAME#/g, filesNamingSchema );
             if(componentType === 'contentModel') {
                 // contentModel needs a random numeric id
-                content = content.replace(/#CONTENT_MODEL_CODE#/g, (1 + Math.random() + "").replace('.', '').substring(0,6));
+                //best to keep random generator here to avoid conflicts with same 
+            
+                content = content.replace(/#CONTENT_MODEL_CODE#/g, contentModelId);
+                content = content.replace(/#CONTENT_MODEL_CODE_AND_COMPONENT_TYPE#/g, contentModelCodeWithComponentType);
                 
 
             } else if(componentType === 'contentType') {
-                content = content.replace(/#CONTENT_TYPE_CODE#/, contentTypeCode + "contentType");
-            }
+                content = content.replace(/#CONTENT_TYPE_CODE#/g, contentTypeCode);
+                content = content.replace(/#CONTENT_TYPE_CODE_AND_COMPONENT_TYPE#/g, contentTypeCodeWithComponentType);
+            } 
             fs.writeFileSync(fileMeta.path, content);
         });  
 

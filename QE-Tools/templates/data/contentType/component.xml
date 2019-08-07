@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>#CONTENT_TYPE_CODE_AND_COMPONENT_TYPE#</code>
+	<description>#COMPONENT_DESCRIPTION#</description>
+	<dependencies>
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+		</environment>
+		<environment code="test">
+		</environment>
+        <execution>
+            <op>#call('createContentType', '#COMPONENT_FOLDER_NAME#/data/#CONTENT_TYPE_CODE#_contentType.json')</op>
+        </execution>
+	</installation>
+	<uninstallation>
+		<sqlResources>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</sqlResources>
+		<resources>
+		</resources>
+        <execution>
+            <op>#call('deleteContentType', '#CONTENT_TYPE_CODE#')</op>
+        </execution>
+	</uninstallation>
+</component>

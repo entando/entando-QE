@@ -1,0 +1,8 @@
+{
+    "code": "#COMPONENT_ID#",
+    "descr": "#COMPONENT_DESCRIPTION#",
+    "configuration": {
+        "frames": #FRAMES#
+},
+    "template": "#TEMPLATE#"
+}

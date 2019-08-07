@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>#COMPONENT_ID#</code>
+	<description>#COMPONENT_DESCRIPTION#</description>
+	<dependencies>
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+				</datasource>
+            </defaultSqlResources>
+		</environment>
+		<environment code="test">
+		</environment>
+        <execution>
+            <op>#call('createPageModel', '#COMPONENT_ID#/data/#COMPONENT_ID#.json')</op>
+            <op>#call('createLabel', '#COMPONENT_ID#/data/#COMPONENT_ID#_label.json')</op>
+        </execution>
+	</installation>
+	<uninstallation>
+		<sqlResources>
+			<datasource name="portDataSource">
+			</datasource>
+			<datasource name="servDataSource">
+			</datasource>
+		</sqlResources>
+		<resources>
+		</resources>
+        <execution>
+            <op>#call('deleteLabel', '#LABEL_ID#')</op>
+            <op>#call('deletePageModel', '#COMPONENT_ID#')</op>
+        </execution>
+	</uninstallation>
+</component>

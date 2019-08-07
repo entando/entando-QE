@@ -1,0 +1,8 @@
+{
+    "id": "#CONTENT_MODEL_CODE_AND_COMPONENT_TYPE#",
+	"name": "#COMPONENT_NAME#",
+	"description": "#COMPONENT_DESCRIPTION#",
+	"type": "contentModel",
+	"version": "#COMPONENT_VERSION#",
+	"repoDirectory": "#REPO_DIRECTORY#/data/#COMPONENT_FOLDER_NAME#"
+}

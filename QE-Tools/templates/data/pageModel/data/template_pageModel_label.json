@@ -1,0 +1,7 @@
+{
+    "key": "#LABEL_ID#",
+    "titles": {
+        "it": "#IT_LABEL_CONTENT#",
+        "en": "#EN_LABEL_CONTENT#"
+    }
+}

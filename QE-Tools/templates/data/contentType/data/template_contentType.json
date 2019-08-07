@@ -1,0 +1,6 @@
+{
+    "code": "#CONTENT_TYPE_CODE#",
+    "name": "#COMPONENT_NAME#",
+    "status": "0",
+    "attributes":#CONTENT_TYPE_ATTRIBUTES#
+}

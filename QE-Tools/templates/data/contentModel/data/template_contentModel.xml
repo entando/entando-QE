@@ -1,0 +1,6 @@
+<contentModel>
+  <id>#CONTENT_MODEL_CODE#</id>
+  <contentType>#CONTENT_MODEL_TYPE#</contentType>
+  <descr>#COMPONENT_DESCRIPTION#</descr>
+  <contentShape><![CDATA[#CONTENT_MODEL_SHAPE#]]></contentShape>
+</contentModel>

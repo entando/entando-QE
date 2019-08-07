@@ -24,15 +24,29 @@ i.e.
 LOCAL_REPO_NAME=cloned_components
 LOCAL_REPO_URL=cloned_components
 
+Requirements.
+nodejs and npm installed
+
+Installation.
+Install the node modules with npm install.
+
+
 How to run the tool.
-From the folder that contains the script run ./de-components-generator.js import-component, you will being presented with all the available components types you can clone (at the moment of writing only groups and roles) the prompt looks like this:
+From the folder that contains the script run ./de-components-generator.js import-component, you will be presented with all the supported  components types.
+At the moment of writing groups, roles, content models, content types and page models are supported.
+ 
+The prompt looks like this:
 
 Select component type:
-1. group
-2. role
+1. contentModel
+2. contentType
+3. group
+4. pageModel
+5. role
+Component type: 
 
 just select the one you need, inserting the corresponding number.
-You will be presented with a list of all the components of the selected type fetched from the Entando instance from which you want to clone the components; from the list select the one you want to clone inserting the corresponding number.
+You will be presented with a list of all the components of the selected type,fetched from the Entando instance from which you want to clone the components; from the list, select the one you want to clone inserting the corresponding number.
 
 Getting the list of available groups...
 1. Group1 group1
