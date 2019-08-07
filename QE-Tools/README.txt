@@ -55,6 +55,16 @@ Select a group from the list:
 
 You will be prompted for the component version and for the component description insert them, all the required folders and files will be created automatically.
 
+Issues installing cloned components.
+You may not be able to install some components even though their packaging is correct from a DE point of view, and this could happen, at least in the following cases:
+
+- installing an imported role if in its definition there are permissions set to true, and at least one of these permissions do not exist on the Entando instance on which you are installing that role;
+
+- installing an imported content type if in its definition there are attributes not present in the instance on which you are going to install that component;
+
+-installing a content model if in its definition is referenced a content type which is not already installed on the Entando instance on which you are going to install the component;
+
+
  
 
 
