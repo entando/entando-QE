@@ -7,7 +7,7 @@ Postman v.6.0.10 +
 Collections v 2.1
 
 
-### install newman package
+### install newman package ###
 
 __Prerequisites__
 
