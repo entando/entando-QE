@@ -38,7 +38,8 @@
                         <include>**/*TestCase.java</include>
                     </includes>
                     <properties>
-                        <!-- <includeTags>fast</includeTags> -->
+
+                        <includeTags>${tags}</includeTags>
                         <excludeTags>slow</excludeTags>
                         <!--
                         <configurationParameters>

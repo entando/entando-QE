@@ -13,6 +13,7 @@ package org.entando.selenium.smoketests;
 
 import org.entando.selenium.pages.DTUsersPage;
 import org.entando.selenium.testHelpers.UsersTestBase;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  */
-public class STLoginWithTestUserTest extends UsersTestBase {
+public class STLogIntoAppBuilderWithAdminUserTest extends UsersTestBase {
     /*
         Pages used on this test
     */
@@ -36,18 +37,12 @@ public class STLoginWithTestUserTest extends UsersTestBase {
     public STEngineLoginPage stEngineLoginPage;
 
     @Test
-    public void loginTestUserOnAppBuilder() throws InterruptedException {
+    @Tag("login-tests")
+    public void loginOnAppBuilder() throws InterruptedException {
         driver.manage().window().maximize();
-        sTAppBuilderLoginPage.logIn(SmokeTestUser.SMOKE_TEST_USER);
+        sTAppBuilderLoginPage.logIn(SmokeTestUser.ADMIN);
         //Navigation to the page
         dTDashboardPage.selectSecondOrderLink("User Management", "Users");
         WaitUntil.isVisible(driver, dTUsersPage.getAddButton());
-    }
-    @Test
-    public void loginTestUserOnEngine() throws InterruptedException {
-        driver.manage().window().maximize();
-        stEngineLoginPage.logIn(SmokeTestUser.SMOKE_TEST_USER);
-        //Navigation to the page
-        WaitUntil.isVisible(driver, new By.ByLinkText("Add User"));
     }
 }//end class

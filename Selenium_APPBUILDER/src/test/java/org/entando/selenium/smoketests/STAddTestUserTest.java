@@ -203,13 +203,13 @@ public class STAddTestUserTest extends UsersTestBase {
 
     private void navigateToUserTable() {
         dTDashboardPage.selectTab("Dashboard");
-        WaitUntil.urlEndingWith(driver, "/dashboard");
+        WaitUntil.urlContaining(driver, "/dashboard");
         dTDashboardPage.selectSecondOrderLink("User Management", "Users");
         waitForUsersTableOnUsersPage();
     }
 
     private void waitForUsersTableOnUsersPage() {
-        WaitUntil.urlEndingWith(driver, "/user");
+        WaitUntil.urlContaining(driver, "/user");
         WaitUntil.isVisible(driver, dTUsersPage.getUsersTable());
     }
 

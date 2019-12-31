@@ -16,9 +16,10 @@ public class ScreenPrintSaver {
     public static void save(WebDriver webDriver){
         try {
 
-//            File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+            File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+            file.setReadable(true);
             System.out.println("Printing page from " + webDriver.getCurrentUrl());
-//            FileUtils.copyFile(file, new File("screenshot"+count++ + ".png"));
+            FileUtils.copyFile(file, new File("screenshot"+count++ + ".png"));
             System.out.println("printed");
         } catch (Exception e) {
             e.printStackTrace();

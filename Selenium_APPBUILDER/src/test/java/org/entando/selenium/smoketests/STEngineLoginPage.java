@@ -11,45 +11,23 @@ details.
  */
 package org.entando.selenium.smoketests;
 
-import org.entando.selenium.utils.PageObject;
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 
-import java.time.Duration;
+public class STEngineLoginPage extends STKeycloakBasedLoginPage {
 
-
-public class STEngineLoginPage extends PageObject {
-
-    private final String engineUrl;
-    @FindBy(id = "username")
-    private WebElement userName;
-    @FindBy(id = "password")
-    private WebElement passWord;
-
-    @FindBy(xpath = "//button[contains(@*, 'submit')]")
-    private WebElement submitButton;
-
-    public void logIn(SmokeTestUser user) {
-        this.driver.get(engineUrl+"/do/login");
-        this.userName.clear();
-        this.userName.sendKeys(user.getUsername());
-        this.passWord.clear();
-        this.passWord.sendKeys(user.getPassword());
-        this.submitButton.click();
+    protected void waitForReturnPage() {
         WebElement table = driver.findElement(By.xpath("//table[@id='page-table']"));
         WaitUntil.isVisible(driver, table);
         new FluentWait<>(table).withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofMillis(200)).until(
-                webElement ->  table.findElements(By.xpath("tbody/tr")).size()>=2);
-        ScreenPrintSaver.save(driver);
+                webElement -> table.findElements(By.xpath("tbody/tr")).size() >= 2);
     }
 
-    public STEngineLoginPage(WebDriver driver, String engineUrl) {
-        super(driver);
-        this.engineUrl = engineUrl;
+    public STEngineLoginPage(WebDriver driver, String engineBaseUrl) {
+        super(driver, engineBaseUrl + "/do/login");
     }
-
 
 }
